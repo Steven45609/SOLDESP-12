@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ubicación - SOLDESP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 35px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .whatsapp-float i {
+      margin-top: 8px;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #1ebe5d;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #25d366;
+      text-decoration: none;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light position-fixed top-0 start-0 w-100 shadow-sm" id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center fw-bold text-dark" href="index.html">
+      <img src="SOLDESP_LOGO.png" alt="Logo" width="40" height="40" class="me-2">
+      SOLDESP
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-2 align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-semibold" href="index.html">INICIO</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-semibold" href="Nosotros.html">NOSOTROS</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link text-dark fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            SERVICIOS
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
+            <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
+            <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
+            <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+            <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje de Estructuras Metálicas</a></li>
+            <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / Spool en Plantas</a></li>
+            <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
+            <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
+            <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-semibold" href="Proyectos.html">PROYECTOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-semibold" href="Ubicación.html">UBICACIÓN</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="mb-3 text-black fw-bold">¿Dónde estamos ubicados?</h2>
+    <p class="mb-4 fs-5">URB. JOSÉ CARLOS MARIÁTEGUI MZ “M” LT 14 PAMPA INALÁMBRICA, ILO, MOQUEGUA</p>
+    <div class="ratio ratio-4x3 shadow-lg rounded-4 overflow-hidden">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.2301873363476!2d-71.33308862563784!3d-17.65320417146536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91445b8390511fdd%3A0x56bc72360c08a2ed!2sSoldesp!5e1!3m2!1ses-419!2spe!4v1777913196626!5m2!1ses-419!2spe" 
+      width="600" 
+      height="450" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    </div>
+  </div>
+</section>
+<footer class="footer-modern py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
+        <p class="text-muted-white">
+          Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, 
+          enfocada en la excelencia técnica y la seguridad operativa.
+        </p>
+        <div class="social-links mt-4">
+          <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" class="text-white me-3 fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3 fs-5"><i class="bi bi-linkedin"></i></a>
+          <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="text-white fs-5"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+        <h5 class="fw-bold mb-4 text-white">Navegación</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="footer-link">Inicio</a></li>
+          <li class="mb-2"><a href="Nosotros.html" class="footer-link">Nosotros</a></li>
+          <li class="mb-2"><a href="Proyectos.html" class="footer-link">Proyectos</a></li>
+          <li class="mb-2"><a href="Ubicación.html" class="footer-link">Ubicación</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <h5 class="fw-bold mb-4 text-white">Servicios</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="Fabricación.html" class="footer-link">Fabricación Metálica</a></li>
+          <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link">Soldaduras Especiales</a></li>
+          <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link">Mantenimiento Plantas</a></li>
+          <li class="mb-2"><a href="Arenado.html" class="footer-link">Arenado y Pintura</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
+          <p class="text-muted-white small mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> Ilo, Moquegua -
+            Perú</p>
+          <p class="text-muted-white small mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> (053) 495247</p>
+          <p class="text-muted-white small mb-2"><i class="bi bi-phone-fill text-primary me-2"></i> 953660826</p>
+          <p class="text-muted-white small mb-0"><i class="bi bi-envelope-fill text-primary me-2"></i>
+            recursos.humanos@soldesp.com.pe</p>
+        </div>
+    </div>
+    <hr class="mt-5 border-secondary opacity-25">
+    <div class="text-center pt-3">
+      <p class="text-muted-white small mb-0">&copy; 2026 SOLDESP | Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor"
+     class="whatsapp-float"
+     target="_blank"
+     title="Reservar por WhatsApp">
+     <i class="bi bi-whatsapp"></i>
+  </a>
+</body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos - SOLDESP</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background-color: #ffffff;
+    }
+
+    h1, h2, h3, h4, h5, .navbar-brand {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* ========== NAVBAR MODERNO IDÉNTICO AL INDEX ========== */
+    .navbar {
+      background: transparent !important;
+      padding: 18px 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1080;
+      width: 100%;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .navbar-brand img {
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .navbar.scrolled .navbar-brand {
+      color: #1a1a1a !important;
+      transform: scale(0.95);
+    }
+
+    .navbar.scrolled .navbar-brand img {
+      filter: none;
+    }
+
+    .navbar .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      padding: 10px 16px !important;
+      margin: 0 2px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .navbar .nav-link:focus,
+    .navbar .nav-link:focus-visible,
+    .navbar .dropdown-toggle:focus,
+    .navbar .dropdown-toggle:focus-visible {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .navbar .dropdown-toggle {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Flecha personalizada con Bootstrap Icons */
+    .navbar .dropdown-toggle::after {
+      display: none !important;
+    }
+
+    .navbar .dropdown-toggle::before {
+      content: '\f282';
+      font-family: 'bootstrap-icons' !important;
+      font-size: 0.75rem;
+      font-weight: normal;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .navbar .dropdown-toggle.show::before {
+      transform: rotate(180deg);
+    }
+
+    .navbar.scrolled .nav-link {
+      color: #444 !important;
+    }
+
+    .navbar .nav-link:hover {
+      color: #0d6efd !important;
+      background: rgba(13, 110, 253, 0.05);
+    }
+
+    .navbar.scrolled .nav-link:hover {
+      background: rgba(13, 110, 253, 0.08);
+    }
+
+    /* Línea inferior al hover */
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #0d6efd;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .navbar .nav-link:hover::after {
+      width: 30%;
+    }
+
+    .dropdown-menu {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      padding: 10px;
+      margin-top: 10px !important;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      animation: fadeInDown 0.3s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown-item {
+      padding: 10px 18px;
+      font-weight: 500;
+      font-size: 0.88rem;
+      color: #444;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+      background: #f0f7ff;
+      color: #0d6efd;
+      padding-left: 22px;
+    }
+
+    .navbar-toggler {
+      border: none !important;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background 0.3s;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .navbar-toggler:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .navbar-toggler:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .navbar.scrolled .navbar-toggler:hover {
+      background: rgba(0,0,0,0.05);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar.scrolled .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .navbar {
+        background: #fff !important;
+        padding: 12px 0;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      }
+
+      .navbar-brand, .navbar.scrolled .navbar-brand {
+        color: #1a1a1a !important;
+        transform: scale(0.9);
+      }
+
+      .navbar .nav-link, .navbar.scrolled .nav-link {
+        color: #333 !important;
+        padding: 12px 15px !important;
+        margin: 4px 0;
+      }
+
+      .navbar-collapse {
+        background: #fff;
+        margin-top: 10px;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+      }
+
+      .navbar .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none;
+        background: #f8f9fa;
+        margin-top: 5px !important;
+        margin-bottom: 10px;
+        padding: 8px;
+        animation: none;
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      }
+
+      .navbar .nav-link::after {
+        display: none;
+      }
+
+      .navbar .dropdown-toggle {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      
+      .navbar .dropdown-toggle::before {
+        order: 1;
+      }
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-cumbra {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('SOLDESP fondo.jpg');
+      background-size: cover;
+      background-position: center;
+      animation: slowZoom 20s infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      color: white;
+    }
+
+    /* Project Cards */
+    .projects-container {
+      padding: 100px 0;
+      background-color: #ffffff;
+    }
+
+    .section-title-wrapper {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title-wrapper h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .title-underline {
+      width: 80px;
+      height: 4px;
+      background: #2f4dd3;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+
+    .project-card {
+      height: 100%;
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px rgba(47, 99, 211, 0.15);
+      border-color: rgba(47, 99, 211, 0.1);
+    }
+
+    .project-img-container {
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .project-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .project-card:hover .project-img-container img {
+      transform: scale(1.15);
+    }
+
+    .img-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(47, 104, 211, 0.6), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .project-card:hover .img-overlay {
+      opacity: 1;
+    }
+
+    .overlay-icon {
+      color: white;
+      font-size: 2.5rem;
+      transform: translateY(20px);
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .overlay-icon {
+      transform: translateY(0);
+    }
+
+    .project-card-body {
+      padding: 2.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+    }
+
+    .project-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2f55d3;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .project-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .project-card-text {
+      font-family: 'Inter', sans-serif;
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      flex: 1;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .project-btn i {
+      margin-left: 10px;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .project-btn:hover {
+      color: #2f63d3;
+    }
+
+    .project-btn:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Footer moderno */
+    .footer-modern {
+      background: #0a0a0a;
+      color: #aaa;
+    }
+
+    .text-muted-white {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer-link {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    .whatsapp-float:hover {
+      background: #128C7E;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .projects-container {
+        padding: 60px 0;
+      }
+      .project-card-body {
+        padding: 1.5rem;
+      }
+      .whatsapp-float {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg position-fixed top-0 start-0 w-100" id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+        <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" width="45" height="47" class="me-2">
+        <span>SOLDESP</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-2 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="index.html">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Nosotros.html">NOSOTROS</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SERVICIOS</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
+              <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
+              <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
+              <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+              <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje de Estructuras Metálicas</a></li>
+              <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / Spool en Plantas</a></li>
+              <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
+              <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
+              <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Proyectos.html">PROYECTOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Ubicación.html">UBICACIÓN</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-cumbra">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content text-center">
+      <h1 class="display-3 fw-bold mb-0" data-aos="fade-up" data-aos-delay="200">PROYECTOS</h1>
+      <span class="text-uppercase fw-semibold tracking-widest mt-2 d-block opacity-75" data-aos="fade-up" data-aos-delay="400" style="letter-spacing: 5px; color: #ff9800;">Conoce nuestros proyectos</span>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-container">
+    <div class="container">
+      <div class="section-title-wrapper" data-aos="fade-up">
+        <h2>Portafolio de Proyectos</h2>
+        <div class="title-underline"></div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <!-- Proyecto 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="ESTRUCTURAS-METALICAS.jpg" alt="Estructuras Metálicas">
+              <div class="img-overlay">
+                <i class="bi bi-plus-circle overlay-icon"></i>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <span class="project-category">Infraestructura</span>
+              <h5 class="project-card-title">Estructuras Metálicas</h5>
+              <p class="project-card-text">
+                Fabricación e instalación de estructuras metálicas para plantas industriales con altos estándares de precisión y seguridad.
+              </p>
+              <a href="https://wa.link/u9j87k" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Proyecto 2 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="Soldadura especial.jpg" alt="Soldaduras Especiales">
+              <div class="img-overlay">
+                <i class="bi bi-plus-circle overlay-icon"></i>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <span class="project-category">Especialidades</span>
+              <h5 class="project-card-title">Soldaduras Especiales</h5>
+              <p class="project-card-text">
+                Ejecución de soldaduras certificadas en materiales de alto desempeño garantizando integridad metalúrgica.
+              </p>
+              <a href="https://wa.link/u9j87k" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Proyecto 3 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="Mantenimiento industrial.jpg" alt="Mantenimiento Industrial">
+              <div class="img-overlay">
+                <i class="bi bi-plus-circle overlay-icon"></i>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <span class="project-category">Mantenimiento</span>
+              <h5 class="project-card-title">Mantenimiento Industrial</h5>
+              <p class="project-card-text">
+                Servicios preventivos y correctivos para maximizar la disponibilidad operativa y seguridad de equipos industriales.
+              </p>
+              <a href="https://wa.link/u9j87k" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Proyecto 4 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="Montaje Industrial.jpg" alt="Montaje Industrial">
+              <div class="img-overlay">
+                <i class="bi bi-plus-circle overlay-icon"></i>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <span class="project-category">Montaje</span>
+              <h5 class="project-card-title">Montaje Industrial</h5>
+              <p class="project-card-text">
+                Instalación y ensamblaje de equipos y tuberías con precisión milimétrica en entornos industriales complejos.
+              </p>
+              <a href="https://wa.link/u9j87k" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Proyecto 5 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="Digitalización de planos.jpg" alt="Digitalización de planos">
+              <div class="img-overlay">
+                <i class="bi bi-plus-circle overlay-icon"></i>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <span class="project-category">Ingeniería</span>
+              <h5 class="project-card-title">Digitalización y Diseño</h5>
+              <p class="project-card-text">
+                Elaboración de planos técnicos en 2D y 3D facilitando la visualización y optimización de recursos.
+              </p>
+              <a href="https://wa.link/u9j87k" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Proyecto 6 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="Montaje Industrial.jpg" alt="Arenado y pintura">
+              <div class="img-overlay">
+                <i class="bi bi-plus-circle overlay-icon"></i>
+              </div>
+            </div>
+            <div class="project-card-body">
+              <span class="project-category">Recubrimientos</span>
+              <h5 class="project-card-title">Arenado y Pintura</h5>
+              <p class="project-card-text">
+                Protección anticorrosiva de alto nivel para prolongar la vida útil de estructuras en ambientes agresivos.
+              </p>
+              <a href="https://wa.link/u9j87k" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer moderno -->
+  <footer class="footer-modern py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
+          <p class="text-muted-white">
+            Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, 
+            enfocada en la excelencia técnica y la seguridad operativa.
+          </p>
+          <div class="social-links mt-4">
+            <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" class="text-white me-3 fs-5"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3 fs-5"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="text-white fs-5"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5 class="fw-bold mb-4 text-white">Navegación</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="footer-link">Inicio</a></li>
+            <li class="mb-2"><a href="Nosotros.html" class="footer-link">Nosotros</a></li>
+            <li class="mb-2"><a href="Proyectos.html" class="footer-link">Proyectos</a></li>
+            <li class="mb-2"><a href="Ubicación.html" class="footer-link">Ubicación</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+          <h5 class="fw-bold mb-4 text-white">Servicios</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="Fabricación.html" class="footer-link">Fabricación Metálica</a></li>
+            <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link">Soldaduras Especiales</a></li>
+            <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link">Mantenimiento Plantas</a></li>
+            <li class="mb-2"><a href="Arenado.html" class="footer-link">Arenado y Pintura</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
+          <p class="text-muted-white small mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> Ilo, Moquegua - Perú</p>
+          <p class="text-muted-white small mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> (053) 495247</p>
+          <p class="text-muted-white small mb-2"><i class="bi bi-phone-fill text-primary me-2"></i> 953660826</p>
+          <p class="text-muted-white small mb-0"><i class="bi bi-envelope-fill text-primary me-2"></i> recursos.humanos@soldesp.com.pe</p>
+        </div>
+      </div>
+      <hr class="mt-5 border-secondary opacity-25">
+      <div class="text-center pt-3">
+        <p class="text-muted-white small mb-0">&copy; 2026 SOLDESP | Todos los derechos reservados</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.link/u9j87k" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    const navbar = document.getElementById("navbar");
+
+    function controlarNavbar() {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+
+    window.addEventListener("load", controlarNavbar);
+    window.addEventListener("scroll", controlarNavbar);
+    window.addEventListener("resize", controlarNavbar);
+
+    // Cerrar menú móvil al hacer clic en un enlace
+    document.addEventListener("DOMContentLoaded", function() {
+      const navbarCollapse = document.getElementById("navbarNav");
+      const navLinks = document.querySelectorAll(".navbar .nav-link:not(.dropdown-toggle), .dropdown-item");
+      
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
+            const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+            bsCollapse.hide();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

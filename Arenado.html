@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arenado y Pintura - SOLDESP</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles_2.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --primary-red: #2f63d3;
+      --dark-overlay: rgba(0, 0, 0, 0.6);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    .navbar-brand {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+    }
+
+    .navbar {
+      background: transparent !important;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+      z-index: 1050;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      padding: 12px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar.scrolled .nav-link,
+    .navbar.scrolled .navbar-brand {
+      color: #333 !important;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+    }
+
+    .navbar-toggler {
+      filter: invert(1) brightness(100);
+    }
+
+    .navbar.scrolled .navbar-toggler {
+      filter: none;
+    }
+
+    .hero-cumbra {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('SOLDESP fondo.jpg');
+      background-size: cover;
+      background-position: center;
+      animation: slowZoom 20s infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes slowZoom {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.1);
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      color: white;
+    }
+
+
+
+    .section-padding {
+      padding: 100px 0;
+    }
+
+    .equipment-list li {
+      list-style: none;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .equipment-list li i {
+      color: var(--primary-red);
+      margin-right: 15px;
+      font-size: 1.2rem;
+    }
+
+    .process-step {
+      padding: 30px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      height: 100%;
+      transition: all 0.3s ease;
+      border-bottom: 4px solid transparent;
+    }
+
+    .process-step:hover {
+      transform: translateY(-10px);
+      border-bottom-color: var(--primary-red);
+    }
+
+    .step-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(211, 47, 47, 0.1);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-sticky {
+      position: sticky;
+      top: 100px;
+    }
+
+    .servicio-link {
+      display: block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-bottom: 8px;
+      background: #f8f9fa;
+    }
+
+    .servicio-link:hover,
+    .servicio-link.active {
+      background: var(--primary-red);
+      color: white;
+      transform: translateX(5px);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg position-fixed top-0 start-0 w-100" id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+        <img src="SOLDESP_LOGO.png" alt="Logo" width="40" height="33" class="me-2">
+        SOLDESP
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-2 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="index.html">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Nosotros.html">NOSOTROS</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              SERVICIOS
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
+              <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
+              <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
+              <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+              <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje de Estructuras Metálicas</a></li>
+              <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / Spool en Plantas</a></li>
+              <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
+              <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
+              <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Proyectos.html">PROYECTOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Ubicación.html">UBICACIÓN</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-cumbra">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content text-center">
+      <span class="text-uppercase fw-semibold tracking-widest mb-2 d-block opacity-75" data-aos="fade-up" data-aos-delay="200" style="letter-spacing: 5px;">Nuestros Servicios</span>
+      <h1 class="display-3 fw-bold mb-0" data-aos="fade-up" data-aos-delay="400">Arenado y Pintura</h1>
+    </div>
+  </section>
+  <section class="section-padding bg-white">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6" data-aos="fade-right">
+          <h2 class="fw-bold mb-4">Arenado y Pintura</h2>
+          <p class="lead text-muted" style="text-align: justify;">
+            El servicio de arenado y pintura de SOLDESP está orientado a la preparación, protección y acabado de superficies metálicas, 
+            asegurando mayor durabilidad y resistencia frente a la corrosión, desgaste y 
+            condiciones ambientales adversas. Aplicamos técnicas especializadas de limpieza abrasiva (arenado) para eliminar óxido, 
+            pintura deteriorada e impurezas, 
+            logrando una superficie óptima para la aplicación de recubrimientos industriales.
+          </p>
+          <p class="text-secondary mb-4" style="text-align: justify;">
+            Nuestros procesos garantizan acabados de alta calidad, cumpliendo estándares técnicos y de seguridad.
+          </p>
+          <ul class="equipment-list p-0">
+            <li><i class="bi bi-check-circle-fill"></i> Equipos de arenado (sandblasting)</li>
+            <li><i class="bi bi-check-circle-fill"></i> Compresoras de aire</li>
+            <li><i class="bi bi-check-circle-fill"></i> Abrasivos (arena, granalla, óxido de aluminio, etc.)</li>
+            <li><i class="bi bi-check-circle-fill"></i> Pistolas de pintura industrial</li>
+            <li><i class="bi bi-check-circle-fill"></i> Equipos de pintura airless</li>
+            <li><i class="bi bi-check-circle-fill"></i> Pinturas industriales (anticorrosivas, epóxicas, poliuretano)</li>
+            <li><i class="bi bi-check-circle-fill"></i> Solventes y diluyentes</li>
+            <li><i class="bi bi-check-circle-fill"></i> Equipos de medición de espesores (medidores de pintura)</li>
+            <li><i class="bi bi-check-circle-fill"></i> Equipos de protección personal (EPP)</li>
+          </ul>
+          <div class="mt-4">
+            <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="btn btn-danger btn-lg">Solicitar Cotización</a>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <div class="position-relative">
+            <img src="Arenado maquina.jpg" class="img-fluid rounded-4 shadow-lg" alt="Alquiler de Equipos SERMEC">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-padding bg-light">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-5" data-aos="fade-up">Asistencia y Soporte</h2>
+      <div class="row g-4">
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-body-2">
+            <i class="bi bi-tools"></i>
+            <h5 class="fw-bold">Mantenimiento Preventivo</h5>
+            <p class="text-muted mb-0 small">Evita fallas mediante inspecciones periódicas y control técnico de cada
+              equipo rentado.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-body-2">
+            <i class="bi bi-gear-wide-connected"></i>
+            <h5 class="fw-bold">Mantenimiento Correctivo</h5>
+            <p class="text-muted mb-0 small">Solución rápida y eficiente ante fallas inesperadas para minimizar el
+              tiempo de inactividad.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-body-2">
+            <i class="bi bi-shield-check"></i>
+            <h5 class="fw-bold">Supervisión Técnica</h5>
+            <p class="text-muted mb-0 small">Control y seguimiento por parte de nuestros especialistas durante el uso de
+              la maquinaria.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-padding bg-white">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5" data-aos="fade-up">Nuestro Proceso de Arenado y Pintura</h2>
+          <div class="row g-4">
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="process-step">
+                <div class="step-number text-primary">01</div>
+                <h5 class="fw-bold">Recepción del requerimiento y alcance del servicio</h5>
+                <p class="text-muted small">Servicio de arenado y pintado de estructuras metálicas en general.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="process-step">
+                <div class="step-number text-primary">02</div>
+                <h5 class="fw-bold">Inspección y evaluación de superficies a tratar</h5>
+                <p class="text-muted small">Arenado y Pintado de Tuberías, ductos en general.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300">
+              <div class="process-step">
+                <div class="step-number text-primary">03</div>
+                <h5 class="fw-bold">Selección de método y cotización técnica</h5>
+                <p class="text-muted small">Limpieza abrasiva con arena, garnet, granallas acordes a especificificaciones técnicas de cliente.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="400">
+              <div class="process-step">
+                <div class="step-number text-primary">04</div>
+                <h5 class="fw-bold">Planificación de trabajos de mantenimiento industrial</h5>
+                <p class="text-muted small">Contamos con experiencia en contratos anuales de Mantenimiento Industrial de limpieza y aplicación de pintura industrial.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="500">
+              <div class="process-step">
+                <div class="step-number text-primary">05</div>
+                <h5 class="fw-bold">Movilización de equipos y certificación operativa</h5>
+                <p class="text-muted small">Contamos con equipos operativos y certificados.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="600">
+              <div class="process-step">
+                <div class="step-number text-primary">06</div>
+                <h5 class="fw-bold">Control de condiciones ambientales de aplicación</h5>
+                <p class="text-muted small">Control de ambientes: 
+                  Humedad relativa, punto de rocío, T° ambiental, T° material base.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="600">
+              <div class="process-step">
+                <div class="step-number text-primary">07</div>
+                <h5 class="fw-bold">Control de calidad y protocolos de inspección</h5>
+                <p class="text-muted small">Desarrollo de Proceso cumpliendo los siguientes protocolos:
+                  <br>
+                  • Medición de película seca
+                  <br>
+                  • Medición de espesores
+                  <br>
+                  • Pruebas de adherencia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="sidebar-sticky">
+            <div class="p-4 bg-light rounded-4 shadow-sm">
+              <h5 class="fw-bold mb-4 border-bottom pb-2">Otros Servicios</h5>
+              <div class="d-flex flex-column">
+                <a href="Fabricación.html" class="servicio-link">Servicios de Fabricación</a>
+                <a href="Plantas_Industriales.html" class="servicio-link">Mantenimiento de Plantas</a>
+                <a href="Plantas_Desalinizadoras.html" class="servicio-link">Plantas Desalinizadoras</a>
+                <a href="Calderia.html" class="servicio-link">Caldería y Estructuras</a>
+                <a href="Montaje_de_Piping.html" class="servicio-link">Montaje de Piping</a>
+                <a href="Soldaduras_especiales.html" class="servicio-link">Soldaduras Especiales</a>
+                <a href="Arenado.html" class="servicio-link">Arenado y Pintura</a>
+                <a href="Planos.html" class="servicio-link">Digitalización de Planos</a>
+              </div>
+
+              <div class="mt-4 p-4 bg-primary text-white rounded-4 shadow-lg text-center">
+                <i class="bi bi-headset fs-1 mb-3 d-block"></i>
+                <h6 class="fw-bold mb-2">¿Necesitas Ayuda?</h6>
+                <p class="small mb-3">Consulta con nuestros expertos ahora mismo.</p>
+                <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="btn btn-light btn-sm w-100 fw-bold">Contactar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer class="footer-modern py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
+        <p class="text-muted-white">
+          Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, 
+          enfocada en la excelencia técnica y la seguridad operativa.
+        </p>
+        <div class="social-links mt-4">
+          <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" class="text-white me-3 fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3 fs-5"><i class="bi bi-linkedin"></i></a>
+          <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="text-white fs-5"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+        <h5 class="fw-bold mb-4 text-white">Navegación</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="footer-link">Inicio</a></li>
+          <li class="mb-2"><a href="Nosotros.html" class="footer-link">Nosotros</a></li>
+          <li class="mb-2"><a href="Proyectos.html" class="footer-link">Proyectos</a></li>
+          <li class="mb-2"><a href="Ubicación.html" class="footer-link">Ubicación</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+        <h5 class="fw-bold mb-4 text-white">Servicios</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="Fabricación.html" class="footer-link">Fabricación Metálica</a></li>
+          <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link">Soldaduras Especiales</a></li>
+          <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link">Mantenimiento Plantas</a></li>
+          <li class="mb-2"><a href="Arenado.html" class="footer-link">Arenado y Pintura</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
+          <p class="text-muted-white small mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> Ilo, Moquegua -
+            Perú</p>
+          <p class="text-muted-white small mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> (053) 495247</p>
+          <p class="text-muted-white small mb-2"><i class="bi bi-phone-fill text-primary me-2"></i> 953660826</p>
+          <p class="text-muted-white small mb-0"><i class="bi bi-envelope-fill text-primary me-2"></i>
+            recursos.humanos@soldesp.com.pe</p>
+        </div>
+    </div>
+    <hr class="mt-5 border-secondary opacity-25">
+    <div class="text-center pt-3">
+      <p class="text-muted-white small mb-0">&copy; 2026 SOLDESP | Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
+  <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="whatsapp-float" target="_blank">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    const navbar = document.getElementById("navbar");
+
+    function controlarNavbar() {
+      if (window.scrollY > 100 || window.innerWidth < 992) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+
+    // 🔥 Ejecutar al cargar la página
+    window.addEventListener("load", controlarNavbar);
+
+    // 🔥 Al hacer scroll
+    window.addEventListener("scroll", controlarNavbar);
+
+    // 🔥 Al cambiar tamaño (responsive real)
+    window.addEventListener("resize", controlarNavbar);
+</script>
+</body>
+</html>
