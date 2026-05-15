@@ -180,7 +180,14 @@
       padding-left: 22px;
     }
 
+    /* Eliminamos el estilo activo por defecto */
     .dropdown-item.active {
+      background: transparent !important;
+      color: #444 !important;
+    }
+
+    /* Solo al hacer clic (estado momentáneo) */
+    .dropdown-item:active {
       background: #0d6efd !important;
       color: #fff !important;
     }
@@ -414,11 +421,16 @@
       background: #f8f9fa;
     }
 
-    .servicio-link:hover,
-    .servicio-link.active {
+    .servicio-link:hover {
       background: #0d6efd;
       color: white;
       transform: translateX(5px);
+    }
+
+    /* Eliminamos active con fondo de color */
+    .servicio-link.active {
+      background: #f8f9fa;
+      color: #333;
     }
 
     .card-body-2 {
@@ -517,7 +529,7 @@
 
 <div class="main-wrapper">
   <nav class="navbar navbar-expand-lg position-fixed top-0 start-0 w-100" id="navbar">
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
         <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" width="45" height="38" class="me-2">
         <span>SOLDESP</span>
@@ -804,15 +816,7 @@
   });
 
   document.addEventListener("DOMContentLoaded", () => {
-    const currentPage = window.location.pathname.split("/").pop() || "Plantas_Industriales.html";
-    
-    document.querySelectorAll(".dropdown-item").forEach(item => {
-      const href = item.getAttribute("href");
-      if (href === currentPage) {
-        item.classList.add("active");
-      }
-    });
-
+    // Cierre automático del menú en móviles
     const navbarCollapse = document.getElementById("navbarNav");
     const navLinks = document.querySelectorAll(".navbar .nav-link:not(.dropdown-toggle), .dropdown-item");
     
