@@ -572,7 +572,6 @@
       }
     }
 
-    /* Tarjetas de ofertas */
     .job-card {
       background: white;
       border-radius: 20px;
@@ -756,14 +755,11 @@
     </div>
   </section>
 
-  <!-- Contenido principal -->
   <div class="container my-5">
     <div class="row">
-      <!-- Columna izquierda: Ofertas -->
       <div class="col-lg-7">
         <h2 class="mb-4 fw-bold"><i class="bi bi-stars text-primary"></i>Ofertas disponibles</h2>
         
-        <!-- Oferta 1 -->
         <div class="job-card">
             <h3 class="job-title"><i class="fa-solid fa-helmet-safety text-primary"></i> Soldador Certificado (TIG/MIG)</h3>
           <div class="job-meta">
@@ -778,12 +774,11 @@
           <p class="text-muted small mb-3">
             <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Certificación vigente, mínimo 3 años de experiencia
           </p>
-          <button class="btn-aplicar" onclick="abrirFormulario('Soldador Certificado')">Postular ahora →</button>
+          <button class="btn-aplicar" onclick="abrirFormulario('Soldador Certificado (TIG/MIG)')">Postular ahora →</button>
         </div>
 
-        <!-- Oferta 2 -->
         <div class="job-card">
-          <h3 class="job-title">🔧 Supervisor de Mantenimiento Industrial</h3>
+          <h3 class="job-title"><i class="fa-solid fa-wrench text-primary"></i> Supervisor de Mantenimiento Industrial</h3>
           <div class="job-meta">
             <span><i class="bi bi-geo-alt"></i> Ilo / Tacna</span>
             <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
@@ -799,9 +794,8 @@
           <button class="btn-aplicar" onclick="abrirFormulario('Supervisor de Mantenimiento Industrial')">Postular ahora →</button>
         </div>
 
-        <!-- Oferta 3 -->
         <div class="job-card">
-          <h3 class="job-title">📐 Ingeniero de Proyectos</h3>
+          <h3 class="job-title"><i class="fa-solid fa-ruler text-primary"></i> Ingeniero de Proyectos</h3>
           <div class="job-meta">
             <span><i class="bi bi-geo-alt"></i> Moquegua / Arequipa</span>
             <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
@@ -819,7 +813,7 @@
 
         <!-- Oferta 4 -->
         <div class="job-card">
-          <h3 class="job-title">🎨 Técnico en Arenado y Pintura Industrial</h3>
+          <h3 class="job-title"><i class="fa-solid fa-paintbrush text-primary"></i> Técnico en Arenado y Pintura Industrial</h3>
           <div class="job-meta">
             <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
             <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
@@ -836,11 +830,9 @@
         </div>
       </div>
 
-      <!-- Columna derecha: Formulario y Beneficios -->
       <div class="col-lg-5">
-        <!-- Formulario -->
         <div class="form-container" id="formulario">
-          <h2 class="form-title">📝 Postular</h2>
+          <h2 class="form-title"><i class="fa-solid fa-file text-primary"></i> Postular</h2>
           <p class="form-subtitle">Completa el formulario para postular a nuestras ofertas</p>
           
           <form id="jobApplicationForm">
@@ -867,14 +859,14 @@
               <input type="file" class="form-control" id="cv" accept=".pdf,.doc,.docx">
             </div>
             
-            <button type="submit" class="btn-enviar">📤 Enviar postulación</button>
+            <button type="submit" class="btn-enviar"><i class="fa-solid fa-arrow-right-from-bracket text-white"></i> Enviar postulación</button>
           </form>
           
           <div id="mensajeEnvio" class="mt-3" style="display: none;"></div>
         </div>
 
         <div class="benefits-section">
-          <h3 class="fw-bold mb-4 text-center">✨ Beneficios de trabajar con nosotros</h3>
+          <h3 class="fw-bold mb-4 text-center"><i class="fa-solid fa-handshake text-primary"></i> Beneficios de trabajar con nosotros</h3>
           <div class="row">
             <div class="col-6 benefit-item">
               <div class="benefit-icon"><i class="bi bi-trophy"></i></div>
