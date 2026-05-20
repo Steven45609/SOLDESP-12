@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabaja con Nosotros - SOLDESP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fc;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Navbar (mismo estilo que tu página) */
+    .navbar {
+      background: #fff !important;
+      padding: 12px 0;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+
+    .navbar-brand {
+      color: #1a1a1a !important;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .navbar-brand img {
+      margin-right: 10px;
+    }
+
+    .navbar .nav-link {
+      color: #444 !important;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Hero */
+    .hero-trabajo {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb4d);
+      padding: 100px 0 60px;
+      color: white;
+      text-align: center;
+    }
+
+    /* Tarjetas de ofertas */
+    .job-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 5px solid #2f55d3;
+    }
+
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .job-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .job-meta i {
+      margin-right: 5px;
+      color: #2f55d3;
+    }
+
+    .job-description {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .btn-aplicar {
+      background: #2f55d3;
+      color: white;
+      border: none;
+      padding: 8px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .btn-aplicar:hover {
+      background: #1a3a9e;
+      transform: scale(1.05);
+    }
+
+    /* Formulario de postulación */
+    .form-container {
+      background: white;
+      border-radius: 25px;
+      padding: 35px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      margin-top: 40px;
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .form-subtitle {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .form-control, .form-select {
+      border-radius: 12px;
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: #2f55d3;
+      box-shadow: 0 0 0 3px rgba(47, 85, 211, 0.1);
+    }
+
+    .btn-enviar {
+      background: linear-gradient(135deg, #2f55d3, #1a3a9e);
+      color: white;
+      padding: 12px 35px;
+      border-radius: 30px;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    .btn-enviar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(47, 85, 211, 0.3);
+    }
+
+    /* Beneficios */
+    .benefits-section {
+      background: white;
+      border-radius: 25px;
+      padding: 35px;
+      margin-top: 40px;
+    }
+
+    .benefit-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      color: #2f55d3;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    .footer-modern {
+      background: #ad6800;
+      color: #aaa;
+      margin-top: 60px;
+      padding: 50px 0;
+    }
+
+    .text-muted-white {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+      .hero-trabajo {
+        padding: 80px 0 40px;
+      }
+      .job-card {
+        padding: 20px;
+      }
+      .form-container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg position-fixed top-0 start-0 w-100" id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+        <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" width="45" height="47" class="me-2">
+        <span>SOLDESP</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+          <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
+          <li class="nav-item"><a class="nav-link" href="Proyectos.html">PROYECTOS</a></li>
+          <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Trabajo.html">TRABAJA CON NOSOTROS</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-trabajo">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">📢 Trabaja con Nosotros</h1>
+      <p class="lead opacity-90">Forma parte del equipo líder en ingeniería y soldadura industrial</p>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <div class="container my-5">
+    <div class="row">
+      <!-- Columna izquierda: Ofertas -->
+      <div class="col-lg-7">
+        <h2 class="mb-4 fw-bold">🌟 Ofertas disponibles</h2>
+        
+        <!-- Oferta 1 -->
+        <div class="job-card">
+          <h3 class="job-title">👨‍🏭 Soldador Certificado (TIG/MIG)</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
+            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+            <span><i class="bi bi-calendar"></i> Publicado: 15/05/2026</span>
+          </div>
+          <p class="job-description">
+            Buscamos soldador certificado con experiencia en soldadura TIG y MIG para proyectos industriales. 
+            Conocimiento en acero inoxidable y materiales especiales.
+          </p>
+          <p class="text-muted small mb-3">
+            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Certificación vigente, mínimo 3 años de experiencia
+          </p>
+          <button class="btn-aplicar" onclick="abrirFormulario('Soldador Certificado')">Postular ahora →</button>
+        </div>
+
+        <!-- Oferta 2 -->
+        <div class="job-card">
+          <h3 class="job-title">🔧 Supervisor de Mantenimiento Industrial</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-geo-alt"></i> Ilo / Tacna</span>
+            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+            <span><i class="bi bi-calendar"></i> Publicado: 10/05/2026</span>
+          </div>
+          <p class="job-description">
+            Supervisor con experiencia en mantenimiento de plantas industriales, gestión de equipos y 
+            cumplimiento de estándares de seguridad.
+          </p>
+          <p class="text-muted small mb-3">
+            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Ing. Mecánico o Eléctrico, 5 años de experiencia
+          </p>
+          <button class="btn-aplicar" onclick="abrirFormulario('Supervisor de Mantenimiento Industrial')">Postular ahora →</button>
+        </div>
+
+        <!-- Oferta 3 -->
+        <div class="job-card">
+          <h3 class="job-title">📐 Ingeniero de Proyectos</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-geo-alt"></i> Moquegua / Arequipa</span>
+            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+            <span><i class="bi bi-calendar"></i> Publicado: 05/05/2026</span>
+          </div>
+          <p class="job-description">
+            Ingeniero para planificación, ejecución y supervisión de proyectos industriales. 
+            Manejo de AutoCAD, presupuestos y cronogramas.
+          </p>
+          <p class="text-muted small mb-3">
+            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Ing. Civil/Mecánico, experiencia en proyectos mineros
+          </p>
+          <button class="btn-aplicar" onclick="abrirFormulario('Ingeniero de Proyectos')">Postular ahora →</button>
+        </div>
+
+        <!-- Oferta 4 -->
+        <div class="job-card">
+          <h3 class="job-title">🎨 Técnico en Arenado y Pintura Industrial</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
+            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+            <span><i class="bi bi-calendar"></i> Publicado: 01/05/2026</span>
+          </div>
+          <p class="job-description">
+            Técnico con experiencia en preparación de superficies, aplicación de recubrimientos 
+            industriales y control de calidad.
+          </p>
+          <p class="text-muted small mb-3">
+            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Certificación NACE o SSPC deseable
+          </p>
+          <button class="btn-aplicar" onclick="abrirFormulario('Técnico en Arenado y Pintura Industrial')">Postular ahora →</button>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Formulario y Beneficios -->
+      <div class="col-lg-5">
+        <!-- Formulario -->
+        <div class="form-container" id="formulario">
+          <h2 class="form-title">📝 Postular</h2>
+          <p class="form-subtitle">Completa el formulario para postular a nuestras ofertas</p>
+          
+          <form id="jobApplicationForm">
+            <input type="hidden" id="puesto" name="puesto">
+            
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre completo *" required>
+            
+            <input type="email" class="form-control" id="email" placeholder="Correo electrónico *" required>
+            
+            <input type="tel" class="form-control" id="telefono" placeholder="Teléfono / WhatsApp *" required>
+            
+            <select class="form-select" id="puestoSelect" required>
+              <option value="">Selecciona el puesto *</option>
+              <option value="Soldador Certificado (TIG/MIG)">Soldador Certificado (TIG/MIG)</option>
+              <option value="Supervisor de Mantenimiento Industrial">Supervisor de Mantenimiento Industrial</option>
+              <option value="Ingeniero de Proyectos">Ingeniero de Proyectos</option>
+              <option value="Técnico en Arenado y Pintura Industrial">Técnico en Arenado y Pintura Industrial</option>
+            </select>
+            
+            <textarea class="form-control" rows="4" id="experiencia" placeholder="Cuéntanos tu experiencia profesional *" required></textarea>
+            
+            <div class="mb-3">
+              <label class="form-label text-muted small">Adjunta tu CV (PDF o Word)</label>
+              <input type="file" class="form-control" id="cv" accept=".pdf,.doc,.docx">
+            </div>
+            
+            <button type="submit" class="btn-enviar">📤 Enviar postulación</button>
+          </form>
+          
+          <div id="mensajeEnvio" class="mt-3" style="display: none;"></div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="benefits-section">
+          <h3 class="fw-bold mb-4 text-center">✨ Beneficios de trabajar con nosotros</h3>
+          <div class="row">
+            <div class="col-6 benefit-item">
+              <div class="benefit-icon"><i class="bi bi-trophy"></i></div>
+              <p class="fw-semibold mb-0">Capacitación constante</p>
+              <small class="text-muted">Cursos y certificaciones</small>
+            </div>
+            <div class="col-6 benefit-item">
+              <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
+              <p class="fw-semibold mb-0">Seguro de vida</p>
+              <small class="text-muted">Para ti y tu familia</small>
+            </div>
+            <div class="col-6 benefit-item">
+              <div class="benefit-icon"><i class="bi bi-graph-up"></i></div>
+              <p class="fw-semibold mb-0">Crecimiento profesional</p>
+              <small class="text-muted">Plan de carrera</small>
+            </div>
+            <div class="col-6 benefit-item">
+              <div class="benefit-icon"><i class="bi bi-calendar-heart"></i></div>
+              <p class="fw-semibold mb-0">Bonos y reconocimientos</p>
+              <small class="text-muted">Por desempeño</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Envío directo por WhatsApp -->
+        <div class="benefits-section mt-4" style="background: #e8f5e9;">
+          <div class="text-center">
+            <i class="bi bi-whatsapp" style="font-size: 2rem; color: #25D366;"></i>
+            <h4 class="fw-bold mt-2">¿Prefieres WhatsApp?</h4>
+            <p class="small">Envíanos tu CV directamente a nuestro WhatsApp</p>
+            <a href="https://wa.me/51953660826?text=Hola%2C%20quiero%20postular%20a%20las%20ofertas%20de%20trabajo%20de%20SOLDESP" 
+               class="btn btn-success rounded-pill px-4" target="_blank">
+              <i class="bi bi-whatsapp"></i> Enviar CV por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-modern">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
+          <p class="text-muted-white">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú</p>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5 class="fw-bold mb-4 text-white">Navegación</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="footer-link">Inicio</a></li>
+            <li class="mb-2"><a href="Nosotros.html" class="footer-link">Nosotros</a></li>
+            <li class="mb-2"><a href="Proyectos.html" class="footer-link">Proyectos</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
+          <p class="text-muted-white small mb-2">📍 Ilo, Moquegua - Perú</p>
+          <p class="text-muted-white small mb-2">📞 (053) 495247</p>
+          <p class="text-muted-white small mb-0">📧 rrhh@soldesp.com.pe</p>
+        </div>
+      </div>
+      <hr class="mt-5 border-secondary opacity-25">
+      <div class="text-center pt-3">
+        <p class="text-muted-white small mb-0">&copy; 2026 SOLDESP | Todos los derechos reservados</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/51953660826" class="whatsapp-float" target="_blank">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Función para abrir formulario con puesto seleccionado
+    function abrirFormulario(puesto) {
+      document.getElementById('puesto').value = puesto;
+      document.getElementById('puestoSelect').value = puesto;
+      document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Manejar envío del formulario
+    document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const telefono = document.getElementById('telefono').value;
+      const puesto = document.getElementById('puestoSelect').value;
+      const experiencia = document.getElementById('experiencia').value;
+      
+      if(!nombre || !email || !telefono || !puesto || !experiencia) {
+        alert('Por favor completa todos los campos obligatorios');
+        return;
+      }
+      
+      // Crear mensaje para WhatsApp
+      const mensaje = `*NUEVA POSTULACIÓN SOLDESP*%0A%0A` +
+        `*Puesto:* ${puesto}%0A` +
+        `*Nombre:* ${nombre}%0A` +
+        `*Email:* ${email}%0A` +
+        `*Teléfono:* ${telefono}%0A` +
+        `*Experiencia:* ${experiencia}%0A%0A` +
+        `Enviado desde la web de SOLDESP`;
+      
+      // Abrir WhatsApp con el mensaje
+      window.open(`https://wa.me/51953660826?text=${mensaje}`, '_blank');
+      
+      // Mostrar mensaje de éxito
+      const mensajeDiv = document.getElementById('mensajeEnvio');
+      mensajeDiv.innerHTML = `
+        <div class="alert alert-success">
+          ✅ ¡Postulación enviada! Serás contactado a la brevedad.
+        </div>
+      `;
+      mensajeDiv.style.display = 'block';
+      
+      // Limpiar formulario
+      document.getElementById('jobApplicationForm').reset();
+      
+      // Ocultar mensaje después de 5 segundos
+      setTimeout(() => {
+        mensajeDiv.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>

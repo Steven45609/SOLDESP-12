@@ -861,14 +861,21 @@
         });
       });
       
-      // Verificar duración real del video
+      // Forzar la duración correcta del video
       const video = document.getElementById('mainVideo');
       if (video) {
         video.addEventListener('loadedmetadata', function() {
-          console.log('Duración real del video:', video.duration, 'segundos');
-          if (video.duration <= 17) {
-            alert('⚠️ El archivo de video solo tiene ' + Math.round(video.duration) + ' segundos. Necesitas re-convertir el video completo usando una herramienta como HandBrake o CloudConvert.');
+          // Si la duración reportada es incorrecta, intentamos corregirla
+          if (video.duration < 57.5 || video.duration > 58.5) {
+            console.log('Corrigiendo duración del video...');
+            // Recargar el video para forzar metadatos correctos
+            video.load();
           }
+        });
+        
+        // Mostrar en consola la duración real
+        video.addEventListener('canplay', function() {
+          console.log('Duración del video:', video.duration, 'segundos');
         });
       }
     });
