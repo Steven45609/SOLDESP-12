@@ -4,15 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Proyectos - SOLDESP</title>
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     * {
@@ -31,7 +26,6 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    /* ========== NAVBAR MODERNO IDÉNTICO AL INDEX ========== */
     .navbar {
       background: transparent !important;
       padding: 18px 0;
@@ -97,7 +91,6 @@
       gap: 8px;
     }
 
-    /* Flecha personalizada con Bootstrap Icons */
     .navbar .dropdown-toggle::after {
       display: none !important;
     }
@@ -129,7 +122,6 @@
       background: rgba(13, 110, 253, 0.08);
     }
 
-    /* Línea inferior al hover */
     .navbar .nav-link::after {
       content: '';
       position: absolute;
@@ -208,7 +200,6 @@
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
-    /* Responsive */
     @media (max-width: 991px) {
       .navbar {
         background: #fff !important;
@@ -268,7 +259,6 @@
       }
     }
 
-    /* ===== HERO SECTION ===== */
     .hero-cumbra {
       position: relative;
       height: 100vh;
@@ -314,7 +304,6 @@
       color: white;
     }
 
-    /* Project Cards */
     .projects-container {
       padding: 100px 0;
       background-color: #ffffff;
@@ -531,6 +520,58 @@
         right: 20px;
       }
     }
+
+    .video-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+    }
+
+    .video-subtitle {
+      color: #666;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .video-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      background: #000;
+    }
+
+    .promo-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 650px;
+    }
+
+    @media (max-width: 768px) {
+      .video-section {
+        padding: 60px 0;
+      }
+
+      .video-title {
+        font-size: 1.8rem;
+      }
+
+      .video-subtitle {
+        font-size: 0.95rem;
+        padding: 0 15px;
+      }
+
+      .video-wrapper {
+        border-radius: 18px;
+      }
+
+      .promo-video {
+        max-height: 300px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -582,6 +623,28 @@
     <div class="container hero-content text-center">
       <h1 class="display-3 fw-bold mb-0" data-aos="fade-up" data-aos-delay="200">PROYECTOS</h1>
       <span class="text-uppercase fw-semibold tracking-widest mt-2 d-block opacity-75" data-aos="fade-up" data-aos-delay="400" style="letter-spacing: 5px; color: #ff9800;">Conoce nuestros proyectos</span>
+    </div>
+  </section>
+
+  <!-- VIDEO PUBLICITARIO -->
+  <section class="video-section py-5">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="fw-bold video-title">Nuestra experiencia en acción</h2>
+        <p class="video-subtitle">
+          Conoce más sobre nuestros servicios industriales y proyectos ejecutados.
+        </p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="video-wrapper" data-aos="zoom-in">
+            <video class="promo-video" id="mainVideo" controls preload="auto">
+              <source src="video-soldesp.mp4" type="video/mp4">
+              Tu navegador no soporta videos HTML5.
+            </video>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -710,7 +773,6 @@
     </div>
   </section>
 
-  <!-- Footer moderno -->
   <footer class="footer-modern py-5">
     <div class="container">
       <div class="row">
@@ -759,11 +821,10 @@
     </div>
   </footer>
 
-  <a href="https://wa.link/u9j87k" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+  <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -787,7 +848,6 @@
     window.addEventListener("scroll", controlarNavbar);
     window.addEventListener("resize", controlarNavbar);
 
-    // Cerrar menú móvil al hacer clic en un enlace
     document.addEventListener("DOMContentLoaded", function() {
       const navbarCollapse = document.getElementById("navbarNav");
       const navLinks = document.querySelectorAll(".navbar .nav-link:not(.dropdown-toggle), .dropdown-item");
@@ -800,6 +860,17 @@
           }
         });
       });
+      
+      // Verificar duración real del video
+      const video = document.getElementById('mainVideo');
+      if (video) {
+        video.addEventListener('loadedmetadata', function() {
+          console.log('Duración real del video:', video.duration, 'segundos');
+          if (video.duration <= 17) {
+            alert('⚠️ El archivo de video solo tiene ' + Math.round(video.duration) + ' segundos. Necesitas re-convertir el video completo usando una herramienta como HandBrake o CloudConvert.');
+          }
+        });
+      }
     });
   </script>
 </body>
