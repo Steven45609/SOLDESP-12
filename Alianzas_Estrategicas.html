@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=factory"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
@@ -30,7 +31,6 @@
       width: 100%;
     }
     
-    /* ===== NAVBAR BASE ===== */
     .navbar {
       background: transparent !important;
       padding: 18px 0;
@@ -294,7 +294,6 @@
       }
     }
 
-    /* ===== HERO SECTION ===== */
     .hero-section {
       height: 100vh;
       position: relative;
@@ -354,7 +353,6 @@
       color: #ff9800;
     }
 
-    /* ===== SECCIONES GENERALES ===== */
     .section-padding {
       padding: 80px 0;
     }
@@ -377,7 +375,6 @@
       display: inline-block;
     }
 
-    /* ===== TARJETAS DE ALIANZAS ===== */
     .alianza-card {
       background: white;
       border-radius: 24px;
@@ -471,7 +468,6 @@
       color: #2f4dd3;
     }
 
-    /* ===== SECCIÓN REPRESENTACIONES ===== */
     .representaciones-section {
       background: #f8f9fc;
     }
@@ -564,7 +560,6 @@
       margin-bottom: 20px;
     }
 
-    /* ===== ESTADÍSTICAS ===== */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -599,7 +594,6 @@
       }
     }
 
-    /* ===== CTA ===== */
     .cta-proveedores {
       background: linear-gradient(135deg, #2f4dd3, #525eff);
       color: white;
@@ -644,7 +638,6 @@
       color: white;
     }
 
-    /* ===== WHATSAPP FLOAT ===== */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -684,7 +677,6 @@
 <body>
 
 <div class="main-wrapper">
-  <!-- ===== NAVBAR ===== -->
   <nav class="navbar navbar-expand-lg position-fixed top-0 start-0 w-100" id="navbar">
     <div class="container-fluid">
       <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
@@ -782,7 +774,15 @@
     <div class="container">
       <div class="text-center mb-5" data-aos="fade-up">
         <div class="badge-custom">Exclusividad</div>
-        <h2 class="display-5 fw-bold mb-4"><i class="fa-solid fa-industry text-primary"></i> Representaciones Exclusivas <i class="fa-solid fa-industry text-primary"></i></h2>
+        <h2 class="display-5 fw-bold mb-4">
+          <span class="material-symbols-outlined text-primary" style="font-size:51px;">
+            factory
+          </span>
+          Representaciones Exclusivas
+          <span class="material-symbols-outlined text-primary" style="font-size:51px;">
+            factory
+          </span>
+        </h2>
         <p class="text-muted">Marcas internacionales que solo encontrarás en SOLDESP</p>
       </div>
       <div class="row g-4">
@@ -878,7 +878,6 @@
     </div>
   </section>
 
-  <!-- ===== ESTADÍSTICAS ===== -->
   <section class="section-padding">
     <div class="container">
       <div class="text-center mb-5" data-aos="fade-up">
@@ -906,7 +905,6 @@
     </div>
   </section>
 
-  <!-- ===== CTA PROVEEDORES ===== -->
   <section class="section-padding cta-proveedores">
     <div class="container" data-aos="fade-up">
       <h2 class="fw-bold mb-3">¿Quieres ser nuestro aliado estratégico?</h2>
@@ -917,54 +915,48 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer-modern py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-4 mb-lg-0">
-          <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
-          <p class="text-muted-white">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, respaldada por las mejores alianzas estratégicas.</p>
-          <div class="social-links mt-4">
-            <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" class="text-white me-3 fs-5"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-white me-3 fs-5"><i class="bi bi-linkedin"></i></a>
-            <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="text-white fs-5"><i class="bi bi-whatsapp"></i></a>
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
+                <p class="text-muted-white">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
+                <div class="social-links mt-4">
+                    <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" class="text-white me-3 fs-5"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3 fs-5"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="text-white fs-5"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <h5 class="fw-bold mb-4 text-white">Navegación</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="index.html" class="footer-link">Inicio</a></li>
+                    <li class="mb-2"><a href="Nosotros.html" class="footer-link">Nosotros</a></li>
+                    <li class="mb-2"><a href="Proyectos.html" class="footer-link">Proyectos</a></li>
+                    <li class="mb-2"><a href="Ubicación.html" class="footer-link">Ubicación</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                <h5 class="fw-bold mb-4 text-white">Servicios</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="Fabricación.html" class="footer-link">Fabricación Metálica</a></li>
+                    <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link">Soldaduras Especiales</a></li>
+                    <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link">Mantenimiento Plantas</a></li>
+                    <li class="mb-2"><a href="Arenado.html" class="footer-link">Arenado y Pintura</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <h5 class="fw-bold mb-4 text-white">Contacto</h5>
+                  <p class="text-muted-white small mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> Ilo, Moquegua - Perú</p>
+                  <p class="text-muted-white small mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> (053) 495247</p>
+                  <p class="text-muted-white small mb-2"><i class="bi bi-phone-fill text-primary me-2"></i> 953660826</p>
+                  <p class="text-muted-white small mb-0"><i class="bi bi-envelope-fill text-primary me-2"></i> recursos.humanos@soldesp.com.pe</p>
+            </div>
           </div>
+          <hr class="mt-5 border-secondary opacity-25">
+          <div class="text-center pt-3"><p class="text-muted-white small mb-0">&copy; 2026 SOLDESP | Todos los derechos reservados</p></div>
         </div>
-        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold mb-4 text-white">Navegación</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="index.html" class="footer-link">Inicio</a></li>
-            <li class="mb-2"><a href="Nosotros.html" class="footer-link">Nosotros</a></li>
-            <li class="mb-2"><a href="Proyectos.html" class="footer-link">Proyectos</a></li>
-            <li class="mb-2"><a href="Ubicación.html" class="footer-link">Ubicación</a></li>
-            <li class="mb-2"><a href="Alianzas.html" class="footer-link">Alianzas</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold mb-4 text-white">Servicios</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="Fabricación.html" class="footer-link">Fabricación Metálica</a></li>
-            <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link">Soldaduras Especiales</a></li>
-            <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link">Mantenimiento Plantas</a></li>
-            <li class="mb-2"><a href="Arenado.html" class="footer-link">Arenado y Pintura</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-4">
-          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
-          <p class="text-muted-white small mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i> Ilo, Moquegua - Perú</p>
-          <p class="text-muted-white small mb-2"><i class="bi bi-telephone-fill text-primary me-2"></i> (053) 495247</p>
-          <p class="text-muted-white small mb-2"><i class="bi bi-phone-fill text-primary me-2"></i> 953660826</p>
-          <p class="text-muted-white small mb-0"><i class="bi bi-envelope-fill text-primary me-2"></i> alianzas@soldesp.com.pe</p>
-        </div>
-      </div>
-      <hr class="mt-5 border-secondary opacity-25">
-      <div class="text-center pt-3">
-        <p class="text-muted-white small mb-0">&copy; 2026 SOLDESP | Trabajando con los mejores aliados industriales</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== WHATSAPP FLOAT ===== -->
+    </footer>
   <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="whatsapp-float" target="_blank">
     <i class="bi bi-whatsapp"></i>
   </a>
