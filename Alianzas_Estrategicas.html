@@ -616,7 +616,7 @@
       color: #2f4dd3;
     }
 
-    /* ===== FOOTER EXACTAMENTE IGUAL AL DEL INDEX ===== */
+    /* ===== FOOTER MODERNO - ANCHO COMPLETO + ICONOS MÁS PEQUEÑOS ===== */
     .footer-modern {
       background: radial-gradient(circle at 50% 0%, rgba(255, 179, 71, 0.08), transparent 50%), #0b0f19;
       color: #94a3b8;
@@ -624,7 +624,21 @@
       position: relative;
       overflow: hidden;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
+    }
+
+    .footer-modern .container-fluid,
+    .footer-modern .container {
+      max-width: 100%;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-modern .container,
+      .footer-modern .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
 
     .footer-modern::before {
@@ -647,29 +661,33 @@
     .footer-modern h4, .footer-modern h5 {
       position: relative;
       display: inline-block;
-      margin-bottom: 1.8rem !important;
+      margin-bottom: 1.5rem !important;
       color: #fff;
       font-weight: 700;
       letter-spacing: 0.5px;
+      font-size: 1.1rem;
+    }
+
+    .footer-modern h4 {
+      font-size: 1.4rem;
     }
 
     .footer-modern h4:after, .footer-modern h5:after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -8px;
       left: 0;
       width: 30px;
-      height: 3px;
+      height: 2px;
       background: #ffdd00;
-      border-radius: 3px;
+      border-radius: 2px;
       transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .footer-modern h4:hover:after, .footer-modern h5:hover:after {
-      width: 55px;
+      width: 50px;
     }
 
-    /* Enlaces con animación interactiva */
     .footer-link {
       color: #94a3b8;
       text-decoration: none;
@@ -678,90 +696,88 @@
       align-items: center;
       position: relative;
       padding-left: 0;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
     }
 
     .footer-link:hover {
       color: #fff;
-      transform: translateX(8px);
-      text-shadow: 0 0 10px rgba(255, 221, 0, 0.3);
+      transform: translateX(6px);
+      text-shadow: 0 0 8px rgba(255, 221, 0, 0.3);
     }
 
     .footer-link i {
-      margin-right: 8px;
-      font-size: 0.85rem;
-      opacity: 0.4;
+      margin-right: 6px;
+      font-size: 0.7rem;
+      opacity: 0.5;
       transition: all 0.3s ease;
     }
 
     .footer-link:hover i {
       opacity: 1;
       color: #ffdd00;
-      transform: scale(1.2);
+      transform: scale(1.15);
     }
 
-    /* Íconos sociales con efecto de vidrio moderno y colores de marca en hover */
     .social-links a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 36px;
+      height: 36px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 50%;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       text-decoration: none;
       color: #cbd5e1;
-      margin-right: 12px;
+      margin-right: 10px;
       backdrop-filter: blur(5px);
+      font-size: 0.9rem;
     }
 
     .social-links a:hover {
       color: white;
-      transform: translateY(-5px) scale(1.1);
+      transform: translateY(-4px) scale(1.08);
     }
 
     .social-links a.fb:hover {
       background: #3b5998;
       border-color: #3b5998;
-      box-shadow: 0 10px 20px rgba(59, 89, 152, 0.4);
+      box-shadow: 0 8px 15px rgba(59, 89, 152, 0.3);
     }
 
     .social-links a.ln:hover {
       background: #0077b5;
       border-color: #0077b5;
-      box-shadow: 0 10px 20px rgba(0, 119, 181, 0.4);
+      box-shadow: 0 8px 15px rgba(0, 119, 181, 0.3);
     }
 
     .social-links a.wa:hover {
       background: #25d366;
       border-color: #25d366;
-      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
+      box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3);
     }
 
     .social-links a.ig:hover {
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       border-color: transparent;
-      box-shadow: 0 10px 20px rgba(220, 39, 67, 0.4);
+      box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
     }
 
-    /* Items de contacto con diseño de tarjetas hover */
+    /* Iconos de contacto más pequeños y proporcionados */
     .contact-info-item {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 1rem;
+      gap: 12px;
+      margin-bottom: 0.75rem;
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      padding: 6px 10px;
+      padding: 4px 0;
       border-radius: 8px;
     }
 
-    .contact-info-item:hover {
-      transform: translateX(6px);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
     .contact-info-item i {
+      flex-shrink: 0;
       width: 32px;
       height: 32px;
       background: rgba(255, 221, 0, 0.08);
@@ -770,7 +786,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #ffdd00;
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -778,14 +794,16 @@
     .contact-info-item:hover i {
       background: #ffdd00;
       color: #0b0f19;
-      transform: scale(1.15) rotate(15deg);
-      box-shadow: 0 0 15px rgba(255, 221, 0, 0.4);
+      transform: scale(1.08) rotate(6deg);
+      box-shadow: 0 0 12px rgba(255, 221, 0, 0.3);
     }
 
     .contact-text {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: #cbd5e1;
       transition: color 0.3s ease;
+      word-break: break-word;
+      line-height: 1.4;
     }
 
     .contact-info-item:hover .contact-text {
@@ -795,14 +813,15 @@
     .text-muted-white {
       color: #94a3b8;
       line-height: 1.6;
+      font-size: 0.85rem;
     }
 
     .footer-brand-title {
       background: linear-gradient(90deg, #fff 0%, #ffdd00 100%);
-      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800 !important;
       letter-spacing: 1px;
+      font-size: 1.6rem;
     }
 
     .whatsapp-float {
@@ -838,6 +857,17 @@
         bottom: 20px;
         right: 20px;
       }
+      .contact-info-item i {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+      }
+      .contact-text {
+        font-size: 0.78rem;
+      }
+      .footer-modern h4, .footer-modern h5 {
+        margin-bottom: 1.2rem !important;
+      }
     }
     
     img {
@@ -848,6 +878,19 @@
     .btn {
       white-space: normal;
       word-wrap: break-word;
+    }
+
+    /* Ajustes para que las listas se vean compactas */
+    .footer-modern ul {
+      margin-bottom: 0;
+    }
+
+    .footer-modern ul li {
+      margin-bottom: 6px;
+    }
+
+    hr {
+      margin: 2rem 0 1.5rem;
     }
   </style>
 </head>
@@ -1054,65 +1097,65 @@
   </section>
 
   <footer class="footer-modern py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h4 class="fw-bold mb-4 text-white footer-brand-title">SOLDESP</h4>
-                    <p class="text-muted-white">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
-                    <div class="social-links mt-4">
-                        <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
-                        <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h5 class="fw-bold mb-4 text-white">Navegación</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html" class="footer-link"><i class="bi bi-chevron-right"></i>Inicio</a></li>
-                        <li class="mb-2"><a href="Nosotros.html" class="footer-link"><i class="bi bi-chevron-right"></i>Nosotros</a></li>
-                        <li class="mb-2"><a href="Proyectos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Proyectos</a></li>
-                        <li class="mb-2"><a href="Ubicación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Ubicación</a></li>
-                        <li class="mb-2"><a href="Trabajos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Trabaja con nosotros</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-                    <h5 class="fw-bold mb-4 text-white">Servicios</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="Fabricación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Fabricación Metálica</a></li>
-                        <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Soldaduras Especiales</a></li>
-                        <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Mantenimiento Plantas</a></li>
-                        <li class="mb-2"><a href="Arenado.html" class="footer-link"><i class="bi bi-chevron-right"></i>Arenado y Pintura</a></li>
-                        <li class="mb-2"><a href="Calderia.html" class="footer-link"><i class="bi bi-chevron-right"></i>Caldería y Estructuras</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <h5 class="fw-bold mb-4 text-white">Contacto</h5>
-                    <div class="contact-info-item">
-                        <i class="bi bi-geo-alt-fill"></i>
-                        <span class="contact-text">Ilo, Moquegua - Perú</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="bi bi-telephone-fill"></i>
-                        <span class="contact-text">(053) 495247</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="bi bi-phone-fill"></i>
-                        <span class="contact-text">953660826</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="bi bi-envelope-fill"></i>
-                        <span class="contact-text">recursos.humanos@soldesp.com.pe</span>
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-5" style="border-color: rgba(255, 255, 255, 0.08) !important;">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-3 text-center text-md-start">
-                <p class="text-muted-white small mb-0">&copy; 2026 <span style="color: #ffdd00; font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
-                <p class="text-muted-white small mb-0 mt-2 mt-md-0">Ingeniería y Soldadura de Alta Calidad</p>
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
+          <p class="text-muted-white">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
+          <div class="social-links mt-4">
+            <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
+            <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
+          </div>
         </div>
-    </footer>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5 class="fw-bold mb-4 text-white">Navegación</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="footer-link"><i class="bi bi-chevron-right"></i>Inicio</a></li>
+            <li class="mb-2"><a href="Nosotros.html" class="footer-link"><i class="bi bi-chevron-right"></i>Nosotros</a></li>
+            <li class="mb-2"><a href="Proyectos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Proyectos</a></li>
+            <li class="mb-2"><a href="Ubicación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Ubicación</a></li>
+            <li class="mb-2"><a href="Trabajos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Trabaja con nosotros</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+          <h5 class="fw-bold mb-4 text-white">Servicios</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="Fabricación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Fabricación Metálica</a></li>
+            <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Soldaduras Especiales</a></li>
+            <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Mantenimiento Plantas</a></li>
+            <li class="mb-2"><a href="Arenado.html" class="footer-link"><i class="bi bi-chevron-right"></i>Arenado y Pintura</a></li>
+            <li class="mb-2"><a href="Calderia.html" class="footer-link"><i class="bi bi-chevron-right"></i>Caldería y Estructuras</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
+          <div class="contact-info-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span class="contact-text">Ilo, Moquegua - Perú</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="bi bi-telephone-fill"></i>
+            <span class="contact-text">(053) 495247</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="bi bi-phone-fill"></i>
+            <span class="contact-text">953660826</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="bi bi-envelope-fill"></i>
+            <span class="contact-text">recursos.humanos@soldesp.com.pe</span>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-4" style="border-color: rgba(255, 255, 255, 0.08) !important;">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-2 text-center text-md-start">
+        <p class="text-muted-white small mb-0">&copy; 2026 <span style="color: #ffdd00; font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
+        <p class="text-muted-white small mb-0 mt-2 mt-md-0">Ingeniería y Soldadura de Alta Calidad</p>
+      </div>
+    </div>
+  </footer>
 
   <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
 </div>
