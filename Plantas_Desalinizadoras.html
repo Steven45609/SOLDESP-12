@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=valve" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
@@ -396,27 +397,153 @@
       font-size: 1.2rem;
     }
 
-    .process-step {
-      padding: 30px;
-      border-radius: 20px;
+    /* ===== PROCESO MODERNIZADO - ESTILOS MEJORADOS ===== */
+    .process-modern-card {
       background: white;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 28px;
+      padding: 1.5rem 1.2rem;
       height: 100%;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.01);
+      z-index: 1;
+    }
+
+    .process-modern-card:hover {
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(13, 110, 253, 0.15);
+    }
+
+    .process-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e9f0fe 100%);
+      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
       transition: all 0.3s ease;
-      border-bottom: 4px solid transparent;
     }
 
-    .process-step:hover {
-      transform: translateY(-10px);
-      border-bottom-color: #0d6efd;
+    .process-modern-card:hover .process-icon-wrapper {
+      background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 12px 18px -8px rgba(13, 110, 253, 0.3);
     }
 
-    .step-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: rgba(13, 110, 253, 0.1);
-      line-height: 1;
-      margin-bottom: 10px;
+    /* Estilos para íconos normales de Bootstrap Icons */
+    .process-icon-wrapper i {
+      font-size: 2rem;
+      color: #0d6efd;
+      transition: all 0.3s ease;
+    }
+
+    /* Estilos específicos para íconos de Google Material Symbols */
+    .process-icon-wrapper .material-symbols-outlined {
+      font-size: 2rem !important;
+      color: #0d6efd;
+      transition: all 0.3s ease;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    }
+
+    /* Hover para íconos normales */
+    .process-modern-card:hover .process-icon-wrapper i {
+      color: white;
+      transform: scale(1.02);
+    }
+
+    /* Hover para íconos de Material Symbols */
+    .process-modern-card:hover .process-icon-wrapper .material-symbols-outlined {
+      color: white !important;
+      transform: scale(1.02);
+    }
+
+    .process-modern-card:hover .process-icon-wrapper i {
+      color: white;
+      transform: scale(1.02);
+    }
+
+    .step-badge {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 1rem;
+      font-weight: 800;
+      background: rgba(13, 110, 253, 0.06);
+      padding: 6px 12px;
+      border-radius: 50px;
+      color: #0d6efd;
+      letter-spacing: 1px;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+
+    .process-modern-card:hover .step-badge {
+      background: #0d6efd;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .process-title {
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
+      transition: color 0.25s;
+      line-height: 1.3;
+    }
+
+    .process-modern-card:hover .process-title {
+      color: #0d6efd;
+    }
+
+    .process-desc {
+      color: #5b6e8c;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .process-grid {
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #0d6efd20, #0d6efd40, #0d6efd20, transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .process-grid::before {
+        display: none;
+      }
+      .process-icon-wrapper {
+        width: 54px;
+        height: 54px;
+      }
+      .process-icon-wrapper i {
+        font-size: 1.6rem;
+      }
+      .step-badge {
+        top: 14px;
+        right: 18px;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+      .process-title {
+        font-size: 1.05rem;
+      }
+      .process-desc {
+        font-size: 0.8rem;
+      }
     }
 
     .sidebar-sticky {
@@ -462,7 +589,7 @@
       margin-bottom: 20px;
     }
 
-    /* ===== FOOTER MODERNO - ANCHO COMPLETO + ICONOS MÁS PEQUEÑOS ===== */
+    /* ===== FOOTER MODERNO ===== */
     .footer-modern {
       background: radial-gradient(circle at 50% 0%, rgba(255, 179, 71, 0.08), transparent 50%), #0b0f19;
       color: #94a3b8;
@@ -609,7 +736,6 @@
       box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
     }
 
-    /* Iconos de contacto más pequeños y proporcionados */
     .contact-info-item {
       display: flex;
       align-items: center;
@@ -883,54 +1009,76 @@
       <div class="row g-5">
         <div class="col-lg-8">
           <h2 class="fw-bold mb-5" data-aos="fade-up">Nuestro Proceso de Mantenimiento</h2>
-          <div class="row g-4">
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="process-step">
-                <div class="step-number text-primary">01</div>
-                <h5 class="fw-bold">Movilización y desmontaje inicial</h5>
-                <p class="text-muted small">Desmontaje y montaje de estructuras y componentes de efectos 1 y 2.</p>
+          <div class="row g-4 process-grid">
+            <!-- Bloques modernizados - Mantenimiento de Plantas Desalinizadoras (7 pasos) -->
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-truck"></i>
+                </div>
+                <div class="step-badge">01</div>
+                <h5 class="process-title">Movilización y desmontaje inicial</h5>
+                <p class="process-desc">Desmontaje y montaje de estructuras y componentes de efectos 1 y 2.</p>
               </div>
             </div>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="process-step">
-                <div class="step-number text-primary">02</div>
-                <h5 class="fw-bold">Inspección de sistemas principales</h5>
-                <p class="text-muted small">Mantenimiento, inspección y reparación del casco, condensador y accesos.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="150">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-clipboard-data"></i>
+                </div>
+                <div class="step-badge">02</div>
+                <h5 class="process-title">Inspección de sistemas principales</h5>
+                <p class="process-desc">Mantenimiento, inspección y reparación del casco, condensador y accesos.</p>
               </div>
             </div>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="process-step">
-                <div class="step-number text-primary">03</div>
-                <h5 class="fw-bold">Planificación y cotización</h5>
-                <p class="text-muted small">Mantenimiento de filtros demisters, placas colectoras y tubería interna.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-calculator-fill"></i>
+                </div>
+                <div class="step-badge">03</div>
+                <h5 class="process-title">Planificación y cotización</h5>
+                <p class="process-desc">Mantenimiento de filtros demisters, placas colectoras y tubería interna.</p>
               </div>
             </div>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="process-step">
-                <div class="step-number text-primary">04</div>
-                <h5 class="fw-bold">Mantenimiento de equipos críticos</h5>
-                <p class="text-muted small">Desmontaje, verificación y mantenimiento de compresor.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="250">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-gear-wide-connected"></i>
+                </div>
+                <div class="step-badge">04</div>
+                <h5 class="process-title">Mantenimiento de equipos críticos</h5>
+                <p class="process-desc">Desmontaje, verificación y mantenimiento de compresor.</p>
               </div>
             </div>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
-              <div class="process-step">
-                <div class="step-number text-primary">05</div>
-                <h5 class="fw-bold">Mantenimiento estructural</h5>
-                <p class="text-muted small">Mantenimiento estructural de zona inferior, tuberías y bases de bombas.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-bricks"></i>
+                </div>
+                <div class="step-badge">05</div>
+                <h5 class="process-title">Mantenimiento estructural</h5>
+                <p class="process-desc">Mantenimiento estructural de zona inferior, tuberías y bases de bombas.</p>
               </div>
             </div>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
-              <div class="process-step">
-                <div class="step-number text-primary">06</div>
-                <h5 class="fw-bold">Mantenimiento de tuberías</h5>
-                <p class="text-muted small">Desmontaje, inspección y mantenimiento de tuberías de polipropileno.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="350">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <span class="material-symbols-outlined">valve</span>
+                </div>
+                <div class="step-badge">06</div>
+                <h5 class="process-title">Mantenimiento de tuberías</h5>
+                <p class="process-desc">Desmontaje, inspección y mantenimiento de tuberías de polipropileno.</p>
               </div>
             </div>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="700">
-              <div class="process-step">
-                <div class="step-number text-primary">07</div>
-                <h5 class="fw-bold">Protección de superficies</h5>
-                <p class="text-muted small">Arenado y pintado interno de efectos de planta desalinizadoras.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="400">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-brush"></i>
+                </div>
+                <div class="step-badge">07</div>
+                <h5 class="process-title">Protección de superficies</h5>
+                <p class="process-desc">Arenado y pintado interno de efectos de planta desalinizadoras.</p>
               </div>
             </div>
           </div>

@@ -363,27 +363,132 @@
       flex-shrink: 0;
     }
 
-    .process-step {
-      padding: 30px;
-      border-radius: 20px;
+    /* ===== PROCESO MODERNIZADO - ESTILOS MEJORADOS ===== */
+    .process-modern-card {
       background: white;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 28px;
+      padding: 1.5rem 1.2rem;
       height: 100%;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.01);
+      z-index: 1;
+    }
+
+    .process-modern-card:hover {
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(47, 99, 211, 0.15);
+    }
+
+    .process-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e9f0fe 100%);
+      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
       transition: all 0.3s ease;
-      border-bottom: 4px solid transparent;
     }
 
-    .process-step:hover {
-      transform: translateY(-10px);
-      border-bottom-color: #2f63d3;
+    .process-modern-card:hover .process-icon-wrapper {
+      background: linear-gradient(135deg, #2f63d3 0%, #1a4aa8 100%);
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 12px 18px -8px rgba(47, 99, 211, 0.3);
     }
 
-    .step-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: rgba(47, 99, 211, 0.1);
-      line-height: 1;
-      margin-bottom: 10px;
+    .process-icon-wrapper i {
+      font-size: 2rem;
+      color: #2f63d3;
+      transition: all 0.3s ease;
+    }
+
+    .process-modern-card:hover .process-icon-wrapper i {
+      color: white;
+      transform: scale(1.02);
+    }
+
+    .step-badge {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 1rem;
+      font-weight: 800;
+      background: rgba(47, 99, 211, 0.06);
+      padding: 6px 12px;
+      border-radius: 50px;
+      color: #2f63d3;
+      letter-spacing: 1px;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+
+    .process-modern-card:hover .step-badge {
+      background: #2f63d3;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .process-title {
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
+      transition: color 0.25s;
+      line-height: 1.3;
+    }
+
+    .process-modern-card:hover .process-title {
+      color: #2f63d3;
+    }
+
+    .process-desc {
+      color: #5b6e8c;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .process-grid {
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #2f63d320, #2f63d340, #2f63d320, transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .process-grid::before {
+        display: none;
+      }
+      .process-icon-wrapper {
+        width: 54px;
+        height: 54px;
+      }
+      .process-icon-wrapper i {
+        font-size: 1.6rem;
+      }
+      .step-badge {
+        top: 14px;
+        right: 18px;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+      .process-title {
+        font-size: 1.05rem;
+      }
+      .process-desc {
+        font-size: 0.8rem;
+      }
     }
 
     .sidebar-sticky {
@@ -430,7 +535,7 @@
       transform: translateY(-5px);
     }
 
-    /* ===== FOOTER MODERNO - ANCHO COMPLETO + ICONOS MÁS PEQUEÑOS ===== */
+    /* ===== FOOTER MODERNO ===== */
     .footer-modern {
       background: radial-gradient(circle at 50% 0%, rgba(255, 179, 71, 0.08), transparent 50%), #0b0f19;
       color: #94a3b8;
@@ -577,7 +682,6 @@
       box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
     }
 
-    /* Iconos de contacto más pequeños y proporcionados */
     .contact-info-item {
       display: flex;
       align-items: center;
@@ -628,14 +732,6 @@
       font-size: 0.85rem;
     }
 
-    .footer-brand-title {
-      background: linear-gradient(90deg, #fff 0%, #ffdd00 100%);
-      -webkit-text-fill-color: transparent;
-      font-weight: 800 !important;
-      letter-spacing: 1px;
-      font-size: 1.6rem;
-    }
-
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -682,19 +778,16 @@
       }
     }
 
-    /* Fix para imágenes responsivas */
     img {
       max-width: 100%;
       height: auto;
     }
 
-    /* Fix para columnas */
     [class*="col-"] {
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
 
-    /* Ajuste para la sidebar en móvil */
     @media (max-width: 991px) {
       .sidebar-sticky {
         position: relative;
@@ -703,14 +796,12 @@
       }
     }
 
-    /* Ajuste para la lista de equipos */
     @media (max-width: 768px) {
       .equipment-list li {
         font-size: 0.9rem;
       }
     }
 
-    /* Eliminar desbordamiento de bootstrap */
     .container-fluid {
       padding-left: 15px;
       padding-right: 15px;
@@ -730,6 +821,16 @@
 
     hr {
       margin: 2rem 0 1.5rem;
+    }
+
+    .btn-primary {
+      background-color: #2f63d3;
+      border-color: #2f63d3;
+    }
+
+    .btn-primary:hover {
+      background-color: #1a4aa8;
+      border-color: #1a4aa8;
     }
   </style>
 </head>
@@ -869,48 +970,67 @@
     <div class="container">
       <div class="row g-5">
         <div class="col-lg-8">
-          <h2 class="fw-bold mb-5" data-aos="fade-up">Nuestro Proceso de Caldería, Fabricación y Montaje de Estructuras Metálicas</h2>
-          <div class="row g-4">
+          <h2 class="fw-bold mb-5" data-aos="fade-up">Nuestro Proceso de Caldería, Fabricación y Montaje</h2>
+          <div class="row g-4 process-grid">
+            <!-- Bloques modernizados - Caldería y Estructuras Metálicas (6 pasos) -->
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100">
-              <div class="process-step">
-                <div class="step-number text-primary">01</div>
-                <h5 class="fw-bold">Identificación del requerimiento</h5>
-                <p class="text-muted small">Análisis detallado de las necesidades del cliente y alcance del trabajo.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-search"></i>
+                </div>
+                <div class="step-badge">01</div>
+                <h5 class="process-title">Identificación del requerimiento</h5>
+                <p class="process-desc">Análisis detallado de las necesidades del cliente y alcance del trabajo.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="150">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-clipboard-data"></i>
+                </div>
+                <div class="step-badge">02</div>
+                <h5 class="process-title">Inspección técnica</h5>
+                <p class="process-desc">Evaluación de soluciones y viabilidad técnica del proyecto.</p>
               </div>
             </div>
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
-              <div class="process-step">
-                <div class="step-number text-primary">02</div>
-                <h5 class="fw-bold">Inspección técnica</h5>
-                <p class="text-muted small">Evaluación de soluciones y viabilidad técnica del proyecto.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-file-text"></i>
+                </div>
+                <div class="step-badge">03</div>
+                <h5 class="process-title">Elaboración de propuesta</h5>
+                <p class="process-desc">Desarrollo de propuesta técnica y cotización personalizada.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="250">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-calendar-check"></i>
+                </div>
+                <div class="step-badge">04</div>
+                <h5 class="process-title">Planificación</h5>
+                <p class="process-desc">Planificación detallada y preparación para la fabricación.</p>
               </div>
             </div>
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300">
-              <div class="process-step">
-                <div class="step-number text-primary">03</div>
-                <h5 class="fw-bold">Elaboración de propuesta</h5>
-                <p class="text-muted small">Desarrollo de propuesta técnica y cotización personalizada.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-gear"></i>
+                </div>
+                <div class="step-badge">05</div>
+                <h5 class="process-title">Fabricación</h5>
+                <p class="process-desc">Fabricación de estructuras y componentes metálicos con estándares de calidad.</p>
               </div>
             </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="400">
-              <div class="process-step">
-                <div class="step-number text-primary">04</div>
-                <h5 class="fw-bold">Planificación</h5>
-                <p class="text-muted small">Planificación detallada y preparación para la fabricación.</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="500">
-              <div class="process-step">
-                <div class="step-number text-primary">05</div>
-                <h5 class="fw-bold">Fabricación</h5>
-                <p class="text-muted small">Fabricación de estructuras y componentes metálicos con estándares de calidad.</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="600">
-              <div class="process-step">
-                <div class="step-number text-primary">06</div>
-                <h5 class="fw-bold">Montaje final</h5>
-                <p class="text-muted small">Montaje de sistemas, estructuras y control de calidad final.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="350">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-building"></i>
+                </div>
+                <div class="step-badge">06</div>
+                <h5 class="process-title">Montaje final</h5>
+                <p class="process-desc">Montaje de sistemas, estructuras y control de calidad final.</p>
               </div>
             </div>
           </div>

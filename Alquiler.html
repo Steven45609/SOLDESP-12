@@ -366,27 +366,129 @@
       font-size: 1.2rem;
     }
 
-    .process-step {
-      padding: 30px;
-      border-radius: 20px;
+    /* ===== PROCESO MODERNIZADO - ESTILOS MEJORADOS ===== */
+    .process-modern-card {
       background: white;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 28px;
+      padding: 1.5rem 1.2rem;
       height: 100%;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.01);
+      z-index: 1;
+    }
+
+    .process-modern-card:hover {
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(13, 110, 253, 0.15);
+    }
+
+    .process-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e9f0fe 100%);
+      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
       transition: all 0.3s ease;
-      border-bottom: 4px solid transparent;
     }
 
-    .process-step:hover {
-      transform: translateY(-10px);
-      border-bottom-color: #0d6efd;
+    .process-modern-card:hover .process-icon-wrapper {
+      background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 12px 18px -8px rgba(13, 110, 253, 0.3);
     }
 
-    .step-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: rgba(13, 110, 253, 0.1);
-      line-height: 1;
-      margin-bottom: 10px;
+    .process-icon-wrapper i {
+      font-size: 2rem;
+      color: #0d6efd;
+      transition: all 0.3s ease;
+    }
+
+    .process-modern-card:hover .process-icon-wrapper i {
+      color: white;
+      transform: scale(1.02);
+    }
+
+    .step-badge {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 1rem;
+      font-weight: 800;
+      background: rgba(13, 110, 253, 0.06);
+      padding: 6px 12px;
+      border-radius: 50px;
+      color: #0d6efd;
+      letter-spacing: 1px;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+
+    .process-modern-card:hover .step-badge {
+      background: #0d6efd;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .process-title {
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+      font-size: 1.35rem;
+      transition: color 0.25s;
+    }
+
+    .process-modern-card:hover .process-title {
+      color: #0d6efd;
+    }
+
+    .process-desc {
+      color: #5b6e8c;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    /* conector sutil visual */
+    .process-grid {
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #0d6efd20, #0d6efd40, #0d6efd20, transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .process-grid::before {
+        display: none;
+      }
+      .process-icon-wrapper {
+        width: 54px;
+        height: 54px;
+      }
+      .process-icon-wrapper i {
+        font-size: 1.6rem;
+      }
+      .step-badge {
+        top: 14px;
+        right: 18px;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+      .process-title {
+        font-size: 1.2rem;
+      }
     }
 
     .sidebar-sticky {
@@ -428,7 +530,7 @@
       margin-bottom: 20px;
     }
 
-    /* ===== FOOTER MODERNO - ANCHO COMPLETO + ICONOS MÁS PEQUEÑOS ===== */
+    /* ===== FOOTER MODERNO ===== */
     .footer-modern {
       background: radial-gradient(circle at 50% 0%, rgba(255, 179, 71, 0.08), transparent 50%), #0b0f19;
       color: #94a3b8;
@@ -575,7 +677,6 @@
       box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
     }
 
-    /* Iconos de contacto más pequeños y proporcionados */
     .contact-info-item {
       display: flex;
       align-items: center;
@@ -667,39 +768,6 @@
         bottom: 20px;
         right: 20px;
       }
-      .contact-info-item i {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
-      }
-      .contact-text {
-        font-size: 0.78rem;
-      }
-      .footer-modern h4, .footer-modern h5 {
-        margin-bottom: 1.2rem !important;
-      }
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    
-    .btn {
-      white-space: normal;
-      word-wrap: break-word;
-    }
-
-    .footer-modern ul {
-      margin-bottom: 0;
-    }
-
-    .footer-modern ul li {
-      margin-bottom: 6px;
-    }
-
-    hr {
-      margin: 2rem 0 1.5rem;
     }
   </style>
 </head>
@@ -724,12 +792,9 @@
               <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
               <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
               <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-              <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
-                <br>Desalinizadoras</a></li>
-              <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
-                <br>de Estructuras Metálicas</a></li>
-              <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
-                <br>Spool en Plantas</a></li>
+              <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+              <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje de Estructuras Metálicas</a></li>
+              <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / Spool en Plantas</a></li>
               <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
               <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
               <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
@@ -815,13 +880,68 @@
       <div class="row g-5">
         <div class="col-lg-8">
           <h2 class="fw-bold mb-5" data-aos="fade-up">Nuestro Proceso de Alquiler</h2>
-          <div class="row g-4">
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100"><div class="process-step"><div class="step-number text-primary">01</div><h5 class="fw-bold">Solicitud</h5><p class="text-muted small">El cliente solicita el equipo según las necesidades específicas de su proyecto.</p></div></div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200"><div class="process-step"><div class="step-number text-primary">02</div><h5 class="fw-bold">Evaluación</h5><p class="text-muted small">Analizamos el requerimiento y recomendamos el equipo técnico más adecuado.</p></div></div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300"><div class="process-step"><div class="step-number text-primary">03</div><h5 class="fw-bold">Cotización</h5><p class="text-muted small">Emitimos una propuesta económica detallada considerando tiempos y logística.</p></div></div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="400"><div class="process-step"><div class="step-number text-primary">04</div><h5 class="fw-bold">Preparación</h5><p class="text-muted small">Verificamos el estado operativo y de seguridad del equipo antes de la entrega.</p></div></div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="500"><div class="process-step"><div class="step-number text-primary">05</div><h5 class="fw-bold">Entrega</h5><p class="text-muted small">Realizamos la entrega en nuestro almacén o directamente en la zona de obra.</p></div></div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="600"><div class="process-step"><div class="step-number text-primary">06</div><h5 class="fw-bold">Soporte</h5><p class="text-muted small">Asistencia técnica permanente durante todo el periodo de alquiler.</p></div></div>
+          <div class="row g-4 process-grid">
+            <!-- Bloques modernizados -->
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-pencil-square"></i>
+                </div>
+                <div class="step-badge">01</div>
+                <h5 class="process-title">Solicitud</h5>
+                <p class="process-desc">El cliente solicita el equipo según las necesidades específicas de su proyecto.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="150">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-search-heart"></i>
+                </div>
+                <div class="step-badge">02</div>
+                <h5 class="process-title">Evaluación</h5>
+                <p class="process-desc">Analizamos el requerimiento y recomendamos el equipo técnico más adecuado.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-calculator-fill"></i>
+                </div>
+                <div class="step-badge">03</div>
+                <h5 class="process-title">Cotización</h5>
+                <p class="process-desc">Emitimos una propuesta económica detallada considerando tiempos y logística.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="250">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-clipboard-check"></i>
+                </div>
+                <div class="step-badge">04</div>
+                <h5 class="process-title">Preparación</h5>
+                <p class="process-desc">Verificamos el estado operativo y de seguridad del equipo antes de la entrega.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-truck"></i>
+                </div>
+                <div class="step-badge">05</div>
+                <h5 class="process-title">Entrega</h5>
+                <p class="process-desc">Realizamos la entrega en nuestro almacén o directamente en la zona de obra.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="350">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-headset"></i>
+                </div>
+                <div class="step-badge">06</div>
+                <h5 class="process-title">Soporte</h5>
+                <p class="process-desc">Asistencia técnica permanente durante todo el periodo de alquiler.</p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-lg-4">

@@ -376,27 +376,132 @@
       font-size: 1.2rem;
     }
 
-    .process-step {
-      padding: 30px;
-      border-radius: 20px;
+    /* ===== PROCESO MODERNIZADO - ESTILOS MEJORADOS (para Mantenimiento de Plantas) ===== */
+    .process-modern-card {
       background: white;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 28px;
+      padding: 1.5rem 1.2rem;
       height: 100%;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.01);
+      z-index: 1;
+    }
+
+    .process-modern-card:hover {
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(13, 110, 253, 0.15);
+    }
+
+    .process-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e9f0fe 100%);
+      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
       transition: all 0.3s ease;
-      border-bottom: 4px solid transparent;
     }
 
-    .process-step:hover {
-      transform: translateY(-10px);
-      border-bottom-color: #0d6efd;
+    .process-modern-card:hover .process-icon-wrapper {
+      background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 12px 18px -8px rgba(13, 110, 253, 0.3);
     }
 
-    .step-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: rgba(13, 110, 253, 0.1);
-      line-height: 1;
-      margin-bottom: 10px;
+    .process-icon-wrapper i {
+      font-size: 2rem;
+      color: #0d6efd;
+      transition: all 0.3s ease;
+    }
+
+    .process-modern-card:hover .process-icon-wrapper i {
+      color: white;
+      transform: scale(1.02);
+    }
+
+    .step-badge {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 1rem;
+      font-weight: 800;
+      background: rgba(13, 110, 253, 0.06);
+      padding: 6px 12px;
+      border-radius: 50px;
+      color: #0d6efd;
+      letter-spacing: 1px;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+
+    .process-modern-card:hover .step-badge {
+      background: #0d6efd;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .process-title {
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
+      transition: color 0.25s;
+      line-height: 1.3;
+    }
+
+    .process-modern-card:hover .process-title {
+      color: #0d6efd;
+    }
+
+    .process-desc {
+      color: #5b6e8c;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .process-grid {
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 90px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #0d6efd20, #0d6efd40, #0d6efd20, transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .process-grid::before {
+        display: none;
+      }
+      .process-icon-wrapper {
+        width: 54px;
+        height: 54px;
+      }
+      .process-icon-wrapper i {
+        font-size: 1.6rem;
+      }
+      .step-badge {
+        top: 14px;
+        right: 18px;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+      .process-title {
+        font-size: 1.05rem;
+      }
+      .process-desc {
+        font-size: 0.8rem;
+      }
     }
 
     .sidebar-sticky {
@@ -442,7 +547,7 @@
       margin-bottom: 20px;
     }
 
-    /* ===== FOOTER MODERNO - ANCHO COMPLETO + ICONOS MÁS PEQUEÑOS ===== */
+    /* ===== FOOTER MODERNO ===== */
     .footer-modern {
       background: radial-gradient(circle at 50% 0%, rgba(255, 179, 71, 0.08), transparent 50%), #0b0f19;
       color: #94a3b8;
@@ -589,7 +694,6 @@
       box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
     }
 
-    /* Iconos de contacto más pequeños y proporcionados */
     .contact-info-item {
       display: flex;
       align-items: center;
@@ -865,75 +969,106 @@
       <div class="row g-5">
         <div class="col-lg-8">
           <h2 class="fw-bold mb-5" data-aos="fade-up">Nuestro Proceso de Mantenimiento de Plantas Industriales</h2>
-          <div class="row g-4">
+          <div class="row g-4 process-grid">
+            <!-- Bloques modernizados - Mantenimiento de Plantas Industriales (10 pasos) -->
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100">
-              <div class="process-step">
-                <div class="step-number text-primary">01</div>
-                <h5 class="fw-bold">Identificación del requerimiento</h5>
-                <p class="text-muted small">Mantenimiento de zarandas en Planta Concentradora Toquepala SPCC.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-search"></i>
+                </div>
+                <div class="step-badge">01</div>
+                <h5 class="process-title">Identificación del requerimiento</h5>
+                <p class="process-desc">Mantenimiento de zarandas en Planta Concentradora Toquepala SPCC.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="150">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-clipboard-data"></i>
+                </div>
+                <div class="step-badge">02</div>
+                <h5 class="process-title">Inspección y diagnóstico técnico</h5>
+                <p class="process-desc">Mantenimiento de cajones de bolas en molinos Planta SPCC Cuajone.</p>
               </div>
             </div>
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
-              <div class="process-step">
-                <div class="step-number text-primary">02</div>
-                <h5 class="fw-bold">Inspección y diagnóstico técnico</h5>
-                <p class="text-muted small">Mantenimiento de cajones de bolas en molinos Planta SPCC Cuajone.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-file-text"></i>
+                </div>
+                <div class="step-badge">03</div>
+                <h5 class="process-title">Elaboración de propuesta y cotización</h5>
+                <p class="process-desc">Cambio y reforzamiento de canaleta de colectora de agua recuperada en el espesador de relave Planta SPCC Toquepala.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="250">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-calendar-check"></i>
+                </div>
+                <div class="step-badge">04</div>
+                <h5 class="process-title">Planificación y preparación de trabajos</h5>
+                <p class="process-desc">Cambio de coberturas en zona de fajas y Pila de Finos Planta Cuajone SPCC.</p>
               </div>
             </div>
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300">
-              <div class="process-step">
-                <div class="step-number text-primary">03</div>
-                <h5 class="fw-bold">Elaboración de propuesta y cotización</h5>
-                <p class="text-muted small">Cambio y reforzamiento de canaleta de colectora de agua recuperada en el espesador de relave Planta SPCC Toquepala.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-wrench"></i>
+                </div>
+                <div class="step-badge">05</div>
+                <h5 class="process-title">Ejecución de trabajos e instalación</h5>
+                <p class="process-desc">Instalación de mallas anticorrosivo FRP en guardas de fajas transportadoras de concentrado Planta SPCC Cuajone.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="350">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-tools"></i>
+                </div>
+                <div class="step-badge">06</div>
+                <h5 class="process-title">Mantenimiento correctivo especializado</h5>
+                <p class="process-desc">Reparación general de electro precipitadores del área 320 Fundición SPCC.</p>
               </div>
             </div>
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="400">
-              <div class="process-step">
-                <div class="step-number text-primary">04</div>
-                <h5 class="fw-bold">Planificación y preparación de trabajos</h5>
-                <p class="text-muted small">Cambio de coberturas en zona de fajas y Pila de Finos Planta Cuajone SPCC.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-gear"></i>
+                </div>
+                <div class="step-badge">07</div>
+                <h5 class="process-title">Mantenimiento mecánico y reparación de componentes</h5>
+                <p class="process-desc">Mantenimiento, reparación y cambio de componentes de cobre en piso de acceso, RHF'S y reparación de H. Afino 2 Planta Fundición SPCC.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="450">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-diagram-3"></i>
+                </div>
+                <div class="step-badge">08</div>
+                <h5 class="process-title">Inspección y mantenimiento de equipos de izaje</h5>
+                <p class="process-desc">Inspección, Limpieza, reparación de rieles, soportes de columnas, de grúas puente de Planta Fundición SPCC.</p>
               </div>
             </div>
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="500">
-              <div class="process-step">
-                <div class="step-number text-primary">05</div>
-                <h5 class="fw-bold">Ejecución de trabajos e instalación</h5>
-                <p class="text-muted small">Instalación de mallas anticorrosivo FRP en guardas de fajas transportadoras de concentrado Planta SPCC Cuajone.</p>
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-bricks"></i>
+                </div>
+                <div class="step-badge">09</div>
+                <h5 class="process-title">Obras civiles y soporte estructural</h5>
+                <p class="process-desc">Construcción de bases de concreto armado para soporte de bombas de agua en Planta de Acido - Fundición SPCC.</p>
               </div>
             </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="600">
-              <div class="process-step">
-                <div class="step-number text-primary">06</div>
-                <h5 class="fw-bold">Mantenimiento correctivo especializado</h5>
-                <p class="text-muted small">Reparación general de electro precipitadores del área 320 Fundición SPCC.</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="700">
-              <div class="process-step">
-                <div class="step-number text-primary">07</div>
-                <h5 class="fw-bold">Mantenimiento mecánico y reparación de componentes</h5>
-                <p class="text-muted small">Mantenimiento, reparación y cambio de componentes de cobre en piso de acceso, RHF'S y reparación de H. Afino 2 Planta Fundición SPCC.</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="800">
-              <div class="process-step">
-                <div class="step-number text-primary">08</div>
-                <h5 class="fw-bold">Inspección y mantenimiento de equipos de izaje</h5>
-                <p class="text-muted small">Inspección, Limpieza, reparación de rieles, soportes de columnas, de grúas puente de Planta Fundición SPCC.</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="900">
-              <div class="process-step">
-                <div class="step-number text-primary">09</div>
-                <h5 class="fw-bold">Obras civiles y soporte estructural</h5>
-                <p class="text-muted small">Construcción de bases de concreto armado para soporte de bombas de agua en Planta de Acido - Fundición SPCC.</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="1000">
-              <div class="process-step">
-                <div class="step-number text-primary">10</div>
-                <h5 class="fw-bold">Mejoramiento de aislamiento térmico industrial</h5>
-                <p class="text-muted small">Retiro y reposición de aislamiento de asbesto por aislamiento térmico lana mineral de roca en la zona del caldero CT-Ilo 1 – ENGIE.</p>
+            <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="550">
+              <div class="process-modern-card">
+                <div class="process-icon-wrapper">
+                  <i class="bi bi-thermometer-half"></i>
+                </div>
+                <div class="step-badge">10</div>
+                <h5 class="process-title">Mejoramiento de aislamiento térmico industrial</h5>
+                <p class="process-desc">Retiro y reposición de aislamiento de asbesto por aislamiento térmico lana mineral de roca en la zona del caldero CT-Ilo 1 – ENGIE.</p>
               </div>
             </div>
           </div>
