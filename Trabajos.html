@@ -1,1143 +1,907 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  <title>Trabaja con Nosotros - SOLDESP</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SOLDESP - Trabaja con Nosotros | Ingeniería y Soldadura Industrial</title>
+    <meta name="description" content="Únete al equipo de SOLDESP. Revisa nuestras ofertas de trabajo para soldadores, supervisores, ingenieros y técnicos en Ilo, Moquegua y Tacna.">
     
-    body {
-      overflow-x: hidden !important;
-      width: 100% !important;
-      position: relative;
-      font-family: 'Inter', sans-serif;
-    }
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     
-    .main-wrapper {
-      overflow-x: hidden;
-      position: relative;
-      width: 100%;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    /* ===== NAVBAR BASE (IDÉNTICO A INDEX.HTML) ===== */
-    .navbar {
-      background: transparent !important;
-      padding: 18px 0;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1080;
-      width: 100%;
-    }
-
-    .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.85) !important;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 12px 0;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .navbar-brand {
-      color: #fff !important;
-      font-weight: 700;
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .navbar-brand img {
-      transition: transform 0.3s ease;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-    }
-
-    .navbar.scrolled .navbar-brand {
-      color: #1a1a1a !important;
-      transform: scale(0.95);
-    }
-
-    .navbar.scrolled .navbar-brand img {
-      filter: none;
-    }
-
-    /* ===== NAV LINKS ===== */
-    .navbar .nav-link {
-      color: rgba(255, 255, 255, 0.9) !important;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      padding: 10px 16px !important;
-      margin: 0 2px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    /* ELIMINAMOS el outline azul del foco del navegador */
-    .navbar .nav-link:focus,
-    .navbar .nav-link:focus-visible,
-    .navbar .dropdown-toggle:focus,
-    .navbar .dropdown-toggle:focus-visible {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-
-    /* SOLUCIÓN: Flecha del dropdown al costado */
-    .navbar .dropdown-toggle {
-      display: inline-flex !important;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Eliminamos la flecha nativa de Bootstrap */
-    .navbar .dropdown-toggle::after {
-      display: none !important;
-    }
-
-    /* Flecha personalizada con Bootstrap Icons */
-    .navbar .dropdown-toggle::before {
-      content: '\f282';
-      font-family: 'bootstrap-icons' !important;
-      font-size: 0.75rem;
-      font-weight: normal;
-      transition: transform 0.3s ease;
-      display: inline-block;
-      line-height: 1;
-    }
-
-    /* Rotación al abrir el dropdown */
-    .navbar .dropdown-toggle.show::before {
-      transform: rotate(180deg);
-    }
-
-    .navbar.scrolled .nav-link {
-      color: #444 !important;
-    }
-
-    .navbar .nav-link:hover {
-      color: #0d6efd !important;
-      background: rgba(13, 110, 253, 0.05);
-    }
-
-    .navbar.scrolled .nav-link:hover {
-      background: rgba(13, 110, 253, 0.08);
-    }
-
-    /* Subrayado animado SOLO en hover */
-    .navbar .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: #0d6efd;
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-
-    .navbar .nav-link:hover::after {
-      width: 30%;
-    }
-
-    .navbar .nav-link:active {
-      color: #0d6efd !important;
-      background: rgba(13, 110, 253, 0.1) !important;
-    }
-
-    .dropdown-menu {
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      padding: 10px;
-      margin-top: 10px !important;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      animation: fadeInDown 0.3s ease forwards;
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .dropdown-item {
-      padding: 10px 18px;
-      font-weight: 500;
-      font-size: 0.88rem;
-      color: #444;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-    }
-
-    .dropdown-item:hover {
-      background: #f0f7ff;
-      color: #0d6efd;
-      padding-left: 22px;
-    }
-
-    .navbar-toggler {
-      border: none !important;
-      padding: 8px;
-      border-radius: 8px;
-      transition: background 0.3s;
-      outline: none !important;
-      box-shadow: none !important;
-    }
-
-    .navbar-toggler:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-
-    .navbar-toggler:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .navbar.scrolled .navbar-toggler:hover {
-      background: rgba(0,0,0,0.05);
-    }
-
-    .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    .navbar.scrolled .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    @media (max-width: 991px) {
-      .navbar {
-        background: #fff !important;
-        padding: 12px 0;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-      }
-
-      .navbar-brand, .navbar.scrolled .navbar-brand {
-        color: #1a1a1a !important;
-        transform: scale(0.9);
-      }
-
-      .navbar .nav-link, .navbar.scrolled .nav-link {
-        color: #333 !important;
-        padding: 12px 15px !important;
-        margin: 4px 0;
-      }
-
-      .navbar-collapse {
-        background: #fff;
-        margin-top: 10px;
-        border-radius: 15px;
-        padding: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .navbar-collapse::-webkit-scrollbar {
-        width: 4px;
-      }
-
-      .navbar-collapse::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-      }
-
-      .navbar-collapse::-webkit-scrollbar-thumb {
-        background: #0d6efd;
-        border-radius: 10px;
-      }
-
-      .navbar .dropdown-menu {
-        position: static !important;
-        transform: none !important;
-        box-shadow: none;
-        background: #f8f9fa;
-        margin-top: 5px !important;
-        margin-bottom: 10px;
-        padding: 8px;
-        max-height: none;
-        overflow: visible;
-        animation: none;
-      }
-
-      .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-      }
-
-      .navbar .nav-link::after {
-        display: none;
-      }
-
-      .navbar .dropdown-toggle {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-      
-      .navbar .dropdown-toggle::before {
-        order: 1;
-      }
-
-      .navbar-nav {
-        gap: 0 !important;
-      }
-
-      .nav-item {
-        width: 100%;
-      }
-    }
-
-    .hero-section {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-    }
-
-    .hero-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.1);
-      animation: slowZoom 20s infinite alternate;
-    }
-
-    @keyframes slowZoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.1); }
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-
-    .hero-content p {
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      font-weight: 300;
-      letter-spacing: 8px;
-      color: #ff9800;
-    }
-
-    .section-padding {
-      padding: 80px 0;
-    }
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    @media (max-width: 768px) {
-      .section-padding {
-        padding: 50px 0;
-      }
-    }
-
-    .badge-custom {
-      background: rgba(47, 99, 211, 0.1);
-      color: #2f4dd3;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-
-    .job-card {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-left: 5px solid #2f55d3;
-    }
-
-    .job-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
-
-    .job-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 10px;
-    }
-
-    .job-meta {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-      font-size: 0.85rem;
-      color: #666;
-    }
-
-    .job-meta i {
-      margin-right: 5px;
-      color: #2f55d3;
-    }
-
-    .job-description {
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .btn-aplicar {
-      background: #2f55d3;
-      color: white;
-      border: none;
-      padding: 8px 25px;
-      border-radius: 25px;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-
-    .btn-aplicar:hover {
-      background: #1a3a9e;
-      transform: scale(1.05);
-    }
-
-    /* Formulario de postulación */
-    .form-container {
-      background: white;
-      border-radius: 25px;
-      padding: 35px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-      margin-top: 40px;
-    }
-
-    .form-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #1a1a1a;
-    }
-
-    .form-subtitle {
-      color: #666;
-      margin-bottom: 25px;
-    }
-
-    .form-control, .form-select {
-      border-radius: 12px;
-      padding: 12px 15px;
-      border: 1px solid #e0e0e0;
-      margin-bottom: 20px;
-    }
-
-    .form-control:focus, .form-select:focus {
-      border-color: #2f55d3;
-      box-shadow: 0 0 0 3px rgba(47, 85, 211, 0.1);
-    }
-
-    .btn-enviar {
-      background: linear-gradient(135deg, #2f55d3, #1a3a9e);
-      color: white;
-      padding: 12px 35px;
-      border-radius: 30px;
-      font-weight: 700;
-      border: none;
-      width: 100%;
-      transition: all 0.3s;
-    }
-
-    .btn-enviar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(47, 85, 211, 0.3);
-    }
-
-    /* Beneficios */
-    .benefits-section {
-      background: white;
-      border-radius: 25px;
-      padding: 35px;
-      margin-top: 40px;
-    }
-
-    .benefit-item {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .benefit-icon {
-      font-size: 2.5rem;
-      color: #2f55d3;
-      margin-bottom: 15px;
-    }
-
-    /* ===== FOOTER MODERNO - ANCHO COMPLETO + ICONOS MÁS PEQUEÑOS ===== */
-    .footer-modern {
-      background: radial-gradient(circle at 50% 0%, rgba(255, 179, 71, 0.08), transparent 50%), #0b0f19;
-      color: #94a3b8;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-modern .container {
-      max-width: 100%;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .footer-modern .container {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-
-    .footer-modern::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(255, 179, 71, 0) 0%, #ffb347 15%, #ffdd00 50%, #ffb347 85%, rgba(255, 179, 71, 0) 100%);
-      background-size: 200% 100%;
-      animation: gradientMove 4s infinite linear;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-
-    .footer-modern h4, .footer-modern h5 {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1.5rem !important;
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      font-size: 1.1rem;
-    }
-
-    .footer-modern h4 {
-      font-size: 1.4rem;
-    }
-
-    .footer-modern h4:after, .footer-modern h5:after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 30px;
-      height: 2px;
-      background: #ffdd00;
-      border-radius: 2px;
-      transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    .footer-modern h4:hover:after, .footer-modern h5:hover:after {
-      width: 50px;
-    }
-
-    .footer-link {
-      color: #94a3b8;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-      padding-left: 0;
-      font-size: 0.85rem;
-      margin-bottom: 8px;
-    }
-
-    .footer-link:hover {
-      color: #fff;
-      transform: translateX(6px);
-      text-shadow: 0 0 8px rgba(255, 221, 0, 0.3);
-    }
-
-    .footer-link i {
-      margin-right: 6px;
-      font-size: 0.7rem;
-      opacity: 0.5;
-      transition: all 0.3s ease;
-    }
-
-    .footer-link:hover i {
-      opacity: 1;
-      color: #ffdd00;
-      transform: scale(1.15);
-    }
-
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-decoration: none;
-      color: #cbd5e1;
-      margin-right: 10px;
-      backdrop-filter: blur(5px);
-      font-size: 0.9rem;
-    }
-
-    .social-links a:hover {
-      color: white;
-      transform: translateY(-4px) scale(1.08);
-    }
-
-    .social-links a.fb:hover {
-      background: #3b5998;
-      border-color: #3b5998;
-      box-shadow: 0 8px 15px rgba(59, 89, 152, 0.3);
-    }
-
-    .social-links a.ln:hover {
-      background: #0077b5;
-      border-color: #0077b5;
-      box-shadow: 0 8px 15px rgba(0, 119, 181, 0.3);
-    }
-
-    .social-links a.wa:hover {
-      background: #25d366;
-      border-color: #25d366;
-      box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3);
-    }
-
-    .social-links a.ig:hover {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      border-color: transparent;
-      box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
-    }
-
-    /* Iconos de contacto más pequeños y proporcionados */
-    .contact-info-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 0.75rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      padding: 4px 0;
-      border-radius: 8px;
-    }
-
-    .contact-info-item i {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      background: rgba(255, 221, 0, 0.08);
-      border: 1px solid rgba(255, 221, 0, 0.15);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 0.9rem;
-      color: #ffdd00;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .contact-info-item:hover i {
-      background: #ffdd00;
-      color: #0b0f19;
-      transform: scale(1.08) rotate(6deg);
-      box-shadow: 0 0 12px rgba(255, 221, 0, 0.3);
-    }
-
-    .contact-text {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      transition: color 0.3s ease;
-      word-break: break-word;
-      line-height: 1.4;
-    }
-
-    .contact-info-item:hover .contact-text {
-      color: #fff;
-    }
-
-    .text-muted-white {
-      color: #94a3b8;
-      line-height: 1.6;
-      font-size: 0.85rem;
-    }
-
-    .footer-brand-title {
-      background: linear-gradient(90deg, #fff 0%, #ffdd00 100%);
-      -webkit-text-fill-color: transparent;
-      font-weight: 800 !important;
-      letter-spacing: 1px;
-      font-size: 1.6rem;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #25D366;
-      color: white;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 1000;
-      transition: all 0.3s;
-    }
-    
-    .whatsapp-float:hover {
-      background: #128C7E;
-      color: white;
-      transform: scale(1.1);
-    }
-    
-    @media (max-width: 768px) {
-      .whatsapp-float {
-        width: 45px;
-        height: 45px;
-        font-size: 24px;
-        bottom: 20px;
-        right: 20px;
-      }
-      .contact-info-item i {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
-      }
-      .contact-text {
-        font-size: 0.78rem;
-      }
-      .footer-modern h4, .footer-modern h5 {
-        margin-bottom: 1.2rem !important;
-      }
-    }
-
-    .footer-modern ul {
-      margin-bottom: 0;
-    }
-
-    .footer-modern ul li {
-      margin-bottom: 6px;
-    }
-
-    hr {
-      margin: 2rem 0 1.5rem;
-    }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a2e;
+        }
+        :root {
+            --soldesp-blue: #0a2540;
+            --soldesp-blue-dark: #051a2c;
+            --soldesp-orange: #ff6b00;
+            --soldesp-orange-light: #ff8c3a;
+            --soldesp-white: #ffffff;
+            --soldesp-gray: #6c757d;
+            --soldesp-gray-light: #f8f9fa;
+        }
+        .navbar {
+            background: rgba(10, 37, 64, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            transition: all 0.4s ease;
+            z-index: 1080;
+            border-bottom: 1px solid rgba(255,107,0,0.2);
+        }
+        .navbar.scrolled {
+            background: rgba(5, 26, 44, 0.98) !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .navbar-brand img {
+            height: 48px;
+            width: auto;
+        }
+        .navbar-brand .logo-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .navbar-nav {
+            gap: 0.5rem;
+        }
+        .navbar .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 8px 18px !important;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        .navbar .nav-link:hover {
+            color: var(--soldesp-orange) !important;
+            background: rgba(255,107,0,0.1);
+        }
+        .navbar-toggler {
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+        }
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        .dropdown-menu {
+            background: var(--soldesp-blue);
+            border: 1px solid rgba(255,107,0,0.2);
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .dropdown-item {
+            color: rgba(255,255,255,0.85);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .dropdown-item:hover {
+            background: var(--soldesp-orange);
+            color: white;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+        .dropdown-toggle::before {
+            content: '\f282';
+            font-family: 'bootstrap-icons';
+            margin-left: 8px;
+            font-size: 0.7rem;
+        }
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: var(--soldesp-blue);
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 16px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .navbar-nav {
+                gap: 0;
+            }
+            .nav-item {
+                width: 100%;
+            }
+            .navbar .nav-link {
+                padding: 12px 15px !important;
+            }
+            .dropdown-menu {
+                position: static !important;
+                background: rgba(255,255,255,0.08);
+                border: none;
+                padding: 10px 0 10px 20px;
+                width: 100%;
+                display: none;
+            }
+            .dropdown-menu.show {
+                display: block;
+            }
+            .dropdown-toggle {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .dropdown-toggle::after {
+                display: inline-block !important;
+            }
+            .dropdown-toggle::before {
+                display: none;
+            }
+        }
+        /* ===== HERO - PANTALLA COMPLETA ===== */
+        .hero-trabajos {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-trabajos .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-trabajos .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
+            z-index: 1;
+        }
+        .hero-content-trabajos {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,107,0,0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,107,0,0.4);
+        }
+        .hero-trabajos h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+        }
+        .hero-trabajos p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            color: var(--soldesp-orange);
+            letter-spacing: 4px;
+            margin-top: 0.5rem;
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--soldesp-blue);
+            margin-bottom: 1rem;
+        }
+        .title-underline {
+            width: 80px;
+            height: 3px;
+            background: var(--soldesp-orange);
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+        .badge-custom-modern {
+            display: inline-block;
+            background: rgba(255,107,0,0.1);
+            color: var(--soldesp-orange);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+        /* ===== TARJETAS DE TRABAJO ===== */
+        .job-card-modern {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--soldesp-orange);
+        }
+        .job-card-modern:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--soldesp-orange-light);
+        }
+        .job-title-modern {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--soldesp-blue);
+        }
+        .job-meta-modern {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+            color: var(--soldesp-gray);
+        }
+        .job-meta-modern i {
+            color: var(--soldesp-orange);
+            margin-right: 5px;
+        }
+        .job-description-modern {
+            color: var(--soldesp-gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .job-requisite-modern {
+            font-size: 0.8rem;
+            color: var(--soldesp-orange);
+            background: rgba(255,107,0,0.05);
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .btn-aplicar-modern {
+            background: linear-gradient(135deg, var(--soldesp-orange), var(--soldesp-orange-light));
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-aplicar-modern:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255,107,0,0.3);
+        }
+        /* ===== FORMULARIO ===== */
+        .form-container-modern {
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            margin-top: 0;
+        }
+        .form-title-modern {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--soldesp-blue);
+        }
+        .form-control-modern, .form-select-modern {
+            border-radius: 12px;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+        .form-control-modern:focus, .form-select-modern:focus {
+            border-color: var(--soldesp-orange);
+            box-shadow: 0 0 0 3px rgba(255,107,0,0.1);
+            outline: none;
+        }
+        .btn-enviar-modern {
+            background: linear-gradient(135deg, var(--soldesp-orange), var(--soldesp-orange-light));
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            border: none;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .btn-enviar-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,0,0.3);
+        }
+        /* ===== BENEFICIOS ===== */
+        .benefits-section-modern {
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            margin-top: 30px;
+            border: 1px solid #eef2f6;
+        }
+        .benefit-item-modern {
+            text-align: center;
+            padding: 15px;
+        }
+        .benefit-icon-modern {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,107,0,0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        .benefit-icon-modern i {
+            font-size: 28px;
+            color: var(--soldesp-orange);
+        }
+        /* ===== WHATSAPP CARD ===== */
+        .whatsapp-card-modern {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn-whatsapp-card {
+            background: white;
+            color: #25D366;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .btn-whatsapp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        /* ===== FOOTER ===== */
+        .footer-premium {
+            background: linear-gradient(135deg, #051a2c 0%, #030f1a 100%);
+            color: #94a3b8;
+            position: relative;
+        }
+        .footer-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--soldesp-orange), var(--soldesp-orange-light), var(--soldesp-orange));
+            animation: gradientMove 3s infinite linear;
+            background-size: 200% 100%;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .footer-premium h4, .footer-premium h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .footer-premium h4:after, .footer-premium h5:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--soldesp-orange);
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .footer-link-premium {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        .footer-link-premium:hover {
+            color: var(--soldesp-orange);
+            transform: translateX(5px);
+        }
+        .contact-info-premium {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 5px 0;
+            transition: all 0.3s;
+            border-radius: 10px;
+        }
+        .contact-info-premium:hover {
+            transform: translateX(5px);
+        }
+        .contact-info-premium i {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,107,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--soldesp-orange);
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .contact-info-premium:hover i {
+            background: var(--soldesp-orange);
+            color: white;
+            transform: scale(1.05);
+        }
+        .contact-info-premium span {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
+        .social-links-premium {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .social-links-premium a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-links-premium a:hover {
+            transform: translateY(-5px);
+        }
+        .social-links-premium a.fb:hover { background: #1877f2; color: white; }
+        .social-links-premium a.ln:hover { background: #0077b5; color: white; }
+        .social-links-premium a.wa:hover { background: #25d366; color: white; }
+        .social-links-premium a.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); color: white; }
+        .copyright-premium {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 25px;
+            margin-top: 20px;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .section-padding { padding: 50px 0; }
+            .hero-trabajos { height: 100vh; min-height: 100vh; }
+            .job-meta-modern { gap: 10px; }
+            .job-title-modern { font-size: 1.1rem; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-  <nav class="navbar navbar-expand-lg position-fixed top-0 start-0 w-100" id="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
-        <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" width="45" height="47" class="me-2">
-        <span>SOLDESP</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav gap-2 align-items-lg-center">
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="index.html">INICIO</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Nosotros.html">NOSOTROS</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SERVICIOS</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
-              <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
-              <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-              <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
-                <br>Desalinizadoras</a></li>
-              <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
-                <br>de Estructuras Metálicas</a></li>
-              <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
-                <br>Spool en Plantas</a></li>
-              <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
-              <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
-              <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Proyectos.html">PROYECTOS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Ubicación.html">UBICACIÓN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="Trabajos.html">TRABAJA CON NOSOTROS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fw-semibold" href="Alianzas_Estrategicas.html">ALIANZAS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fw-semibold" href="Clientes.html">CLIENTES</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <section class="hero-section">
-    <img src="SOLDESP fondo.jpg" class="hero-img" alt="SOLDESP Hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content text-center">
-      <h1 data-aos="fade-up" data-aos-delay="200">TRABAJA CON NOSOTROS</h1>
-      <p data-aos="fade-up" data-aos-delay="400">FORMA PARTE DEL EQUIPO LÍDER EN INGENIERÍA Y SOLDADURA INDUSTRIAL</p>
-    </div>
-  </section>
-
-  <div class="container my-5">
-    <div class="row">
-      <div class="col-lg-7">
-        <h2 class="mb-4 fw-bold"><i class="bi bi-stars text-primary"></i> Ofertas disponibles</h2>
-        
-        <div class="job-card">
-          <h3 class="job-title"><i class="fa-solid fa-helmet-safety text-primary"></i> Soldador Certificado (TIG/MIG)</h3>
-          <div class="job-meta">
-            <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
-            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
-            <span><i class="bi bi-calendar"></i> Publicado: 15/05/2026</span>
-          </div>
-          <p class="job-description">
-            Buscamos soldador certificado con experiencia en soldadura TIG y MIG para proyectos industriales. 
-            Conocimiento en acero inoxidable y materiales especiales.
-          </p>
-          <p class="text-muted small mb-3">
-            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Certificación vigente, mínimo 3 años de experiencia
-          </p>
-          <button class="btn-aplicar" onclick="abrirFormulario('Soldador Certificado (TIG/MIG)')">Postular ahora →</button>
-        </div>
-
-        <div class="job-card">
-          <h3 class="job-title"><i class="fa-solid fa-wrench text-primary"></i> Supervisor de Mantenimiento Industrial</h3>
-          <div class="job-meta">
-            <span><i class="bi bi-geo-alt"></i> Ilo / Tacna</span>
-            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
-            <span><i class="bi bi-calendar"></i> Publicado: 10/05/2026</span>
-          </div>
-          <p class="job-description">
-            Supervisor con experiencia en mantenimiento de plantas industriales, gestión de equipos y 
-            cumplimiento de estándares de seguridad.
-          </p>
-          <p class="text-muted small mb-3">
-            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Ing. Mecánico o Eléctrico, 5 años de experiencia
-          </p>
-          <button class="btn-aplicar" onclick="abrirFormulario('Supervisor de Mantenimiento Industrial')">Postular ahora →</button>
-        </div>
-
-        <div class="job-card">
-          <h3 class="job-title"><i class="fa-solid fa-ruler text-primary"></i> Ingeniero de Proyectos</h3>
-          <div class="job-meta">
-            <span><i class="bi bi-geo-alt"></i> Moquegua / Arequipa</span>
-            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
-            <span><i class="bi bi-calendar"></i> Publicado: 05/05/2026</span>
-          </div>
-          <p class="job-description">
-            Ingeniero para planificación, ejecución y supervisión de proyectos industriales. 
-            Manejo de AutoCAD, presupuestos y cronogramas.
-          </p>
-          <p class="text-muted small mb-3">
-            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Ing. Civil/Mecánico, experiencia en proyectos mineros
-          </p>
-          <button class="btn-aplicar" onclick="abrirFormulario('Ingeniero de Proyectos')">Postular ahora →</button>
-        </div>
-
-        <div class="job-card">
-          <h3 class="job-title"><i class="fa-solid fa-paintbrush text-primary"></i> Técnico en Arenado y Pintura Industrial</h3>
-          <div class="job-meta">
-            <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
-            <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
-            <span><i class="bi bi-calendar"></i> Publicado: 01/05/2026</span>
-          </div>
-          <p class="job-description">
-            Técnico con experiencia en preparación de superficies, aplicación de recubrimientos 
-            industriales y control de calidad.
-          </p>
-          <p class="text-muted small mb-3">
-            <i class="bi bi-check-circle-fill text-success me-1"></i> Requisitos: Certificación NACE o SSPC deseable
-          </p>
-          <button class="btn-aplicar" onclick="abrirFormulario('Técnico en Arenado y Pintura Industrial')">Postular ahora →</button>
-        </div>
-      </div>
-
-      <div class="col-lg-5">
-        <div class="form-container" id="formulario">
-          <h2 class="form-title"><i class="fa-solid fa-file text-primary"></i> Postular</h2>
-          <p class="form-subtitle">Completa el formulario para postular a nuestras ofertas</p>
-          
-          <form id="jobApplicationForm">
-            <input type="hidden" id="puesto" name="puesto">
-            
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre completo *" required>
-            
-            <input type="email" class="form-control" id="email" placeholder="Correo electrónico *" required>
-            
-            <input type="tel" class="form-control" id="telefono" placeholder="Teléfono / WhatsApp *" required>
-            
-            <select class="form-select" id="puestoSelect" required>
-              <option value="">Selecciona el puesto *</option>
-              <option value="Soldador Certificado (TIG/MIG)">Soldador Certificado (TIG/MIG)</option>
-              <option value="Supervisor de Mantenimiento Industrial">Supervisor de Mantenimiento Industrial</option>
-              <option value="Ingeniero de Proyectos">Ingeniero de Proyectos</option>
-              <option value="Técnico en Arenado y Pintura Industrial">Técnico en Arenado y Pintura Industrial</option>
-            </select>
-            
-            <textarea class="form-control" rows="4" id="experiencia" placeholder="Cuéntanos tu experiencia profesional *" required></textarea>
-            
-            <div class="mb-3">
-              <label class="form-label text-muted small">Adjunta tu CV (PDF o Word)</label>
-              <input type="file" class="form-control" id="cv" accept=".pdf,.doc,.docx">
-            </div>
-            
-            <button type="submit" class="btn-enviar"><i class="fa-solid fa-arrow-right-from-bracket text-white"></i> Enviar postulación</button>
-          </form>
-          
-          <div id="mensajeEnvio" class="mt-3" style="display: none;"></div>
-        </div>
-
-        <div class="benefits-section">
-          <h3 class="fw-bold mb-4 text-center"><i class="fa-solid fa-handshake text-primary"></i> Beneficios de trabajar con nosotros</h3>
-          <div class="row">
-            <div class="col-6 benefit-item">
-              <div class="benefit-icon"><i class="bi bi-trophy"></i></div>
-              <p class="fw-semibold mb-0">Capacitación constante</p>
-              <small class="text-muted">Cursos y certificaciones</small>
-            </div>
-            <div class="col-6 benefit-item">
-              <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
-              <p class="fw-semibold mb-0">Seguro de vida</p>
-              <small class="text-muted">Para ti y tu familia</small>
-            </div>
-            <div class="col-6 benefit-item">
-              <div class="benefit-icon"><i class="bi bi-graph-up"></i></div>
-              <p class="fw-semibold mb-0">Crecimiento profesional</p>
-              <small class="text-muted">Plan de carrera</small>
-            </div>
-            <div class="col-6 benefit-item">
-              <div class="benefit-icon"><i class="bi bi-calendar-heart"></i></div>
-              <p class="fw-semibold mb-0">Bonos y reconocimientos</p>
-              <small class="text-muted">Por desempeño</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="benefits-section mt-4" style="background: #e8f5e9;">
-          <div class="text-center">
-            <i class="bi bi-whatsapp" style="font-size: 2rem; color: #25D366;"></i>
-            <h4 class="fw-bold mt-2">¿Prefieres WhatsApp?</h4>
-            <p class="small">Envíanos tu CV directamente a nuestro WhatsApp</p>
-            <a href="https://wa.me/51953660826?text=Hola%2C%20quiero%20postular%20a%20las%20ofertas%20de%20trabajo%20de%20SOLDESP" 
-               class="btn btn-success rounded-pill px-4" target="_blank">
-              <i class="bi bi-whatsapp"></i> Enviar CV por WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer-modern py-5">
+<!-- NAVBAR MODERNO -->
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-4 mb-lg-0">
-          <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
-          <p class="text-muted-white">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
-          <div class="social-links mt-4">
-            <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
-            <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
-            <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
-            <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
-          </div>
+        <a class="navbar-brand" href="index.html">
+            <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo">
+            <span class="logo-text">SOLDESP</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+                <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">SERVICIOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
+                        <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
+                        <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
+                        <li><a class="dropdown-item" href="Calderia.html">Caldería y Estructuras</a></li>
+                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Montaje de Piping</a></li>
+                        <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="Proyectos.html">PROYECTOS</a></li>
+                <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>
+                <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
+                <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>
+                <li class="nav-item"><a class="nav-link active" href="Trabajos.html">TRABAJOS</a></li>
+            </ul>
         </div>
-        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold mb-4 text-white">Navegación</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="index.html" class="footer-link"><i class="bi bi-chevron-right"></i>Inicio</a></li>
-            <li class="mb-2"><a href="Nosotros.html" class="footer-link"><i class="bi bi-chevron-right"></i>Nosotros</a></li>
-            <li class="mb-2"><a href="Proyectos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Proyectos</a></li>
-            <li class="mb-2"><a href="Ubicación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Ubicación</a></li>
-            <li class="mb-2"><a href="Trabajos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Trabaja con nosotros</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold mb-4 text-white">Servicios</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="Fabricación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Fabricación Metálica</a></li>
-            <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Soldaduras Especiales</a></li>
-            <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Mantenimiento Plantas</a></li>
-            <li class="mb-2"><a href="Arenado.html" class="footer-link"><i class="bi bi-chevron-right"></i>Arenado y Pintura</a></li>
-            <li class="mb-2"><a href="Calderia.html" class="footer-link"><i class="bi bi-chevron-right"></i>Caldería y Estructuras</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-4">
-          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
-          <div class="contact-info-item">
-            <i class="bi bi-geo-alt-fill"></i>
-            <span class="contact-text">Ilo, Moquegua - Perú</span>
-          </div>
-          <div class="contact-info-item">
-            <i class="bi bi-telephone-fill"></i>
-            <span class="contact-text">(053) 495247</span>
-          </div>
-          <div class="contact-info-item">
-            <i class="bi bi-phone-fill"></i>
-            <span class="contact-text">953660826</span>
-          </div>
-          <div class="contact-info-item">
-            <i class="bi bi-envelope-fill"></i>
-            <span class="contact-text">recursos.humanos@soldesp.com.pe</span>
-          </div>
-        </div>
-      </div>
-      <hr class="mt-4" style="border-color: rgba(255, 255, 255, 0.08) !important;">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-2 text-center text-md-start">
-        <p class="text-muted-white small mb-0">&copy; 2026 <span style="color: #ffdd00; font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
-        <p class="text-muted-white small mb-0 mt-2 mt-md-0">Ingeniería y Soldadura de Alta Calidad</p>
-      </div>
     </div>
-  </footer>
+</nav>
 
-  <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="whatsapp-float" target="_blank">
-    <i class="bi bi-whatsapp"></i>
-  </a>
+<!-- HERO SECTION - PANTALLA COMPLETA -->
+<section class="hero-trabajos">
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="Soldadura2.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="container hero-content-trabajos">
+        <div data-aos="fade-up">
+            <div class="hero-badge">ÚNETE A NOSOTROS</div>
+            <h1>TRABAJA CON NOSOTROS</h1>
+            <p>FORMA PARTE DEL EQUIPO LÍDER EN INGENIERÍA Y SOLDADURA INDUSTRIAL</p>
+        </div>
+    </div>
+</section>
+
+<!-- OFERTAS LABORALES Y FORMULARIO -->
+<div class="container section-padding">
+    <div class="row">
+        <!-- OFERTAS LABORALES -->
+        <div class="col-lg-7" data-aos="fade-right">
+            <span class="badge-custom-modern">Oportunidades</span>
+            <h2 class="section-title">Ofertas disponibles</h2>
+            <div class="title-underline" style="margin: 0 0 20px 0;"></div>
+            
+            <!-- Oferta 1 -->
+            <div class="job-card-modern" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="job-title-modern"><i class="fa-solid fa-helmet-safety me-2" style="color: var(--soldesp-orange);"></i> Soldador Certificado (TIG/MIG)</h3>
+                <div class="job-meta-modern">
+                    <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
+                    <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+                    <span><i class="bi bi-calendar"></i> Publicado: 15/05/2026</span>
+                </div>
+                <p class="job-description-modern">Buscamos soldador certificado con experiencia en soldadura TIG y MIG para proyectos industriales. Conocimiento en acero inoxidable y materiales especiales.</p>
+                <div class="job-requisite-modern"><i class="bi bi-check-circle-fill me-1"></i> Requisitos: Certificación vigente, mínimo 3 años de experiencia</div>
+                <button class="btn-aplicar-modern" onclick="abrirFormulario('Soldador Certificado (TIG/MIG)')">Postular ahora →</button>
+            </div>
+
+            <!-- Oferta 2 -->
+            <div class="job-card-modern" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="job-title-modern"><i class="fa-solid fa-wrench me-2" style="color: var(--soldesp-orange);"></i> Supervisor de Mantenimiento Industrial</h3>
+                <div class="job-meta-modern">
+                    <span><i class="bi bi-geo-alt"></i> Ilo / Tacna</span>
+                    <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+                    <span><i class="bi bi-calendar"></i> Publicado: 10/05/2026</span>
+                </div>
+                <p class="job-description-modern">Supervisor con experiencia en mantenimiento de plantas industriales, gestión de equipos y cumplimiento de estándares de seguridad.</p>
+                <div class="job-requisite-modern"><i class="bi bi-check-circle-fill me-1"></i> Requisitos: Ing. Mecánico o Eléctrico, 5 años de experiencia</div>
+                <button class="btn-aplicar-modern" onclick="abrirFormulario('Supervisor de Mantenimiento Industrial')">Postular ahora →</button>
+            </div>
+
+            <!-- Oferta 3 -->
+            <div class="job-card-modern" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="job-title-modern"><i class="fa-solid fa-ruler me-2" style="color: var(--soldesp-orange);"></i> Ingeniero de Proyectos</h3>
+                <div class="job-meta-modern">
+                    <span><i class="bi bi-geo-alt"></i> Moquegua / Arequipa</span>
+                    <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+                    <span><i class="bi bi-calendar"></i> Publicado: 05/05/2026</span>
+                </div>
+                <p class="job-description-modern">Ingeniero para planificación, ejecución y supervisión de proyectos industriales. Manejo de AutoCAD, presupuestos y cronogramas.</p>
+                <div class="job-requisite-modern"><i class="bi bi-check-circle-fill me-1"></i> Requisitos: Ing. Civil/Mecánico, experiencia en proyectos mineros</div>
+                <button class="btn-aplicar-modern" onclick="abrirFormulario('Ingeniero de Proyectos')">Postular ahora →</button>
+            </div>
+
+            <!-- Oferta 4 -->
+            <div class="job-card-modern" data-aos="fade-up" data-aos-delay="400">
+                <h3 class="job-title-modern"><i class="fa-solid fa-paintbrush me-2" style="color: var(--soldesp-orange);"></i> Técnico en Arenado y Pintura Industrial</h3>
+                <div class="job-meta-modern">
+                    <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
+                    <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
+                    <span><i class="bi bi-calendar"></i> Publicado: 01/05/2026</span>
+                </div>
+                <p class="job-description-modern">Técnico con experiencia en preparación de superficies, aplicación de recubrimientos industriales y control de calidad.</p>
+                <div class="job-requisite-modern"><i class="bi bi-check-circle-fill me-1"></i> Requisitos: Certificación NACE o SSPC deseable</div>
+                <button class="btn-aplicar-modern" onclick="abrirFormulario('Técnico en Arenado y Pintura Industrial')">Postular ahora →</button>
+            </div>
+        </div>
+
+        <!-- FORMULARIO Y BENEFICIOS -->
+        <div class="col-lg-5" data-aos="fade-left">
+            <!-- Formulario -->
+            <div class="form-container-modern" id="formulario">
+                <h2 class="form-title-modern"><i class="bi bi-file-text me-2" style="color: var(--soldesp-orange);"></i> Postular</h2>
+                <p class="text-muted mb-4">Completa el formulario para postular a nuestras ofertas</p>
+                
+                <form id="jobApplicationForm">
+                    <input type="hidden" id="puesto" name="puesto">
+                    
+                    <input type="text" class="form-control-modern" id="nombre" placeholder="Nombre completo *" required>
+                    
+                    <input type="email" class="form-control-modern" id="email" placeholder="Correo electrónico *" required>
+                    
+                    <input type="tel" class="form-control-modern" id="telefono" placeholder="Teléfono / WhatsApp *" required>
+                    
+                    <select class="form-select-modern" id="puestoSelect" required>
+                        <option value="">Selecciona el puesto *</option>
+                        <option value="Soldador Certificado (TIG/MIG)">Soldador Certificado (TIG/MIG)</option>
+                        <option value="Supervisor de Mantenimiento Industrial">Supervisor de Mantenimiento Industrial</option>
+                        <option value="Ingeniero de Proyectos">Ingeniero de Proyectos</option>
+                        <option value="Técnico en Arenado y Pintura Industrial">Técnico en Arenado y Pintura Industrial</option>
+                    </select>
+                    
+                    <textarea class="form-control-modern" rows="4" id="experiencia" placeholder="Cuéntanos tu experiencia profesional *" required></textarea>
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">Adjunta tu CV (PDF o Word)</label>
+                        <input type="file" class="form-control-modern" id="cv" accept=".pdf,.doc,.docx" style="padding: 8px;">
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar-modern"><i class="bi bi-send me-2"></i> Enviar postulación</button>
+                </form>
+                
+                <div id="mensajeEnvio" class="mt-3" style="display: none;"></div>
+            </div>
+
+            <!-- Beneficios -->
+            <div class="benefits-section-modern">
+                <h3 class="fw-bold mb-4 text-center"><i class="bi bi-gift me-2" style="color: var(--soldesp-orange);"></i> Beneficios de trabajar con nosotros</h3>
+                <div class="row">
+                    <div class="col-6 benefit-item-modern">
+                        <div class="benefit-icon-modern"><i class="bi bi-trophy"></i></div>
+                        <p class="fw-semibold mb-0">Capacitación constante</p>
+                        <small class="text-muted">Cursos y certificaciones</small>
+                    </div>
+                    <div class="col-6 benefit-item-modern">
+                        <div class="benefit-icon-modern"><i class="bi bi-shield-check"></i></div>
+                        <p class="fw-semibold mb-0">Seguro de vida</p>
+                        <small class="text-muted">Para ti y tu familia</small>
+                    </div>
+                    <div class="col-6 benefit-item-modern">
+                        <div class="benefit-icon-modern"><i class="bi bi-graph-up"></i></div>
+                        <p class="fw-semibold mb-0">Crecimiento profesional</p>
+                        <small class="text-muted">Plan de carrera</small>
+                    </div>
+                    <div class="col-6 benefit-item-modern">
+                        <div class="benefit-icon-modern"><i class="bi bi-calendar-heart"></i></div>
+                        <p class="fw-semibold mb-0">Bonos y reconocimientos</p>
+                        <small class="text-muted">Por desempeño</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="whatsapp-card-modern">
+                <i class="bi bi-whatsapp" style="font-size: 2.5rem;"></i>
+                <h4 class="fw-bold mt-2 text-white">¿Prefieres WhatsApp?</h4>
+                <p class="text-white-50 small">Envíanos tu CV directamente a nuestro WhatsApp</p>
+                <a href="https://wa.me/51953660826?text=Hola%2C%20quiero%20postular%20a%20las%20ofertas%20de%20trabajo%20de%20SOLDESP" class="btn-whatsapp-card" target="_blank">
+                    <i class="bi bi-whatsapp me-2"></i> Enviar CV por WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- FOOTER COMPLETO -->
+<footer class="footer-premium pt-5 pb-4">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" height="50">
+                    <h4 class="mb-0" style="color: white;">SOLDESP</h4>
+                </div>
+                <p class="mb-4" style="line-height: 1.6; color: #94a3b8; font-size: 0.85rem;">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
+                <div class="social-links-premium">
+                    <a href="https://www.facebook.com/soldesp.ilo" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
+                    <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://wa.me/053495247" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5>Enlaces Rápidos</h5>
+                <div class="d-flex flex-column">
+                    <a href="index.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Inicio</a>
+                    <a href="Nosotros.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Nosotros</a>
+                    <a href="Proyectos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Proyectos</a>
+                    <a href="Clientes.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Clientes</a>
+                    <a href="Trabajos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Trabaja con Nosotros</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5>Servicios</h5>
+                <div class="d-flex flex-column">
+                    <a href="Fabricación.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Fabricación Metálica</a>
+                    <a href="Soldaduras_especiales.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Soldaduras Especiales</a>
+                    <a href="Plantas_Industriales.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Mantenimiento de Plantas</a>
+                    <a href="Arenado.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Arenado y Pintura</a>
+                    <a href="Calderia.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Caldería y Estructuras</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5>Contacto Directo</h5>
+                <div class="contact-info-premium">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Ilo, Moquegua - Perú</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-telephone-fill"></i>
+                    <span>(053) 495247</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-phone-fill"></i>
+                    <span>953660826</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>recursos.humanos@soldesp.com.pe</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-clock-fill"></i>
+                    <span>Lun - Vie: 8am - 4pm<br>Sáb: 8am - 12pm</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-premium">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small mb-0">&copy; 2026 <span style="color: var(--soldesp-orange); font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="small mb-0">Ingeniería y Soldadura de Alta Calidad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank">
+    <i class="bi bi-whatsapp"></i>
+</a>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 900,
-    once: true,
-    offset: 80
-  });
-
-  const navbar = document.getElementById("navbar");
-
-  window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const currentPage = window.location.pathname.split("/").pop() || "Trabajos.html";
+    AOS.init({ duration: 900, once: true, offset: 80 });
     
-    document.querySelectorAll(".dropdown-item").forEach(item => {
-      const href = item.getAttribute("href");
-      if (href === currentPage) {
-        item.classList.add("active");
-      }
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
     });
-
-    const navbarCollapse = document.getElementById("navbarNav");
-    const navLinks = document.querySelectorAll(".navbar .nav-link:not(.dropdown-toggle), .dropdown-item");
     
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
-          const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
-          bsCollapse.hide();
+    // Manejo del dropdown en móviles
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarCollapse = document.getElementById('navbarNav');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        
+        if (dropdownToggle && window.innerWidth < 992) {
+            dropdownToggle.removeAttribute('data-bs-toggle');
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('show');
+                if (dropdownMenu) dropdownMenu.classList.toggle('show');
+            });
         }
-      });
+        
+        const navLinks = document.querySelectorAll('.navbar .nav-link:not(.dropdown-toggle), .dropdown-item');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                }
+            });
+        });
     });
-  });
-  
-  document.documentElement.style.overflowX = "hidden";
-  document.body.style.overflowX = "hidden";
-
-  function abrirFormulario(puesto) {
-    document.getElementById('puesto').value = puesto;
-    document.getElementById('puestoSelect').value = puesto;
-    document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
     
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const puesto = document.getElementById('puestoSelect').value;
-    const experiencia = document.getElementById('experiencia').value;
-    
-    if(!nombre || !email || !telefono || !puesto || !experiencia) {
-      alert('Por favor completa todos los campos obligatorios');
-      return;
+    function abrirFormulario(puesto) {
+        document.getElementById('puesto').value = puesto;
+        document.getElementById('puestoSelect').value = puesto;
+        document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
     }
-    
-    const mensaje = `*NUEVA POSTULACIÓN SOLDESP*%0A%0A` +
-      `*Puesto:* ${puesto}%0A` +
-      `*Nombre:* ${nombre}%0A` +
-      `*Email:* ${email}%0A` +
-      `*Teléfono:* ${telefono}%0A` +
-      `*Experiencia:* ${experiencia}%0A%0A` +
-      `Enviado desde la web de SOLDESP`;
-    
-    window.open(`https://wa.me/51953660826?text=${mensaje}`, '_blank');
-    
-    const mensajeDiv = document.getElementById('mensajeEnvio');
-    mensajeDiv.innerHTML = `
-      <div class="alert alert-success">
-        ✅ ¡Postulación enviada! Serás contactado a la brevedad.
-      </div>
-    `;
-    mensajeDiv.style.display = 'block';
-    
-    document.getElementById('jobApplicationForm').reset();
-    
-    setTimeout(() => {
-      mensajeDiv.style.display = 'none';
-    }, 5000);
-  });
+
+    document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const telefono = document.getElementById('telefono').value;
+        const puesto = document.getElementById('puestoSelect').value;
+        const experiencia = document.getElementById('experiencia').value;
+        
+        if(!nombre || !email || !telefono || !puesto || !experiencia) {
+            alert('Por favor completa todos los campos obligatorios');
+            return;
+        }
+        
+        const mensaje = `*NUEVA POSTULACIÓN SOLDESP*%0A%0A` +
+            `*Puesto:* ${puesto}%0A` +
+            `*Nombre:* ${nombre}%0A` +
+            `*Email:* ${email}%0A` +
+            `*Teléfono:* ${telefono}%0A` +
+            `*Experiencia:* ${experiencia}%0A%0A` +
+            `Enviado desde la web de SOLDESP`;
+        
+        window.open(`https://wa.me/51953660826?text=${mensaje}`, '_blank');
+        
+        const mensajeDiv = document.getElementById('mensajeEnvio');
+        mensajeDiv.innerHTML = `
+            <div class="alert alert-success">
+                ✅ ¡Postulación enviada! Serás contactado a la brevedad.
+            </div>
+        `;
+        mensajeDiv.style.display = 'block';
+        
+        document.getElementById('jobApplicationForm').reset();
+        
+        setTimeout(() => {
+            mensajeDiv.style.display = 'none';
+        }, 5000);
+    });
 </script>
 </body>
 </html>

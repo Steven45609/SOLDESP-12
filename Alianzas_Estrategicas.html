@@ -1,1247 +1,991 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  <title>Alianzas Estratégicas - SOLDESP</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=factory"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SOLDESP - Alianzas Estratégicas | Ingeniería y Soldadura Industrial</title>
+    <meta name="description" content="Conoce nuestras alianzas estratégicas con marcas líderes como Lincoln Electric, Miller Electric, 3M y nuestras representaciones exclusivas en el sur del Perú.">
     
-    body {
-      overflow-x: hidden !important;
-      width: 100% !important;
-      position: relative;
-    }
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     
-    .main-wrapper {
-      overflow-x: hidden;
-      position: relative;
-      width: 100%;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    .navbar {
-      background: transparent !important;
-      padding: 18px 0;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1080;
-      width: 100%;
-    }
-
-    .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.85) !important;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 12px 0;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .navbar-brand {
-      color: #fff !important;
-      font-weight: 700;
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .navbar-brand img {
-      transition: transform 0.3s ease;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-    }
-
-    .navbar.scrolled .navbar-brand {
-      color: #1a1a1a !important;
-      transform: scale(0.95);
-    }
-
-    .navbar.scrolled .navbar-brand img {
-      filter: none;
-    }
-
-    .navbar .nav-link {
-      color: rgba(255, 255, 255, 0.9) !important;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      padding: 10px 16px !important;
-      margin: 0 2px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .navbar .nav-link:focus,
-    .navbar .nav-link:focus-visible,
-    .navbar .dropdown-toggle:focus,
-    .navbar .dropdown-toggle:focus-visible {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-
-    .navbar .dropdown-toggle {
-      display: inline-flex !important;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .navbar .dropdown-toggle::after {
-      display: none !important;
-    }
-
-    .navbar .dropdown-toggle::before {
-      content: '\f282';
-      font-family: 'bootstrap-icons' !important;
-      font-size: 0.75rem;
-      font-weight: normal;
-      transition: transform 0.3s ease;
-      display: inline-block;
-      line-height: 1;
-    }
-
-    .navbar .dropdown-toggle.show::before {
-      transform: rotate(180deg);
-    }
-
-    .navbar.scrolled .nav-link {
-      color: #444 !important;
-    }
-
-    .navbar .nav-link:hover {
-      color: #0d6efd !important;
-      background: rgba(13, 110, 253, 0.05);
-    }
-
-    .navbar.scrolled .nav-link:hover {
-      background: rgba(13, 110, 253, 0.08);
-    }
-
-    .navbar .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: #0d6efd;
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-
-    .navbar .nav-link:hover::after {
-      width: 30%;
-    }
-
-    .navbar .nav-link:active {
-      color: #0d6efd !important;
-      background: rgba(13, 110, 253, 0.1) !important;
-    }
-
-    .dropdown-menu {
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      padding: 10px;
-      margin-top: 10px !important;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      animation: fadeInDown 0.3s ease forwards;
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .dropdown-item {
-      padding: 10px 18px;
-      font-weight: 500;
-      font-size: 0.88rem;
-      color: #444;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-    }
-
-    .dropdown-item:hover {
-      background: #f0f7ff;
-      color: #0d6efd;
-      padding-left: 22px;
-    }
-
-    .navbar-toggler {
-      border: none !important;
-      padding: 8px;
-      border-radius: 8px;
-      transition: background 0.3s;
-      outline: none !important;
-      box-shadow: none !important;
-    }
-
-    .navbar-toggler:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-
-    .navbar-toggler:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .navbar.scrolled .navbar-toggler:hover {
-      background: rgba(0,0,0,0.05);
-    }
-
-    .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    .navbar.scrolled .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    @media (max-width: 991px) {
-      .navbar {
-        background: #fff !important;
-        padding: 12px 0;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-      }
-
-      .navbar-brand, .navbar.scrolled .navbar-brand {
-        color: #1a1a1a !important;
-        transform: scale(0.9);
-      }
-
-      .navbar .nav-link, .navbar.scrolled .nav-link {
-        color: #333 !important;
-        padding: 12px 15px !important;
-        margin: 4px 0;
-      }
-
-      .navbar-collapse {
-        background: #fff;
-        margin-top: 10px;
-        border-radius: 15px;
-        padding: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .navbar-collapse::-webkit-scrollbar {
-        width: 4px;
-      }
-
-      .navbar-collapse::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-      }
-
-      .navbar-collapse::-webkit-scrollbar-thumb {
-        background: #0d6efd;
-        border-radius: 10px;
-      }
-
-      .navbar .dropdown-menu {
-        position: static !important;
-        transform: none !important;
-        box-shadow: none;
-        background: #f8f9fa;
-        margin-top: 5px !important;
-        margin-bottom: 10px;
-        padding: 8px;
-        max-height: none;
-        overflow: visible;
-        animation: none;
-      }
-
-      .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-      }
-
-      .navbar .nav-link::after {
-        display: none;
-      }
-
-      .navbar .dropdown-toggle {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-      
-      .navbar .dropdown-toggle::before {
-        order: 1;
-      }
-
-      .navbar-nav {
-        gap: 0 !important;
-      }
-
-      .nav-item {
-        width: 100%;
-      }
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero-section {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-    }
-
-    .hero-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.1);
-      animation: slowZoom 20s infinite alternate;
-    }
-
-    @keyframes slowZoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.1); }
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-
-    .hero-content p {
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      font-weight: 300;
-      letter-spacing: 8px;
-      color: #ff9800;
-    }
-
-    /* ===== SECCIONES ===== */
-    .section-padding {
-      padding: 80px 0;
-    }
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    @media (max-width: 768px) {
-      .section-padding {
-        padding: 50px 0;
-      }
-    }
-
-    .badge-custom {
-      background: rgba(47, 99, 211, 0.1);
-      color: #2f4dd3;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-
-    .alianza-card {
-      background: white;
-      border-radius: 24px;
-      padding: 35px 25px;
-      text-align: center;
-      height: 100%;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid #eee;
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .alianza-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #2f4dd3 0%, #525eff 100%);
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.4s ease;
-    }
-
-    .alianza-card:hover {
-      transform: translateY(-15px);
-      border-color: transparent;
-      color: white;
-      box-shadow: 0 20px 40px rgba(47, 99, 211, 0.3);
-    }
-
-    .alianza-card:hover::before {
-      opacity: 1;
-    }
-
-    .alianza-logo {
-      width: 120px;
-      height: 80px;
-      object-fit: contain;
-      margin: 0 auto 20px;
-      background: #fff;
-      border-radius: 12px;
-      padding: 8px;
-      transition: all 0.4s ease;
-    }
-
-    .alianza-card:hover .alianza-logo {
-      background: rgba(255,255,255,0.2);
-      transform: scale(1.05);
-    }
-
-    .alianza-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #1a1a1a;
-      transition: color 0.4s ease;
-    }
-
-    .alianza-card:hover .alianza-title {
-      color: white;
-    }
-
-    .alianza-desc {
-      color: #666;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      transition: color 0.4s ease;
-    }
-
-    .alianza-card:hover .alianza-desc {
-      color: rgba(255,255,255,0.9);
-    }
-
-    .alianza-tag {
-      display: inline-block;
-      background: #2f4dd3;
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .alianza-card:hover .alianza-tag {
-      background: white;
-      color: #2f4dd3;
-    }
-
-    .representaciones-section {
-      background: #f8f9fc;
-    }
-
-    .representacion-card {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      height: 100%;
-      transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .representacion-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(47, 99, 211, 0.15);
-    }
-
-    .representacion-icon {
-      font-size: 3rem;
-      color: #2f4dd3;
-      margin-bottom: 20px;
-    }
-
-    .educativa-card {
-      display: flex;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .educativa-card:hover {
-      transform: translateX(8px);
-      box-shadow: 0 10px 25px rgba(47, 99, 211, 0.2);
-    }
-
-    .educativa-icon {
-      background: #2f4dd3;
-      width: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .educativa-icon i {
-      font-size: 3rem;
-      color: white;
-    }
-
-    .educativa-info {
-      padding: 25px;
-      flex: 1;
-    }
-
-    .educativa-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #1a1a1a;
-    }
-
-    .membresias-section {
-      background: linear-gradient(135deg, #1a2a3a, #2a3a4a);
-      color: white;
-    }
-
-    .membresia-card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      height: 100%;
-      transition: all 0.3s;
-    }
-
-    .membresia-card:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-5px);
-    }
-
-    .membresia-icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .stat-item h3 {
-      color: #2f4dd3;
-      font-size: 2.5rem;
-      margin-bottom: 5px;
-    }
-
-    .stat-item p {
-      font-size: 0.9rem;
-      color: #666;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    @media (max-width: 768px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        text-align: center;
-      }
-      .educativa-card {
-        flex-direction: column;
-      }
-      .educativa-icon {
-        width: 100%;
-        padding: 20px;
-      }
-    }
-
-    .cta-proveedores {
-      background: linear-gradient(135deg, #2f4dd3, #525eff);
-      color: white;
-      text-align: center;
-    }
-
-    .btn-cta {
-      background: white;
-      color: #2f4dd3;
-      padding: 12px 35px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-block;
-    }
-
-    .btn-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      color: #2f4dd3;
-    }
-
-    /* ===== FOOTER MODERNO - ANCHO COMPLETO + ICONOS MÁS PEQUEÑOS ===== */
-    .footer-modern {
-      background: radial-gradient(circle at 50% 0%, rgba(255, 179, 71, 0.08), transparent 50%), #0b0f19;
-      color: #94a3b8;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-modern .container-fluid,
-    .footer-modern .container {
-      max-width: 100%;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .footer-modern .container,
-      .footer-modern .container-fluid {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-    }
-
-    .footer-modern::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(255, 179, 71, 0) 0%, #ffb347 15%, #ffdd00 50%, #ffb347 85%, rgba(255, 179, 71, 0) 100%);
-      background-size: 200% 100%;
-      animation: gradientMove 4s infinite linear;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-
-    .footer-modern h4, .footer-modern h5 {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1.5rem !important;
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      font-size: 1.1rem;
-    }
-
-    .footer-modern h4 {
-      font-size: 1.4rem;
-    }
-
-    .footer-modern h4:after, .footer-modern h5:after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 30px;
-      height: 2px;
-      background: #ffdd00;
-      border-radius: 2px;
-      transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    .footer-modern h4:hover:after, .footer-modern h5:hover:after {
-      width: 50px;
-    }
-
-    .footer-link {
-      color: #94a3b8;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-      padding-left: 0;
-      font-size: 0.85rem;
-      margin-bottom: 8px;
-    }
-
-    .footer-link:hover {
-      color: #fff;
-      transform: translateX(6px);
-      text-shadow: 0 0 8px rgba(255, 221, 0, 0.3);
-    }
-
-    .footer-link i {
-      margin-right: 6px;
-      font-size: 0.7rem;
-      opacity: 0.5;
-      transition: all 0.3s ease;
-    }
-
-    .footer-link:hover i {
-      opacity: 1;
-      color: #ffdd00;
-      transform: scale(1.15);
-    }
-
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-decoration: none;
-      color: #cbd5e1;
-      margin-right: 10px;
-      backdrop-filter: blur(5px);
-      font-size: 0.9rem;
-    }
-
-    .social-links a:hover {
-      color: white;
-      transform: translateY(-4px) scale(1.08);
-    }
-
-    .social-links a.fb:hover {
-      background: #3b5998;
-      border-color: #3b5998;
-      box-shadow: 0 8px 15px rgba(59, 89, 152, 0.3);
-    }
-
-    .social-links a.ln:hover {
-      background: #0077b5;
-      border-color: #0077b5;
-      box-shadow: 0 8px 15px rgba(0, 119, 181, 0.3);
-    }
-
-    .social-links a.wa:hover {
-      background: #25d366;
-      border-color: #25d366;
-      box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3);
-    }
-
-    .social-links a.ig:hover {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      border-color: transparent;
-      box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
-    }
-
-    /* Iconos de contacto más pequeños y proporcionados */
-    .contact-info-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 0.75rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      padding: 4px 0;
-      border-radius: 8px;
-    }
-
-    .contact-info-item i {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      background: rgba(255, 221, 0, 0.08);
-      border: 1px solid rgba(255, 221, 0, 0.15);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 0.9rem;
-      color: #ffdd00;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .contact-info-item:hover i {
-      background: #ffdd00;
-      color: #0b0f19;
-      transform: scale(1.08) rotate(6deg);
-      box-shadow: 0 0 12px rgba(255, 221, 0, 0.3);
-    }
-
-    .contact-text {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      transition: color 0.3s ease;
-      word-break: break-word;
-      line-height: 1.4;
-    }
-
-    .contact-info-item:hover .contact-text {
-      color: #fff;
-    }
-
-    .text-muted-white {
-      color: #94a3b8;
-      line-height: 1.6;
-      font-size: 0.85rem;
-    }
-
-    .footer-brand-title {
-      background: linear-gradient(90deg, #fff 0%, #ffdd00 100%);
-      -webkit-text-fill-color: transparent;
-      font-weight: 800 !important;
-      letter-spacing: 1px;
-      font-size: 1.6rem;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #25D366;
-      color: white;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 1000;
-      transition: all 0.3s;
-    }
-    
-    .whatsapp-float:hover {
-      background: #128C7E;
-      color: white;
-      transform: scale(1.1);
-    }
-    
-    @media (max-width: 768px) {
-      .whatsapp-float {
-        width: 45px;
-        height: 45px;
-        font-size: 24px;
-        bottom: 20px;
-        right: 20px;
-      }
-      .contact-info-item i {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
-      }
-      .contact-text {
-        font-size: 0.78rem;
-      }
-      .footer-modern h4, .footer-modern h5 {
-        margin-bottom: 1.2rem !important;
-      }
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    
-    .btn {
-      white-space: normal;
-      word-wrap: break-word;
-    }
-
-    /* Ajustes para que las listas se vean compactas */
-    .footer-modern ul {
-      margin-bottom: 0;
-    }
-
-    .footer-modern ul li {
-      margin-bottom: 6px;
-    }
-
-    hr {
-      margin: 2rem 0 1.5rem;
-    }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a2e;
+        }
+        :root {
+            --soldesp-blue: #0a2540;
+            --soldesp-blue-dark: #051a2c;
+            --soldesp-orange: #ff6b00;
+            --soldesp-orange-light: #ff8c3a;
+            --soldesp-white: #ffffff;
+            --soldesp-gray: #6c757d;
+            --soldesp-gray-light: #f8f9fa;
+        }
+        .navbar {
+            background: rgba(10, 37, 64, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            transition: all 0.4s ease;
+            z-index: 1080;
+            border-bottom: 1px solid rgba(255,107,0,0.2);
+        }
+        .navbar.scrolled {
+            background: rgba(5, 26, 44, 0.98) !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .navbar-brand img {
+            height: 48px;
+            width: auto;
+        }
+        .navbar-brand .logo-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .navbar-nav {
+            gap: 0.5rem;
+        }
+        .navbar .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 8px 18px !important;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        .navbar .nav-link:hover {
+            color: var(--soldesp-orange) !important;
+            background: rgba(255,107,0,0.1);
+        }
+        /* Eliminamos el estilo active para que NUNCA se marque en naranja */
+        .navbar-toggler {
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+        }
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        .dropdown-menu {
+            background: var(--soldesp-blue);
+            border: 1px solid rgba(255,107,0,0.2);
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .dropdown-item {
+            color: rgba(255,255,255,0.85);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .dropdown-item:hover {
+            background: var(--soldesp-orange);
+            color: white;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+        .dropdown-toggle::before {
+            content: '\f282';
+            font-family: 'bootstrap-icons';
+            margin-left: 8px;
+            font-size: 0.7rem;
+        }
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: var(--soldesp-blue);
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 16px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .navbar-nav {
+                gap: 0;
+            }
+            .nav-item {
+                width: 100%;
+            }
+            .navbar .nav-link {
+                padding: 12px 15px !important;
+            }
+            .dropdown-menu {
+                position: static !important;
+                background: rgba(255,255,255,0.08);
+                border: none;
+                padding: 10px 0 10px 20px;
+                width: 100%;
+                display: none;
+            }
+            .dropdown-menu.show {
+                display: block;
+            }
+            .dropdown-toggle {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .dropdown-toggle::after {
+                display: inline-block !important;
+            }
+            .dropdown-toggle::before {
+                display: none;
+            }
+        }
+        /* ===== HERO - PANTALLA COMPLETA ===== */
+        .hero-alianzas {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-alianzas .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-alianzas .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
+            z-index: 1;
+        }
+        .hero-content-alianzas {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,107,0,0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,107,0,0.4);
+        }
+        .hero-alianzas h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+        }
+        .hero-alianzas p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            color: var(--soldesp-orange);
+            letter-spacing: 4px;
+            margin-top: 0.5rem;
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--soldesp-blue);
+            margin-bottom: 1rem;
+        }
+        .title-underline {
+            width: 80px;
+            height: 3px;
+            background: var(--soldesp-orange);
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+        .badge-custom-modern {
+            display: inline-block;
+            background: rgba(255,107,0,0.1);
+            color: var(--soldesp-orange);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+        /* ===== TARJETAS DE ALIANZAS ===== */
+        .alianza-card-modern {
+            background: white;
+            border-radius: 24px;
+            padding: 35px 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .alianza-card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--soldesp-blue), var(--soldesp-blue-dark));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        .alianza-card-modern:hover::before {
+            opacity: 1;
+        }
+        .alianza-card-modern > * {
+            position: relative;
+            z-index: 1;
+        }
+        .alianza-card-modern:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+            border-color: var(--soldesp-orange-light);
+        }
+        .alianza-card-modern:hover h3,
+        .alianza-card-modern:hover p {
+            color: white;
+        }
+        .alianza-logo-modern {
+            max-width: 120px;
+            height: 80px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            transition: all 0.3s;
+        }
+        .alianza-card-modern:hover .alianza-logo-modern {
+            filter: brightness(0) invert(1);
+            transform: scale(1.05);
+        }
+        .alianza-title-modern {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--soldesp-blue);
+        }
+        .alianza-desc-modern {
+            color: var(--soldesp-gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .alianza-tag-modern {
+            display: inline-block;
+            background: rgba(255,107,0,0.1);
+            color: var(--soldesp-orange);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .alianza-card-modern:hover .alianza-tag-modern {
+            background: white;
+            color: var(--soldesp-orange);
+        }
+        /* ===== REPRESENTACIONES ===== */
+        .representacion-card-modern {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            height: 100%;
+        }
+        .representacion-card-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--soldesp-orange-light);
+        }
+        .representacion-icon-modern {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,107,0,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s;
+        }
+        .representacion-card-modern:hover .representacion-icon-modern {
+            background: var(--soldesp-orange);
+        }
+        .representacion-icon-modern i {
+            font-size: 32px;
+            color: var(--soldesp-orange);
+            transition: all 0.3s;
+        }
+        .representacion-card-modern:hover .representacion-icon-modern i {
+            color: white;
+        }
+        .representacion-card-modern h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--soldesp-blue);
+        }
+        /* ===== TARJETAS EDUCATIVAS ===== */
+        .educativa-card-modern {
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            margin-bottom: 25px;
+        }
+        .educativa-card-modern:hover {
+            transform: translateX(8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: var(--soldesp-orange-light);
+        }
+        .educativa-icon-modern {
+            width: 100px;
+            background: linear-gradient(135deg, var(--soldesp-blue), var(--soldesp-blue-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .educativa-icon-modern i {
+            font-size: 3rem;
+            color: white;
+        }
+        .educativa-info-modern {
+            padding: 25px;
+            flex: 1;
+        }
+        .educativa-title-modern {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--soldesp-blue);
+        }
+        .educativa-info-modern p {
+            color: var(--soldesp-gray);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .educativa-tag-modern {
+            display: inline-block;
+            background: rgba(255,107,0,0.1);
+            color: var(--soldesp-orange);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        /* ===== MEMBRESÍAS ===== */
+        .membresia-section {
+            background: linear-gradient(135deg, var(--soldesp-blue), var(--soldesp-blue-dark));
+            color: white;
+        }
+        .membresia-card-modern {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .membresia-card-modern:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.1);
+        }
+        .membresia-icon-modern {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        /* ===== ESTADÍSTICAS ===== */
+        .stats-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .stat-item-modern {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-number-modern {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--soldesp-orange);
+            margin-bottom: 10px;
+        }
+        /* ===== CTA ===== */
+        .cta-proveedores-modern {
+            background: linear-gradient(135deg, var(--soldesp-orange), var(--soldesp-orange-light));
+            color: white;
+            text-align: center;
+        }
+        .btn-cta-modern {
+            background: white;
+            color: var(--soldesp-orange);
+            padding: 12px 35px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-cta-modern:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: var(--soldesp-orange);
+        }
+        /* ===== FOOTER ===== */
+        .footer-premium {
+            background: linear-gradient(135deg, #051a2c 0%, #030f1a 100%);
+            color: #94a3b8;
+            position: relative;
+        }
+        .footer-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--soldesp-orange), var(--soldesp-orange-light), var(--soldesp-orange));
+            animation: gradientMove 3s infinite linear;
+            background-size: 200% 100%;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .footer-premium h4, .footer-premium h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .footer-premium h4:after, .footer-premium h5:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--soldesp-orange);
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .footer-link-premium {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        .footer-link-premium:hover {
+            color: var(--soldesp-orange);
+            transform: translateX(5px);
+        }
+        .contact-info-premium {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 5px 0;
+            transition: all 0.3s;
+            border-radius: 10px;
+        }
+        .contact-info-premium:hover {
+            transform: translateX(5px);
+        }
+        .contact-info-premium i {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,107,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--soldesp-orange);
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .contact-info-premium:hover i {
+            background: var(--soldesp-orange);
+            color: white;
+            transform: scale(1.05);
+        }
+        .contact-info-premium span {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
+        .social-links-premium {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .social-links-premium a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-links-premium a:hover {
+            transform: translateY(-5px);
+        }
+        .social-links-premium a.fb:hover { background: #1877f2; color: white; }
+        .social-links-premium a.ln:hover { background: #0077b5; color: white; }
+        .social-links-premium a.wa:hover { background: #25d366; color: white; }
+        .social-links-premium a.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); color: white; }
+        .copyright-premium {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 25px;
+            margin-top: 20px;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .section-padding { padding: 50px 0; }
+            .hero-alianzas { height: 100vh; min-height: 100vh; }
+            .stats-grid-modern { grid-template-columns: repeat(2, 1fr); }
+            .educativa-card-modern { flex-direction: column; }
+            .educativa-icon-modern { width: 100%; padding: 20px; }
+            .stat-number-modern { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-  <nav class="navbar navbar-expand-lg position-fixed top-0 start-0 w-100" id="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
-        <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" width="45" height="38" class="me-2">
-        <span>SOLDESP</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav gap-2 align-items-lg-center">
-          <li class="nav-item"><a class="nav-link fw-semibold" href="index.html">INICIO</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="Nosotros.html">NOSOTROS</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SERVICIOS</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
-              <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
-              <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-              <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
-                <br>Desalinizadoras</a></li>
-              <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
-                <br>de Estructuras Metálicas</a></li>
-              <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
-                <br>Spool en Plantas</a></li>
-              <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
-              <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
-              <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+<!-- NAVBAR MODERNO - SIN ACTIVE EN ALIANZAS -->
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo">
+            <span class="logo-text">SOLDESP</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+                <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">SERVICIOS</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
+                        <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
+                        <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
+                        <li><a class="dropdown-item" href="Calderia.html">Caldería y Estructuras</a></li>
+                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Montaje de Piping</a></li>
+                        <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="Proyectos.html">PROYECTOS</a></li>
+                <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>
+                <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
+                <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>  <!-- SIN active -->
+                <li class="nav-item"><a class="nav-link" href="Trabajos.html">TRABAJOS</a></li>
             </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="Proyectos.html">PROYECTOS</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="Ubicación.html">UBICACIÓN</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="Trabajos.html">TRABAJA CON NOSOTROS</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="Clientes.html">CLIENTES</a></li>
-        </ul>
-      </div>
+        </div>
     </div>
-  </nav>
+</nav>
 
-  <section class="hero-section">
-    <img src="SOLDESP fondo.jpg" class="hero-img" alt="SOLDESP Hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content text-center">
-      <h1 data-aos="fade-up" data-aos-delay="200">ALIANZAS ESTRATÉGICAS</h1>
-      <p data-aos="fade-up" data-aos-delay="400">TRABAJAMOS DE LA MANO CON LOS MEJORES PARA OFRECERTE SOLUCIONES INTEGRALES</p>
+<!-- HERO SECTION - PANTALLA COMPLETA -->
+<section class="hero-alianzas">
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="Soldadura2.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="container hero-content-alianzas">
+        <div data-aos="fade-up">
+            <div class="hero-badge">TRABAJAMOS DE LA MANO</div>
+            <h1>ALIANZAS ESTRATÉGICAS</h1>
+            <p>TRABAJAMOS DE LA MANO CON LOS MEJORES</p>
+        </div>
     </div>
-  </section>
+</section>
 
-  <section class="section-padding">
+<!-- SOCIOS ESTRATÉGICOS -->
+<section class="section-padding">
     <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div class="badge-custom">Nuestros Socios</div>
-        <h2 class="display-5 fw-bold mb-4"><i class="bi bi-list-stars text-primary"></i> Socios Estratégicos</h2>
-        <p class="text-muted">Empresas líderes que confían y trabajan junto a SOLDESP</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="alianza-card">
-            <img src="lincoln-electric-logo.png" class="alianza-logo" alt="Lincoln Electric">
-            <h3 class="alianza-title">Lincoln Electric</h3>
-            <p class="alianza-desc">Proveedor oficial de equipos de soldadura y consumibles. Acceso a tecnología de punta y capacitación continua.</p>
-            <span class="alianza-tag">Proveedor Oficial</span>
-          </div>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge-custom-modern">Nuestros Socios</span>
+            <h2 class="section-title">Socios Estratégicos</h2>
+            <div class="title-underline"></div>
+            <p class="text-muted mt-3">Empresas líderes que confían y trabajan junto a SOLDESP</p>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="alianza-card">
-            <img src="Miller-electric-logo.webp" class="alianza-logo" alt="Miller Electric">
-            <h3 class="alianza-title">Miller Electric</h3>
-            <p class="alianza-desc">Distribuidores autorizados de equipos Miller, garantizando repuestos originales y soporte técnico especializado.</p>
-            <span class="alianza-tag">Distribuidor Autorizado</span>
-          </div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="alianza-card-modern">
+                    <img src="lincoln-electric-logo.png" class="alianza-logo-modern" alt="Lincoln Electric">
+                    <h3 class="alianza-title-modern">Lincoln Electric</h3>
+                    <p class="alianza-desc-modern">Proveedor oficial de equipos de soldadura y consumibles. Acceso a tecnología de punta y capacitación continua.</p>
+                    <span class="alianza-tag-modern">Proveedor Oficial</span>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="alianza-card-modern">
+                    <img src="Miller-electric-logo.webp" class="alianza-logo-modern" alt="Miller Electric">
+                    <h3 class="alianza-title-modern">Miller Electric</h3>
+                    <p class="alianza-desc-modern">Distribuidores autorizados de equipos Miller, garantizando repuestos originales y soporte técnico especializado.</p>
+                    <span class="alianza-tag-modern">Distribuidor Autorizado</span>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="alianza-card-modern">
+                    <img src="3M-peru-logo.png" class="alianza-logo-modern" alt="3M">
+                    <h3 class="alianza-title-modern">3M Perú</h3>
+                    <p class="alianza-desc-modern">Alianza en equipos de protección personal y sistemas de ventilación para soldadura de alta calidad.</p>
+                    <span class="alianza-tag-modern">Proveedor Premium</span>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="alianza-card">
-            <img src="3M-peru-logo.png" class="alianza-logo" alt="3M">
-            <h3 class="alianza-title">3M Perú</h3>
-            <p class="alianza-desc">Alianza en equipos de protección personal y sistemas de ventilación para soldadura de alta calidad.</p>
-            <span class="alianza-tag">Proveedor Premium</span>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section class="section-padding representaciones-section">
+<!-- REPRESENTACIONES EXCLUSIVAS -->
+<section class="section-padding" style="background: var(--soldesp-gray-light);">
     <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div class="badge-custom">Exclusividad</div>
-        <h2 class="display-5 fw-bold mb-4">
-          <span class="material-symbols-outlined text-primary" style="font-size:51px;">factory</span>
-          Representaciones Exclusivas
-          <span class="material-symbols-outlined text-primary" style="font-size:51px;">factory</span>
-        </h2>
-        <p class="text-muted">Marcas internacionales que solo encontrarás en SOLDESP</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="representacion-card">
-            <div class="representacion-icon"><i class="bi bi-shield-check"></i></div>
-            <h4>ESAB</h4>
-            <p class="text-muted">Representantes oficiales en la región sur del Perú de equipos de soldadura ESAB.</p>
-          </div>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge-custom-modern">Exclusividad</span>
+            <h2 class="section-title">Representaciones Exclusivas</h2>
+            <div class="title-underline"></div>
+            <p class="text-muted mt-3">Marcas internacionales que solo encontrarás en SOLDESP</p>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="representacion-card">
-            <div class="representacion-icon"><i class="bi bi-droplet"></i></div>
-            <h4>Sika Perú</h4>
-            <p class="text-muted">Distribuidores autorizados de productos químicos y recubrimientos industriales Sika.</p>
-          </div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="representacion-card-modern">
+                    <div class="representacion-icon-modern"><i class="bi bi-shield-check"></i></div>
+                    <h4>ESAB</h4>
+                    <p class="text-muted">Representantes oficiales en la región sur del Perú de equipos de soldadura ESAB.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="representacion-card-modern">
+                    <div class="representacion-icon-modern"><i class="bi bi-droplet"></i></div>
+                    <h4>Sika Perú</h4>
+                    <p class="text-muted">Distribuidores autorizados de productos químicos y recubrimientos industriales Sika.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="representacion-card-modern">
+                    <div class="representacion-icon-modern"><i class="bi bi-brush"></i></div>
+                    <h4>PPG Industries</h4>
+                    <p class="text-muted">Pinturas industriales y recubrimientos anticorrosivos de alta gama.</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="representacion-card">
-            <div class="representacion-icon"><i class="bi bi-brush"></i></div>
-            <h4>PPG Industries</h4>
-            <p class="text-muted">Pinturas industriales y recubrimientos anticorrosivos de alta gama.</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section class="section-padding">
+<!-- ALIANZAS EDUCATIVAS -->
+<section class="section-padding">
     <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div class="badge-custom">FORMACIÓN & FUTURO</div>
-        <h2 class="display-5 fw-bold mb-4"><i class="bi bi-mortarboard-fill text-primary"></i> Alianzas Educativas</h2>
-        <p class="text-muted">Formando a la próxima generación de profesionales en soldadura</p>
-      </div>
-      <div class="educativa-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="educativa-icon"><i class="bi bi-mortarboard-fill"></i></div>
-        <div class="educativa-info"><h4 class="educativa-title">SENATI Ilo</h4><p class="text-muted mb-2">Convenio para prácticas pre-profesionales, capacitación docente y donación de equipos para talleres de soldadura de última generación.</p><span class="alianza-tag">Desde 2015</span></div>
-      </div>
-      <div class="educativa-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="educativa-icon"><i class="bi bi-building"></i></div>
-        <div class="educativa-info"><h4 class="educativa-title">Universidad Nacional de Moquegua</h4><p class="text-muted mb-2">Alianza para pasantías de estudiantes de ingeniería mecánica y proyectos de investigación aplicada en soldadura avanzada.</p><span class="alianza-tag">Desde 2018</span></div>
-      </div>
-      <div class="educativa-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="educativa-icon"><i class="bi bi-cpu"></i></div>
-        <div class="educativa-info"><h4 class="educativa-title">CITE Industrial</h4><p class="text-muted mb-2">Centro de innovación tecnológica para certificación de soldadores y desarrollo de técnicas de soldadura.</p><span class="alianza-tag">Desde 2020</span></div>
-      </div>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge-custom-modern">Formación & Futuro</span>
+            <h2 class="section-title">Alianzas Educativas</h2>
+            <div class="title-underline"></div>
+            <p class="text-muted mt-3">Formando a la próxima generación de profesionales en soldadura</p>
+        </div>
+        <div class="educativa-card-modern" data-aos="fade-up" data-aos-delay="100">
+            <div class="educativa-icon-modern"><i class="bi bi-mortarboard-fill"></i></div>
+            <div class="educativa-info-modern">
+                <h4 class="educativa-title-modern">SENATI Ilo</h4>
+                <p>Convenio para prácticas pre-profesionales, capacitación docente y donación de equipos para talleres de soldadura de última generación.</p>
+                <span class="educativa-tag-modern">Desde 2015</span>
+            </div>
+        </div>
+        <div class="educativa-card-modern" data-aos="fade-up" data-aos-delay="200">
+            <div class="educativa-icon-modern"><i class="bi bi-building"></i></div>
+            <div class="educativa-info-modern">
+                <h4 class="educativa-title-modern">Universidad Nacional de Moquegua</h4>
+                <p>Alianza para pasantías de estudiantes de ingeniería mecánica y proyectos de investigación aplicada en soldadura avanzada.</p>
+                <span class="educativa-tag-modern">Desde 2018</span>
+            </div>
+        </div>
+        <div class="educativa-card-modern" data-aos="fade-up" data-aos-delay="300">
+            <div class="educativa-icon-modern"><i class="bi bi-cpu"></i></div>
+            <div class="educativa-info-modern">
+                <h4 class="educativa-title-modern">CITE Industrial</h4>
+                <p>Centro de innovación tecnológica para certificación de soldadores y desarrollo de técnicas de soldadura.</p>
+                <span class="educativa-tag-modern">Desde 2020</span>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- BENEFICIOS PARA ALIADOS -->
-  <section class="section-padding">
+<!-- MEMBRESÍAS -->
+<section class="membresia-section section-padding">
     <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div class="badge-custom">¿Por qué aliarte con nosotros?</div>
-        <h2 class="display-5 fw-bold mb-4"><i class="bi bi-gift-fill text-primary"></i> Beneficios Exclusivos</h2>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-          <div class="text-center p-4"><div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;"><i class="bi bi-truck fs-1 text-primary"></i></div><h5 class="fw-bold">Logística Preferencial</h5><p class="text-muted small">Almacenamiento y distribución en toda la macro región sur</p></div>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge-custom-modern" style="background: rgba(255,255,255,0.2); color: white;">Prestigio</span>
+            <h2 class="section-title" style="color: white;">Membresías y Cámaras</h2>
+            <div class="title-underline" style="background: var(--soldesp-orange);"></div>
+            <p class="text-white-50 mt-3">Reconocimiento y prestigio en la industria</p>
         </div>
-        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-          <div class="text-center p-4"><div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;"><i class="bi bi-megaphone fs-1 text-primary"></i></div><h5 class="fw-bold">Co-marketing</h5><p class="text-muted small">Campañas conjuntas y visibilidad en nuestros canales</p></div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="membresia-card-modern">
+                    <div class="membresia-icon-modern"><i class="bi bi-building"></i></div>
+                    <h4>Cámara de Comercio de Ilo</h4>
+                    <p class="opacity-75">Miembro activo desde 2010</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="membresia-card-modern">
+                    <div class="membresia-icon-modern"><i class="bi bi-gear"></i></div>
+                    <h4>Sociedad Peruana de Soldadura</h4>
+                    <p class="opacity-75">Miembro fundador</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="membresia-card-modern">
+                    <div class="membresia-icon-modern"><i class="bi bi-people"></i></div>
+                    <h4>ASME Sección Perú</h4>
+                    <p class="opacity-75">Miembro corporativo</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
-          <div class="text-center p-4"><div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;"><i class="bi bi-people fs-1 text-primary"></i></div><h5 class="fw-bold">Capacitación Continua</h5><p class="text-muted small">Entrenamiento a tu equipo por nuestros especialistas</p></div>
-        </div>
-        <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
-          <div class="text-center p-4"><div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;"><i class="bi bi-file-earmark-text fs-1 text-primary"></i></div><h5 class="fw-bold">Certificaciones Conjuntas</h5><p class="text-muted small">Sellos de calidad y homologaciones técnicas</p></div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- GALERÍA DE EVENTOS -->
-  <section class="section-padding" style="background: #f8f9fc;">
+<!-- BENEFICIOS Y ESTADÍSTICAS -->
+<section class="section-padding">
     <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div class="badge-custom">Eventos y Capacitaciones</div>
-        <h2 class="display-5 fw-bold mb-4"><i class="bi bi-camera-fill text-primary"></i> Trabajando Juntos</h2>
-      </div>
-      <div class="row g-3">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="rounded-4 overflow shadow-sm"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400" class="img-fluid w-100" style="height: 250px; object-fit: cover;"><div class="bg-white p-3"><p class="mb-0 fw-bold small">Capacitación Lincoln Electric - 2025</p><small class="text-muted">Soldadura avanzada TIG</small></div></div>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge-custom-modern">Impacto</span>
+            <h2 class="section-title">Alianzas en Números</h2>
+            <div class="title-underline"></div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="rounded-4 overflow shadow-sm"><img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400" class="img-fluid w-100" style="height: 250px; object-fit: cover;"><div class="bg-white p-3"><p class="mb-0 fw-bold small">Feria de Seguridad con 3M</p><small class="text-muted">Equipos de protección personal</small></div></div>
+        <div class="stats-grid-modern">
+            <div class="stat-item-modern" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-number-modern">15+</div>
+                <p class="text-muted">Socios estratégicos</p>
+            </div>
+            <div class="stat-item-modern" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-number-modern">10+</div>
+                <p class="text-muted">Años de alianza</p>
+            </div>
+            <div class="stat-item-modern" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-number-modern">5</div>
+                <p class="text-muted">Representaciones exclusivas</p>
+            </div>
+            <div class="stat-item-modern" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-number-modern">3</div>
+                <p class="text-muted">Instituciones educativas</p>
+            </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="rounded-4 overflow shadow-sm"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400" class="img-fluid w-100" style="height: 250px; object-fit: cover;"><div class="bg-white p-3"><p class="mb-0 fw-bold small">Convenio Universidad Nacional Moquegua</p><small class="text-muted">Pasantías 2025</small></div></div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section class="section-padding membresias-section">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div class="badge-custom" style="background: rgba(255,255,255,0.2); color: white;">Prestigio</div>
-        <h2 class="display-5 fw-bold mb-4"><i class="fa-solid fa-building-columns text-white"></i> Membresías y Cámaras <i class="fa-solid fa-building-columns text-white"></i></h2>
-        <p class="opacity-75">Reconocimiento y prestigio en la industria</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="membresia-card">
-            <div class="membresia-icon"><i class="bi bi-building"></i></div>
-            <h4>Cámara de Comercio de Ilo</h4>
-            <p class="opacity-75">Miembro activo desde 2010</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="membresia-card">
-            <div class="membresia-icon"><i class="bi bi-gear"></i></div>
-            <h4>Sociedad Peruana de Soldadura</h4>
-            <p class="opacity-75">Miembro fundador</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="membresia-card">
-            <div class="membresia-icon"><i class="bi bi-people"></i></div>
-            <h4>ASME Sección Perú</h4>
-            <p class="opacity-75">Miembro corporativo</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-padding">
-    <div class="container">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <div class="badge-custom">Impacto</div>
-        <h2 class="display-5 fw-bold mb-4"><i class="fa-solid fa-chart-line text-primary"></i> Alianzas en Números</h2>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="100"><h3>15+</h3><p>Socios estratégicos</p></div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="200"><h3>10+</h3><p>Años de alianza</p></div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="300"><h3>5</h3><p>Representaciones exclusivas</p></div>
-        <div class="stat-item" data-aos="fade-up" data-aos-delay="400"><h3>3</h3><p>Instituciones educativas</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-padding cta-proveedores">
+<!-- CTA PROVEEDORES -->
+<section class="cta-proveedores-modern section-padding">
     <div class="container" data-aos="fade-up">
-      <h2 class="fw-bold mb-3">¿Quieres ser nuestro aliado estratégico?</h2>
-      <p class="mb-4 opacity-90">Si tu empresa ofrece productos o servicios complementarios a la soldadura industrial, queremos conocerte</p>
-      <a href="https://wa.me/51953660826?text=Hola%2C%20quiero%20ser%20proveedor%20de%20SOLDESP" class="btn-cta">
-        <i class="bi bi-whatsapp me-2"></i> Contactar al área de compras
-      </a>
+        <h2 class="fw-bold mb-3">¿Quieres ser nuestro aliado estratégico?</h2>
+        <p class="mb-4 opacity-90">Si tu empresa ofrece productos o servicios complementarios a la soldadura industrial, queremos conocerte</p>
+        <a href="https://wa.me/51953660826?text=Hola%2C%20quiero%20ser%20proveedor%20de%20SOLDESP" class="btn-cta-modern">
+            <i class="bi bi-whatsapp me-2"></i> Contactar al área de compras
+        </a>
     </div>
-  </section>
+</section>
 
-  <footer class="footer-modern py-5">
+<!-- FOOTER COMPLETO -->
+<footer class="footer-premium pt-5 pb-4">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-4 mb-lg-0">
-          <h4 class="fw-bold mb-4 text-white">SOLDESP</h4>
-          <p class="text-muted-white">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
-          <div class="social-links mt-4">
-            <a href="https://www.facebook.com/soldesp.ilo?locale=es_LA" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
-            <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
-            <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
-            <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold mb-4 text-white">Navegación</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="index.html" class="footer-link"><i class="bi bi-chevron-right"></i>Inicio</a></li>
-            <li class="mb-2"><a href="Nosotros.html" class="footer-link"><i class="bi bi-chevron-right"></i>Nosotros</a></li>
-            <li class="mb-2"><a href="Proyectos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Proyectos</a></li>
-            <li class="mb-2"><a href="Ubicación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Ubicación</a></li>
-            <li class="mb-2"><a href="Trabajos.html" class="footer-link"><i class="bi bi-chevron-right"></i>Trabaja con nosotros</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold mb-4 text-white">Servicios</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="Fabricación.html" class="footer-link"><i class="bi bi-chevron-right"></i>Fabricación Metálica</a></li>
-            <li class="mb-2"><a href="Soldaduras_especiales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Soldaduras Especiales</a></li>
-            <li class="mb-2"><a href="Plantas_Industriales.html" class="footer-link"><i class="bi bi-chevron-right"></i>Mantenimiento Plantas</a></li>
-            <li class="mb-2"><a href="Arenado.html" class="footer-link"><i class="bi bi-chevron-right"></i>Arenado y Pintura</a></li>
-            <li class="mb-2"><a href="Calderia.html" class="footer-link"><i class="bi bi-chevron-right"></i>Caldería y Estructuras</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-4">
-          <h5 class="fw-bold mb-4 text-white">Contacto</h5>
-          <div class="contact-info-item">
-            <i class="bi bi-geo-alt-fill"></i>
-            <span class="contact-text">Ilo, Moquegua - Perú</span>
-          </div>
-          <div class="contact-info-item">
-            <i class="bi bi-telephone-fill"></i>
-            <span class="contact-text">(053) 495247</span>
-          </div>
-          <div class="contact-info-item">
-            <i class="bi bi-phone-fill"></i>
-            <span class="contact-text">953660826</span>
-          </div>
-          <div class="contact-info-item">
-            <i class="bi bi-envelope-fill"></i>
-            <span class="contact-text">recursos.humanos@soldesp.com.pe</span>
-          </div>
-        </div>
-      </div>
-      <hr class="mt-4" style="border-color: rgba(255, 255, 255, 0.08) !important;">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-2 text-center text-md-start">
-        <p class="text-muted-white small mb-0">&copy; 2026 <span style="color: #ffdd00; font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
-        <p class="text-muted-white small mb-0 mt-2 mt-md-0">Ingeniería y Soldadura de Alta Calidad</p>
-      </div>
-    </div>
-  </footer>
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" height="50">
+                    <h4 class="mb-0" style="color: white;">SOLDESP</h4>
+                </div>
+                <p class="mb-4" style="line-height: 1.6; color: #94a3b8; font-size: 0.85rem;">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
+                <div class="social-links-premium">
+                    <a href="https://www.facebook.com/soldesp.ilo" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
+                    <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://wa.me/053495247" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
 
-  <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información porfavor" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
-</div>
+            <div class="col-lg-2 col-md-6">
+                <h5>Enlaces Rápidos</h5>
+                <div class="d-flex flex-column">
+                    <a href="index.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Inicio</a>
+                    <a href="Nosotros.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Nosotros</a>
+                    <a href="Proyectos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Proyectos</a>
+                    <a href="Clientes.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Clientes</a>
+                    <a href="Trabajos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Trabaja con Nosotros</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5>Servicios</h5>
+                <div class="d-flex flex-column">
+                    <a href="Fabricación.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Fabricación Metálica</a>
+                    <a href="Soldaduras_especiales.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Soldaduras Especiales</a>
+                    <a href="Plantas_Industriales.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Mantenimiento de Plantas</a>
+                    <a href="Arenado.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Arenado y Pintura</a>
+                    <a href="Calderia.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Caldería y Estructuras</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5>Contacto Directo</h5>
+                <div class="contact-info-premium">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Ilo, Moquegua - Perú</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-telephone-fill"></i>
+                    <span>(053) 495247</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-phone-fill"></i>
+                    <span>953660826</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>recursos.humanos@soldesp.com.pe</span>
+                </div>
+                <div class="contact-info-premium">
+                    <i class="bi bi-clock-fill"></i>
+                    <span>Lun - Vie: 8am - 4pm<br>Sáb: 8am - 12pm</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-premium">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small mb-0">&copy; 2026 <span style="color: var(--soldesp-orange); font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="small mb-0">Ingeniería y Soldadura de Alta Calidad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank">
+    <i class="bi bi-whatsapp"></i>
+</a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 900,
-    once: true,
-    offset: 80
-  });
-
-  const navbar = document.getElementById("navbar");
-  window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const currentPage = window.location.pathname.split("/").pop() || "Alianzas_Estrategicas.html";
-    document.querySelectorAll(".dropdown-item").forEach(item => {
-      const href = item.getAttribute("href");
-      if (href === currentPage) item.classList.add("active");
+    AOS.init({ duration: 900, once: true, offset: 80 });
+    
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
     });
-
-    const navbarCollapse = document.getElementById("navbarNav");
-    const navLinks = document.querySelectorAll(".navbar .nav-link:not(.dropdown-toggle), .dropdown-item");
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
-          const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
-          bsCollapse.hide();
+    
+    // Manejo del dropdown en móviles
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarCollapse = document.getElementById('navbarNav');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        
+        if (dropdownToggle && window.innerWidth < 992) {
+            dropdownToggle.removeAttribute('data-bs-toggle');
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('show');
+                if (dropdownMenu) dropdownMenu.classList.toggle('show');
+            });
         }
-      });
+        
+        const navLinks = document.querySelectorAll('.navbar .nav-link:not(.dropdown-toggle), .dropdown-item');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                }
+            });
+        });
     });
-  });
-  
-  document.documentElement.style.overflowX = "hidden";
-  document.body.style.overflowX = "hidden";
 </script>
 </body>
 </html>
