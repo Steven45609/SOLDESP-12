@@ -160,7 +160,8 @@
                 display: none;
             }
         }
-        /* ===== HERO - PANTALLA COMPLETA ===== */
+
+        /* ===== HERO CON IMAGEN DE FONDO - CORREGIDO ===== */
         .hero-trabajos {
             position: relative;
             width: 100%;
@@ -171,18 +172,19 @@
             justify-content: center;
             overflow: hidden;
         }
-        .hero-trabajos .bg-video {
+        
+        /* IMAGEN DE FONDO QUE CUBRE TODA LA PANTALLA */
+        .hero-trabajos .bg-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: 0;
         }
+        
         .hero-trabajos .overlay {
             position: absolute;
             top: 0;
@@ -192,6 +194,7 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
+        
         .hero-content-trabajos {
             position: relative;
             z-index: 2;
@@ -200,6 +203,7 @@
             width: 100%;
             padding: 0 20px;
         }
+        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -222,6 +226,8 @@
             letter-spacing: 4px;
             margin-top: 0.5rem;
         }
+        /* Fin Hero */
+
         .section-padding {
             padding: 80px 0;
         }
@@ -585,11 +591,10 @@
     </div>
 </nav>
 
-<!-- HERO SECTION - PANTALLA COMPLETA -->
+<!-- HERO SECTION CON IMAGEN DE FONDO - CORREGIDO -->
 <section class="hero-trabajos">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="Soldadura2.mp4" type="video/mp4">
-    </video>
+    <!-- Imagen de fondo que cubre toda la pantalla -->
+    <img src="SOLDESP fondo.jpg" class="bg-image" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-trabajos">
         <div data-aos="fade-up">
@@ -611,7 +616,7 @@
             
             <!-- Oferta 1 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="job-title-modern"><i class="fa-solid fa-helmet-safety me-2" style="color: var(--soldesp-orange);"></i> Soldador Certificado (TIG/MIG)</h3>
+                <h3 class="job-title-modern"><i class="fas fa-helmet-safety me-2" style="color: var(--soldesp-orange);"></i> Soldador Certificado (TIG/MIG)</h3>
                 <div class="job-meta-modern">
                     <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
                     <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
@@ -624,7 +629,7 @@
 
             <!-- Oferta 2 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="job-title-modern"><i class="fa-solid fa-wrench me-2" style="color: var(--soldesp-orange);"></i> Supervisor de Mantenimiento Industrial</h3>
+                <h3 class="job-title-modern"><i class="fas fa-wrench me-2" style="color: var(--soldesp-orange);"></i> Supervisor de Mantenimiento Industrial</h3>
                 <div class="job-meta-modern">
                     <span><i class="bi bi-geo-alt"></i> Ilo / Tacna</span>
                     <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
@@ -637,7 +642,7 @@
 
             <!-- Oferta 3 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="job-title-modern"><i class="fa-solid fa-ruler me-2" style="color: var(--soldesp-orange);"></i> Ingeniero de Proyectos</h3>
+                <h3 class="job-title-modern"><i class="fas fa-ruler me-2" style="color: var(--soldesp-orange);"></i> Ingeniero de Proyectos</h3>
                 <div class="job-meta-modern">
                     <span><i class="bi bi-geo-alt"></i> Moquegua / Arequipa</span>
                     <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
@@ -650,7 +655,7 @@
 
             <!-- Oferta 4 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="400">
-                <h3 class="job-title-modern"><i class="fa-solid fa-paintbrush me-2" style="color: var(--soldesp-orange);"></i> Técnico en Arenado y Pintura Industrial</h3>
+                <h3 class="job-title-modern"><i class="fas fa-paintbrush me-2" style="color: var(--soldesp-orange);"></i> Técnico en Arenado y Pintura Industrial</h3>
                 <div class="job-meta-modern">
                     <span><i class="bi bi-geo-alt"></i> Ilo, Moquegua</span>
                     <span><i class="bi bi-briefcase"></i> Tiempo completo</span>

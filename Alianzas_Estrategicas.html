@@ -5,17 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>SOLDESP - Alianzas Estratégicas | Ingeniería y Soldadura Industrial</title>
     <meta name="description" content="Conoce nuestras alianzas estratégicas con marcas líderes como Lincoln Electric, Miller Electric, 3M y nuestras representaciones exclusivas en el sur del Perú.">
-    
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <style>
         * {
             margin: 0;
@@ -85,7 +78,6 @@
             color: var(--soldesp-orange) !important;
             background: rgba(255,107,0,0.1);
         }
-        /* Eliminamos el estilo active para que NUNCA se marque en naranja */
         .navbar-toggler {
             border: 1px solid rgba(255,255,255,0.3);
             background: transparent;
@@ -161,7 +153,8 @@
                 display: none;
             }
         }
-        /* ===== HERO - PANTALLA COMPLETA ===== */
+
+        /* ===== HERO CON IMAGEN DE FONDO ===== */
         .hero-alianzas {
             position: relative;
             width: 100%;
@@ -172,18 +165,18 @@
             justify-content: center;
             overflow: hidden;
         }
-        .hero-alianzas .bg-video {
+        
+        .hero-alianzas .bg-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: 0;
         }
+        
         .hero-alianzas .overlay {
             position: absolute;
             top: 0;
@@ -193,6 +186,7 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
+        
         .hero-content-alianzas {
             position: relative;
             z-index: 2;
@@ -201,6 +195,7 @@
             width: 100%;
             padding: 0 20px;
         }
+        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -223,6 +218,7 @@
             letter-spacing: 4px;
             margin-top: 0.5rem;
         }
+
         .section-padding {
             padding: 80px 0;
         }
@@ -296,8 +292,8 @@
             margin: 0 auto 20px;
             transition: all 0.3s;
         }
+        /* CORREGIDO: Eliminado el filtro que volvía blancos los logos */
         .alianza-card-modern:hover .alianza-logo-modern {
-            filter: brightness(0) invert(1);
             transform: scale(1.05);
         }
         .alianza-title-modern {
@@ -631,7 +627,7 @@
 </head>
 <body>
 
-<!-- NAVBAR MODERNO - SIN ACTIVE EN ALIANZAS -->
+<!-- NAVBAR MODERNO -->
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="index.html">
@@ -662,18 +658,16 @@
                 <li class="nav-item"><a class="nav-link" href="Proyectos.html">PROYECTOS</a></li>
                 <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>
                 <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
-                <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>  <!-- SIN active -->
+                <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>
                 <li class="nav-item"><a class="nav-link" href="Trabajos.html">TRABAJOS</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- HERO SECTION - PANTALLA COMPLETA -->
+<!-- HERO SECTION CON IMAGEN DE FONDO -->
 <section class="hero-alianzas">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="Soldadura2.mp4" type="video/mp4">
-    </video>
+    <img src="SOLDESP fondo.jpg" class="bg-image" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-alianzas">
         <div data-aos="fade-up">
@@ -960,7 +954,6 @@
         navbar.classList.toggle("scrolled", window.scrollY > 50);
     });
     
-    // Manejo del dropdown en móviles
     document.addEventListener('DOMContentLoaded', function() {
         const navbarCollapse = document.getElementById('navbarNav');
         const dropdownToggle = document.querySelector('.dropdown-toggle');

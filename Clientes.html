@@ -154,7 +154,8 @@
                 display: none;
             }
         }
-        /* ===== HERO - PANTALLA COMPLETA ===== */
+
+        /* ===== HERO CON IMAGEN DE FONDO - CORREGIDO ===== */
         .hero-clientes {
             position: relative;
             width: 100%;
@@ -165,18 +166,19 @@
             justify-content: center;
             overflow: hidden;
         }
-        .hero-clientes .bg-video {
+        
+        /* IMAGEN DE FONDO QUE CUBRE TODA LA PANTALLA */
+        .hero-clientes .bg-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: 0;
         }
+        
         .hero-clientes .overlay {
             position: absolute;
             top: 0;
@@ -186,6 +188,7 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
+        
         .hero-content-clientes {
             position: relative;
             z-index: 2;
@@ -194,6 +197,7 @@
             width: 100%;
             padding: 0 20px;
         }
+        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -216,6 +220,8 @@
             letter-spacing: 4px;
             margin-top: 0.5rem;
         }
+        /* Fin Hero */
+
         .section-padding {
             padding: 80px 0;
         }
@@ -600,7 +606,7 @@
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="Proyectos.html">PROYECTOS</a></li>
-                <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>  <!-- SIN active, SIN naranja -->
+                <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>
                 <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
                 <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>
                 <li class="nav-item"><a class="nav-link" href="Trabajos.html">TRABAJOS</a></li>
@@ -609,11 +615,10 @@
     </div>
 </nav>
 
-<!-- HERO SECTION - PANTALLA COMPLETA -->
+<!-- HERO SECTION CON IMAGEN DE FONDO - CORREGIDO -->
 <section class="hero-clientes">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="Soldadura2.mp4" type="video/mp4">
-    </video>
+    <!-- Imagen de fondo que cubre toda la pantalla -->
+    <img src="SOLDESP fondo.jpg" class="bg-image" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-clientes">
         <div data-aos="fade-up">
