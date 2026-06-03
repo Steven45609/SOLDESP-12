@@ -152,6 +152,7 @@
                 display: none;
             }
         }
+        /* SECCIÓN HERO - CORREGIDA PARA QUE EL FONDO CUBRA TODA LA PANTALLA */
         .hero-nosotros {
             position: relative;
             width: 100%;
@@ -162,14 +163,14 @@
             justify-content: center;
             overflow: hidden;
         }
-        .hero-nosotros .bg-video {
+        /* La imagen de fondo debe cubrir toda el área */
+        .hero-nosotros .hero-img {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translateX(-50%) translateY(-50%);
-            object-fit: cover;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Esto hace que la imagen cubra todo sin deformarse */
             z-index: 0;
         }
         .hero-nosotros .overlay {
@@ -348,6 +349,8 @@
             border-radius: 40px;
             text-decoration: none;
             display: inline-block;
+            transition: transform 0.3s ease;
+            border: none;
         }
         .btn-primary-soldesp:hover {
             transform: translateY(-3px);
@@ -526,11 +529,14 @@
                         <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
                         <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
                         <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
+                            <br>Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
+                            <br>de Estructuras Metálicas</a></li>
+                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
+                            <br>Spool en Plantas</a></li>
                         <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
                         <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
-                        <li><a class="dropdown-item" href="Calderia.html">Caldería y Estructuras</a></li>
-                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Montaje de Piping</a></li>
                         <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
                     </ul>
                 </li>
@@ -545,9 +551,7 @@
 </nav>
 
 <section class="hero-nosotros">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="Soldadura2.mp4" type="video/mp4">
-    </video>
+    <img src="SOLDESP fondo.jpg" class="hero-img" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-nosotros">
         <div data-aos="fade-up">
@@ -626,11 +630,9 @@
     </div>
 </section>
 
-<!-- FOOTER COMPLETO -->
 <footer class="footer-premium pt-5 pb-4">
     <div class="container">
         <div class="row g-5">
-            <!-- Columna 1: Logo y descripción -->
             <div class="col-lg-4 col-md-6">
                 <div class="d-flex align-items-center gap-3 mb-4">
                     <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo" height="50">
@@ -644,8 +646,6 @@
                     <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
-
-            <!-- Columna 2: Enlaces Rápidos -->
             <div class="col-lg-2 col-md-6">
                 <h5>Enlaces Rápidos</h5>
                 <div class="d-flex flex-column">
@@ -657,8 +657,6 @@
                     <a href="Trabajos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Trabaja con Nosotros</a>
                 </div>
             </div>
-
-            <!-- Columna 3: Servicios -->
             <div class="col-lg-3 col-md-6">
                 <h5>Servicios</h5>
                 <div class="d-flex flex-column">
@@ -670,8 +668,6 @@
                     <a href="Montaje_de_Piping.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Montaje de Piping</a>
                 </div>
             </div>
-
-            <!-- Columna 4: Contacto Directo -->
             <div class="col-lg-3 col-md-6">
                 <h5>Contacto Directo</h5>
                 <div class="contact-info-premium">
@@ -696,8 +692,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Copyright -->
         <div class="copyright-premium">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">

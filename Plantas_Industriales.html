@@ -160,7 +160,8 @@
                 display: none;
             }
         }
-        /* ===== HERO - PANTALLA COMPLETA ===== */
+
+        /* ===== HERO CON IMAGEN DE FONDO - CORREGIDO ===== */
         .hero-plantas {
             position: relative;
             width: 100%;
@@ -171,18 +172,19 @@
             justify-content: center;
             overflow: hidden;
         }
-        .hero-plantas .bg-video {
+        
+        /* IMAGEN DE FONDO QUE CUBRE TODA LA PANTALLA */
+        .hero-plantas .bg-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: 0;
         }
+        
         .hero-plantas .overlay {
             position: absolute;
             top: 0;
@@ -192,6 +194,7 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
+        
         .hero-content-plantas {
             position: relative;
             z-index: 2;
@@ -200,6 +203,7 @@
             width: 100%;
             padding: 0 20px;
         }
+        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -216,6 +220,12 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
         }
+        .hero-plantas p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--soldesp-orange);
+        }
+        /* Fin Hero */
+
         .section-padding {
             padding: 80px 0;
         }
@@ -232,6 +242,18 @@
             border-radius: 40px;
             font-size: 0.8rem;
             margin-bottom: 20px;
+        }
+        .about-image-modern {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .about-image-modern img {
+            width: 100%;
+            transition: transform 0.5s;
+        }
+        .about-image-modern:hover img {
+            transform: scale(1.03);
         }
         .equipment-list-modern {
             list-style: none;
@@ -405,6 +427,7 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s;
+            border: none;
         }
         .btn-primary-soldesp:hover {
             transform: translateY(-3px);
@@ -577,7 +600,6 @@
 </head>
 <body>
 
-<!-- NAVBAR MODERNO -->
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="index.html">
@@ -597,11 +619,14 @@
                         <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
                         <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
                         <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
+                            <br>Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
+                            <br>de Estructuras Metálicas</a></li>
+                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
+                            <br>Spool en Plantas</a></li>
                         <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
                         <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
-                        <li><a class="dropdown-item" href="Calderia.html">Caldería y Estructuras</a></li>
-                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Montaje de Piping</a></li>
                         <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
                     </ul>
                 </li>
@@ -615,42 +640,36 @@
     </div>
 </nav>
 
-<!-- HERO SECTION - PANTALLA COMPLETA -->
 <section class="hero-plantas">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="Soldadura2.mp4" type="video/mp4">
-    </video>
+    <img src="SOLDESP fondo.jpg" class="bg-image" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-plantas">
         <div data-aos="fade-up">
             <div class="hero-badge">SERVICIOS</div>
             <h1>Mantenimiento de Plantas Industriales</h1>
+            <p>Soluciones industriales para tu proyecto</p>
         </div>
     </div>
 </section>
 
-<!-- DESCRIPCIÓN DEL SERVICIO -->
+<!-- DESCRIPCIÓN DEL SERVICIO - CORREGIDO -->
 <section class="section-padding">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
                 <span class="badge-custom-modern">Mantenimiento Industrial</span>
-                <h2 class="section-title">Garantizamos la Continuidad Operativa</h2>
-                <p class="text-muted mt-4">El servicio de mantenimiento de plantas industriales de SOLDESP está orientado a garantizar la continuidad operativa, seguridad y eficiencia de los procesos productivos en diferentes sectores como minería, energía e industria en general.</p>
-                <p class="text-muted">Contamos con personal altamente capacitado en trabajos de soldadura, mecánica y mantenimiento industrial, aplicando procedimientos técnicos y estándares de calidad para asegurar la confiabilidad de los equipos e instalaciones.</p>
+                <h2 class="section-title">Mantenimiento Especializado para tu Planta</h2>
+                <p class="text-muted mt-4">El servicio de mantenimiento de plantas industriales de SOLDESP está orientado a garantizar la operatividad, seguridad y eficiencia de tus instalaciones, equipos y estructuras industriales.</p>
+                <p class="text-muted">Contamos con personal técnico especializado en mantenimiento mecánico, soldadura industrial y reparación de equipos, lo que nos permite ofrecer soluciones integrales que minimizan el tiempo de inactividad y maximizan la vida útil de tus activos.</p>
                 <ul class="equipment-list-modern mt-4">
-                    <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
-                    <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
-                    <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-                    <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
-                        <br>Desalinizadoras</a></li>
-                    <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
-                        <br>de Estructuras Metálicas</a></li>
-                    <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
-                        <br>Spool en Plantas</a></li>
-                    <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
-                    <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
-                    <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+                    <li><i class="bi bi-check-lg"></i> Mantenimiento de zarandas en Planta Concentradora</li>
+                    <li><i class="bi bi-check-lg"></i> Mantenimiento de cajones de bolas en molinos</li>
+                    <li><i class="bi bi-check-lg"></i> Reparación y cambio de mantos en chancadoras</li>
+                    <li><i class="bi bi-check-lg"></i> Mantenimiento de fajas transportadoras</li>
+                    <li><i class="bi bi-check-lg"></i> Mantenimiento de bombas y tuberías industriales</li>
+                    <li><i class="bi bi-check-lg"></i> Inspección y certificación de equipos de izaje</li>
+                    <li><i class="bi bi-check-lg"></i> Mantenimiento predictivo y preventivo</li>
+                    <li><i class="bi bi-check-lg"></i> Reparación de estructuras metálicas</li>
                 </ul>
                 <div class="mt-4">
                     <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información%20sobre%20mantenimiento%20de%20plantas" class="btn-primary-soldesp">Solicitar Cotización</a>
@@ -671,14 +690,14 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="badge-custom-modern">Soporte Integral</span>
             <h2 class="section-title">Asistencia y Soporte</h2>
-            <p class="section-subtitle" style="color: var(--soldesp-gray); max-width: 700px; margin: 0 auto;">Acompañamiento técnico durante todo el proceso de mantenimiento</p>
+            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Acompañamiento técnico durante todo el proceso de mantenimiento</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="service-card-modern">
                     <div class="service-icon-modern"><i class="bi bi-tools"></i></div>
                     <h4>Mantenimiento Preventivo</h4>
-                    <p>Evita fallas mediante inspecciones periódicas y control técnico de cada equipo.</p>
+                    <p>Evita fallas mediante inspecciones periódicas y control técnico de cada equipo e instalación.</p>
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
@@ -692,7 +711,7 @@
                 <div class="service-card-modern">
                     <div class="service-icon-modern"><i class="bi bi-shield-check"></i></div>
                     <h4>Supervisión Técnica</h4>
-                    <p>Control y seguimiento por parte de nuestros especialistas durante el proceso.</p>
+                    <p>Control y seguimiento por parte de nuestros especialistas durante todo el proceso.</p>
                 </div>
             </div>
         </div>
@@ -705,7 +724,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="badge-custom-modern">Metodología</span>
             <h2 class="section-title">Nuestro Proceso de Mantenimiento</h2>
-            <p class="section-subtitle" style="color: var(--soldesp-gray); max-width: 700px; margin: 0 auto;">Pasos que garantizan la confiabilidad de tus equipos e instalaciones</p>
+            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Pasos que garantizan la confiabilidad de tus equipos e instalaciones</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
@@ -713,7 +732,7 @@
                     <div class="process-icon-wrapper"><i class="bi bi-search"></i></div>
                     <span class="step-badge">01</span>
                     <h5 class="process-title">Identificación del requerimiento</h5>
-                    <p class="process-desc">Mantenimiento de zarandas en Planta Concentradora.</p>
+                    <p class="process-desc">Análisis de necesidades y diagnóstico inicial de equipos.</p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
@@ -721,7 +740,7 @@
                     <div class="process-icon-wrapper"><i class="bi bi-clipboard-data"></i></div>
                     <span class="step-badge">02</span>
                     <h5 class="process-title">Inspección y diagnóstico</h5>
-                    <p class="process-desc">Mantenimiento de cajones de bolas en molinos.</p>
+                    <p class="process-desc">Evaluación detallada del estado de equipos y estructuras.</p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
@@ -729,7 +748,7 @@
                     <div class="process-icon-wrapper"><i class="bi bi-file-text"></i></div>
                     <span class="step-badge">03</span>
                     <h5 class="process-title">Propuesta y cotización</h5>
-                    <p class="process-desc">Elaboración de propuesta técnica y económica.</p>
+                    <p class="process-desc">Elaboración de propuesta técnica y económica detallada.</p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="250">
@@ -737,7 +756,7 @@
                     <div class="process-icon-wrapper"><i class="bi bi-calendar-check"></i></div>
                     <span class="step-badge">04</span>
                     <h5 class="process-title">Planificación</h5>
-                    <p class="process-desc">Preparación de trabajos y recursos necesarios.</p>
+                    <p class="process-desc">Preparación de trabajos, recursos y programación.</p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
@@ -745,7 +764,7 @@
                     <div class="process-icon-wrapper"><i class="bi bi-wrench"></i></div>
                     <span class="step-badge">05</span>
                     <h5 class="process-title">Ejecución</h5>
-                    <p class="process-desc">Realización de trabajos e instalación.</p>
+                    <p class="process-desc">Realización de trabajos de mantenimiento e instalación.</p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="350">
@@ -753,23 +772,23 @@
                     <div class="process-icon-wrapper"><i class="bi bi-gear"></i></div>
                     <span class="step-badge">06</span>
                     <h5 class="process-title">Reparación de componentes</h5>
-                    <p class="process-desc">Mantenimiento mecánico especializado.</p>
+                    <p class="process-desc">Mantenimiento mecánico especializado de equipos.</p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                 <div class="process-modern-card">
                     <div class="process-icon-wrapper"><i class="bi bi-diagram-3"></i></div>
                     <span class="step-badge">07</span>
-                    <h5 class="process-title">Inspección de equipos</h5>
-                    <p class="process-desc">Verificación de grúas y equipos de izaje.</p>
+                    <h5 class="process-title">Pruebas y verificación</h5>
+                    <p class="process-desc">Inspección final y certificación de equipos reparados.</p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="450">
                 <div class="process-modern-card">
-                    <div class="process-icon-wrapper"><i class="bi bi-bricks"></i></div>
+                    <div class="process-icon-wrapper"><i class="bi bi-file-check"></i></div>
                     <span class="step-badge">08</span>
-                    <h5 class="process-title">Obras civiles</h5>
-                    <p class="process-desc">Soporte estructural y construcciones.</p>
+                    <h5 class="process-title">Entrega y seguimiento</h5>
+                    <p class="process-desc">Documentación y monitoreo post-mantenimiento.</p>
                 </div>
             </div>
         </div>

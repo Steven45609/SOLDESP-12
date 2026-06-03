@@ -153,7 +153,8 @@
                 display: none;
             }
         }
-        /* ===== HERO - PANTALLA COMPLETA ===== */
+
+        /* ===== HERO CON IMAGEN DE FONDO - PANTALLA COMPLETA ===== */
         .hero-fabricacion {
             position: relative;
             width: 100%;
@@ -164,18 +165,19 @@
             justify-content: center;
             overflow: hidden;
         }
-        .hero-fabricacion .bg-video {
+        
+        /* IMAGEN DE FONDO - CORREGIDA PARA CUBRIR TODA LA PANTALLA */
+        .hero-fabricacion .bg-image {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: 0;
         }
+        
         .hero-fabricacion .overlay {
             position: absolute;
             top: 0;
@@ -185,6 +187,7 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
+        
         .hero-content-fabricacion {
             position: relative;
             z-index: 2;
@@ -193,6 +196,7 @@
             width: 100%;
             padding: 0 20px;
         }
+        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -209,6 +213,12 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
         }
+        .hero-fabricacion p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--soldesp-orange);
+        }
+        /* Fin Hero */
+
         .section-padding {
             padding: 80px 0;
         }
@@ -225,6 +235,18 @@
             border-radius: 40px;
             font-size: 0.8rem;
             margin-bottom: 20px;
+        }
+        .about-image-modern {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .about-image-modern img {
+            width: 100%;
+            transition: transform 0.5s;
+        }
+        .about-image-modern:hover img {
+            transform: scale(1.03);
         }
         .equipment-list-modern {
             list-style: none;
@@ -392,6 +414,7 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s;
+            border: none;
         }
         .btn-primary-soldesp:hover {
             transform: translateY(-3px);
@@ -562,7 +585,6 @@
 </head>
 <body>
 
-<!-- NAVBAR MODERNO -->
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="index.html">
@@ -603,16 +625,14 @@
     </div>
 </nav>
 
-<!-- HERO SECTION - PANTALLA COMPLETA -->
 <section class="hero-fabricacion">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="Soldadura2.mp4" type="video/mp4">
-    </video>
+    <img src="SOLDESP fondo.jpg" class="bg-image" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-fabricacion">
         <div data-aos="fade-up">
             <div class="hero-badge">SERVICIOS</div>
             <h1>Servicios de Fabricación</h1>
+            <p>Soluciones industriales para tu proyecto</p>
         </div>
     </div>
 </section>
@@ -655,7 +675,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="badge-custom-modern">Soporte Integral</span>
             <h2 class="section-title">Asistencia y Soporte</h2>
-            <p class="section-subtitle" style="color: var(--soldesp-gray); max-width: 700px; margin: 0 auto;">Acompañamiento técnico durante todo el proceso de fabricación</p>
+            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Acompañamiento técnico durante todo el proceso de fabricación</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
@@ -689,7 +709,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="badge-custom-modern">Metodología</span>
             <h2 class="section-title">Nuestro Proceso de Fabricación</h2>
-            <p class="section-subtitle" style="color: var(--soldesp-gray); max-width: 700px; margin: 0 auto;">Pasos que garantizan calidad y precisión en cada proyecto</p>
+            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Pasos que garantizan calidad y precisión en cada proyecto</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
