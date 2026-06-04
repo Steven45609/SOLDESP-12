@@ -2,35 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>SOLDESP - Proyectos | Ingeniería y Soldadura Industrial</title>
-    <meta name="description" content="Portafolio de proyectos de ingeniería, soldadura especializada, fabricación y mantenimiento industrial realizados por SOLDESP en minería, energía y construcción.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #1a1a2e;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; color: #1a1a2e; }
         :root {
             --soldesp-blue: #0a2540;
             --soldesp-blue-dark: #051a2c;
             --soldesp-orange: #ff6b00;
             --soldesp-orange-light: #ff8c3a;
-            --soldesp-white: #ffffff;
-            --soldesp-gray: #6c757d;
-            --soldesp-gray-light: #f8f9fa;
         }
         .navbar {
             background: rgba(10, 37, 64, 0.95) !important;
@@ -63,9 +50,7 @@
             background-clip: text;
             color: transparent;
         }
-        .navbar-nav {
-            gap: 0.5rem;
-        }
+        .navbar-nav { gap: 0.5rem; }
         .navbar .nav-link {
             color: rgba(255,255,255,0.9) !important;
             font-weight: 600;
@@ -74,17 +59,9 @@
             transition: all 0.3s ease;
             border-radius: 8px;
         }
-        .navbar .nav-link:hover {
-            color: var(--soldesp-orange) !important;
-            background: rgba(255,107,0,0.1);
-        }
-        .navbar-toggler {
-            border: 1px solid rgba(255,255,255,0.3);
-            background: transparent;
-        }
-        .navbar-toggler-icon {
-            filter: invert(1);
-        }
+        .navbar .nav-link:hover { color: var(--soldesp-orange) !important; background: rgba(255,107,0,0.1); }
+        .navbar-toggler { border: 1px solid rgba(255,255,255,0.3); background: transparent; }
+        .navbar-toggler-icon { filter: invert(1); }
         .dropdown-menu {
             background: var(--soldesp-blue);
             border: 1px solid rgba(255,107,0,0.2);
@@ -99,13 +76,8 @@
             border-radius: 8px;
             font-size: 0.85rem;
         }
-        .dropdown-item:hover {
-            background: var(--soldesp-orange);
-            color: white;
-        }
-        .dropdown-toggle::after {
-            display: none;
-        }
+        .dropdown-item:hover { background: var(--soldesp-orange); color: white; }
+        .dropdown-toggle::after { display: none; }
         .dropdown-toggle::before {
             content: '\f282';
             font-family: 'bootstrap-icons';
@@ -121,15 +93,9 @@
                 max-height: 80vh;
                 overflow-y: auto;
             }
-            .navbar-nav {
-                gap: 0;
-            }
-            .nav-item {
-                width: 100%;
-            }
-            .navbar .nav-link {
-                padding: 12px 15px !important;
-            }
+            .navbar-nav { gap: 0; }
+            .nav-item { width: 100%; }
+            .navbar .nav-link { padding: 12px 15px !important; }
             .dropdown-menu {
                 position: static !important;
                 background: rgba(255,255,255,0.08);
@@ -138,23 +104,16 @@
                 width: 100%;
                 display: none;
             }
-            .dropdown-menu.show {
-                display: block;
-            }
+            .dropdown-menu.show { display: block; }
             .dropdown-toggle {
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
             }
-            .dropdown-toggle::after {
-                display: inline-block !important;
-            }
-            .dropdown-toggle::before {
-                display: none;
-            }
+            .dropdown-toggle::after { display: inline-block !important; }
+            .dropdown-toggle::before { display: none; }
         }
 
-        /* ===== HERO CON IMAGEN DE FONDO - CORREGIDO ===== */
         .hero-proyectos {
             position: relative;
             width: 100%;
@@ -165,8 +124,6 @@
             justify-content: center;
             overflow: hidden;
         }
-        
-        /* IMAGEN DE FONDO QUE CUBRE TODA LA PANTALLA */
         .hero-proyectos .bg-image {
             position: absolute;
             top: 0;
@@ -177,7 +134,6 @@
             object-position: center;
             z-index: 0;
         }
-        
         .hero-proyectos .overlay {
             position: absolute;
             top: 0;
@@ -187,7 +143,6 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
-        
         .hero-content-proyectos {
             position: relative;
             z-index: 2;
@@ -196,7 +151,6 @@
             width: 100%;
             padding: 0 20px;
         }
-        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -209,25 +163,19 @@
             margin-bottom: 1rem;
             border: 1px solid rgba(255,107,0,0.4);
         }
-        .hero-proyectos h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-        }
+        .hero-proyectos h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; }
         .hero-proyectos p {
             font-size: clamp(1rem, 3vw, 1.3rem);
             color: var(--soldesp-orange);
             letter-spacing: 4px;
             margin-top: 0.5rem;
         }
-        /* Fin Hero */
 
-        .section-padding {
-            padding: 80px 0;
-        }
+        .section-padding { padding: 80px 0; }
         .section-title {
             font-size: clamp(1.8rem, 4vw, 2.8rem);
             font-weight: 800;
-            color: var(--soldesp-blue);
+            color: #0a2540;
             margin-bottom: 1rem;
         }
         .title-underline {
@@ -237,7 +185,7 @@
             margin: 0 auto;
             border-radius: 3px;
         }
-        /* ===== TARJETAS DE PROYECTOS ===== */
+        
         .project-card {
             background: white;
             border-radius: 20px;
@@ -256,6 +204,7 @@
             position: relative;
             height: 250px;
             overflow: hidden;
+            cursor: pointer;
         }
         .project-img-container img {
             width: 100%;
@@ -263,9 +212,7 @@
             object-fit: cover;
             transition: transform 0.6s ease;
         }
-        .project-card:hover .project-img-container img {
-            transform: scale(1.08);
-        }
+        .project-card:hover .project-img-container img { transform: scale(1.08); }
         .img-overlay {
             position: absolute;
             top: 0;
@@ -278,22 +225,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
-        .project-card:hover .img-overlay {
-            opacity: 1;
-        }
+        .project-card:hover .img-overlay { opacity: 1; }
         .overlay-icon {
             color: white;
             font-size: 2.5rem;
             transform: translateY(20px);
             transition: transform 0.4s ease;
         }
-        .project-card:hover .overlay-icon {
-            transform: translateY(0);
-        }
-        .project-card-body {
-            padding: 1.8rem;
-        }
+        .project-card:hover .overlay-icon { transform: translateY(0); }
+        .project-card-body { padding: 1.8rem; }
         .project-category {
             display: inline-block;
             background: rgba(255,107,0,0.1);
@@ -310,10 +252,10 @@
             font-weight: 700;
             font-size: 1.3rem;
             margin-bottom: 12px;
-            color: var(--soldesp-blue);
+            color: #0a2540;
         }
         .project-card-text {
-            color: var(--soldesp-gray);
+            color: #6c757d;
             font-size: 0.85rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
@@ -328,27 +270,19 @@
             font-size: 0.85rem;
             transition: all 0.3s;
         }
-        .project-btn i {
-            transition: transform 0.3s;
-        }
-        .project-btn:hover {
-            color: var(--soldesp-orange-light);
-        }
-        .project-btn:hover i {
-            transform: translateX(5px);
-        }
-        /* ===== VIDEO SECTION ===== */
-        .video-section {
-            background: var(--soldesp-gray-light);
-        }
+        .project-btn i { transition: transform 0.3s; }
+        .project-btn:hover { color: var(--soldesp-orange-light); }
+        .project-btn:hover i { transform: translateX(5px); }
+        
+        .video-section { background: #f8f9fa; }
         .video-title {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
-            color: var(--soldesp-blue);
+            color: #0a2540;
             margin-bottom: 1rem;
         }
         .video-subtitle {
-            color: var(--soldesp-gray);
+            color: #6c757d;
             max-width: 700px;
             margin: 0 auto;
         }
@@ -359,29 +293,278 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             background: #000;
         }
-        .promo-video {
+        .promo-video { width: 100%; height: auto; display: block; }
+        
+        /* ===== LIGHTBOX MODAL ===== */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-modal.active {
+            display: flex;
+        }
+        .lightbox-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+        }
+        .lightbox-main {
+            position: relative;
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .lightbox-image {
+            max-width: 95%;
+            max-height: 80%;
+            width: auto;
             height: auto;
-            display: block;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.05s linear;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
         }
-        /* ===== BOTÓN CTA ===== */
-        .btn-primary-soldesp {
-            background: linear-gradient(135deg, var(--soldesp-orange), var(--soldesp-orange-light));
+        .lightbox-image:active { cursor: grabbing; }
+
+        /* Botones laterales (anterior/siguiente) */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .nav-btn:active { background: var(--soldesp-orange); color: white; transform: translateY(-50%) scale(0.95); }
+        .nav-prev { left: 15px; }
+        .nav-next { right: 15px; }
+
+        /* Botón cerrar */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .close-btn:active { background: #ff4444; color: white; transform: scale(0.95); }
+
+        /* Contador de imágenes */
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 18px;
+            border-radius: 30px;
             color: white;
-            padding: 12px 28px;
-            font-weight: 700;
-            border-radius: 40px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            border: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 10;
+            font-family: monospace;
         }
-        .btn-primary-soldesp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,107,0,0.4);
+
+        /* Miniaturas - en la parte inferior */
+        .thumbnails-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.8);
+            overflow-x: auto;
+            z-index: 10;
+            -webkit-overflow-scrolling: touch;
+        }
+        .thumbnails-bar::-webkit-scrollbar { height: 3px; }
+        .thumbnails-bar::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); }
+        .thumbnails-bar::-webkit-scrollbar-thumb { background: var(--soldesp-orange); border-radius: 10px; }
+        
+        .thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+        .thumb:active { transform: scale(0.95); }
+        .thumb.active-thumb {
+            opacity: 1;
+            border-color: var(--soldesp-orange);
+        }
+        
+        /* Instrucción swipe */
+        .swipe-instruction {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            padding: 6px 14px;
+            border-radius: 25px;
             color: white;
+            font-size: 0.7rem;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            white-space: nowrap;
+            pointer-events: none;
         }
-        /* ===== FOOTER ===== */
+        
+        /* ===== CONTROLES DE ZOOM RESPONSIVOS ===== */
+        /* MÓVILES: Horizontal en la parte inferior, arriba de las miniaturas */
+        @media (max-width: 768px) {
+            .zoom-controls {
+                position: absolute;
+                bottom: 85px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                z-index: 15;
+            }
+            .zoom-btn {
+                width: 55px;
+                height: 55px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-size: 1.3rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            }
+            .zoom-btn:active {
+                background: var(--soldesp-orange);
+                color: white;
+                transform: scale(0.95);
+            }
+            .thumbnails-bar {
+                padding: 10px 15px;
+            }
+            .thumb {
+                width: 50px;
+                height: 50px;
+            }
+            .nav-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+            .close-btn {
+                width: 40px;
+                height: 40px;
+                top: 15px;
+                right: 15px;
+                font-size: 1rem;
+            }
+            .image-counter {
+                bottom: 15px;
+                left: 15px;
+                font-size: 0.75rem;
+                padding: 5px 12px;
+            }
+            .swipe-instruction {
+                bottom: 155px;
+                font-size: 0.65rem;
+            }
+        }
+        
+        /* DESKTOP/LAPTOP: Vertical en esquina inferior derecha */
+        @media (min-width: 769px) {
+            .zoom-controls {
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                z-index: 15;
+            }
+            .zoom-btn {
+                width: 50px;
+                height: 50px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            .zoom-btn:hover {
+                background: var(--soldesp-orange);
+                color: white;
+                transform: scale(1.05);
+            }
+            .swipe-instruction {
+                display: none;
+            }
+            .nav-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+            .nav-prev { left: 25px; }
+            .nav-next { right: 25px; }
+        }
+        
         .footer-premium {
             background: linear-gradient(135deg, #051a2c 0%, #030f1a 100%);
             color: #94a3b8;
@@ -440,9 +623,7 @@
             transition: all 0.3s;
             border-radius: 10px;
         }
-        .contact-info-premium:hover {
-            transform: translateX(5px);
-        }
+        .contact-info-premium:hover { transform: translateX(5px); }
         .contact-info-premium i {
             width: 36px;
             height: 36px;
@@ -485,9 +666,7 @@
             text-decoration: none;
             transition: all 0.3s;
         }
-        .social-links-premium a:hover {
-            transform: translateY(-5px);
-        }
+        .social-links-premium a:hover { transform: translateY(-5px); }
         .social-links-premium a.fb:hover { background: #1877f2; color: white; }
         .social-links-premium a.ln:hover { background: #0077b5; color: white; }
         .social-links-premium a.wa:hover { background: #25d366; color: white; }
@@ -520,18 +699,10 @@
             background: #128C7E;
             color: white;
         }
-        @media (max-width: 768px) {
-            .section-padding { padding: 50px 0; }
-            .hero-proyectos { height: 100vh; min-height: 100vh; }
-            .project-img-container { height: 200px; }
-            .project-card-body { padding: 1.2rem; }
-            .video-wrapper { border-radius: 16px; }
-        }
     </style>
 </head>
 <body>
 
-<!-- NAVBAR MODERNO -->
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="index.html">
@@ -551,12 +722,9 @@
                         <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
                         <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
                         <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
-                            <br>Desalinizadoras</a></li>
-                        <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
-                            <br>de Estructuras Metálicas</a></li>
-                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
-                            <br>Spool en Plantas</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje de Estructuras Metálicas</a></li>
+                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / Spool en Plantas</a></li>
                         <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
                         <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
                         <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
@@ -572,9 +740,7 @@
     </div>
 </nav>
 
-<!-- HERO SECTION CON IMAGEN DE FONDO - CORREGIDO -->
 <section class="hero-proyectos">
-    <!-- Imagen de fondo que cubre toda la pantalla -->
     <img src="SOLDESP fondo.jpg" class="bg-image" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-proyectos">
@@ -586,7 +752,6 @@
     </div>
 </section>
 
-<!-- VIDEO PUBLICITARIO -->
 <section class="video-section section-padding">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -606,127 +771,17 @@
     </div>
 </section>
 
-<!-- PORTAFOLIO DE PROYECTOS -->
 <section class="section-padding">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <h2 class="section-title">Portafolio de Proyectos</h2>
             <div class="title-underline"></div>
         </div>
-        <div class="row g-4">
-            <!-- Proyecto 1 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="ESTRUCTURAS-METALICAS.jpg" alt="Estructuras Metálicas">
-                        <div class="img-overlay">
-                            <i class="bi bi-plus-circle overlay-icon"></i>
-                        </div>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-category">Infraestructura</span>
-                        <h5 class="project-card-title">Estructuras Metálicas</h5>
-                        <p class="project-card-text">Fabricación e instalación de estructuras metálicas para plantas industriales con altos estándares de precisión y seguridad.</p>
-                        <a href="Contacto.html" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 2 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="Soldaduras especiales_6.jpg" alt="Soldaduras Especiales">
-                        <div class="img-overlay">
-                            <i class="bi bi-plus-circle overlay-icon"></i>
-                        </div>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-category">Especialidades</span>
-                        <h5 class="project-card-title">Soldaduras Especiales</h5>
-                        <p class="project-card-text">Ejecución de soldaduras certificadas en materiales de alto desempeño garantizando integridad metalúrgica.</p>
-                        <a href="Contacto.html" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 3 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="Mantenimiento plantas industriales_3.jpg" alt="Mantenimiento Industrial">
-                        <div class="img-overlay">
-                            <i class="bi bi-plus-circle overlay-icon"></i>
-                        </div>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-category">Mantenimiento</span>
-                        <h5 class="project-card-title">Mantenimiento Industrial</h5>
-                        <p class="project-card-text">Servicios preventivos y correctivos para maximizar la disponibilidad operativa y seguridad de equipos industriales.</p>
-                        <a href="Contacto.html" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 4 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="Montaje y fabricación_2.jpg" alt="Montaje Industrial">
-                        <div class="img-overlay">
-                            <i class="bi bi-plus-circle overlay-icon"></i>
-                        </div>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-category">Montaje</span>
-                        <h5 class="project-card-title">Montaje Industrial</h5>
-                        <p class="project-card-text">Instalación y ensamblaje de equipos y tuberías con precisión milimétrica en entornos industriales complejos.</p>
-                        <a href="Contacto.html" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 5 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="Digitalización de planos.jpg" alt="Digitalización de Planos">
-                        <div class="img-overlay">
-                            <i class="bi bi-plus-circle overlay-icon"></i>
-                        </div>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-category">Ingeniería</span>
-                        <h5 class="project-card-title">Digitalización y Diseño</h5>
-                        <p class="project-card-text">Elaboración de planos técnicos en 2D y 3D facilitando la visualización y optimización de recursos.</p>
-                        <a href="Contacto.html" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 6 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="Arenado y pintado_5.jpg" alt="Arenado y Pintura">
-                        <div class="img-overlay">
-                            <i class="bi bi-plus-circle overlay-icon"></i>
-                        </div>
-                    </div>
-                    <div class="project-card-body">
-                        <span class="project-category">Recubrimientos</span>
-                        <h5 class="project-card-title">Arenado y Pintura</h5>
-                        <p class="project-card-text">Protección anticorrosiva de alto nivel para prolongar la vida útil de estructuras en ambientes agresivos.</p>
-                        <a href="Contacto.html" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="row g-4" id="proyectosContainer"></div>
     </div>
 </section>
 
-<!-- CTA -->
-<section class="py-5" style="background: linear-gradient(135deg, var(--soldesp-blue), var(--soldesp-blue-dark));">
+<section class="py-5" style="background: linear-gradient(135deg, #0a2540, #051a2c);">
     <div class="container">
         <div class="row align-items-center text-center text-md-start">
             <div class="col-md-8" data-aos="fade-right">
@@ -734,13 +789,12 @@
                 <p class="text-white-50 mb-0">Contamos con un equipo de ingenieros listos para ayudarte en tu próximo proyecto.</p>
             </div>
             <div class="col-md-4 text-md-end mt-4 mt-md-0" data-aos="fade-left">
-                <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="btn btn-light fw-bold px-4 py-2 rounded-pill" style="color: var(--soldesp-orange); text-decoration: none;">CONTACTAR AHORA</a>
+                <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="btn btn-light fw-bold px-4 py-2 rounded-pill" style="color: #ff6b00; text-decoration: none;">CONTACTAR AHORA</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FOOTER COMPLETO -->
 <footer class="footer-premium pt-5 pb-4">
     <div class="container">
         <div class="row g-5">
@@ -757,7 +811,6 @@
                     <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
-
             <div class="col-lg-2 col-md-6">
                 <h5>Enlaces Rápidos</h5>
                 <div class="d-flex flex-column">
@@ -768,7 +821,6 @@
                     <a href="Trabajos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Trabaja con Nosotros</a>
                 </div>
             </div>
-
             <div class="col-lg-3 col-md-6">
                 <h5>Servicios</h5>
                 <div class="d-flex flex-column">
@@ -779,36 +831,19 @@
                     <a href="Calderia.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Caldería y Estructuras</a>
                 </div>
             </div>
-
             <div class="col-lg-3 col-md-6">
                 <h5>Contacto Directo</h5>
-                <div class="contact-info-premium">
-                    <i class="bi bi-geo-alt-fill"></i>
-                    <span>Ilo, Moquegua - Perú</span>
-                </div>
-                <div class="contact-info-premium">
-                    <i class="bi bi-telephone-fill"></i>
-                    <span>(053) 495247</span>
-                </div>
-                <div class="contact-info-premium">
-                    <i class="bi bi-phone-fill"></i>
-                    <span>953660826</span>
-                </div>
-                <div class="contact-info-premium">
-                    <i class="bi bi-envelope-fill"></i>
-                    <span>recursos.humanos@soldesp.com.pe</span>
-                </div>
-                <div class="contact-info-premium">
-                    <i class="bi bi-clock-fill"></i>
-                    <span>Lun - Vie: 8am - 4pm<br>Sáb: 8am - 12pm</span>
-                </div>
+                <div class="contact-info-premium"><i class="bi bi-geo-alt-fill"></i><span>Ilo, Moquegua - Perú</span></div>
+                <div class="contact-info-premium"><i class="bi bi-telephone-fill"></i><span>(053) 495247</span></div>
+                <div class="contact-info-premium"><i class="bi bi-phone-fill"></i><span>953660826</span></div>
+                <div class="contact-info-premium"><i class="bi bi-envelope-fill"></i><span>recursos.humanos@soldesp.com.pe</span></div>
+                <div class="contact-info-premium"><i class="bi bi-clock-fill"></i><span>Lun - Vie: 8am - 4pm<br>Sáb: 8am - 12pm</span></div>
             </div>
         </div>
-
         <div class="copyright-premium">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="small mb-0">&copy; 2026 <span style="color: var(--soldesp-orange); font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
+                    <p class="small mb-0">&copy; 2026 <span style="color: #ff6b00; font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
                     <p class="small mb-0">Ingeniería y Soldadura de Alta Calidad</p>
@@ -822,50 +857,246 @@
     <i class="bi bi-whatsapp"></i>
 </a>
 
+<div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-container">
+        <button class="close-btn" id="closeLightbox"><i class="fas fa-times"></i></button>
+        <button class="nav-btn nav-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn nav-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="lightbox-main">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="Imagen ampliada" draggable="false">
+        </div>
+        
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomInBtn"><i class="fas fa-search-plus"></i></button>
+            <button class="zoom-btn" id="zoomOutBtn"><i class="fas fa-search-minus"></i></button>
+        </div>
+        
+        <div class="image-counter" id="lightboxCounter">1 / 1</div>
+        <div class="thumbnails-bar" id="lightboxThumbnails"></div>
+        <div class="swipe-instruction">
+            <i class="fas fa-chevron-left"></i> Desliza para cambiar <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 900, once: true, offset: 80 });
     
     const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-    });
+    window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 50));
     
-    // Manejo del dropdown en móviles
     document.addEventListener('DOMContentLoaded', function() {
         const navbarCollapse = document.getElementById('navbarNav');
         const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-        
         if (dropdownToggle && window.innerWidth < 992) {
             dropdownToggle.removeAttribute('data-bs-toggle');
             dropdownToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 this.classList.toggle('show');
-                if (dropdownMenu) dropdownMenu.classList.toggle('show');
-            });
-        }
-        
-        const navLinks = document.querySelectorAll('.navbar .nav-link:not(.dropdown-toggle), .dropdown-item');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) bsCollapse.hide();
-                }
-            });
-        });
-        
-        // Manejo del video
-        const video = document.getElementById('mainVideo');
-        if (video) {
-            video.addEventListener('loadedmetadata', function() {
-                console.log('Duración del video:', video.duration, 'segundos');
+                document.querySelector('.dropdown-menu').classList.toggle('show');
             });
         }
     });
+    
+    const proyectosData = [
+        { id: 1, titulo: "Estructuras Metálicas", categoria: "Infraestructura", descripcion: "Fabricación e instalación de estructuras metálicas para plantas industriales.", imagenPortada: "ESTRUCTURAS-METALICAS.jpg", imagenes: ["ESTRUCTURAS-METALICAS.jpg", "estructura_extra1.jpg", "estructura_extra2.jpg", "estructura_extra3.jpg"] },
+        { id: 2, titulo: "Soldaduras Especiales", categoria: "Especialidades", descripcion: "Ejecución de soldaduras certificadas en materiales de alto desempeño.", imagenPortada: "Soldaduras especiales_6.jpg", imagenes: ["Soldaduras especiales_6.jpg", "Soldaduras especiales_2.jpg", "Soldaduras especiales_4.jpg", "Soldaduras especiales_5.jpg"] },
+        { id: 3, titulo: "Mantenimiento Industrial", categoria: "Mantenimiento", descripcion: "Servicios preventivos y correctivos para equipos industriales.", imagenPortada: "Mantenimiento plantas industriales_3.jpg", imagenes: ["Mantenimiento plantas industriales_3.jpg", "mantto_caldera.jpg", "mantto_tuberia.jpg", "mantto_equipo.jpg"] },
+        { id: 4, titulo: "Montaje Industrial", categoria: "Montaje", descripcion: "Instalación y ensamblaje de equipos y tuberías.", imagenPortada: "Montaje y fabricación_2.jpg", imagenes: ["Montaje y fabricación_2.jpg", "montaje_estructura.jpg", "montaje_piping.jpg", "montaje_final.jpg"] },
+        { id: 5, titulo: "Digitalización y Diseño", categoria: "Ingeniería", descripcion: "Elaboración de planos técnicos en 2D y 3D.", imagenPortada: "Digitalización de planos.jpg", imagenes: ["Digitalización de planos.jpg", "plano_cad.jpg", "modelo3d.jpg", "render_industrial.jpg"] },
+        { id: 6, titulo: "Arenado y Pintura", categoria: "Recubrimientos", descripcion: "Protección anticorrosiva de alto nivel.", imagenPortada: "Arenado y pintado_5.jpg", imagenes: ["Arenado y pintado_5.jpg", "Arenado y pintado_8.jpg", "Arenado y pintado_9.jpg", "Arenado y pintado_10.jpg"] }
+    ];
+    
+    let currentImages = [];
+    let currentIndex = 0;
+    let zoomLevel = 1;
+    let translateX = 0, translateY = 0;
+    let startX, startY, isDragging = false;
+    
+    const lightbox = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    const zoomIn = document.getElementById('zoomInBtn');
+    const zoomOut = document.getElementById('zoomOutBtn');
+    const counter = document.getElementById('lightboxCounter');
+    const thumbnailsBar = document.getElementById('lightboxThumbnails');
+    
+    function resetZoom() {
+        zoomLevel = 1;
+        translateX = 0;
+        translateY = 0;
+        lightboxImage.style.transform = "scale(1) translate(0px, 0px)";
+    }
+    
+    function updateTransform() {
+        lightboxImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
+    }
+    
+    function openLightbox(images, index) {
+        currentImages = images;
+        currentIndex = index;
+        lightboxImage.src = currentImages[currentIndex];
+        lightbox.classList.add('active');
+        resetZoom();
+        updateCounter();
+        renderThumbnails();
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        resetZoom();
+    }
+    
+    function updateCounter() {
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+    
+    function nextImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        lightboxImage.src = currentImages[currentIndex];
+        resetZoom();
+        updateCounter();
+        updateThumbnailsActive();
+    }
+    
+    function prevImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        lightboxImage.src = currentImages[currentIndex];
+        resetZoom();
+        updateCounter();
+        updateThumbnailsActive();
+    }
+    
+    function renderThumbnails() {
+        thumbnailsBar.innerHTML = '';
+        currentImages.forEach((img, idx) => {
+            const thumb = document.createElement('img');
+            thumb.src = img;
+            thumb.classList.add('thumb');
+            if (idx === currentIndex) thumb.classList.add('active-thumb');
+            thumb.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = idx;
+                lightboxImage.src = currentImages[currentIndex];
+                resetZoom();
+                updateCounter();
+                updateThumbnailsActive();
+            });
+            thumbnailsBar.appendChild(thumb);
+        });
+    }
+    
+    function updateThumbnailsActive() {
+        const thumbs = document.querySelectorAll('.thumb');
+        thumbs.forEach((thumb, idx) => {
+            if (idx === currentIndex) {
+                thumb.classList.add('active-thumb');
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+                thumb.classList.remove('active-thumb');
+            }
+        });
+    }
+    
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+    
+    zoomIn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (zoomLevel < 3) {
+            zoomLevel += 0.2;
+            updateTransform();
+        }
+    });
+    
+    zoomOut.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (zoomLevel > 1) {
+            zoomLevel -= 0.2;
+            if (zoomLevel === 1) {
+                translateX = 0;
+                translateY = 0;
+            }
+            updateTransform();
+        }
+    });
+    
+    lightboxImage.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+    });
+    
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    });
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    
+    function renderProyectos() {
+        const container = document.getElementById('proyectosContainer');
+        container.innerHTML = '';
+        proyectosData.forEach(proyecto => {
+            const col = document.createElement('div');
+            col.className = 'col-lg-4 col-md-6';
+            col.setAttribute('data-aos', 'fade-up');
+            col.innerHTML = `
+                <div class="project-card">
+                    <div class="project-img-container" data-id="${proyecto.id}">
+                        <img src="${proyecto.imagenPortada}" alt="${proyecto.titulo}" onerror="this.src='https://placehold.co/600x400?text=SOLDESP'">
+                        <div class="img-overlay">
+                            <i class="bi bi-plus-circle overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <span class="project-category">${proyecto.categoria}</span>
+                        <h5 class="project-card-title">${proyecto.titulo}</h5>
+                        <p class="project-card-text">${proyecto.descripcion}</p>
+                        <a href="Contacto.html" class="project-btn">Saber más <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            `;
+            container.appendChild(col);
+        });
+        
+        document.querySelectorAll('.project-img-container').forEach(container => {
+            const projectId = parseInt(container.getAttribute('data-id'));
+            const project = proyectosData.find(p => p.id === projectId);
+            container.addEventListener('click', () => {
+                if (project) openLightbox(project.imagenes, 0);
+            });
+        });
+    }
+    
+    renderProyectos();
 </script>
 </body>
 </html>
