@@ -10,6 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -39,9 +42,12 @@
             --soldesp-gray: #6c757d;
             --soldesp-gray-light: #f8f9fa;
         }
+        
+        /* ===== NAVBAR CORREGIDO ===== */
         .navbar {
             background: rgba(10, 37, 64, 0.95) !important;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 16px 0;
             transition: all 0.4s ease;
             z-index: 1080;
@@ -61,37 +67,70 @@
             height: 48px;
             width: auto;
         }
+        /* Logo corregido - blanco sólido en móviles */
         .navbar-brand .logo-text {
             font-weight: 800;
             font-size: 1.6rem;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .navbar-nav {
-            gap: 0.5rem;
+        /* Gradiente solo para desktop */
+        @media (min-width: 768px) {
+            .navbar-brand .logo-text {
+                background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                text-shadow: none;
+            }
         }
+        .navbar-nav { gap: 0.5rem; }
         .navbar .nav-link {
             color: rgba(255,255,255,0.9) !important;
             font-weight: 600;
             font-size: 0.85rem;
+            letter-spacing: 0.5px;
             padding: 8px 18px !important;
             transition: all 0.3s ease;
+            position: relative;
             border-radius: 8px;
         }
         .navbar .nav-link:hover {
             color: var(--soldesp-orange) !important;
             background: rgba(255,107,0,0.1);
         }
+        
+        /* Dropdown mejorado con animaciones */
+        .dropdown-toggle {
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+        .dropdown-toggle:active {
+            transform: scale(0.96);
+        }
+        .dropdown-toggle .bi-chevron-down {
+            transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+            display: inline-block;
+            font-size: 0.75rem;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .dropdown-toggle.show .bi-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown.show .dropdown-toggle {
+            color: var(--soldesp-orange) !important;
+            background: rgba(255,107,0,0.15);
+            border-radius: 8px;
+        }
+        
         .navbar-toggler {
             border: 1px solid rgba(255,255,255,0.3);
             background: transparent;
         }
-        .navbar-toggler-icon {
-            filter: invert(1);
-        }
+        .navbar-toggler-icon { filter: invert(1); }
+        
+        /* Dropdown menu con animación suave */
         .dropdown-menu {
             background: var(--soldesp-blue);
             border: 1px solid rgba(255,107,0,0.2);
@@ -99,69 +138,86 @@
             padding: 10px;
             margin-top: 10px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            pointer-events: none;
         }
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
         .dropdown-item {
             color: rgba(255,255,255,0.85);
             padding: 10px 20px;
             border-radius: 8px;
             font-size: 0.85rem;
+            transition: all 0.2s;
         }
-        .dropdown-item:hover {
-            background: var(--soldesp-orange);
-            color: white;
-        }
-        .dropdown-toggle::after {
-            display: none;
-        }
-        .dropdown-toggle::before {
-            content: '\f282';
-            font-family: 'bootstrap-icons';
-            margin-left: 8px;
-            font-size: 0.7rem;
-        }
+        .dropdown-item:hover { background: var(--soldesp-orange); color: white; transform: translateX(5px); }
+        .dropdown-toggle::after { display: none; }
+        
         @media (max-width: 991px) {
             .navbar-collapse {
                 background: var(--soldesp-blue);
                 margin-top: 15px;
                 padding: 20px;
                 border-radius: 16px;
+                border: 1px solid rgba(255,107,0,0.2);
                 max-height: 80vh;
                 overflow-y: auto;
             }
-            .navbar-nav {
-                gap: 0;
-            }
-            .nav-item {
-                width: 100%;
-            }
-            .navbar .nav-link {
-                padding: 12px 15px !important;
-            }
+            .navbar-nav { gap: 0; }
+            .nav-item { width: 100%; }
+            .navbar .nav-link { padding: 12px 15px !important; font-size: 0.9rem; }
+            .navbar-brand .logo-text { font-size: 1.3rem; }
+            .navbar-brand img { height: 38px; }
             .dropdown-menu {
                 position: static !important;
+                transform: none !important;
                 background: rgba(255,255,255,0.08);
                 border: none;
-                padding: 10px 0 10px 20px;
+                padding: 0 0 0 20px;
+                margin-top: 0;
                 width: 100%;
-                display: none;
+                box-shadow: none;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.3s ease, visibility 0.3s ease, padding 0.2s;
+                display: block !important;
+                pointer-events: none;
+                border-radius: 0;
             }
             .dropdown-menu.show {
-                display: block;
+                opacity: 1;
+                visibility: visible;
+                max-height: 600px;
+                padding: 10px 0 10px 20px;
+                pointer-events: auto;
+                margin-top: 5px;
+                border-left: 2px solid var(--soldesp-orange);
             }
             .dropdown-toggle {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 width: 100%;
+                cursor: pointer;
             }
-            .dropdown-toggle::after {
-                display: inline-block !important;
-            }
-            .dropdown-toggle::before {
-                display: none;
-            }
+            .dropdown-toggle::after { display: none; }
+            .dropdown-toggle .bi-chevron-down { font-size: 0.9rem; }
+            .dropdown-toggle.show .bi-chevron-down { transform: rotate(180deg); }
+            .dropdown-item { padding: 10px 15px; white-space: normal; }
         }
 
-        /* ===== HERO CON IMAGEN DE FONDO - CORREGIDO ===== */
+        /* ===== HERO CON IMAGEN DE FONDO ===== */
         .hero-trabajos {
             position: relative;
             width: 100%;
@@ -172,8 +228,6 @@
             justify-content: center;
             overflow: hidden;
         }
-        
-        /* IMAGEN DE FONDO QUE CUBRE TODA LA PANTALLA */
         .hero-trabajos .bg-image {
             position: absolute;
             top: 0;
@@ -184,7 +238,6 @@
             object-position: center;
             z-index: 0;
         }
-        
         .hero-trabajos .overlay {
             position: absolute;
             top: 0;
@@ -194,7 +247,6 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
-        
         .hero-content-trabajos {
             position: relative;
             z-index: 2;
@@ -203,7 +255,6 @@
             width: 100%;
             padding: 0 20px;
         }
-        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -226,7 +277,6 @@
             letter-spacing: 4px;
             margin-top: 0.5rem;
         }
-        /* Fin Hero */
 
         .section-padding {
             padding: 80px 0;
@@ -253,7 +303,7 @@
             font-size: 0.8rem;
             margin-bottom: 20px;
         }
-        /* ===== TARJETAS DE TRABAJO ===== */
+        
         .job-card-modern {
             background: white;
             border-radius: 20px;
@@ -314,7 +364,7 @@
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(255,107,0,0.3);
         }
-        /* ===== FORMULARIO ===== */
+        
         .form-container-modern {
             background: white;
             border-radius: 24px;
@@ -356,7 +406,7 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255,107,0,0.3);
         }
-        /* ===== BENEFICIOS ===== */
+        
         .benefits-section-modern {
             background: white;
             border-radius: 24px;
@@ -382,7 +432,7 @@
             font-size: 28px;
             color: var(--soldesp-orange);
         }
-        /* ===== WHATSAPP CARD ===== */
+        
         .whatsapp-card-modern {
             background: linear-gradient(135deg, #25D366, #128C7E);
             border-radius: 24px;
@@ -404,7 +454,7 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        /* ===== FOOTER ===== */
+        
         .footer-premium {
             background: linear-gradient(135deg, #051a2c 0%, #030f1a 100%);
             color: #94a3b8;
@@ -553,14 +603,13 @@
 </head>
 <body>
 
-<!-- NAVBAR MODERNO -->
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="index.html">
             <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo">
             <span class="logo-text">SOLDESP</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menú de navegación">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -568,16 +617,21 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
                 <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">SERVICIOS</a>
-                    <ul class="dropdown-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        SERVICIOS <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                         <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
                         <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
                         <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
-                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
+                            <br>Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
+                            <br>de Estructuras Metálicas</a></li>
+                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
+                            <br>Spool en Plantas</a></li>
                         <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
                         <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
-                        <li><a class="dropdown-item" href="Calderia.html">Caldería y Estructuras</a></li>
-                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Montaje de Piping</a></li>
                         <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
                     </ul>
                 </li>
@@ -585,15 +639,13 @@
                 <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>
                 <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
                 <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>
-                <li class="nav-item"><a class="nav-link active" href="Trabajos.html">TRABAJOS</a></li>
+                <li class="nav-item"><a class="nav-link" href="Trabajos.html">TRABAJOS</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- HERO SECTION CON IMAGEN DE FONDO - CORREGIDO -->
 <section class="hero-trabajos">
-    <!-- Imagen de fondo que cubre toda la pantalla -->
     <img src="SOLDESP fondo.jpg" class="bg-image" alt="SOLDESP Fondo Industrial">
     <div class="overlay"></div>
     <div class="container hero-content-trabajos">
@@ -605,16 +657,13 @@
     </div>
 </section>
 
-<!-- OFERTAS LABORALES Y FORMULARIO -->
 <div class="container section-padding">
     <div class="row">
-        <!-- OFERTAS LABORALES -->
         <div class="col-lg-7" data-aos="fade-right">
             <span class="badge-custom-modern">Oportunidades</span>
             <h2 class="section-title">Ofertas disponibles</h2>
             <div class="title-underline" style="margin: 0 0 20px 0;"></div>
             
-            <!-- Oferta 1 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="100">
                 <h3 class="job-title-modern"><i class="fas fa-helmet-safety me-2" style="color: var(--soldesp-orange);"></i> Soldador Certificado (TIG/MIG)</h3>
                 <div class="job-meta-modern">
@@ -627,7 +676,6 @@
                 <button class="btn-aplicar-modern" onclick="abrirFormulario('Soldador Certificado (TIG/MIG)')">Postular ahora →</button>
             </div>
 
-            <!-- Oferta 2 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="job-title-modern"><i class="fas fa-wrench me-2" style="color: var(--soldesp-orange);"></i> Supervisor de Mantenimiento Industrial</h3>
                 <div class="job-meta-modern">
@@ -640,7 +688,6 @@
                 <button class="btn-aplicar-modern" onclick="abrirFormulario('Supervisor de Mantenimiento Industrial')">Postular ahora →</button>
             </div>
 
-            <!-- Oferta 3 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="300">
                 <h3 class="job-title-modern"><i class="fas fa-ruler me-2" style="color: var(--soldesp-orange);"></i> Ingeniero de Proyectos</h3>
                 <div class="job-meta-modern">
@@ -653,7 +700,6 @@
                 <button class="btn-aplicar-modern" onclick="abrirFormulario('Ingeniero de Proyectos')">Postular ahora →</button>
             </div>
 
-            <!-- Oferta 4 -->
             <div class="job-card-modern" data-aos="fade-up" data-aos-delay="400">
                 <h3 class="job-title-modern"><i class="fas fa-paintbrush me-2" style="color: var(--soldesp-orange);"></i> Técnico en Arenado y Pintura Industrial</h3>
                 <div class="job-meta-modern">
@@ -667,9 +713,7 @@
             </div>
         </div>
 
-        <!-- FORMULARIO Y BENEFICIOS -->
         <div class="col-lg-5" data-aos="fade-left">
-            <!-- Formulario -->
             <div class="form-container-modern" id="formulario">
                 <h2 class="form-title-modern"><i class="bi bi-file-text me-2" style="color: var(--soldesp-orange);"></i> Postular</h2>
                 <p class="text-muted mb-4">Completa el formulario para postular a nuestras ofertas</p>
@@ -704,7 +748,6 @@
                 <div id="mensajeEnvio" class="mt-3" style="display: none;"></div>
             </div>
 
-            <!-- Beneficios -->
             <div class="benefits-section-modern">
                 <h3 class="fw-bold mb-4 text-center"><i class="bi bi-gift me-2" style="color: var(--soldesp-orange);"></i> Beneficios de trabajar con nosotros</h3>
                 <div class="row">
@@ -731,7 +774,6 @@
                 </div>
             </div>
 
-            <!-- WhatsApp -->
             <div class="whatsapp-card-modern">
                 <i class="bi bi-whatsapp" style="font-size: 2.5rem;"></i>
                 <h4 class="fw-bold mt-2 text-white">¿Prefieres WhatsApp?</h4>
@@ -744,7 +786,6 @@
     </div>
 </div>
 
-<!-- FOOTER COMPLETO -->
 <footer class="footer-premium pt-5 pb-4">
     <div class="container">
         <div class="row g-5">
@@ -761,7 +802,6 @@
                     <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
-
             <div class="col-lg-2 col-md-6">
                 <h5>Enlaces Rápidos</h5>
                 <div class="d-flex flex-column">
@@ -772,7 +812,6 @@
                     <a href="Trabajos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Trabaja con Nosotros</a>
                 </div>
             </div>
-
             <div class="col-lg-3 col-md-6">
                 <h5>Servicios</h5>
                 <div class="d-flex flex-column">
@@ -783,7 +822,6 @@
                     <a href="Calderia.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Caldería y Estructuras</a>
                 </div>
             </div>
-
             <div class="col-lg-3 col-md-6">
                 <h5>Contacto Directo</h5>
                 <div class="contact-info-premium">
@@ -808,7 +846,6 @@
                 </div>
             </div>
         </div>
-
         <div class="copyright-premium">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
@@ -832,34 +869,84 @@
     AOS.init({ duration: 900, once: true, offset: 80 });
     
     const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-    });
-    
-    // Manejo del dropdown en móviles
+    window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 50));
+
     document.addEventListener('DOMContentLoaded', function() {
-        const navbarCollapse = document.getElementById('navbarNav');
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdownToggle = document.querySelector('#servicesDropdown');
+        if (!dropdownToggle) return;
         
-        if (dropdownToggle && window.innerWidth < 992) {
+        function syncDropdownState() {
+            const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            const icon = dropdownToggle.querySelector('.bi-chevron-down');
+            if (isExpanded) {
+                dropdownToggle.classList.add('show');
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                dropdownToggle.classList.remove('show');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'aria-expanded') {
+                    syncDropdownState();
+                }
+            });
+        });
+        observer.observe(dropdownToggle, { attributes: true });
+        syncDropdownState();
+        
+        if (window.innerWidth < 992) {
             dropdownToggle.removeAttribute('data-bs-toggle');
             dropdownToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.classList.toggle('show');
-                if (dropdownMenu) dropdownMenu.classList.toggle('show');
+                const parentLi = this.closest('.dropdown');
+                const menu = parentLi?.querySelector('.dropdown-menu');
+                const isNowShown = menu?.classList.contains('show');
+                const icon = this.querySelector('.bi-chevron-down');
+                
+                if (!isNowShown) {
+                    if (menu) menu.classList.add('show');
+                    this.classList.add('show');
+                    this.setAttribute('aria-expanded', 'true');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    if (menu) menu.classList.remove('show');
+                    this.classList.remove('show');
+                    this.setAttribute('aria-expanded', 'false');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
             });
+        } else {
+            const dropdownElement = dropdownToggle.closest('.dropdown');
+            if (dropdownElement) {
+                dropdownElement.addEventListener('show.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                });
+                dropdownElement.addEventListener('hide.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                });
+            }
         }
         
-        const navLinks = document.querySelectorAll('.navbar .nav-link:not(.dropdown-toggle), .dropdown-item');
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item');
+        const navbarCollapse = document.getElementById('navbarNav');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                if (window.innerWidth < 992 && navbarCollapse && navbarCollapse.classList.contains('show')) {
                     const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
                     if (bsCollapse) bsCollapse.hide();
                 }
             });
+        });
+        
+        dropdownToggle.addEventListener('click', function() {
+            this.style.transform = 'scale(0.96)';
+            setTimeout(() => { if (this) this.style.transform = ''; }, 150);
         });
     });
     

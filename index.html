@@ -2,13 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>SOLDESP - Ingeniería, Mantenimiento y Ejecución de Proyectos</title>
     <meta name="description" content="SOLDESP: Empresa líder en ingeniería, soldadura especializada y mantenimiento industrial en Perú. +10 años de experiencia en minería, energía y construcción.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -442,7 +443,7 @@
             font-size: 1rem;
         }
 
-        /* ===== TARJETAS DE SERVICIOS - CON ENLACE CLIQUEABLE ===== */
+        /* ===== TARJETAS DE SERVICIOS - CON GALERÍA ===== */
         .service-card-link {
             text-decoration: none;
             display: block;
@@ -503,7 +504,6 @@
             color: white;
         }
 
-        /* Tipografía específica para los textos de las tarjetas */
         .service-card-modern h4 {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
@@ -565,6 +565,237 @@
             font-weight: 800;
             color: var(--soldesp-orange);
             margin-bottom: 5px;
+        }
+
+        /* ===== LIGHTBOX MODAL ===== */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-modal.active { display: flex; }
+        .lightbox-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+        }
+        .lightbox-main {
+            position: relative;
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .lightbox-image {
+            max-width: 95%;
+            max-height: 80%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.05s linear;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .lightbox-image:active { cursor: grabbing; }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .nav-btn:active { background: var(--soldesp-orange); color: white; transform: translateY(-50%) scale(0.95); }
+        .nav-prev { left: 15px; }
+        .nav-next { right: 15px; }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .close-btn:active { background: #ff4444; color: white; transform: scale(0.95); }
+
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 10;
+            font-family: monospace;
+        }
+
+        .thumbnails-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.8);
+            overflow-x: auto;
+            z-index: 10;
+            -webkit-overflow-scrolling: touch;
+        }
+        .thumbnails-bar::-webkit-scrollbar { height: 3px; }
+        .thumbnails-bar::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); }
+        .thumbnails-bar::-webkit-scrollbar-thumb { background: var(--soldesp-orange); border-radius: 10px; }
+        
+        .thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+        .thumb:active { transform: scale(0.95); }
+        .thumb.active-thumb {
+            opacity: 1;
+            border-color: var(--soldesp-orange);
+        }
+        
+        .swipe-instruction {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            padding: 6px 14px;
+            border-radius: 25px;
+            color: white;
+            font-size: 0.7rem;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .zoom-controls {
+                position: absolute;
+                bottom: 85px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                z-index: 15;
+            }
+            .zoom-btn {
+                width: 55px;
+                height: 55px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-size: 1.3rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            }
+            .zoom-btn:active {
+                background: var(--soldesp-orange);
+                color: white;
+                transform: scale(0.95);
+            }
+            .thumbnails-bar { padding: 10px 15px; }
+            .thumb { width: 50px; height: 50px; }
+            .nav-btn { width: 42px; height: 42px; font-size: 1.1rem; }
+            .close-btn { width: 40px; height: 40px; top: 15px; right: 15px; font-size: 1rem; }
+            .image-counter { bottom: 15px; left: 15px; font-size: 0.75rem; padding: 5px 12px; }
+            .swipe-instruction { bottom: 155px; font-size: 0.65rem; }
+        }
+        
+        @media (min-width: 769px) {
+            .zoom-controls {
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                z-index: 15;
+            }
+            .zoom-btn {
+                width: 50px;
+                height: 50px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            .zoom-btn:hover {
+                background: var(--soldesp-orange);
+                color: white;
+                transform: scale(1.05);
+            }
+            .swipe-instruction { display: none; }
+            .nav-btn { width: 55px; height: 55px; font-size: 1.5rem; }
+            .nav-prev { left: 25px; }
+            .nav-next { right: 25px; }
         }
 
         /* ===== FOOTER ===== */
@@ -840,61 +1071,8 @@
             <h2 class="section-title">Nuestros Servicios</h2>
             <p class="section-subtitle">Soluciones integrales adaptadas a las necesidades de cada proyecto industrial</p>
         </div>
-        <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <a href="Calderia.html" class="service-card-link">
-                    <div class="service-card-modern">
-                        <div class="service-icon-modern"><i class="bi bi-gear-fill"></i></div>
-                        <h4>Fabricación Metálica</h4>
-                        <p>Diseño y fabricación de estructuras metálicas de alta resistencia para uso industrial pesado.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <a href="Soldaduras_especiales.html" class="service-card-link">
-                    <div class="service-card-modern">
-                        <div class="service-icon-modern"><i class="bi bi-fire"></i></div>
-                        <h4>Soldaduras Especiales</h4>
-                        <p>Procesos de soldadura certificados bajo estándares internacionales AWS y ASME.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <a href="Plantas_Industriales.html" class="service-card-link">
-                    <div class="service-card-modern">
-                        <div class="service-icon-modern"><i class="bi bi-building"></i></div>
-                        <h4>Mantenimiento de Plantas</h4>
-                        <p>Mantenimiento preventivo y correctivo de plantas industriales y minería.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-                <a href="Arenado.html" class="service-card-link">
-                    <div class="service-card-modern">
-                        <div class="service-icon-modern"><i class="bi bi-droplet"></i></div>
-                        <h4>Arenado y Pintura</h4>
-                        <p>Tratamiento de superficies y protección anticorrosiva industrial de alta calidad.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
-                <a href="Montaje_de_Piping.html" class="service-card-link">
-                    <div class="service-card-modern">
-                        <div class="service-icon-modern"><i class="bi bi-pip"></i></div>
-                        <h4>Montaje de Piping</h4>
-                        <p>Fabricación y montaje de tuberías industriales y spool en plantas.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
-                <a href="Planos.html" class="service-card-link">
-                    <div class="service-card-modern">
-                        <div class="service-icon-modern"><i class="bi bi-calculator-fill"></i></div>
-                        <h4>Digitalización de Planos</h4>
-                        <p>Conversión y digitalización de planos técnicos con alta precisión.</p>
-                    </div>
-                </a>
-            </div>
+        <div class="row g-4" id="serviciosContainer">
+            <!-- Los servicios se generarán con JavaScript -->
         </div>
         <div class="text-center mt-5" data-aos="fade-up">
             <a href="Fabricación.html" class="btn-primary-soldesp">VER TODOS LOS SERVICIOS</a>
@@ -910,6 +1088,26 @@
 
 <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
+<div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-container">
+        <button class="close-btn" id="closeLightbox"><i class="fas fa-times"></i></button>
+        <button class="nav-btn nav-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn nav-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-main">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="Imagen ampliada" draggable="false">
+        </div>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomInBtn"><i class="fas fa-search-plus"></i></button>
+            <button class="zoom-btn" id="zoomOutBtn"><i class="fas fa-search-minus"></i></button>
+        </div>
+        <div class="image-counter" id="lightboxCounter">1 / 1</div>
+        <div class="thumbnails-bar" id="lightboxThumbnails"></div>
+        <div class="swipe-instruction">
+            <i class="fas fa-chevron-left"></i> Desliza para cambiar <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -918,6 +1116,7 @@
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 50));
 
+    // Dropdown animado
     document.addEventListener('DOMContentLoaded', function() {
         const dropdownToggle = document.querySelector('#servicesDropdown');
         if (!dropdownToggle) return;
@@ -942,7 +1141,6 @@
             });
         });
         observer.observe(dropdownToggle, { attributes: true });
-        
         syncDropdownState();
         
         if (window.innerWidth < 992) {
@@ -997,6 +1195,257 @@
             setTimeout(() => { if (this) this.style.transform = ''; }, 150);
         });
     });
+
+    // Datos de servicios con galerías de imágenes
+    const serviciosData = [
+        { 
+            id: 1, 
+            titulo: "Fabricación Metálica", 
+            icono: "bi-gear-fill",
+            descripcion: "Diseño y fabricación de estructuras metálicas de alta resistencia para uso industrial pesado.",
+            imagenes: ["ESTRUCTURAS-METALICAS.jpg", "servicio_fabricacion_2.jpg", "servicio_fabricacion_3.jpg"]
+        },
+        { 
+            id: 2, 
+            titulo: "Soldaduras Especiales", 
+            icono: "bi-fire",
+            descripcion: "Procesos de soldadura certificados bajo estándares internacionales AWS y ASME.",
+            imagenes: ["Soldaduras especiales_6.jpg", "Soldaduras especiales_2.jpg", "Soldaduras especiales_4.jpg"]
+        },
+        { 
+            id: 3, 
+            titulo: "Mantenimiento de Plantas", 
+            icono: "bi-building",
+            descripcion: "Mantenimiento preventivo y correctivo de plantas industriales y minería.",
+            imagenes: ["Mantenimiento plantas industriales.jpg", "Mantenimiento plantas industriales_2.jpg", "Mantenimiento plantas industriales_3.jpg"]
+        },
+        { 
+            id: 4, 
+            titulo: "Arenado y Pintura", 
+            icono: "bi-droplet",
+            descripcion: "Tratamiento de superficies y protección anticorrosiva industrial de alta calidad.",
+            imagenes: ["Arenado y pintado_5.jpg", "Arenado y pintado_7.jpg", "Arenado y pintado_8.jpg", "Arenado y pintado_9.jpg", "Arenado y pintado_10.jpg"]
+        },
+        { 
+            id: 5, 
+            titulo: "Montaje de Piping", 
+            icono: "bi-pip",
+            descripcion: "Fabricación y montaje de tuberías industriales y spool en plantas.",
+            imagenes: ["Montaje y fabricación.jpg", "Montaje y fabricacióng_2.jpg"]
+        },
+        { 
+            id: 6, 
+            titulo: "Digitalización de Planos", 
+            icono: "bi-calculator-fill",
+            descripcion: "Conversión y digitalización de planos técnicos con alta precisión.",
+            imagenes: ["Digitalización de planos.jpg", "Digitalización en compu.jpg"]
+        }
+    ];
+
+    // Variables del lightbox
+    let currentImages = [];
+    let currentIndex = 0;
+    let zoomLevel = 1;
+    let translateX = 0, translateY = 0;
+    let startX, startY, isDragging = false;
+    
+    const lightbox = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    const zoomIn = document.getElementById('zoomInBtn');
+    const zoomOut = document.getElementById('zoomOutBtn');
+    const counter = document.getElementById('lightboxCounter');
+    const thumbnailsBar = document.getElementById('lightboxThumbnails');
+    
+    function resetZoom() {
+        zoomLevel = 1;
+        translateX = 0;
+        translateY = 0;
+        lightboxImage.style.transform = "scale(1) translate(0px, 0px)";
+    }
+    
+    function updateTransform() {
+        lightboxImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
+    }
+    
+    function openLightbox(images, index) {
+        currentImages = images;
+        currentIndex = index;
+        lightboxImage.src = currentImages[currentIndex];
+        lightbox.classList.add('active');
+        resetZoom();
+        updateCounter();
+        renderThumbnails();
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        resetZoom();
+    }
+    
+    function updateCounter() {
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+    
+    function nextImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        lightboxImage.src = currentImages[currentIndex];
+        resetZoom();
+        updateCounter();
+        updateThumbnailsActive();
+    }
+    
+    function prevImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        lightboxImage.src = currentImages[currentIndex];
+        resetZoom();
+        updateCounter();
+        updateThumbnailsActive();
+    }
+    
+    function renderThumbnails() {
+        thumbnailsBar.innerHTML = '';
+        currentImages.forEach((img, idx) => {
+            const thumb = document.createElement('img');
+            thumb.src = img;
+            thumb.classList.add('thumb');
+            if (idx === currentIndex) thumb.classList.add('active-thumb');
+            thumb.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = idx;
+                lightboxImage.src = currentImages[currentIndex];
+                resetZoom();
+                updateCounter();
+                updateThumbnailsActive();
+            });
+            thumbnailsBar.appendChild(thumb);
+        });
+    }
+    
+    function updateThumbnailsActive() {
+        const thumbs = document.querySelectorAll('.thumb');
+        thumbs.forEach((thumb, idx) => {
+            if (idx === currentIndex) {
+                thumb.classList.add('active-thumb');
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+                thumb.classList.remove('active-thumb');
+            }
+        });
+    }
+    
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+    
+    zoomIn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (zoomLevel < 3) {
+            zoomLevel += 0.2;
+            updateTransform();
+        }
+    });
+    
+    zoomOut.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (zoomLevel > 1) {
+            zoomLevel -= 0.2;
+            if (zoomLevel === 1) {
+                translateX = 0;
+                translateY = 0;
+            }
+            updateTransform();
+        }
+    });
+    
+    lightboxImage.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+    });
+    
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    });
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Renderizar servicios
+    function renderServicios() {
+        const container = document.getElementById('serviciosContainer');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        serviciosData.forEach(servicio => {
+            const col = document.createElement('div');
+            col.className = 'col-md-4';
+            col.setAttribute('data-aos', 'fade-up');
+            col.setAttribute('data-aos-delay', servicio.id * 100);
+            col.innerHTML = `
+                <div class="service-card-link" data-id="${servicio.id}">
+                    <div class="service-card-modern">
+                        <div class="service-icon-modern"><i class="bi ${servicio.icono}"></i></div>
+                        <h4>${servicio.titulo}</h4>
+                        <p>${servicio.descripcion}</p>
+                    </div>
+                </div>
+            `;
+            container.appendChild(col);
+        });
+        
+        // Agregar evento de clic a cada tarjeta
+        document.querySelectorAll('.service-card-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = parseInt(link.getAttribute('data-id'));
+                const servicio = serviciosData.find(s => s.id === id);
+                if (servicio && servicio.imagenes && servicio.imagenes.length > 0) {
+                    openLightbox(servicio.imagenes, 0);
+                } else {
+                    // Si no hay galería configurada, redirigir a la página del servicio
+                    const paginaDestino = obtenerPaginaServicio(servicio.titulo);
+                    if (paginaDestino) window.location.href = paginaDestino;
+                }
+            });
+        });
+    }
+    
+    function obtenerPaginaServicio(titulo) {
+        const mapeo = {
+            'Fabricación Metálica': 'Calderia.html',
+            'Soldaduras Especiales': 'Soldaduras_especiales.html',
+            'Mantenimiento de Plantas': 'Plantas_Industriales.html',
+            'Arenado y Pintura': 'Arenado.html',
+            'Montaje de Piping': 'Montaje_de_Piping.html',
+            'Digitalización de Planos': 'Planos.html'
+        };
+        return mapeo[titulo] || '#';
+    }
+    
+    renderServicios();
 </script>
 </body>
 </html>

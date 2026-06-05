@@ -19,9 +19,12 @@
             --soldesp-orange: #ff6b00;
             --soldesp-orange-light: #ff8c3a;
         }
+        
+        /* ===== NAVBAR CORREGIDO ===== */
         .navbar {
             background: rgba(10, 37, 64, 0.95) !important;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 16px 0;
             transition: all 0.4s ease;
             z-index: 1080;
@@ -45,23 +48,55 @@
             font-weight: 800;
             font-size: 1.6rem;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .navbar-nav { gap: 0.5rem; }
         .navbar .nav-link {
             color: rgba(255,255,255,0.9) !important;
             font-weight: 600;
             font-size: 0.85rem;
+            letter-spacing: 0.5px;
             padding: 8px 18px !important;
             transition: all 0.3s ease;
+            position: relative;
             border-radius: 8px;
         }
-        .navbar .nav-link:hover { color: var(--soldesp-orange) !important; background: rgba(255,107,0,0.1); }
-        .navbar-toggler { border: 1px solid rgba(255,255,255,0.3); background: transparent; }
+        .navbar .nav-link:hover { 
+            color: var(--soldesp-orange) !important; 
+            background: rgba(255,107,0,0.1); 
+        }
+        /* NOTA: NO hay clase .active para que ningún botón tenga color fijo */
+        
+        /* Dropdown mejorado con animaciones */
+        .dropdown-toggle {
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+        .dropdown-toggle:active {
+            transform: scale(0.96);
+        }
+        .dropdown-toggle .bi-chevron-down {
+            transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+            display: inline-block;
+            font-size: 0.75rem;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .dropdown-toggle.show .bi-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown.show .dropdown-toggle {
+            color: var(--soldesp-orange) !important;
+            background: rgba(255,107,0,0.15);
+            border-radius: 8px;
+        }
+        
+        .navbar-toggler {
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+        }
         .navbar-toggler-icon { filter: invert(1); }
+        
         .dropdown-menu {
             background: var(--soldesp-blue);
             border: 1px solid rgba(255,107,0,0.2);
@@ -69,49 +104,83 @@
             padding: 10px;
             margin-top: 10px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            pointer-events: none;
         }
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
         .dropdown-item {
             color: rgba(255,255,255,0.85);
             padding: 10px 20px;
             border-radius: 8px;
             font-size: 0.85rem;
+            transition: all 0.2s;
         }
-        .dropdown-item:hover { background: var(--soldesp-orange); color: white; }
+        .dropdown-item:hover { background: var(--soldesp-orange); color: white; transform: translateX(5px); }
         .dropdown-toggle::after { display: none; }
-        .dropdown-toggle::before {
-            content: '\f282';
-            font-family: 'bootstrap-icons';
-            margin-left: 8px;
-            font-size: 0.7rem;
-        }
+        
         @media (max-width: 991px) {
             .navbar-collapse {
                 background: var(--soldesp-blue);
                 margin-top: 15px;
                 padding: 20px;
                 border-radius: 16px;
+                border: 1px solid rgba(255,107,0,0.2);
                 max-height: 80vh;
                 overflow-y: auto;
             }
             .navbar-nav { gap: 0; }
             .nav-item { width: 100%; }
-            .navbar .nav-link { padding: 12px 15px !important; }
+            .navbar .nav-link { padding: 12px 15px !important; font-size: 0.9rem; }
+            .navbar-brand .logo-text { font-size: 1.3rem; }
+            .navbar-brand img { height: 38px; }
             .dropdown-menu {
                 position: static !important;
+                transform: none !important;
                 background: rgba(255,255,255,0.08);
                 border: none;
-                padding: 10px 0 10px 20px;
+                padding: 0 0 0 20px;
+                margin-top: 0;
                 width: 100%;
-                display: none;
+                box-shadow: none;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.3s ease, visibility 0.3s ease, padding 0.2s;
+                display: block !important;
+                pointer-events: none;
+                border-radius: 0;
             }
-            .dropdown-menu.show { display: block; }
+            .dropdown-menu.show {
+                opacity: 1;
+                visibility: visible;
+                max-height: 600px;
+                padding: 10px 0 10px 20px;
+                pointer-events: auto;
+                margin-top: 5px;
+                border-left: 2px solid var(--soldesp-orange);
+            }
             .dropdown-toggle {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 width: 100%;
+                cursor: pointer;
             }
-            .dropdown-toggle::after { display: inline-block !important; }
-            .dropdown-toggle::before { display: none; }
+            .dropdown-toggle::after { display: none; }
+            .dropdown-toggle .bi-chevron-down { font-size: 0.9rem; }
+            .dropdown-toggle.show .bi-chevron-down { transform: rotate(180deg); }
+            .dropdown-item { padding: 10px 15px; white-space: normal; }
         }
 
         .hero-proyectos {
@@ -295,7 +364,6 @@
         }
         .promo-video { width: 100%; height: auto; display: block; }
         
-        /* ===== LIGHTBOX MODAL ===== */
         .lightbox-modal {
             position: fixed;
             top: 0;
@@ -308,9 +376,7 @@
             align-items: center;
             justify-content: center;
         }
-        .lightbox-modal.active {
-            display: flex;
-        }
+        .lightbox-modal.active { display: flex; }
         .lightbox-container {
             position: relative;
             width: 100%;
@@ -344,7 +410,6 @@
         }
         .lightbox-image:active { cursor: grabbing; }
 
-        /* Botones laterales (anterior/siguiente) */
         .nav-btn {
             position: absolute;
             top: 50%;
@@ -368,7 +433,6 @@
         .nav-prev { left: 15px; }
         .nav-next { right: 15px; }
 
-        /* Botón cerrar */
         .close-btn {
             position: absolute;
             top: 20px;
@@ -390,7 +454,6 @@
         }
         .close-btn:active { background: #ff4444; color: white; transform: scale(0.95); }
 
-        /* Contador de imágenes */
         .image-counter {
             position: absolute;
             bottom: 20px;
@@ -405,7 +468,6 @@
             font-family: monospace;
         }
 
-        /* Miniaturas - en la parte inferior */
         .thumbnails-bar {
             position: absolute;
             bottom: 0;
@@ -440,7 +502,6 @@
             border-color: var(--soldesp-orange);
         }
         
-        /* Instrucción swipe */
         .swipe-instruction {
             position: absolute;
             bottom: 80px;
@@ -458,8 +519,6 @@
             pointer-events: none;
         }
         
-        /* ===== CONTROLES DE ZOOM RESPONSIVOS ===== */
-        /* MÓVILES: Horizontal en la parte inferior, arriba de las miniaturas */
         @media (max-width: 768px) {
             .zoom-controls {
                 position: absolute;
@@ -491,38 +550,14 @@
                 color: white;
                 transform: scale(0.95);
             }
-            .thumbnails-bar {
-                padding: 10px 15px;
-            }
-            .thumb {
-                width: 50px;
-                height: 50px;
-            }
-            .nav-btn {
-                width: 42px;
-                height: 42px;
-                font-size: 1.1rem;
-            }
-            .close-btn {
-                width: 40px;
-                height: 40px;
-                top: 15px;
-                right: 15px;
-                font-size: 1rem;
-            }
-            .image-counter {
-                bottom: 15px;
-                left: 15px;
-                font-size: 0.75rem;
-                padding: 5px 12px;
-            }
-            .swipe-instruction {
-                bottom: 155px;
-                font-size: 0.65rem;
-            }
+            .thumbnails-bar { padding: 10px 15px; }
+            .thumb { width: 50px; height: 50px; }
+            .nav-btn { width: 42px; height: 42px; font-size: 1.1rem; }
+            .close-btn { width: 40px; height: 40px; top: 15px; right: 15px; font-size: 1rem; }
+            .image-counter { bottom: 15px; left: 15px; font-size: 0.75rem; padding: 5px 12px; }
+            .swipe-instruction { bottom: 155px; font-size: 0.65rem; }
         }
         
-        /* DESKTOP/LAPTOP: Vertical en esquina inferior derecha */
         @media (min-width: 769px) {
             .zoom-controls {
                 position: absolute;
@@ -553,14 +588,8 @@
                 color: white;
                 transform: scale(1.05);
             }
-            .swipe-instruction {
-                display: none;
-            }
-            .nav-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.5rem;
-            }
+            .swipe-instruction { display: none; }
+            .nav-btn { width: 55px; height: 55px; font-size: 1.5rem; }
             .nav-prev { left: 25px; }
             .nav-next { right: 25px; }
         }
@@ -709,7 +738,7 @@
             <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo">
             <span class="logo-text">SOLDESP</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menú de navegación">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -717,8 +746,10 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
                 <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">SERVICIOS</a>
-                    <ul class="dropdown-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        SERVICIOS <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                         <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
                         <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
                         <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
@@ -733,7 +764,7 @@
                         <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link active" href="Proyectos.html">PROYECTOS</a></li>
+                <li class="nav-item"><a class="nav-link" href="Proyectos.html">PROYECTOS</a></li>
                 <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>
                 <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
                 <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>
@@ -890,19 +921,84 @@
     
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 50));
-    
+
     document.addEventListener('DOMContentLoaded', function() {
-        const navbarCollapse = document.getElementById('navbarNav');
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        if (dropdownToggle && window.innerWidth < 992) {
+        const dropdownToggle = document.querySelector('#servicesDropdown');
+        if (!dropdownToggle) return;
+        
+        function syncDropdownState() {
+            const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            const icon = dropdownToggle.querySelector('.bi-chevron-down');
+            if (isExpanded) {
+                dropdownToggle.classList.add('show');
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                dropdownToggle.classList.remove('show');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'aria-expanded') {
+                    syncDropdownState();
+                }
+            });
+        });
+        observer.observe(dropdownToggle, { attributes: true });
+        syncDropdownState();
+        
+        if (window.innerWidth < 992) {
             dropdownToggle.removeAttribute('data-bs-toggle');
             dropdownToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.classList.toggle('show');
-                document.querySelector('.dropdown-menu').classList.toggle('show');
+                const parentLi = this.closest('.dropdown');
+                const menu = parentLi?.querySelector('.dropdown-menu');
+                const isNowShown = menu?.classList.contains('show');
+                const icon = this.querySelector('.bi-chevron-down');
+                
+                if (!isNowShown) {
+                    if (menu) menu.classList.add('show');
+                    this.classList.add('show');
+                    this.setAttribute('aria-expanded', 'true');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    if (menu) menu.classList.remove('show');
+                    this.classList.remove('show');
+                    this.setAttribute('aria-expanded', 'false');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
             });
+        } else {
+            const dropdownElement = dropdownToggle.closest('.dropdown');
+            if (dropdownElement) {
+                dropdownElement.addEventListener('show.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                });
+                dropdownElement.addEventListener('hide.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                });
+            }
         }
+        
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item');
+        const navbarCollapse = document.getElementById('navbarNav');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992 && navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                }
+            });
+        });
+        
+        dropdownToggle.addEventListener('click', function() {
+            this.style.transform = 'scale(0.96)';
+            setTimeout(() => { if (this) this.style.transform = ''; }, 150);
+        });
     });
     
     const proyectosData = [

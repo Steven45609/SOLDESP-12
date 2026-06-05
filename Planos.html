@@ -33,9 +33,12 @@
             --soldesp-gray: #6c757d;
             --soldesp-gray-light: #f8f9fa;
         }
+        
+        /* ===== NAVBAR CORREGIDO ===== */
         .navbar {
             background: rgba(10, 37, 64, 0.95) !important;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 16px 0;
             transition: all 0.4s ease;
             z-index: 1080;
@@ -55,14 +58,23 @@
             height: 48px;
             width: auto;
         }
+        /* Logo corregido - blanco sólido en móviles */
         .navbar-brand .logo-text {
             font-weight: 800;
             font-size: 1.6rem;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* Gradiente solo para desktop */
+        @media (min-width: 768px) {
+            .navbar-brand .logo-text {
+                background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                text-shadow: none;
+            }
         }
         .navbar-nav {
             gap: 0.5rem;
@@ -71,14 +83,40 @@
             color: rgba(255,255,255,0.9) !important;
             font-weight: 600;
             font-size: 0.85rem;
+            letter-spacing: 0.5px;
             padding: 8px 18px !important;
             transition: all 0.3s ease;
+            position: relative;
             border-radius: 8px;
         }
         .navbar .nav-link:hover {
             color: var(--soldesp-orange) !important;
             background: rgba(255,107,0,0.1);
         }
+        
+        /* Dropdown mejorado con animaciones */
+        .dropdown-toggle {
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+        .dropdown-toggle:active {
+            transform: scale(0.96);
+        }
+        .dropdown-toggle .bi-chevron-down {
+            transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+            display: inline-block;
+            font-size: 0.75rem;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .dropdown-toggle.show .bi-chevron-down {
+            transform: rotate(180deg);
+        }
+        .dropdown.show .dropdown-toggle {
+            color: var(--soldesp-orange) !important;
+            background: rgba(255,107,0,0.15);
+            border-radius: 8px;
+        }
+        
         .navbar-toggler {
             border: 1px solid rgba(255,255,255,0.3);
             background: transparent;
@@ -86,6 +124,8 @@
         .navbar-toggler-icon {
             filter: invert(1);
         }
+        
+        /* Dropdown menu con animación suave */
         .dropdown-menu {
             background: var(--soldesp-blue);
             border: 1px solid rgba(255,107,0,0.2);
@@ -93,32 +133,44 @@
             padding: 10px;
             margin-top: 10px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            pointer-events: none;
         }
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
         .dropdown-item {
             color: rgba(255,255,255,0.85);
             padding: 10px 20px;
             border-radius: 8px;
             font-size: 0.85rem;
+            transition: all 0.2s;
         }
         .dropdown-item:hover {
             background: var(--soldesp-orange);
             color: white;
+            transform: translateX(5px);
         }
         .dropdown-toggle::after {
             display: none;
         }
-        .dropdown-toggle::before {
-            content: '\f282';
-            font-family: 'bootstrap-icons';
-            margin-left: 8px;
-            font-size: 0.7rem;
-        }
+        
+        /* Responsive navbar */
         @media (max-width: 991px) {
             .navbar-collapse {
                 background: var(--soldesp-blue);
                 margin-top: 15px;
                 padding: 20px;
                 border-radius: 16px;
+                border: 1px solid rgba(255,107,0,0.2);
                 max-height: 80vh;
                 overflow-y: auto;
             }
@@ -130,28 +182,60 @@
             }
             .navbar .nav-link {
                 padding: 12px 15px !important;
+                font-size: 0.9rem;
+            }
+            .navbar-brand .logo-text {
+                font-size: 1.3rem;
+            }
+            .navbar-brand img {
+                height: 38px;
             }
             .dropdown-menu {
                 position: static !important;
+                transform: none !important;
                 background: rgba(255,255,255,0.08);
                 border: none;
-                padding: 10px 0 10px 20px;
+                padding: 0 0 0 20px;
+                margin-top: 0;
                 width: 100%;
-                display: none;
+                box-shadow: none;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.3s ease, visibility 0.3s ease, padding 0.2s;
+                display: block !important;
+                pointer-events: none;
+                border-radius: 0;
             }
             .dropdown-menu.show {
-                display: block;
+                opacity: 1;
+                visibility: visible;
+                max-height: 600px;
+                padding: 10px 0 10px 20px;
+                pointer-events: auto;
+                margin-top: 5px;
+                border-left: 2px solid var(--soldesp-orange);
             }
             .dropdown-toggle {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 width: 100%;
+                cursor: pointer;
             }
             .dropdown-toggle::after {
-                display: inline-block !important;
-            }
-            .dropdown-toggle::before {
                 display: none;
+            }
+            .dropdown-toggle .bi-chevron-down {
+                font-size: 0.9rem;
+            }
+            .dropdown-toggle.show .bi-chevron-down {
+                transform: rotate(180deg);
+            }
+            .dropdown-item {
+                padding: 10px 15px;
+                white-space: normal;
             }
         }
 
@@ -166,7 +250,6 @@
             justify-content: center;
             overflow: hidden;
         }
-        
         .hero-planos .bg-image {
             position: absolute;
             top: 0;
@@ -177,7 +260,6 @@
             object-position: center;
             z-index: 0;
         }
-        
         .hero-planos .overlay {
             position: absolute;
             top: 0;
@@ -187,7 +269,6 @@
             background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
             z-index: 1;
         }
-        
         .hero-content-planos {
             position: relative;
             z-index: 2;
@@ -196,7 +277,6 @@
             width: 100%;
             padding: 0 20px;
         }
-        
         .hero-badge {
             display: inline-block;
             background: rgba(255,107,0,0.2);
@@ -217,7 +297,6 @@
             font-size: clamp(1rem, 3vw, 1.3rem);
             color: var(--soldesp-orange);
         }
-        /* Fin Hero */
 
         .section-padding {
             padding: 80px 0;
@@ -269,11 +348,19 @@
             color: var(--soldesp-orange);
             font-size: 0.9rem;
         }
+        
+        /* Tarjetas de servicio - cliqueables */
+        .service-card-link {
+            text-decoration: none;
+            display: block;
+            height: 100%;
+            cursor: pointer;
+        }
         .service-card-modern {
             background: white;
             border-radius: 20px;
             padding: 35px 25px;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
             position: relative;
             overflow: hidden;
@@ -292,22 +379,22 @@
             transition: opacity 0.4s ease;
             z-index: 0;
         }
-        .service-card-modern:hover::before {
+        .service-card-link:hover .service-card-modern::before {
             opacity: 1;
         }
         .service-card-modern > * {
             position: relative;
             z-index: 1;
         }
-        .service-card-modern:hover {
+        .service-card-link:hover .service-card-modern {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .service-card-modern:hover .service-icon-modern i {
+        .service-card-link:hover .service-card-modern .service-icon-modern i {
             color: white;
         }
-        .service-card-modern:hover h4,
-        .service-card-modern:hover p {
+        .service-card-link:hover .service-card-modern h4,
+        .service-card-link:hover .service-card-modern p {
             color: white;
         }
         .service-icon-modern {
@@ -326,10 +413,20 @@
             transition: all 0.3s;
         }
         .service-card-modern h4 {
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
             margin-bottom: 12px;
             font-size: 1.2rem;
+            color: var(--soldesp-blue);
         }
+        .service-card-modern p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            color: var(--soldesp-gray);
+        }
+        
         .process-modern-card {
             background: white;
             border-radius: 20px;
@@ -360,7 +457,6 @@
         .process-modern-card:hover .process-icon-wrapper {
             background: var(--soldesp-orange);
         }
-        /* Estilos para iconos normales (i) */
         .process-icon-wrapper i {
             font-size: 30px;
             color: var(--soldesp-orange);
@@ -369,7 +465,6 @@
         .process-modern-card:hover .process-icon-wrapper i {
             color: white;
         }
-        /* Estilos para iconos de Material Symbols */
         .process-icon-wrapper .material-symbols-outlined {
             font-size: 30px;
             color: var(--soldesp-orange);
@@ -609,7 +704,7 @@
             <img src="SOLDESP_LOGO.png" alt="SOLDESP Logo">
             <span class="logo-text">SOLDESP</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menú de navegación">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -617,8 +712,10 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
                 <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">SERVICIOS</a>
-                    <ul class="dropdown-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        SERVICIOS <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
                         <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
                         <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
                         <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
@@ -655,7 +752,6 @@
     </div>
 </section>
 
-<!-- DESCRIPCIÓN DEL SERVICIO -->
 <section class="section-padding">
     <div class="container">
         <div class="row align-items-center">
@@ -687,7 +783,6 @@
     </div>
 </section>
 
-<!-- ASISTENCIA Y SOPORTE -->
 <section class="section-padding" style="background: var(--soldesp-gray-light);">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -697,31 +792,36 @@
         </div>
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-card-modern">
-                    <div class="service-icon-modern"><i class="bi bi-tools"></i></div>
-                    <h4>Mantenimiento Preventivo</h4>
-                    <p>Evita fallas mediante inspecciones periódicas y control técnico de cada equipo.</p>
-                </div>
+                <a class="service-card-link">
+                    <div class="service-card-modern">
+                        <div class="service-icon-modern"><i class="bi bi-tools"></i></div>
+                        <h4>Mantenimiento Preventivo</h4>
+                        <p>Evita fallas mediante inspecciones periódicas y control técnico de cada equipo.</p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-card-modern">
-                    <div class="service-icon-modern"><i class="bi bi-gear-wide-connected"></i></div>
-                    <h4>Mantenimiento Correctivo</h4>
-                    <p>Solución rápida y eficiente ante fallas inesperadas para minimizar el tiempo de inactividad.</p>
-                </div>
+                <a class="service-card-link">
+                    <div class="service-card-modern">
+                        <div class="service-icon-modern"><i class="bi bi-gear-wide-connected"></i></div>
+                        <h4>Mantenimiento Correctivo</h4>
+                        <p>Solución rápida y eficiente ante fallas inesperadas para minimizar el tiempo de inactividad.</p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="service-card-modern">
-                    <div class="service-icon-modern"><i class="bi bi-shield-check"></i></div>
-                    <h4>Supervisión Técnica</h4>
-                    <p>Control y seguimiento por parte de nuestros especialistas durante todo el proceso.</p>
-                </div>
+                <a class="service-card-link">
+                    <div class="service-card-modern">
+                        <div class="service-icon-modern"><i class="bi bi-shield-check"></i></div>
+                        <h4>Supervisión Técnica</h4>
+                        <p>Control y seguimiento por parte de nuestros especialistas durante todo el proceso.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PROCESO DE DIGITALIZACIÓN -->
 <section class="section-padding">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -798,7 +898,6 @@
     </div>
 </section>
 
-<!-- CTA Y SIDEBAR -->
 <section class="section-padding" style="background: var(--soldesp-gray-light);">
     <div class="container">
         <div class="row g-5">
@@ -840,7 +939,6 @@
     </div>
 </section>
 
-<!-- FOOTER COMPLETO -->
 <footer class="footer-premium pt-5 pb-4">
     <div class="container">
         <div class="row g-5">
@@ -857,7 +955,6 @@
                     <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
-
             <div class="col-lg-2 col-md-6">
                 <h5>Enlaces Rápidos</h5>
                 <div class="d-flex flex-column">
@@ -868,7 +965,6 @@
                     <a href="Trabajos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Trabaja con Nosotros</a>
                 </div>
             </div>
-
             <div class="col-lg-3 col-md-6">
                 <h5>Servicios</h5>
                 <div class="d-flex flex-column">
@@ -879,7 +975,6 @@
                     <a href="Calderia.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Caldería y Estructuras</a>
                 </div>
             </div>
-
             <div class="col-lg-3 col-md-6">
                 <h5>Contacto Directo</h5>
                 <div class="contact-info-premium">
@@ -904,7 +999,6 @@
                 </div>
             </div>
         </div>
-
         <div class="copyright-premium">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
@@ -928,11 +1022,8 @@
     AOS.init({ duration: 900, once: true, offset: 80 });
     
     const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-    });
+    window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 50));
     
-    // Marcar el enlace activo del sidebar según la página actual
     const currentPage = window.location.pathname.split("/").pop() || "Planos.html";
     document.querySelectorAll('.servicio-link').forEach(link => {
         const href = link.getAttribute('href');
@@ -941,30 +1032,82 @@
         }
     });
     
-    // Manejo del dropdown en móviles
     document.addEventListener('DOMContentLoaded', function() {
-        const navbarCollapse = document.getElementById('navbarNav');
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdownToggle = document.querySelector('#servicesDropdown');
+        if (!dropdownToggle) return;
         
-        if (dropdownToggle && window.innerWidth < 992) {
+        function syncDropdownState() {
+            const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            const icon = dropdownToggle.querySelector('.bi-chevron-down');
+            if (isExpanded) {
+                dropdownToggle.classList.add('show');
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                dropdownToggle.classList.remove('show');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'aria-expanded') {
+                    syncDropdownState();
+                }
+            });
+        });
+        observer.observe(dropdownToggle, { attributes: true });
+        syncDropdownState();
+        
+        if (window.innerWidth < 992) {
             dropdownToggle.removeAttribute('data-bs-toggle');
             dropdownToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.classList.toggle('show');
-                if (dropdownMenu) dropdownMenu.classList.toggle('show');
+                const parentLi = this.closest('.dropdown');
+                const menu = parentLi?.querySelector('.dropdown-menu');
+                const isNowShown = menu?.classList.contains('show');
+                const icon = this.querySelector('.bi-chevron-down');
+                
+                if (!isNowShown) {
+                    if (menu) menu.classList.add('show');
+                    this.classList.add('show');
+                    this.setAttribute('aria-expanded', 'true');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    if (menu) menu.classList.remove('show');
+                    this.classList.remove('show');
+                    this.setAttribute('aria-expanded', 'false');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
             });
+        } else {
+            const dropdownElement = dropdownToggle.closest('.dropdown');
+            if (dropdownElement) {
+                dropdownElement.addEventListener('show.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                });
+                dropdownElement.addEventListener('hide.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                });
+            }
         }
         
-        const navLinks = document.querySelectorAll('.navbar .nav-link:not(.dropdown-toggle), .dropdown-item');
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item');
+        const navbarCollapse = document.getElementById('navbarNav');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                if (window.innerWidth < 992 && navbarCollapse && navbarCollapse.classList.contains('show')) {
                     const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
                     if (bsCollapse) bsCollapse.hide();
                 }
             });
+        });
+        
+        dropdownToggle.addEventListener('click', function() {
+            this.style.transform = 'scale(0.96)';
+            setTimeout(() => { if (this) this.style.transform = ''; }, 150);
         });
     });
 </script>
