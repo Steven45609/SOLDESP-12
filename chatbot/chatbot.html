@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente SOLDESP</title>
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+
+<body>
+    <button id="botonChat" class="boton-chat">
+        🤖
+    </button>
+
+    <div id="chatbot" class="chatbot">
+
+        <div class="chat-header">
+            <div>
+                <strong>🤖 Asistente SOLDESP</strong>
+                <small>Asistente virtual</small>
+            </div>
+
+            <button id="cerrarChat">×</button>
+        </div>
+
+        <div id="mensajes" class="mensajes">
+
+            <div class="mensaje bot">
+                Hola 👋 Soy el asistente virtual de SOLDESP.
+                <br><br>
+                ¿En qué puedo ayudarte?
+            </div>
+
+        </div>
+
+        <!-- Entrada de mensaje -->
+        <div class="chat-input">
+
+            <input
+                type="text"
+                id="entrada"
+                placeholder="Escribe tu pregunta..."
+            >
+
+            <button id="enviar">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="chatbot.js"></script>
+
+</body>
+</html>
