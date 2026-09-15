@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -970,6 +971,199 @@
                 font-size: 2rem;
             }
         }
+
+        /* ================= CHATBOT SOLDESP ================= */
+        .boton-chat {
+            position: fixed;
+            right: 95px;
+            bottom: 25px;
+            width: 58px;
+            height: 58px;
+            border: none;
+            border-radius: 50%;
+            background: var(--soldesp-orange);
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+            z-index: 2000;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .boton-chat:hover {
+            transform: scale(1.08);
+            background: var(--soldesp-orange-light);
+        }
+
+        .chatbot {
+            position: fixed;
+            right: 25px;
+            bottom: 100px;
+            width: 360px;
+            height: 500px;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            z-index: 2001;
+            border: 1px solid rgba(10,37,64,0.15);
+        }
+
+        .chatbot.activo {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--soldesp-blue);
+            color: #fff;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header strong {
+            display: block;
+            font-size: 15px;
+        }
+
+        .chat-header small {
+            display: block;
+            margin-top: 3px;
+            opacity: 0.75;
+            font-size: 12px;
+        }
+
+        .chat-header button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 27px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 4px;
+        }
+
+        .mensajes {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f5f7fa;
+            scroll-behavior: smooth;
+        }
+
+        .mensaje {
+            max-width: 82%;
+            padding: 11px 14px;
+            margin-bottom: 10px;
+            border-radius: 13px;
+            font-size: 13px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .mensaje.bot {
+            background: #fff;
+            color: #333;
+            margin-right: auto;
+            border: 1px solid #e1e5ea;
+        }
+
+        .mensaje.usuario {
+            background: var(--soldesp-blue);
+            color: #fff;
+            margin-left: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 8px;
+            padding: 12px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            min-width: 0;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            padding: 10px 14px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .chat-input input:focus {
+            border-color: var(--soldesp-orange);
+        }
+
+        .chat-input button {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            border: none;
+            border-radius: 50%;
+            background: var(--soldesp-orange);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-input button:hover {
+            background: var(--soldesp-orange-light);
+        }
+
+        .chat-input button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .mensaje-cargando {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .punto {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #8b96a5;
+            animation: chatbotPunto 1.2s infinite ease-in-out;
+        }
+
+        .punto:nth-child(2) { animation-delay: 0.15s; }
+        .punto:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes chatbotPunto {
+            0%, 80%, 100% { transform: scale(0.7); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 500px) {
+            .boton-chat {
+                right: 80px;
+                bottom: 80px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .chatbot {
+                right: 10px;
+                bottom: 145px;
+                width: calc(100% - 20px);
+                height: 70vh;
+                max-height: 560px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1142,6 +1336,48 @@
 
 <a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
+
+<!-- ================= CHATBOT SOLDESP ================= -->
+<button id="botonChat" class="boton-chat" aria-label="Abrir asistente SOLDESP" title="Asistente SOLDESP">
+    <i class="bi bi-robot"></i>
+</button>
+
+<div id="chatbot" class="chatbot" aria-hidden="true">
+    <div class="chat-header">
+        <div>
+            <strong>
+                <i class="bi bi-robot"></i>
+                Asistente SOLDESP
+            </strong>
+            <small>Asistente virtual</small>
+        </div>
+        <button id="cerrarChat" type="button" aria-label="Cerrar chatbot">×</button>
+    </div>
+
+    <div id="mensajes" class="mensajes" aria-live="polite">
+        <div class="mensaje bot">
+            Hola 👋 Soy el asistente virtual de SOLDESP.
+            <br><br>
+            Puedo orientarte sobre nuestros servicios, contacto y cotizaciones.
+            <br><br>
+            ¿En qué puedo ayudarte?
+        </div>
+    </div>
+
+    <div class="chat-input">
+        <input
+            type="text"
+            id="entrada"
+            placeholder="Escribe tu pregunta..."
+            autocomplete="off"
+            aria-label="Escribe tu pregunta"
+        >
+        <button id="enviar" type="button" aria-label="Enviar mensaje">
+            <i class="bi bi-send-fill"></i>
+        </button>
+    </div>
+</div>
+
 <div class="lightbox-modal" id="lightboxModal">
     <div class="lightbox-container">
         <button class="close-btn" id="closeLightbox"><i class="fas fa-times"></i></button>
@@ -1166,6 +1402,132 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 900, once: true, offset: 80 });
+
+    // ================= CHATBOT SOLDESP =================
+    document.addEventListener("DOMContentLoaded", function () {
+        const botonChat = document.getElementById("botonChat");
+        const chatbot = document.getElementById("chatbot");
+        const cerrarChat = document.getElementById("cerrarChat");
+        const entrada = document.getElementById("entrada");
+        const enviar = document.getElementById("enviar");
+        const mensajes = document.getElementById("mensajes");
+
+        if (!botonChat || !chatbot || !cerrarChat || !entrada || !enviar || !mensajes) {
+            return;
+        }
+
+        function abrirChat() {
+            chatbot.classList.add("activo");
+            chatbot.setAttribute("aria-hidden", "false");
+            setTimeout(() => entrada.focus(), 100);
+        }
+
+        function cerrarChatbot() {
+            chatbot.classList.remove("activo");
+            chatbot.setAttribute("aria-hidden", "true");
+        }
+
+        function agregarMensaje(texto, tipo) {
+            const mensaje = document.createElement("div");
+            mensaje.className = `mensaje ${tipo}`;
+            mensaje.innerHTML = texto;
+            mensajes.appendChild(mensaje);
+            mensajes.scrollTop = mensajes.scrollHeight;
+            return mensaje;
+        }
+
+        function mostrarCargando() {
+            const mensaje = document.createElement("div");
+            mensaje.className = "mensaje bot";
+            mensaje.innerHTML = `
+                <span class="mensaje-cargando" aria-label="El asistente está escribiendo">
+                    <span>Estoy pensando</span>
+                    <span class="punto"></span>
+                    <span class="punto"></span>
+                    <span class="punto"></span>
+                </span>
+            `;
+            mensajes.appendChild(mensaje);
+            mensajes.scrollTop = mensajes.scrollHeight;
+            return mensaje;
+        }
+
+        async function enviarMensaje() {
+            const pregunta = entrada.value.trim();
+
+            if (pregunta === "") return;
+
+            agregarMensaje(pregunta, "usuario");
+            entrada.value = "";
+            entrada.disabled = true;
+            enviar.disabled = true;
+
+            const mensajeCargando = mostrarCargando();
+
+            try {
+                const respuesta = await fetch("http://localhost:3000/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        pregunta: pregunta
+                    })
+                });
+
+                const datos = await respuesta.json();
+
+                mensajeCargando.remove();
+
+                if (respuesta.ok && datos.respuesta) {
+                    agregarMensaje(datos.respuesta, "bot");
+                } else {
+                    agregarMensaje(
+                        datos.error || "Lo siento, ocurrió un problema al procesar tu pregunta.",
+                        "bot"
+                    );
+                }
+
+            } catch (error) {
+                console.error("Error del chatbot:", error);
+
+                mensajeCargando.remove();
+
+                agregarMensaje(
+                    "No puedo conectarme con el servidor en este momento. 🤖<br><br>" +
+                    "Verifica que el servidor de SOLDESP esté ejecutándose en <strong>http://localhost:3000</strong>.",
+                    "bot"
+                );
+            } finally {
+                entrada.disabled = false;
+                enviar.disabled = false;
+                entrada.focus();
+            }
+        }
+
+        botonChat.addEventListener("click", function () {
+            if (chatbot.classList.contains("activo")) {
+                cerrarChatbot();
+            } else {
+                abrirChat();
+            }
+        });
+
+        cerrarChat.addEventListener("click", cerrarChatbot);
+        enviar.addEventListener("click", enviarMensaje);
+
+        entrada.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                enviarMensaje();
+            }
+
+            if (event.key === "Escape") {
+                cerrarChatbot();
+            }
+        });
+    });
+
     
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 50));
