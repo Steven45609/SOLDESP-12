@@ -27,11 +27,11 @@
         html{scroll-behavior:smooth;overflow-x:hidden}
         html,body{width:100%;overflow-x:hidden}
         
-        /* ===== FONDO GLOBAL (Blanco limpio para el resto de la página) ===== */
+        /* Fondo blanco para el resto de la página */
         body{
             font-family:'Inter',sans-serif;
             color:#1a1a2e;
-            background-color: #ffffff; /* Fondo blanco para que el contenido se lea perfecto */
+            background-color: #ffffff;
         }
 
         a{text-decoration:none}
@@ -219,28 +219,28 @@
             .dropdown-toggle { position: relative; overflow: hidden; }
         }
 
-        /* ===== HERO (Ahora sí, la imagen cubre bien y se ve grande) ===== */
+        /* ===== HERO (AHORA SÍ CUBRE TODA LA PANTALLA) ===== */
         .jobs-hero{
             position:relative;
-            min-height:75vh; /* Más alto para que la imagen luzca */
+            min-height: 100vh; /* <--- ESTO HACE QUE CUBRA TODA LA PANTALLA */
             display:flex;
             align-items:center;
             overflow:hidden;
             background: transparent; 
-            padding:120px 0 70px;
+            padding: 100px 0 60px; /* Ajuste para que el contenido no choque con el navbar */
         }
-        /* Imagen de fondo SOLO para el Hero, para que se vea nítida */
+        /* Imagen de fondo */
         .jobs-hero::before {
             content: "";
             position: absolute;
             inset: 0;
             background-image: url('SOLDESP fondo.jpg');
             background-size: cover;
-            background-position: center 30%; /* Centra las caras del equipo */
+            background-position: center 30%;
             background-repeat: no-repeat;
             z-index: 1;
         }
-        /* Capa oscura para que el texto blanco resalte */
+        /* Capa oscura para legibilidad */
         .jobs-hero::after{
             content:"";position:absolute;inset:0;
             background:linear-gradient(90deg,rgba(5,26,44,.90) 0%,rgba(5,26,44,.65) 50%,rgba(5,26,44,.3) 100%);
@@ -275,7 +275,7 @@
         }
         .btn-outline-light-soldesp:hover{background:#fff;color:var(--soldesp-blue)}
 
-        /* ===== SECCIONES (Fondo blanco limpio) ===== */
+        /* ===== SECCIONES ===== */
         .section{padding:82px 0; background: #ffffff;}
         .section-soft{background:#f5f7fa}
 
@@ -418,7 +418,7 @@
         }
         .btn-wa:hover{color:#168c56;transform:translateY(-1px)}
 
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         .footer-premium {
             background: linear-gradient(135deg, #051a2c 0%, #030f1a 100%);
             color: #94a3b8;
@@ -540,7 +540,8 @@
         }
         @media(max-width:767px){
             .navbar-brand img{height:38px}
-            .jobs-hero{min-height:65vh;padding:105px 0 55px}
+            /* Ajuste para que en celular el Hero ocupe toda la pantalla pero el contenido no se desborde */
+            .jobs-hero{min-height: 100vh; padding: 90px 0 40px;}
             .hero-content h1{font-size:2.35rem}
             .hero-content p{font-size:.9rem;line-height:1.65}
             .section{padding:50px 0}
@@ -554,7 +555,7 @@
             .application-card{padding:22px}
             .whatsapp-float{width:48px;height:48px;font-size:23px;right:16px;bottom:16px}
             
-            /* Ajuste de la imagen en celular */
+            /* Ajuste de la imagen en celular para que se vean las caras */
             .jobs-hero::before { background-position: center 25%; }
         }
     </style>
