@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>SOLDESP - Ingeniería, Mantenimiento y Ejecución de Proyectos</title>
+    <meta name="description" content="SOLDESP: Empresa líder en ingeniería, soldadura especializada y mantenimiento industrial en Perú. +10 años de experiencia en minería, energía y construcción.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a2e;
+        }
+
+        /* ===== PALETA DE COLORES SOLDESP ===== */
+        :root {
+            --soldesp-blue: #0a2540;
+            --soldesp-blue-dark: #051a2c;
+            --soldesp-orange: #ff6b00;
+            --soldesp-orange-light: #ff8c3a;
+            --soldesp-white: #ffffff;
+            --soldesp-gray: #6c757d;
+            --soldesp-gray-light: #f8f9fa;
+        }
+
+        /* ===== NAVBAR MODERNO ===== */
+        .navbar {
+            background: rgba(10, 37, 64, 0.95) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 16px 0;
+            transition: all 0.4s ease;
+            z-index: 1080;
+            border-bottom: 1px solid rgba(255,107,0,0.2);
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 26, 44, 0.98) !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .navbar-brand img {
+            height: 48px;
+            width: auto;
+        }
+
+        .navbar-brand .logo-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .navbar-brand .logo-text {
+                background: linear-gradient(135deg, #ffffff 0%, var(--soldesp-orange) 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                text-shadow: none;
+            }
+        }
+        
+        .navbar-brand:hover .logo-text {
+            opacity: 0.95;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-nav {
+            gap: 0.5rem;
+        }
+
+        .navbar .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            padding: 8px 18px !important;
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .navbar .nav-link:hover {
+            color: var(--soldesp-orange) !important;
+            background: rgba(255,107,0,0.1);
+        }
+
+        .dropdown-toggle {
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+        
+        .dropdown-toggle:active {
+            transform: scale(0.96);
+        }
+        
+        .dropdown-toggle .bi-chevron-down {
+            transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+            display: inline-block;
+            font-size: 0.75rem;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        
+        .dropdown-toggle.show .bi-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown.show .dropdown-toggle {
+            color: var(--soldesp-orange) !important;
+            background: rgba(255,107,0,0.15);
+            border-radius: 8px;
+        }
+
+        .navbar-toggler {
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        .dropdown-menu {
+            background: var(--soldesp-blue);
+            border: 1px solid rgba(255,107,0,0.2);
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            pointer-events: none;
+        }
+        
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-item {
+            color: rgba(255,255,255,0.85);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background: var(--soldesp-orange);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: var(--soldesp-blue);
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 16px;
+                border: 1px solid rgba(255,107,0,0.2);
+                max-height: 80vh;
+                overflow-y: auto;
+                transition: all 0.3s ease;
+            }
+            
+            .navbar-nav {
+                gap: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .navbar .nav-link {
+                padding: 12px 15px !important;
+                font-size: 0.9rem;
+            }
+            
+            .navbar-brand .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .navbar-brand img {
+                height: 38px;
+            }
+            
+            .dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                background: rgba(255,255,255,0.08);
+                border: none;
+                padding: 0 0 0 20px;
+                margin-top: 0;
+                width: 100%;
+                box-shadow: none;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.3s ease, visibility 0.3s ease, padding 0.2s;
+                display: block !important;
+                pointer-events: none;
+                border-radius: 0;
+            }
+            
+            .dropdown-menu.show {
+                opacity: 1;
+                visibility: visible;
+                max-height: 600px;
+                padding: 10px 0 10px 20px;
+                pointer-events: auto;
+                margin-top: 5px;
+                border-left: 2px solid var(--soldesp-orange);
+            }
+            
+            .dropdown-toggle {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                cursor: pointer;
+            }
+            
+            .dropdown-toggle::after {
+                display: none;
+            }
+            
+            .dropdown-toggle .bi-chevron-down {
+                font-size: 0.9rem;
+                transition: transform 0.35s ease;
+            }
+            
+            .dropdown-toggle.show .bi-chevron-down {
+                transform: rotate(180deg);
+            }
+            
+            .dropdown-item {
+                color: rgba(255,255,255,0.85);
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                white-space: normal;
+            }
+            
+            .dropdown-item:hover {
+                transform: translateX(8px);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .dropdown-toggle {
+                position: relative;
+                overflow: hidden;
+            }
+        }
+
+        /* ===== HERO CON VIDEO ===== */
+        .hero-video {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-video .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(5,26,44,0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            width: 100%;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,107,0,0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,107,0,0.4);
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title .highlight {
+            color: var(--soldesp-orange);
+            display: block;
+            font-size: clamp(1.3rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .hero-quote {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.95;
+            max-width: 550px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--soldesp-orange);
+            padding-left: 20px;
+        }
+
+        .btn-primary-soldesp {
+            background: linear-gradient(135deg, var(--soldesp-orange), var(--soldesp-orange-light));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 700;
+            border-radius: 40px;
+            transition: all 0.3s;
+            margin-right: 15px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255,107,0,0.3);
+        }
+
+        .btn-primary-soldesp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,107,0,0.4);
+            color: white;
+        }
+
+        .btn-outline-soldesp {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 28px;
+            font-weight: 700;
+            border-radius: 40px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-soldesp:hover {
+            background: white;
+            color: var(--soldesp-blue);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 576px) {
+            .btn-primary-soldesp, .btn-outline-soldesp {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+                text-align: center;
+            }
+            .btn-primary-soldesp {
+                margin-right: 0;
+            }
+            .hero-quote {
+                font-size: 0.85rem;
+            }
+            .hero-content {
+                padding: 0 15px;
+            }
+        }
+
+        /* ===== SECCIONES ===== */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--soldesp-blue);
+        }
+
+        .section-subtitle {
+            color: var(--soldesp-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* ===== TARJETAS DE SERVICIOS - CON GALERÍA ===== */
+        .service-card-link {
+            text-decoration: none;
+            display: block;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .service-card-modern {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+        }
+
+        .service-card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--soldesp-blue), var(--soldesp-blue-dark));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card-modern:hover::before {
+            opacity: 1;
+        }
+
+        .service-card-modern > * {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .service-card-link:hover .service-card-modern {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-card-link:hover .service-card-modern .service-icon-modern {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .service-card-link:hover .service-card-modern .service-icon-modern i {
+            color: white;
+        }
+
+        .service-card-link:hover .service-card-modern h4,
+        .service-card-link:hover .service-card-modern p {
+            color: white;
+        }
+
+        .service-card-modern h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--soldesp-blue);
+        }
+
+        .service-card-modern p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            color: var(--soldesp-gray);
+        }
+
+        .service-icon-modern {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,107,0,0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .service-icon-modern i {
+            font-size: 28px;
+            color: var(--soldesp-orange);
+            transition: all 0.3s;
+        }
+
+        .stats-section-modern {
+            background: linear-gradient(135deg, var(--soldesp-blue), var(--soldesp-blue-dark));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card-modern {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card-modern:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .stat-number-modern {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--soldesp-orange);
+            margin-bottom: 5px;
+        }
+
+        /* ===== LIGHTBOX MODAL ===== */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-modal.active { display: flex; }
+        .lightbox-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+        }
+        .lightbox-main {
+            position: relative;
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .lightbox-image {
+            max-width: 95%;
+            max-height: 80%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.05s linear;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .lightbox-image:active { cursor: grabbing; }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .nav-btn:active { background: var(--soldesp-orange); color: white; transform: translateY(-50%) scale(0.95); }
+        .nav-prev { left: 15px; }
+        .nav-next { right: 15px; }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .close-btn:active { background: #ff4444; color: white; transform: scale(0.95); }
+
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 10;
+            font-family: monospace;
+        }
+
+        .thumbnails-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.8);
+            overflow-x: auto;
+            z-index: 10;
+            -webkit-overflow-scrolling: touch;
+        }
+        .thumbnails-bar::-webkit-scrollbar { height: 3px; }
+        .thumbnails-bar::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); }
+        .thumbnails-bar::-webkit-scrollbar-thumb { background: var(--soldesp-orange); border-radius: 10px; }
+        
+        .thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+        .thumb:active { transform: scale(0.95); }
+        .thumb.active-thumb {
+            opacity: 1;
+            border-color: var(--soldesp-orange);
+        }
+        
+        .swipe-instruction {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            padding: 6px 14px;
+            border-radius: 25px;
+            color: white;
+            font-size: 0.7rem;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .zoom-controls {
+                position: absolute;
+                bottom: 85px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                z-index: 15;
+            }
+            .zoom-btn {
+                width: 55px;
+                height: 55px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-size: 1.3rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            }
+            .zoom-btn:active {
+                background: var(--soldesp-orange);
+                color: white;
+                transform: scale(0.95);
+            }
+            .thumbnails-bar { padding: 10px 15px; }
+            .thumb { width: 50px; height: 50px; }
+            .nav-btn { width: 42px; height: 42px; font-size: 1.1rem; }
+            .close-btn { width: 40px; height: 40px; top: 15px; right: 15px; font-size: 1rem; }
+            .image-counter { bottom: 15px; left: 15px; font-size: 0.75rem; padding: 5px 12px; }
+            .swipe-instruction { bottom: 155px; font-size: 0.65rem; }
+        }
+        
+        @media (min-width: 769px) {
+            .zoom-controls {
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                z-index: 15;
+            }
+            .zoom-btn {
+                width: 50px;
+                height: 50px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            .zoom-btn:hover {
+                background: var(--soldesp-orange);
+                color: white;
+                transform: scale(1.05);
+            }
+            .swipe-instruction { display: none; }
+            .nav-btn { width: 55px; height: 55px; font-size: 1.5rem; }
+            .nav-prev { left: 25px; }
+            .nav-next { right: 25px; }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-premium {
+            background: linear-gradient(135deg, #051a2c 0%, #030f1a 100%);
+            color: #94a3b8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--soldesp-orange), var(--soldesp-orange-light), var(--soldesp-orange));
+            animation: gradientMove 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .footer-premium h4, .footer-premium h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+        }
+
+        .footer-premium h4:after, .footer-premium h5:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--soldesp-orange);
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+
+        .footer-link-premium {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-link-premium:hover {
+            color: var(--soldesp-orange);
+            transform: translateX(5px);
+        }
+
+        .contact-info-premium {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 5px 0;
+            transition: all 0.3s;
+            border-radius: 10px;
+        }
+
+        .contact-info-premium:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-info-premium i {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,107,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--soldesp-orange);
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .contact-info-premium:hover i {
+            background: var(--soldesp-orange);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .contact-info-premium span {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
+
+        .social-links-premium {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links-premium a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+
+        .social-links-premium a:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-links-premium a.fb:hover { background: #1877f2; color: white; }
+        .social-links-premium a.ln:hover { background: #0077b5; color: white; }
+        .social-links-premium a.wa:hover { background: #25d366; color: white; }
+        .social-links-premium a.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); color: white; }
+
+        .copyright-premium {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 25px;
+            margin-top: 20px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 50px 0;
+            }
+            .hero-video {
+                min-height: 100vh;
+                height: auto;
+            }
+            .stat-number-modern {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== NUEVO INICIO SOLDESP ===== */
+        .hero-soldesp{position:relative;min-height:100vh;overflow:hidden;background:#061827;color:#fff}.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,15,26,.94) 0%,rgba(5,26,44,.78) 48%,rgba(5,26,44,.35) 100%)}.hero-container{position:relative;z-index:2}.hero-container h1{font-size:clamp(2.6rem,6vw,5.3rem);line-height:1.02;font-weight:800;letter-spacing:-2px;margin:20px 0}.hero-container h1 span{display:block;color:var(--soldesp-orange)}.hero-container p{max-width:680px;font-size:1.12rem;line-height:1.8;color:rgba(255,255,255,.84)}.hero-tag,.section-kicker{font-size:.76rem;font-weight:800;letter-spacing:2px;color:var(--soldesp-orange)}.hero-tag{display:inline-flex;gap:9px;align-items:center;border:1px solid rgba(255,107,0,.45);background:rgba(255,107,0,.1);padding:9px 16px;border-radius:30px}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn-soldesp-primary,.btn-soldesp-outline{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;font-weight:800;border-radius:5px;padding:14px 24px;transition:.3s}.btn-soldesp-primary{background:var(--soldesp-orange);color:#fff;border:2px solid var(--soldesp-orange);box-shadow:0 10px 25px rgba(255,107,0,.2)}.btn-soldesp-primary:hover{color:#fff;transform:translateY(-3px);background:#e95f00}.btn-soldesp-outline{color:#fff;border:2px solid rgba(255,255,255,.75);background:transparent}.btn-soldesp-outline:hover{color:var(--soldesp-blue);background:#fff;transform:translateY(-3px)}.hero-trust{display:flex;gap:25px;flex-wrap:wrap;margin-top:40px;color:rgba(255,255,255,.8);font-size:.85rem}.hero-trust i{color:var(--soldesp-orange);margin-right:6px}.hero-scroll{position:absolute;z-index:3;bottom:25px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;color:rgba(255,255,255,.65);font-size:.62rem;letter-spacing:2px}.hero-scroll i{font-size:1rem}.stats-home{background:#071d30}.stats-heading{margin-bottom:35px}.stats-heading>span{font-size:.7rem;letter-spacing:2px;color:var(--soldesp-orange);font-weight:800}.stats-heading h2{color:#fff;font-weight:800;margin-top:8px}.stat-card-modern{height:100%;padding:28px 15px;border-radius:8px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1)}.stat-card-modern p{color:rgba(255,255,255,.72);font-size:.82rem;margin:0}.stat-icon{color:var(--soldesp-orange);font-size:1.35rem;margin-bottom:12px}.stat-number-modern{font-size:2.5rem}.about-home{background:#fff}.lead-text{font-size:1.12rem;line-height:1.7;color:#344054}.about-points{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:24px}.about-points div{display:flex;gap:9px;align-items:flex-start;font-size:.88rem;color:#475467}.about-points i{color:var(--soldesp-orange)}.about-image-wrap{position:relative;padding:0 0 25px 25px}.about-image-wrap:before{content:"";position:absolute;left:0;bottom:0;width:70%;height:80%;background:var(--soldesp-orange);z-index:0;border-radius:5px}.about-image-wrap img{position:relative;z-index:1;width:100%;height:430px;object-fit:cover;border-radius:5px}.about-badge{position:absolute;right:-5px;bottom:0;z-index:2;background:#071d30;color:#fff;padding:18px 24px;border-left:4px solid var(--soldesp-orange);display:flex;flex-direction:column}.about-badge strong{font-size:2rem;color:var(--soldesp-orange);line-height:1}.about-badge span{font-size:.72rem;margin-top:4px}.services-home{background:#f5f7f9}.services-home .service-card-modern{border-radius:5px;padding:30px 26px;border:1px solid #e7eaee}.services-home .service-card-modern:hover{transform:translateY(-7px)}.services-home .service-card-modern:after{content:"Ver servicio →";position:relative;z-index:2;display:block;margin-top:18px;font-size:.78rem;font-weight:800;color:var(--soldesp-orange)}.experience-home{background:linear-gradient(120deg,#061827,#0b2e4d)}.section-kicker.light{color:#ff9b5d}.experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.experience-item{padding:27px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:5px;color:#fff}.experience-item i{font-size:1.7rem;color:var(--soldesp-orange)}.experience-item h4{margin:15px 0 7px;font-weight:800}.experience-item p{font-size:.82rem;color:rgba(255,255,255,.62);margin:0}.project-card{display:block;text-decoration:none;color:inherit;border-radius:5px;overflow:hidden;background:#fff;border:1px solid #e7eaee;transition:.3s;height:100%;box-shadow:0 10px 30px rgba(10,37,64,.05)}.project-card:hover{transform:translateY(-6px);color:inherit;box-shadow:0 20px 45px rgba(10,37,64,.12)}.project-image{height:245px;position:relative;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:20px}.project-image:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.75))}.project-image span{position:relative;z-index:1;color:#fff;font-size:.72rem;letter-spacing:1.5px;font-weight:800}.project-one{background-image:linear-gradient(135deg,#183a56,#0a2540)}.project-two{background-image:linear-gradient(135deg,#263238,#101820)}.project-three{background-image:linear-gradient(135deg,#334e68,#102a43)}.project-body{position:relative;padding:24px}.project-body small{font-size:.68rem;color:var(--soldesp-orange);font-weight:800;letter-spacing:1px}.project-body h3{font-size:1.15rem;font-weight:800;margin:9px 0}.project-body p{font-size:.83rem;color:#667085;margin:0;line-height:1.6;padding-right:20px}.project-body>i{position:absolute;right:22px;bottom:25px;color:var(--soldesp-orange)}.project-link{color:var(--soldesp-orange);font-weight:800;text-decoration:none;font-size:.86rem}.clients-home{background:#f5f7f9}.client-strip{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}.client-strip div{min-width:150px;padding:25px 18px;background:#fff;border:1px solid #e5e7eb;border-radius:5px;display:flex;flex-direction:column;gap:10px;align-items:center}.client-strip i{font-size:1.7rem;color:var(--soldesp-orange)}.client-strip span{font-size:.7rem;font-weight:800;letter-spacing:1px;color:#344054}.quote-home{padding:70px 0;background:#fff}.quote-box{background:linear-gradient(120deg,#071d30,#0d3b61);padding:50px 55px;border-radius:7px;display:flex;align-items:center;justify-content:space-between;gap:35px;color:#fff}.quote-box h2{font-weight:800;margin:10px 0}.quote-box p{color:rgba(255,255,255,.68);margin:0}.quote-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}.quote-actions .btn-soldesp-outline{border-color:rgba(255,255,255,.4)}
+        @media(max-width:991px){.hero-container h1{letter-spacing:-1px}.quote-box{padding:35px 28px;flex-direction:column;align-items:flex-start}.quote-actions{justify-content:flex-start}.about-image-wrap{margin-top:10px}.hero-overlay{background:linear-gradient(90deg,rgba(3,15,26,.9),rgba(5,26,44,.62))}}
+        @media(max-width:576px){.hero-container p{font-size:.96rem}.hero-trust{gap:12px;font-size:.76rem}.about-points{grid-template-columns:1fr}.about-image-wrap img{height:300px}.experience-grid{grid-template-columns:1fr}.quote-box{padding:30px 22px}.quote-actions,.quote-actions a{width:100%}.hero-buttons,.hero-buttons a{width:100%}.hero-buttons a{margin:0}.hero-scroll{display:none}}
+    
+        /* ================= AJUSTE HERO RESPONSIVE ================= */
+        .hero-container h1{
+            font-size:clamp(1.8rem,3.2vw,2.8rem); 
+            line-height:1.1;
+            letter-spacing:-0.8px;
+            margin:12px 0;
+        }
+        .hero-container p{
+            max-width:540px; 
+            font-size:0.95rem; 
+            line-height:1.55;
+        }
+        .hero-tag {
+            padding: 6px 14px; 
+            font-size: 0.7rem;
+        }
+
+        @media (max-width:991px){
+            .hero-container h1{
+                font-size:clamp(1.7rem,4vw,2.4rem);
+            }
+        }
+
+        @media (max-width:500px){
+            .whatsapp-float{
+                right:18px;
+                bottom:18px;
+                width:52px;
+                height:52px;
+                font-size:24px;
+            }
+            .hero-container h1{
+                font-size:clamp(1.6rem,6vw,2.1rem);
+                line-height:1.1;
+                letter-spacing:-.5px;
+                margin:10px 0;
+            }
+            .hero-container p{
+                font-size:.85rem;
+                line-height:1.5;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="SOLDESP_LOGO 2.png" alt="SOLDESP Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menú de navegación">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+                <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        SERVICIOS <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <li><a class="dropdown-item" href="Alquiler.html">Alquiler de Equipos</a></li>
+                        <li><a class="dropdown-item" href="Fabricación.html">Servicios de Fabricación</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Industriales.html">Mantenimiento de Plantas Industriales</a></li>
+                        <li><a class="dropdown-item" href="Plantas_Desalinizadoras.html">Mantenimiento de Plantas 
+                            <br>Desalinizadoras</a></li>
+                        <li><a class="dropdown-item" href="Calderia.html">Caldería, Fabricación y Montaje 
+                            <br>de Estructuras Metálicas</a></li>
+                        <li><a class="dropdown-item" href="Montaje_de_Piping.html">Fabricación y Montaje de Piping / 
+                            <br>Spool en Plantas</a></li>
+                        <li><a class="dropdown-item" href="Soldaduras_especiales.html">Soldaduras Especiales</a></li>
+                        <li><a class="dropdown-item" href="Arenado.html">Arenado y Pintura</a></li>
+                        <li><a class="dropdown-item" href="Planos.html">Digitalización de Planos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="Proyectos.html">PROYECTOS</a></li>
+                <li class="nav-item"><a class="nav-link" href="Clientes.html">CLIENTES</a></li>
+                <li class="nav-item"><a class="nav-link" href="Ubicación.html">UBICACIÓN</a></li>
+                <li class="nav-item"><a class="nav-link" href="Alianzas_Estrategicas.html">ALIANZAS</a></li>
+                <li class="nav-item"><a class="nav-link" href="Trabajos.html">TRABAJOS</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-soldesp">
+    <video autoplay muted loop playsinline class="hero-bg">
+        <source src="Soldadura2.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container hero-container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-8" data-aos="fade-up">
+                <span class="hero-tag"><i class="bi bi-building-gear"></i> INGENIERÍA Y SOLUCIONES INDUSTRIALES</span>
+                <h1>La respuesta rápida y confiable <span>que su empresa necesita</span></h1>
+                <p>Soluciones especializadas en ingeniería, soldadura, fabricación, mantenimiento y ejecución de proyectos para el sector industrial.</p>
+                <div class="hero-buttons">
+                    <a href="Proyectos.html" class="btn-soldesp-primary">VER PROYECTOS <i class="bi bi-arrow-right"></i></a>
+                    <a href="Nosotros.html" class="btn-soldesp-outline">CONÓCENOS</a>
+                </div>
+                <div class="hero-trust"><span><i class="bi bi-shield-check"></i> Seguridad</span><span><i class="bi bi-award"></i> Calidad</span><span><i class="bi bi-people"></i> Experiencia</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll"><span>DESLIZA</span><i class="bi bi-chevron-down"></i></div>
+</section>
+
+<section class="stats-section-modern section-padding stats-home">
+    <div class="container">
+        <div class="text-center stats-heading" data-aos="fade-up"><span>TRAYECTORIA Y CAPACIDAD</span><h2>Resultados que respaldan nuestro trabajo</h2></div>
+        <div class="row g-3 g-lg-4">
+            <div class="col-md-3 col-6" data-aos="fade-up"><div class="stat-card-modern"><i class="bi bi-calendar-check stat-icon"></i><div class="stat-number-modern">10+</div><p>Años de experiencia</p></div></div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100"><div class="stat-card-modern"><i class="bi bi-diagram-3 stat-icon"></i><div class="stat-number-modern">50+</div><p>Proyectos y servicios</p></div></div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200"><div class="stat-card-modern"><i class="bi bi-shield-check stat-icon"></i><div class="stat-number-modern">100%</div><p>Compromiso con la seguridad</p></div></div>
+            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300"><div class="stat-card-modern"><i class="bi bi-person-workspace stat-icon"></i><div class="stat-number-modern">350k+</div><p>Horas hombre seguras</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding about-home">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <span class="section-kicker">SOLDESP</span>
+                <h2 class="section-title">Ingeniería, mantenimiento y ejecución de proyectos</h2>
+                <p class="lead-text">Trabajamos para convertir las necesidades de nuestros clientes en soluciones industriales seguras, eficientes y técnicamente confiables.</p>
+                <p class="text-muted">Contamos con profesionales y personal técnico especializado para atender trabajos de fabricación, soldadura, mantenimiento, montaje y otros servicios industriales, manteniendo como pilares la calidad, la seguridad y el cumplimiento.</p>
+                <div class="about-points">
+                    <div><i class="bi bi-check-circle-fill"></i><span>Personal técnico calificado</span></div>
+                    <div><i class="bi bi-check-circle-fill"></i><span>Experiencia en trabajos industriales</span></div>
+                    <div><i class="bi bi-check-circle-fill"></i><span>Orientación a la calidad y seguridad</span></div>
+                    <div><i class="bi bi-check-circle-fill"></i><span>Atención según requerimiento del cliente</span></div>
+                </div>
+                <a href="Nosotros.html" class="btn-soldesp-primary mt-3">CONOCE SOLDESP <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-image-wrap"><img src="nosotros.png" alt="Trabajos industriales SOLDESP" class="img-fluid"><div class="about-badge"><strong>+10</strong><span>años de trayectoria</span></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding services-home" id="servicios">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up"><span class="section-kicker">LO QUE HACEMOS</span><h2 class="section-title">Nuestros Servicios</h2><p class="section-subtitle">Soluciones integrales para atender las necesidades de nuestros clientes en diferentes áreas de la industria.</p></div>
+        <div class="row g-4" id="serviciosContainer"></div>
+        <div class="text-center mt-5"><a href="Fabricación.html" class="btn-soldesp-primary">VER TODOS LOS SERVICIOS <i class="bi bi-arrow-right"></i></a></div>
+    </div>
+</section>
+
+<section class="experience-home section-padding">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5" data-aos="fade-right"><span class="section-kicker light">NUESTRA EXPERIENCIA</span><h2 class="text-white fw-bold display-6">Soluciones pensadas para trabajos industriales exigentes</h2><p class="text-white-50 mt-3">Desde la fabricación y soldadura hasta el mantenimiento y montaje, integramos experiencia técnica, planificación y trabajo seguro para responder a cada proyecto.</p><a href="Proyectos.html" class="btn-soldesp-outline mt-3">CONOCE NUESTROS PROYECTOS</a></div>
+            <div class="col-lg-7" data-aos="fade-left"><div class="experience-grid"><div class="experience-item"><i class="bi bi-tools"></i><h4>Fabricación</h4><p>Estructuras y componentes metálicos.</p></div><div class="experience-item"><i class="bi bi-fire"></i><h4>Soldadura</h4><p>Procesos y trabajos especializados.</p></div><div class="experience-item"><i class="bi bi-building-gear"></i><h4>Mantenimiento</h4><p>Atención preventiva y correctiva.</p></div><div class="experience-item"><i class="bi bi-diagram-3"></i><h4>Montaje</h4><p>Instalación y ejecución en campo.</p></div></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding projects-home">
+    <div class="container">
+        <div class="row align-items-end mb-5"><div class="col-lg-8" data-aos="fade-up"><span class="section-kicker">EXPERIENCIA REAL</span><h2 class="section-title mb-2">Proyectos y trabajos destacados</h2><p class="section-subtitle mx-0">Una selección de los trabajos que forman parte de nuestra experiencia industrial.</p></div><div class="col-lg-4 text-lg-end mt-3 mt-lg-0"><a href="Proyectos.html" class="project-link">Ver todos los proyectos <i class="bi bi-arrow-up-right"></i></a></div></div>
+        <div class="row g-4">
+            <div class="col-lg-4" data-aos="fade-up"><a href="Proyectos.html" class="project-card"><div class="project-image project-one"><span>ESTRUCTURAS METÁLICAS</span></div><div class="project-body"><small>FABRICACIÓN</small><h3>Fabricación y montaje de estructuras</h3><p>Soluciones metálicas desarrolladas para requerimientos industriales.</p><i class="bi bi-arrow-right"></i></div></a></div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100"><a href="Proyectos.html" class="project-card"><div class="project-image project-two"><span>SOLDADURA INDUSTRIAL</span></div><div class="project-body"><small>SOLDADURA</small><h3>Trabajos de soldadura especializada</h3><p>Intervenciones ejecutadas con enfoque técnico y de seguridad.</p><i class="bi bi-arrow-right"></i></div></a></div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200"><a href="Proyectos.html" class="project-card"><div class="project-image project-three"><span>MANTENIMIENTO</span></div><div class="project-body"><small>MANTENIMIENTO</small><h3>Mantenimiento de instalaciones</h3><p>Servicios orientados a mantener la continuidad operativa.</p><i class="bi bi-arrow-right"></i></div></a></div>
+        </div>
+    </div>
+</section>
+
+<section class="clients-home section-padding">
+    <div class="container text-center"><span class="section-kicker">RELACIONES DE CONFIANZA</span><h2 class="section-title">Nuestros Clientes</h2><p class="section-subtitle">Construimos relaciones de trabajo basadas en responsabilidad, calidad y cumplimiento.</p><div class="client-strip mt-5"><div><i class="bi bi-buildings"></i><span>MINERÍA</span></div><div><i class="bi bi-lightning-charge"></i><span>ENERGÍA</span></div><div><i class="bi bi-gear-wide-connected"></i><span>INDUSTRIA</span></div><div><i class="bi bi-cone-striped"></i><span>CONSTRUCCIÓN</span></div><div><i class="bi bi-water"></i><span>SECTOR PESQUERO</span></div></div><a href="Clientes.html" class="btn-soldesp-primary mt-5">CONOCE NUESTROS CLIENTES <i class="bi bi-arrow-right"></i></a></div>
+</section>
+
+<section class="quote-home">
+    <div class="container"><div class="quote-box" data-aos="zoom-in"><div><span class="section-kicker light">ATENCIÓN DIRECTA</span><h2>¿Tienes un proyecto o requerimiento industrial?</h2><p>Cuéntanos qué necesitas y nuestro equipo podrá orientarte sobre el servicio adecuado.</p></div><div class="quote-actions"><a href="https://wa.me/053495247?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios" target="_blank" class="btn-soldesp-primary">SOLICITAR INFORMACIÓN <i class="bi bi-whatsapp"></i></a><a href="Trabajos.html" class="btn-soldesp-outline">CONTACTO Y ATENCIÓN</a></div></div></div>
+</section>
+
+<footer class="footer-premium pt-5 pb-4">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <img src="SOLDESP_LOGO 2.png" alt="SOLDESP Logo" height="50">
+                </div>
+                <p class="mb-4" style="line-height: 1.6; color: #94a3b8; font-size: 0.85rem;">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
+                <div class="social-links-premium">
+                    <a href="https://www.facebook.com/soldesp.ilo" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
+                    <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://wa.me/053495247" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h5>Enlaces Rápidos</h5>
+                <div class="d-flex flex-column">
+                    <a href="index.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Inicio</a>
+                    <a href="Nosotros.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Nosotros</a>
+                    <a href="Proyectos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Proyectos</a>
+                    <a href="Clientes.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Clientes</a>
+                    <a href="Trabajos.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Trabaja con Nosotros</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Servicios</h5>
+                <div class="d-flex flex-column">
+                    <a href="Fabricación.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Fabricación Metálica</a>
+                    <a href="Soldaduras_especiales.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Soldaduras Especiales</a>
+                    <a href="Plantas_Industriales.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Mantenimiento de Plantas</a>
+                    <a href="Arenado.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Arenado y Pintura</a>
+                    <a href="Calderia.html" class="footer-link-premium"><i class="bi bi-chevron-right"></i> Caldería y Estructuras</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Contacto Directo</h5>
+                <div class="contact-info-premium"><i class="bi bi-geo-alt-fill"></i><span>Ilo, Moquegua - Perú</span></div>
+                <div class="contact-info-premium"><i class="bi bi-telephone-fill"></i><span>(053) 495247</span></div>
+                <div class="contact-info-premium"><i class="bi bi-phone-fill"></i><span>953660826</span></div>
+                <div class="contact-info-premium"><i class="bi bi-envelope-fill"></i><span>recursos.humanos@soldesp.com.pe</span></div>
+                <div class="contact-info-premium"><i class="bi bi-clock-fill"></i><span>Lun - Vie: 8:00am - 4:00pm<br>Sáb: 8:00am - 12:00pm</span></div>
+            </div>
+        </div>
+        <div class="copyright-premium">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small mb-0">&copy; 2026 <span style="color: var(--soldesp-orange); font-weight: 600;">SOLDESP</span> | Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="small mb-0">Ingeniería y Soldadura de Alta Calidad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
+
+<div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-container">
+        <button class="close-btn" id="closeLightbox"><i class="fas fa-times"></i></button>
+        <button class="nav-btn nav-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn nav-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-main">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="Imagen ampliada" draggable="false">
+        </div>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomInBtn"><i class="fas fa-search-plus"></i></button>
+            <button class="zoom-btn" id="zoomOutBtn"><i class="fas fa-search-minus"></i></button>
+        </div>
+        <div class="image-counter" id="lightboxCounter">1 / 1</div>
+        <div class="thumbnails-bar" id="lightboxThumbnails"></div>
+        <div class="swipe-instruction">
+            <i class="fas fa-chevron-left"></i> Desliza para cambiar <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 900, once: true, offset: 80 });
+
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => navbar.classList.toggle("scrolled", window.scrollY > 50));
+
+    // Dropdown animado
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownToggle = document.querySelector('#servicesDropdown');
+        if (!dropdownToggle) return;
+        
+        function syncDropdownState() {
+            const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            const icon = dropdownToggle.querySelector('.bi-chevron-down');
+            if (isExpanded) {
+                dropdownToggle.classList.add('show');
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                dropdownToggle.classList.remove('show');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'aria-expanded') {
+                    syncDropdownState();
+                }
+            });
+        });
+        observer.observe(dropdownToggle, { attributes: true });
+        syncDropdownState();
+        
+        if (window.innerWidth < 992) {
+            dropdownToggle.removeAttribute('data-bs-toggle');
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const parentLi = this.closest('.dropdown');
+                const menu = parentLi?.querySelector('.dropdown-menu');
+                const isNowShown = menu?.classList.contains('show');
+                const icon = this.querySelector('.bi-chevron-down');
+                
+                if (!isNowShown) {
+                    if (menu) menu.classList.add('show');
+                    this.classList.add('show');
+                    this.setAttribute('aria-expanded', 'true');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    if (menu) menu.classList.remove('show');
+                    this.classList.remove('show');
+                    this.setAttribute('aria-expanded', 'false');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        } else {
+            const dropdownElement = dropdownToggle.closest('.dropdown');
+            if (dropdownElement) {
+                dropdownElement.addEventListener('show.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                });
+                dropdownElement.addEventListener('hide.bs.dropdown', function() {
+                    const icon = dropdownToggle.querySelector('.bi-chevron-down');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                });
+            }
+        }
+        
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item');
+        const navbarCollapse = document.getElementById('navbarNav');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth < 992 && navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                }
+            });
+        });
+        
+        dropdownToggle.addEventListener('click', function() {
+            this.style.transform = 'scale(0.96)';
+            setTimeout(() => { if (this) this.style.transform = ''; }, 150);
+        });
+    });
+
+    // Datos de servicios con galerías de imágenes
+    const serviciosData = [
+        { 
+            id: 1, 
+            titulo: "Fabricación Metálica", 
+            icono: "bi-gear-fill",
+            descripcion: "Diseño y fabricación de estructuras metálicas de alta resistencia para uso industrial pesado.",
+            imagenes: ["ESTRUCTURAS-METALICAS.jpg", "servicio_fabricacion_2.jpg", "servicio_fabricacion_3.jpg"]
+        },
+        { 
+            id: 2, 
+            titulo: "Soldaduras Especiales", 
+            icono: "bi-fire",
+            descripcion: "Procesos de soldadura certificados bajo estándares internacionales AWS y ASME.",
+            imagenes: ["Soldaduras especiales_6.jpg", "Soldaduras especiales_2.jpg", "Soldaduras especiales_4.jpg"]
+        },
+        { 
+            id: 3, 
+            titulo: "Mantenimiento de Plantas", 
+            icono: "bi-building",
+            descripcion: "Mantenimiento preventivo y correctivo de plantas industriales y minería.",
+            imagenes: ["Mantenimiento plantas industriales.jpg", "Mantenimiento plantas industriales_2.jpg", "Mantenimiento plantas industriales_3.jpg"]
+        },
+        { 
+            id: 4, 
+            titulo: "Arenado y Pintura", 
+            icono: "bi-droplet",
+            descripcion: "Tratamiento de superficies y protección anticorrosiva industrial de alta calidad.",
+            imagenes: ["Arenado y pintado_5.jpg", "Arenado y pintado_7.jpg", "Arenado y pintado_8.jpg", "Arenado y pintado_9.jpg", "Arenado y pintado_10.jpg"]
+        },
+        { 
+            id: 5, 
+            titulo: "Montaje de Piping", 
+            icono: "bi-pip",
+            descripcion: "Fabricación y montaje de tuberías industriales y spool en plantas.",
+            imagenes: ["Montaje y fabricación.jpg", "Montaje y fabricacióng_2.jpg"]
+        },
+        { 
+            id: 6, 
+            titulo: "Digitalización de Planos", 
+            icono: "bi-calculator-fill",
+            descripcion: "Conversión y digitalización de planos técnicos con alta precisión.",
+            imagenes: ["Digitalización de planos.jpg", "Digitalización en compu.jpg"]
+        }
+    ];
+
+    // Variables del lightbox
+    let currentImages = [];
+    let currentIndex = 0;
+    let zoomLevel = 1;
+    let translateX = 0, translateY = 0;
+    let startX, startY, isDragging = false;
+    
+    const lightbox = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    const zoomIn = document.getElementById('zoomInBtn');
+    const zoomOut = document.getElementById('zoomOutBtn');
+    const counter = document.getElementById('lightboxCounter');
+    const thumbnailsBar = document.getElementById('lightboxThumbnails');
+    
+    function resetZoom() {
+        zoomLevel = 1;
+        translateX = 0;
+        translateY = 0;
+        lightboxImage.style.transform = "scale(1) translate(0px, 0px)";
+    }
+    
+    function updateTransform() {
+        lightboxImage.style.transform = `scale(${zoomLevel}) translate(${translateX}px, ${translateY}px)`;
+    }
+    
+    function openLightbox(images, index) {
+        currentImages = images;
+        currentIndex = index;
+        lightboxImage.src = currentImages[currentIndex];
+        lightbox.classList.add('active');
+        resetZoom();
+        updateCounter();
+        renderThumbnails();
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        resetZoom();
+    }
+    
+    function updateCounter() {
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+    
+    function nextImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        lightboxImage.src = currentImages[currentIndex];
+        resetZoom();
+        updateCounter();
+        updateThumbnailsActive();
+    }
+    
+    function prevImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        lightboxImage.src = currentImages[currentIndex];
+        resetZoom();
+        updateCounter();
+        updateThumbnailsActive();
+    }
+    
+    function renderThumbnails() {
+        thumbnailsBar.innerHTML = '';
+        currentImages.forEach((img, idx) => {
+            const thumb = document.createElement('img');
+            thumb.src = img;
+            thumb.classList.add('thumb');
+            if (idx === currentIndex) thumb.classList.add('active-thumb');
+            thumb.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = idx;
+                lightboxImage.src = currentImages[currentIndex];
+                resetZoom();
+                updateCounter();
+                updateThumbnailsActive();
+            });
+            thumbnailsBar.appendChild(thumb);
+        });
+    }
+    
+    function updateThumbnailsActive() {
+        const thumbs = document.querySelectorAll('.thumb');
+        thumbs.forEach((thumb, idx) => {
+            if (idx === currentIndex) {
+                thumb.classList.add('active-thumb');
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+                thumb.classList.remove('active-thumb');
+            }
+        });
+    }
+    
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+    
+    zoomIn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (zoomLevel < 3) {
+            zoomLevel += 0.2;
+            updateTransform();
+        }
+    });
+    
+    zoomOut.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (zoomLevel > 1) {
+            zoomLevel -= 0.2;
+            if (zoomLevel === 1) {
+                translateX = 0;
+                translateY = 0;
+            }
+            updateTransform();
+        }
+    });
+    
+    lightboxImage.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+    });
+    
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    });
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Renderizar servicios
+    function renderServicios() {
+        const container = document.getElementById('serviciosContainer');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        serviciosData.forEach(servicio => {
+            const col = document.createElement('div');
+            col.className = 'col-md-4';
+            col.setAttribute('data-aos', 'fade-up');
+            col.setAttribute('data-aos-delay', servicio.id * 100);
+            col.innerHTML = `
+                <div class="service-card-link" data-id="${servicio.id}">
+                    <div class="service-card-modern">
+                        <div class="service-icon-modern"><i class="bi ${servicio.icono}"></i></div>
+                        <h4>${servicio.titulo}</h4>
+                        <p>${servicio.descripcion}</p>
+                    </div>
+                </div>
+            `;
+            container.appendChild(col);
+        });
+        
+        // Agregar evento de clic a cada tarjeta
+        document.querySelectorAll('.service-card-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = parseInt(link.getAttribute('data-id'));
+                const servicio = serviciosData.find(s => s.id === id);
+                if (servicio && servicio.imagenes && servicio.imagenes.length > 0) {
+                    openLightbox(servicio.imagenes, 0);
+                } else {
+                    // Si no hay galería configurada, redirigir a la página del servicio
+                    const paginaDestino = obtenerPaginaServicio(servicio.titulo);
+                    if (paginaDestino) window.location.href = paginaDestino;
+                }
+            });
+        });
+    }
+    
+    function obtenerPaginaServicio(titulo) {
+        const mapeo = {
+            'Fabricación Metálica': 'Calderia.html',
+            'Soldaduras Especiales': 'Soldaduras_especiales.html',
+            'Mantenimiento de Plantas': 'Plantas_Industriales.html',
+            'Arenado y Pintura': 'Arenado.html',
+            'Montaje de Piping': 'Montaje_de_Piping.html',
+            'Digitalización de Planos': 'Planos.html'
+        };
+        return mapeo[titulo] || '#';
+    }
+    
+    renderServicios();
+</script>
+</body>
+</html>
