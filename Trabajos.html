@@ -27,21 +27,16 @@
         html{scroll-behavior:smooth;overflow-x:hidden}
         html,body{width:100%;overflow-x:hidden}
         
-        /* ===== FONDO GLOBAL ===== */
+        /* ===== FONDO GLOBAL (Blanco limpio para el resto de la página) ===== */
         body{
             font-family:'Inter',sans-serif;
             color:#1a1a2e;
-            background-color: var(--soldesp-blue-dark); /* Color de respaldo */
-            background-image: url('SOLDESP fondo.jpg');
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            background-color: #ffffff; /* Fondo blanco para que el contenido se lea perfecto */
         }
 
         a{text-decoration:none}
 
-        /* ===== NAVBAR (idéntico al index.html) ===== */
+        /* ===== NAVBAR ===== */
         .navbar {
             background: rgba(10, 37, 64, 0.95) !important;
             backdrop-filter: blur(10px);
@@ -224,23 +219,34 @@
             .dropdown-toggle { position: relative; overflow: hidden; }
         }
 
-        /* ===== HERO (Ajustado para fondo global) ===== */
+        /* ===== HERO (Ahora sí, la imagen cubre bien y se ve grande) ===== */
         .jobs-hero{
             position:relative;
-            min-height:65vh; /* Un poco más alto */
+            min-height:75vh; /* Más alto para que la imagen luzca */
             display:flex;
             align-items:center;
             overflow:hidden;
-            /* Fondo transparente para que se vea la imagen global */
             background: transparent; 
             padding:120px 0 70px;
         }
-        /* Capa oscura para que el texto se lea sobre la foto */
+        /* Imagen de fondo SOLO para el Hero, para que se vea nítida */
+        .jobs-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('SOLDESP fondo.jpg');
+            background-size: cover;
+            background-position: center 30%; /* Centra las caras del equipo */
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        /* Capa oscura para que el texto blanco resalte */
         .jobs-hero::after{
             content:"";position:absolute;inset:0;
-            background:linear-gradient(90deg,rgba(5,26,44,.85) 0%,rgba(5,26,44,.65) 48%,rgba(5,26,44,.3) 100%);
+            background:linear-gradient(90deg,rgba(5,26,44,.90) 0%,rgba(5,26,44,.65) 50%,rgba(5,26,44,.3) 100%);
+            z-index: 2;
         }
-        .hero-content{position:relative;z-index:2;color:#fff;max-width:760px}
+        .hero-content{position:relative;z-index:3;color:#fff;max-width:760px}
         .eyebrow{
             display:inline-flex;align-items:center;gap:9px;color:#fff;
             background:rgba(255,107,0,.16);border:1px solid rgba(255,107,0,.38);
@@ -269,19 +275,9 @@
         }
         .btn-outline-light-soldesp:hover{background:#fff;color:var(--soldesp-blue)}
 
-        /* ===== SECCIONES (Ajustadas para fondo global) ===== */
-        .section{padding:82px 0; background: transparent;}
-        
-        /* Caja contenedora semitransparente para que el texto se lea sobre la foto */
-        .section-container {
-            background: rgba(255, 255, 255, 0.90);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255,255,255,0.4);
-        }
+        /* ===== SECCIONES (Fondo blanco limpio) ===== */
+        .section{padding:82px 0; background: #ffffff;}
+        .section-soft{background:#f5f7fa}
 
         .section-heading{max-width:760px;margin:0 auto 42px;text-align:center}
         .section-kicker{
@@ -540,16 +536,14 @@
         @media(max-width:991px){
             .application-wrap{position:static;margin-top:25px}
             .process-line{display:none}
-            /* Ajuste del fondo en tablets */
             .jobs-hero::after { background: linear-gradient(180deg, rgba(5,26,44,.85) 0%, rgba(5,26,44,.6) 100%); }
         }
         @media(max-width:767px){
             .navbar-brand img{height:38px}
-            .jobs-hero{min-height:75vh;padding:105px 0 55px}
+            .jobs-hero{min-height:65vh;padding:105px 0 55px}
             .hero-content h1{font-size:2.35rem}
             .hero-content p{font-size:.9rem;line-height:1.65}
             .section{padding:50px 0}
-            .section-container { padding: 25px 15px; border-radius: 16px; }
             .intro-card{padding:23px}
             .job-card{padding:20px}
             .job-top{display:block}
@@ -560,14 +554,14 @@
             .application-card{padding:22px}
             .whatsapp-float{width:48px;height:48px;font-size:23px;right:16px;bottom:16px}
             
-            /* En celular, la imagen de fondo fija a veces da problemas, la hacemos scroll */
-            body { background-attachment: scroll; }
+            /* Ajuste de la imagen en celular */
+            .jobs-hero::before { background-position: center 25%; }
         }
     </style>
 </head>
 
 <body>
-<!-- ===== NAVBAR (idéntico al index.html) ===== -->
+<!-- ===== NAVBAR ===== -->
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
         <a class="navbar-brand" href="index.html">
@@ -633,234 +627,187 @@
 
 <section class="section">
     <div class="container">
-        <div class="section-container" data-aos="fade-up">
-            <div class="section-heading">
-                <div class="section-kicker">Trabaja con nosotros</div>
-                <h2 class="section-title">Personas que hacen posible cada proyecto</h2>
-                <p>
-                    En SOLDESP, el talento humano es parte fundamental de nuestras operaciones.
-                    Queremos facilitar que cada profesional pueda conocer las vacantes y enviar su información.
-                </p>
-            </div>
+        <div class="section-heading" data-aos="fade-up">
+            <div class="section-kicker">Trabaja con nosotros</div>
+            <h2 class="section-title">Personas que hacen posible cada proyecto</h2>
+            <p>
+                En SOLDESP, el talento humano es parte fundamental de nuestras operaciones.
+                Queremos facilitar que cada profesional pueda conocer las vacantes y enviar su información.
+            </p>
+        </div>
 
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="intro-card">
-                        <div class="intro-icon"><i class="bi bi-shield-check"></i></div>
-                        <h3>Seguridad primero</h3>
-                        <p>Promovemos una cultura orientada al trabajo seguro y responsable dentro de las actividades industriales.</p>
-                    </div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="intro-card">
+                    <div class="intro-icon"><i class="bi bi-shield-check"></i></div>
+                    <h3>Seguridad primero</h3>
+                    <p>Promovemos una cultura orientada al trabajo seguro y responsable dentro de las actividades industriales.</p>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="intro-card">
-                        <div class="intro-icon"><i class="bi bi-award"></i></div>
-                        <h3>Desarrollo profesional</h3>
-                        <p>Buscamos perfiles técnicos y profesionales que quieran fortalecer sus conocimientos y experiencia.</p>
-                    </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="intro-card">
+                    <div class="intro-icon"><i class="bi bi-award"></i></div>
+                    <h3>Desarrollo profesional</h3>
+                    <p>Buscamos perfiles técnicos y profesionales que quieran fortalecer sus conocimientos y experiencia.</p>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="intro-card">
-                        <div class="intro-icon"><i class="bi bi-people"></i></div>
-                        <h3>Trabajo en equipo</h3>
-                        <p>La coordinación entre especialidades permite responder a los desafíos de ingeniería y mantenimiento.</p>
-                    </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="intro-card">
+                    <div class="intro-icon"><i class="bi bi-people"></i></div>
+                    <h3>Trabajo en equipo</h3>
+                    <p>La coordinación entre especialidades permite responder a los desafíos de ingeniería y mantenimiento.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section" id="vacantes">
+<section class="section section-soft" id="vacantes">
     <div class="container">
-        <div class="section-container" data-aos="fade-up">
-            <div class="section-heading">
-                <div class="section-kicker">Oportunidades</div>
-                <h2 class="section-title">Vacantes disponibles</h2>
-                <p>Selecciona una oportunidad para revisar sus requisitos y comenzar tu postulación.</p>
-            </div>
-
-            <div class="row g-4 jobs-layout">
-                <div class="col-lg-7">
-                    <div class="jobs-toolbar">
-                        <span class="jobs-count"><strong id="vacantesCount">4</strong> oportunidades mostradas</span>
-                        <select class="filter-select" id="areaFilter" aria-label="Filtrar oportunidades">
-                            <option value="all">Todas las áreas</option>
-                            <option value="soldadura">Soldadura</option>
-                            <option value="mantenimiento">Mantenimiento</option>
-                            <option value="ingenieria">Ingeniería</option>
-                            <option value="pintura">Arenado y pintura</option>
-                        </select>
-                    </div>
-
-                    <div class="job-card" data-area="soldadura" data-aos="fade-up">
-                        <div class="job-top">
-                            <div>
-                                <h3 class="job-title"><i class="fas fa-helmet-safety"></i>Soldador Certificado (TIG/MIG)</h3>
-                                <div class="job-meta">
-                                    <span><i class="bi bi-geo-alt"></i>Ilo, Moquegua</span>
-                                    <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
-                                    <span><i class="bi bi-calendar3"></i>Publicado: 15/05/2026</span>
-                                </div>
-                            </div>
-                            <span class="job-status">Disponible</span>
-                        </div>
-                        <p class="job-description">Buscamos soldador certificado con experiencia en soldadura TIG y MIG para proyectos industriales. Conocimiento en acero inoxidable y materiales especiales.</p>
-                        <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Certificación vigente y mínimo 3 años de experiencia.</span></div>
-                        <button class="btn-apply" onclick="abrirFormulario('Soldador Certificado (TIG/MIG)')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
-                    </div>
-
-                    <div class="job-card" data-area="mantenimiento" data-aos="fade-up">
-                        <div class="job-top">
-                            <div>
-                                <h3 class="job-title"><i class="fas fa-wrench"></i>Supervisor de Mantenimiento Industrial</h3>
-                                <div class="job-meta">
-                                    <span><i class="bi bi-geo-alt"></i>Ilo / Tacna</span>
-                                    <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
-                                    <span><i class="bi bi-calendar3"></i>Publicado: 10/05/2026</span>
-                                </div>
-                            </div>
-                            <span class="job-status">Disponible</span>
-                        </div>
-                        <p class="job-description">Supervisor con experiencia en mantenimiento de plantas industriales, gestión de equipos y cumplimiento de estándares de seguridad.</p>
-                        <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Ing. Mecánico o Eléctrico y 5 años de experiencia.</span></div>
-                        <button class="btn-apply" onclick="abrirFormulario('Supervisor de Mantenimiento Industrial')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
-                    </div>
-
-                    <div class="job-card" data-area="ingenieria" data-aos="fade-up">
-                        <div class="job-top">
-                            <div>
-                                <h3 class="job-title"><i class="fas fa-ruler-combined"></i>Ingeniero de Proyectos</h3>
-                                <div class="job-meta">
-                                    <span><i class="bi bi-geo-alt"></i>Moquegua / Arequipa</span>
-                                    <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
-                                    <span><i class="bi bi-calendar3"></i>Publicado: 05/05/2026</span>
-                                </div>
-                            </div>
-                            <span class="job-status">Disponible</span>
-                        </div>
-                        <p class="job-description">Ingeniero para planificación, ejecución y supervisión de proyectos industriales. Manejo de AutoCAD, presupuestos y cronogramas.</p>
-                        <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Ing. Civil/Mecánico y experiencia en proyectos mineros.</span></div>
-                        <button class="btn-apply" onclick="abrirFormulario('Ingeniero de Proyectos')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
-                    </div>
-
-                    <div class="job-card" data-area="pintura" data-aos="fade-up">
-                        <div class="job-top">
-                            <div>
-                                <h3 class="job-title"><i class="fas fa-paintbrush"></i>Técnico en Arenado y Pintura Industrial</h3>
-                                <div class="job-meta">
-                                    <span><i class="bi bi-geo-alt"></i>Ilo, Moquegua</span>
-                                    <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
-                                    <span><i class="bi bi-calendar3"></i>Publicado: 01/05/2026</span>
-                                </div>
-                            </div>
-                            <span class="job-status">Disponible</span>
-                        </div>
-                        <p class="job-description">Técnico con experiencia en preparación de superficies, aplicación de recubrimientos industriales y control de calidad.</p>
-                        <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Certificación NACE o SSPC deseable.</span></div>
-                        <button class="btn-apply" onclick="abrirFormulario('Técnico en Arenado y Pintura Industrial')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
-                    </div>
-                </div>
-
-                <div class="col-lg-5" id="postular">
-                    <div class="application-wrap">
-                        <div class="application-card">
-                            <div class="application-head">
-                                <div class="application-icon"><i class="bi bi-file-earmark-person"></i></div>
-                                <div>
-                                    <h3>Postula a SOLDESP</h3>
-                                    <div class="small-intro">Completa tus datos y te guiaremos para enviar tu postulación.</div>
-                                </div>
-                            </div>
-
-                            <form id="jobApplicationForm">
-                                <input type="hidden" id="puesto">
-
-                                <label class="form-label" for="nombre">Nombre completo *</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Escriba su nombre completo" required>
-
-                                <label class="form-label" for="email">Correo electrónico *</label>
-                                <input type="email" class="form-control" id="email" placeholder="Escriba su correo" required>
-
-                                <label class="form-label" for="telefono">Número de contacto *</label>
-                                <input type="tel" class="form-control" id="telefono" placeholder="Celular / WhatsApp" required>
-
-                                <label class="form-label" for="puestoSelect">Puesto de interés *</label>
-                                <select class="form-select" id="puestoSelect" required>
-                                    <option value="">Seleccione una vacante</option>
-                                    <option value="Soldador Certificado (TIG/MIG)">Soldador Certificado (TIG/MIG)</option>
-                                    <option value="Supervisor de Mantenimiento Industrial">Supervisor de Mantenimiento Industrial</option>
-                                    <option value="Ingeniero de Proyectos">Ingeniero de Proyectos</option>
-                                    <option value="Técnico en Arenado y Pintura Industrial">Técnico en Arenado y Pintura Industrial</option>
-                                </select>
-
-                                <label class="form-label" for="experiencia">Experiencia profesional *</label>
-                                <textarea class="form-control" id="experiencia" rows="4" placeholder="Cuéntenos brevemente su experiencia" required></textarea>
-
-                                <label class="form-label" for="cv">Currículum vitae</label>
-                                <input type="file" class="form-control" id="cv" accept=".pdf,.doc,.docx">
-
-                                <div class="cv-note">
-                                    <i class="bi bi-info-circle me-1"></i>
-                                    El archivo CV se selecciona en este formulario, pero por las limitaciones de WhatsApp Web no se adjunta automáticamente al mensaje. Después de abrir WhatsApp, adjúntalo manualmente.
-                                </div>
-
-                                <button type="submit" class="btn-submit">
-                                    <i class="bi bi-whatsapp me-2"></i>Continuar por WhatsApp
-                                </button>
-                                <div id="mensajeEnvio" class="form-message mt-3" style="display:none;"></div>
-                            </form>
-                        </div>
-
-                        <div class="whatsapp-card">
-                            <h4><i class="bi bi-whatsapp me-2"></i>¿Prefieres enviar tu CV directamente?</h4>
-                            <p>Puedes comunicarte con SOLDESP mediante WhatsApp y compartir tu información.</p>
-                            <a class="btn-wa" target="_blank" href="https://wa.me/51953660826?text=Hola%2C%20quiero%20postular%20a%20una%20oferta%20de%20trabajo%20de%20SOLDESP">
-                                Abrir WhatsApp <i class="bi bi-arrow-up-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="section-heading" data-aos="fade-up">
+            <div class="section-kicker">Oportunidades</div>
+            <h2 class="section-title">Vacantes disponibles</h2>
+            <p>Selecciona una oportunidad para revisar sus requisitos y comenzar tu postulación.</p>
         </div>
-    </div>
-</section>
 
-<section class="section">
-    <div class="container">
-        <div class="section-container" data-aos="fade-up">
-            <div class="section-heading">
-                <div class="section-kicker">Nuestra propuesta</div>
-                <h2 class="section-title">¿Qué encontrarás al postular?</h2>
-                <p>Una presentación más clara de las oportunidades y un proceso sencillo para enviar tus datos.</p>
+        <div class="row g-4 jobs-layout">
+            <div class="col-lg-7">
+                <div class="jobs-toolbar">
+                    <span class="jobs-count"><strong id="vacantesCount">4</strong> oportunidades mostradas</span>
+                    <select class="filter-select" id="areaFilter" aria-label="Filtrar oportunidades">
+                        <option value="all">Todas las áreas</option>
+                        <option value="soldadura">Soldadura</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="ingenieria">Ingeniería</option>
+                        <option value="pintura">Arenado y pintura</option>
+                    </select>
+                </div>
+
+                <div class="job-card" data-area="soldadura" data-aos="fade-up">
+                    <div class="job-top">
+                        <div>
+                            <h3 class="job-title"><i class="fas fa-helmet-safety"></i>Soldador Certificado (TIG/MIG)</h3>
+                            <div class="job-meta">
+                                <span><i class="bi bi-geo-alt"></i>Ilo, Moquegua</span>
+                                <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
+                                <span><i class="bi bi-calendar3"></i>Publicado: 15/05/2026</span>
+                            </div>
+                        </div>
+                        <span class="job-status">Disponible</span>
+                    </div>
+                    <p class="job-description">Buscamos soldador certificado con experiencia en soldadura TIG y MIG para proyectos industriales. Conocimiento en acero inoxidable y materiales especiales.</p>
+                    <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Certificación vigente y mínimo 3 años de experiencia.</span></div>
+                    <button class="btn-apply" onclick="abrirFormulario('Soldador Certificado (TIG/MIG)')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
+                </div>
+
+                <div class="job-card" data-area="mantenimiento" data-aos="fade-up">
+                    <div class="job-top">
+                        <div>
+                            <h3 class="job-title"><i class="fas fa-wrench"></i>Supervisor de Mantenimiento Industrial</h3>
+                            <div class="job-meta">
+                                <span><i class="bi bi-geo-alt"></i>Ilo / Tacna</span>
+                                <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
+                                <span><i class="bi bi-calendar3"></i>Publicado: 10/05/2026</span>
+                            </div>
+                        </div>
+                        <span class="job-status">Disponible</span>
+                    </div>
+                    <p class="job-description">Supervisor con experiencia en mantenimiento de plantas industriales, gestión de equipos y cumplimiento de estándares de seguridad.</p>
+                    <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Ing. Mecánico o Eléctrico y 5 años de experiencia.</span></div>
+                    <button class="btn-apply" onclick="abrirFormulario('Supervisor de Mantenimiento Industrial')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
+                </div>
+
+                <div class="job-card" data-area="ingenieria" data-aos="fade-up">
+                    <div class="job-top">
+                        <div>
+                            <h3 class="job-title"><i class="fas fa-ruler-combined"></i>Ingeniero de Proyectos</h3>
+                            <div class="job-meta">
+                                <span><i class="bi bi-geo-alt"></i>Moquegua / Arequipa</span>
+                                <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
+                                <span><i class="bi bi-calendar3"></i>Publicado: 05/05/2026</span>
+                            </div>
+                        </div>
+                        <span class="job-status">Disponible</span>
+                    </div>
+                    <p class="job-description">Ingeniero para planificación, ejecución y supervisión de proyectos industriales. Manejo de AutoCAD, presupuestos y cronogramas.</p>
+                    <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Ing. Civil/Mecánico y experiencia en proyectos mineros.</span></div>
+                    <button class="btn-apply" onclick="abrirFormulario('Ingeniero de Proyectos')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
+                </div>
+
+                <div class="job-card" data-area="pintura" data-aos="fade-up">
+                    <div class="job-top">
+                        <div>
+                            <h3 class="job-title"><i class="fas fa-paintbrush"></i>Técnico en Arenado y Pintura Industrial</h3>
+                            <div class="job-meta">
+                                <span><i class="bi bi-geo-alt"></i>Ilo, Moquegua</span>
+                                <span><i class="bi bi-briefcase"></i>Tiempo completo</span>
+                                <span><i class="bi bi-calendar3"></i>Publicado: 01/05/2026</span>
+                            </div>
+                        </div>
+                        <span class="job-status">Disponible</span>
+                    </div>
+                    <p class="job-description">Técnico con experiencia en preparación de superficies, aplicación de recubrimientos industriales y control de calidad.</p>
+                    <div class="job-requirement"><i class="bi bi-check-circle-fill"></i><span>Certificación NACE o SSPC deseable.</span></div>
+                    <button class="btn-apply" onclick="abrirFormulario('Técnico en Arenado y Pintura Industrial')">Postular a esta vacante <i class="bi bi-arrow-right ms-1"></i></button>
+                </div>
             </div>
 
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3" data-aos="fade-up">
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="bi bi-mortarboard"></i></div>
-                        <h4>Capacitación</h4>
-                        <p>Espacio para mostrar oportunidades de formación y certificación cuando correspondan a cada puesto.</p>
+            <div class="col-lg-5" id="postular">
+                <div class="application-wrap">
+                    <div class="application-card">
+                        <div class="application-head">
+                            <div class="application-icon"><i class="bi bi-file-earmark-person"></i></div>
+                            <div>
+                                <h3>Postula a SOLDESP</h3>
+                                <div class="small-intro">Completa tus datos y te guiaremos para enviar tu postulación.</div>
+                            </div>
+                        </div>
+
+                        <form id="jobApplicationForm">
+                            <input type="hidden" id="puesto">
+
+                            <label class="form-label" for="nombre">Nombre completo *</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Escriba su nombre completo" required>
+
+                            <label class="form-label" for="email">Correo electrónico *</label>
+                            <input type="email" class="form-control" id="email" placeholder="Escriba su correo" required>
+
+                            <label class="form-label" for="telefono">Número de contacto *</label>
+                            <input type="tel" class="form-control" id="telefono" placeholder="Celular / WhatsApp" required>
+
+                            <label class="form-label" for="puestoSelect">Puesto de interés *</label>
+                            <select class="form-select" id="puestoSelect" required>
+                                <option value="">Seleccione una vacante</option>
+                                <option value="Soldador Certificado (TIG/MIG)">Soldador Certificado (TIG/MIG)</option>
+                                <option value="Supervisor de Mantenimiento Industrial">Supervisor de Mantenimiento Industrial</option>
+                                <option value="Ingeniero de Proyectos">Ingeniero de Proyectos</option>
+                                <option value="Técnico en Arenado y Pintura Industrial">Técnico en Arenado y Pintura Industrial</option>
+                            </select>
+
+                            <label class="form-label" for="experiencia">Experiencia profesional *</label>
+                            <textarea class="form-control" id="experiencia" rows="4" placeholder="Cuéntenos brevemente su experiencia" required></textarea>
+
+                            <label class="form-label" for="cv">Currículum vitae</label>
+                            <input type="file" class="form-control" id="cv" accept=".pdf,.doc,.docx">
+
+                            <div class="cv-note">
+                                <i class="bi bi-info-circle me-1"></i>
+                                El archivo CV se selecciona en este formulario, pero por las limitaciones de WhatsApp Web no se adjunta automáticamente al mensaje. Después de abrir WhatsApp, adjúntalo manualmente.
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <i class="bi bi-whatsapp me-2"></i>Continuar por WhatsApp
+                            </button>
+                            <div id="mensajeEnvio" class="form-message mt-3" style="display:none;"></div>
+                        </form>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
-                        <h4>Seguridad</h4>
-                        <p>La seguridad puede presentarse como uno de los pilares de la cultura de trabajo de la empresa.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="bi bi-graph-up-arrow"></i></div>
-                        <h4>Crecimiento</h4>
-                        <p>Una sección preparada para comunicar posibilidades de desarrollo profesional de forma transparente.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
-                    <div class="benefit-card">
-                        <div class="benefit-icon"><i class="bi bi-people"></i></div>
-                        <h4>Equipo</h4>
-                        <p>Conoce oportunidades para integrarte a equipos vinculados con ingeniería y operaciones industriales.</p>
+
+                    <div class="whatsapp-card">
+                        <h4><i class="bi bi-whatsapp me-2"></i>¿Prefieres enviar tu CV directamente?</h4>
+                        <p>Puedes comunicarte con SOLDESP mediante WhatsApp y compartir tu información.</p>
+                        <a class="btn-wa" target="_blank" href="https://wa.me/51953660826?text=Hola%2C%20quiero%20postular%20a%20una%20oferta%20de%20trabajo%20de%20SOLDESP">
+                            Abrir WhatsApp <i class="bi bi-arrow-up-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -870,37 +817,76 @@
 
 <section class="section">
     <div class="container">
-        <div class="section-container" data-aos="fade-up">
-            <div class="section-heading">
-                <div class="section-kicker">Proceso</div>
-                <h2 class="section-title">¿Cómo postular?</h2>
-                <p>El flujo queda visible para que el candidato sepa qué ocurrirá después de seleccionar una vacante.</p>
-            </div>
+        <div class="section-heading" data-aos="fade-up">
+            <div class="section-kicker">Nuestra propuesta</div>
+            <h2 class="section-title">¿Qué encontrarás al postular?</h2>
+            <p>Una presentación más clara de las oportunidades y un proceso sencillo para enviar tus datos.</p>
+        </div>
 
-            <div class="row g-4">
-                <div class="col-md-3 process-card" data-aos="fade-up">
-                    <div class="process-line"></div>
-                    <div class="process-number">1</div>
-                    <h4>Elige una vacante</h4>
-                    <p>Revisa el cargo, ubicación y requisitos.</p>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-mortarboard"></i></div>
+                    <h4>Capacitación</h4>
+                    <p>Espacio para mostrar oportunidades de formación y certificación cuando correspondan a cada puesto.</p>
                 </div>
-                <div class="col-md-3 process-card" data-aos="fade-up" data-aos-delay="80">
-                    <div class="process-line"></div>
-                    <div class="process-number">2</div>
-                    <h4>Completa tus datos</h4>
-                    <p>Ingresa tus datos de contacto y experiencia.</p>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
+                    <h4>Seguridad</h4>
+                    <p>La seguridad puede presentarse como uno de los pilares de la cultura de trabajo de la empresa.</p>
                 </div>
-                <div class="col-md-3 process-card" data-aos="fade-up" data-aos-delay="160">
-                    <div class="process-line"></div>
-                    <div class="process-number">3</div>
-                    <h4>Continúa por WhatsApp</h4>
-                    <p>Se abrirá un mensaje preparado con tu información.</p>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h4>Crecimiento</h4>
+                    <p>Una sección preparada para comunicar posibilidades de desarrollo profesional de forma transparente.</p>
                 </div>
-                <div class="col-md-3 process-card" data-aos="fade-up" data-aos-delay="240">
-                    <div class="process-number">4</div>
-                    <h4>Adjunta tu CV</h4>
-                    <p>En WhatsApp, adjunta tu CV y completa el envío.</p>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-people"></i></div>
+                    <h4>Equipo</h4>
+                    <p>Conoce oportunidades para integrarte a equipos vinculados con ingeniería y operaciones industriales.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-soft">
+    <div class="container">
+        <div class="section-heading" data-aos="fade-up">
+            <div class="section-kicker">Proceso</div>
+            <h2 class="section-title">¿Cómo postular?</h2>
+            <p>El flujo queda visible para que el candidato sepa qué ocurrirá después de seleccionar una vacante.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-3 process-card" data-aos="fade-up">
+                <div class="process-line"></div>
+                <div class="process-number">1</div>
+                <h4>Elige una vacante</h4>
+                <p>Revisa el cargo, ubicación y requisitos.</p>
+            </div>
+            <div class="col-md-3 process-card" data-aos="fade-up" data-aos-delay="80">
+                <div class="process-line"></div>
+                <div class="process-number">2</div>
+                <h4>Completa tus datos</h4>
+                <p>Ingresa tus datos de contacto y experiencia.</p>
+            </div>
+            <div class="col-md-3 process-card" data-aos="fade-up" data-aos-delay="160">
+                <div class="process-line"></div>
+                <div class="process-number">3</div>
+                <h4>Continúa por WhatsApp</h4>
+                <p>Se abrirá un mensaje preparado con tu información.</p>
+            </div>
+            <div class="col-md-3 process-card" data-aos="fade-up" data-aos-delay="240">
+                <div class="process-number">4</div>
+                <h4>Adjunta tu CV</h4>
+                <p>En WhatsApp, adjunta tu CV y completa el envío.</p>
             </div>
         </div>
     </div>
@@ -978,7 +964,7 @@
         navbar.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    // ===== Dropdown animado (idéntico al index.html) =====
+    // ===== Dropdown animado =====
     document.addEventListener('DOMContentLoaded', function() {
         const dropdownToggle = document.querySelector('#servicesDropdown');
         if (!dropdownToggle) return;
