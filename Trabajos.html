@@ -27,7 +27,6 @@
         html{scroll-behavior:smooth;overflow-x:hidden}
         html,body{width:100%;overflow-x:hidden}
         
-        /* Fondo blanco para el resto de la página */
         body{
             font-family:'Inter',sans-serif;
             color:#1a1a2e;
@@ -219,17 +218,18 @@
             .dropdown-toggle { position: relative; overflow: hidden; }
         }
 
-        /* ===== HERO (AHORA SÍ CUBRE TODA LA PANTALLA) ===== */
+        /* ===== HERO (IDÉNTICO AL INDEX.HTML) ===== */
         .jobs-hero{
             position:relative;
-            min-height: 100vh; /* <--- ESTO HACE QUE CUBRA TODA LA PANTALLA */
+            min-height: 100vh;
             display:flex;
             align-items:center;
             overflow:hidden;
             background: transparent; 
-            padding: 100px 0 60px; /* Ajuste para que el contenido no choque con el navbar */
+            padding: 120px 0 80px;
         }
-        /* Imagen de fondo */
+        
+        /* La imagen de fondo sin capas oscuras */
         .jobs-hero::before {
             content: "";
             position: absolute;
@@ -240,13 +240,14 @@
             background-repeat: no-repeat;
             z-index: 1;
         }
-        /* Capa oscura para legibilidad */
-        .jobs-hero::after{
-            content:"";position:absolute;inset:0;
-            background:linear-gradient(90deg,rgba(5,26,44,.90) 0%,rgba(5,26,44,.65) 50%,rgba(5,26,44,.3) 100%);
-            z-index: 2;
+        
+        /* Eliminamos la capa oscura (::after) */
+        .jobs-hero::after {
+            display: none;
         }
+
         .hero-content{position:relative;z-index:3;color:#fff;max-width:760px}
+        
         .eyebrow{
             display:inline-flex;align-items:center;gap:9px;color:#fff;
             background:rgba(255,107,0,.16);border:1px solid rgba(255,107,0,.38);
@@ -254,15 +255,22 @@
             letter-spacing:1.8px;text-transform:uppercase;margin-bottom:18px;
         }
         .eyebrow i{color:var(--soldesp-orange)}
+        
         .hero-content h1{
             font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;
             font-weight:800;margin-bottom:18px;
+            /* Sombra para que el texto se lea sobre la foto */
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
         .hero-content h1 span{color:var(--soldesp-orange)}
+        
         .hero-content p{
-            max-width:680px;color:rgba(255,255,255,.82);
+            max-width:680px;color:rgba(255,255,255,.95);
             font-size:1.05rem;line-height:1.75;margin-bottom:28px;
+            /* Sombra para el párrafo */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
+        
         .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
         .btn-primary-soldesp{
             background:var(--soldesp-orange);color:#fff;border:0;
@@ -270,8 +278,9 @@
         }
         .btn-primary-soldesp:hover{background:#e85e00;color:#fff;transform:translateY(-2px)}
         .btn-outline-light-soldesp{
-            border:1px solid rgba(255,255,255,.35);color:#fff;
+            border:1px solid rgba(255,255,255,.5);color:#fff;
             padding:11px 23px;border-radius:9px;font-weight:600;transition:.25s;
+            backdrop-filter: blur(5px);
         }
         .btn-outline-light-soldesp:hover{background:#fff;color:var(--soldesp-blue)}
 
@@ -536,12 +545,10 @@
         @media(max-width:991px){
             .application-wrap{position:static;margin-top:25px}
             .process-line{display:none}
-            .jobs-hero::after { background: linear-gradient(180deg, rgba(5,26,44,.85) 0%, rgba(5,26,44,.6) 100%); }
         }
         @media(max-width:767px){
             .navbar-brand img{height:38px}
-            /* Ajuste para que en celular el Hero ocupe toda la pantalla pero el contenido no se desborde */
-            .jobs-hero{min-height: 100vh; padding: 90px 0 40px;}
+            .jobs-hero{min-height:100vh; padding:100px 0 60px;}
             .hero-content h1{font-size:2.35rem}
             .hero-content p{font-size:.9rem;line-height:1.65}
             .section{padding:50px 0}
@@ -555,7 +562,6 @@
             .application-card{padding:22px}
             .whatsapp-float{width:48px;height:48px;font-size:23px;right:16px;bottom:16px}
             
-            /* Ajuste de la imagen en celular para que se vean las caras */
             .jobs-hero::before { background-position: center 25%; }
         }
     </style>
