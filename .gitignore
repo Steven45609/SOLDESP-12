@@ -1,0 +1,12 @@
+# Ignorar carpetas del proyecto
+backend/
+chatbot/
+
+# Ignorar archivos de entorno y secretos (¡Muy importante!)
+.env
+.env.local
+*.env
+
+# Ignorar archivos pesados o temporales
+node_modules/
+.DS_Store
