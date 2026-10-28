@@ -1542,15 +1542,29 @@
 </script>
 
 <!-- ================= CHATBOT ETHORA (SOLDESP) ================= -->
-<script
-  src="https://app.chat.ethora.com/widget/assistant-0ae49696.js"
-  id="chat-content-assistant"
-  data-app-id="6adf838eca753490abef37f2"
-  data-api-base="https://api.chat.ethora.com/v1"
-  data-bot-name="Asistente SOLDESP"
-  data-bot-avatar="https://raw.githubusercontent.com/Steven45609/SOLDESP-12/main/Robot%20cara%20para%20chatbot%20Soldesp.jpg"
-  data-greeting="Hola 👋 Soy el Asistente Virtual de SOLDESP. ¿En qué puedo ayudarte hoy?"
-></script>
+<script>
+  // Esperamos a que el DOM esté listo para asegurarnos de que no haya conflictos
+  window.addEventListener('DOMContentLoaded', function() {
+    // Si por alguna razón el script ya se cargó (para evitar duplicados), lo quitamos
+    const oldScript = document.getElementById('chat-content-assistant');
+    if (oldScript) {
+        oldScript.remove();
+    }
+
+    // Creamos el script de forma dinámica
+    const script = document.createElement('script');
+    script.src = "https://app.chat.ethora.com/widget/assistant-0ae49696.js";
+    script.id = "chat-content-assistant";
+    script.setAttribute("data-app-id", "6adf838eca753490abef37f2");
+    script.setAttribute("data-api-base", "https://api.chat.ethora.com/v1");
+    script.setAttribute("data-bot-name", "Asistente SOLDESP");
+    script.setAttribute("data-bot-avatar", "https://raw.githubusercontent.com/Steven45609/SOLDESP-12/main/Robot%20cara%20para%20chatbot%20Soldesp.jpg");
+    script.setAttribute("data-greeting", "Hola 👋 Soy el Asistente Virtual de SOLDESP. ¿En qué puedo ayudarte hoy?");
+    
+    // Añadimos el script al final del body
+    document.body.appendChild(script);
+  });
+</script>
 <!-- ================= FIN CHATBOT ETHORA ================= -->
 </body>
 </html>
