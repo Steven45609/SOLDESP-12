@@ -1,12 +1,10 @@
-# Ignorar carpetas del proyecto
-backend/
-chatbot/
-
-# Ignorar archivos de entorno y secretos (¡Muy importante!)
+# Archivo de variables de entorno (aquí va tu clave secreta)
 .env
-.env.local
-*.env
 
-# Ignorar archivos pesados o temporales
-node_modules/
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Archivos del sistema (Windows/Mac)
 .DS_Store
+Thumbs.db

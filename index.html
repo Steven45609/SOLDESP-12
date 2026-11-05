@@ -986,7 +986,53 @@
                 line-height:1.5;
             }
         }
+        
+        /* ================= ESTILOS DEL CHATBOT ================= */
+        /* 1. Modificación del Botón Flotante (Robot Interactivo) */
+        #chat-soldesp-btn { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            width: 65px; 
+            height: 65px; 
+            border-radius: 50%; 
+            background: #ff6b00; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(255,107,0,0.4); 
+            font-size: 30px; 
+            z-index: 9999; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float-robot 3s ease-in-out infinite; /* Animación de flotación */
+        }
 
+        #chat-soldesp-btn:hover {
+            transform: scale(1.1) rotate(10deg); /* Efecto interactivo al pasar el mouse */
+            background: #0a2540; /* Cambia a azul oscuro SOLDESP */
+            box-shadow: 0 8px 25px rgba(10,37,64,0.6);
+            animation: none; /* Detiene la flotación al pasar el mouse */
+        }
+
+        @keyframes float-robot {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        #chat-soldesp-window { position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 9999; overflow: hidden; border: 1px solid #eee; }
+        #chat-soldesp-header { background: #0a2540; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        #chat-soldesp-close { background: none; border: none; color: white; cursor: pointer; font-size: 18px; }
+        #chat-soldesp-messages { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
+        .msg-soldesp { max-width: 80%; padding: 10px; border-radius: 10px; font-size: 14px; line-height: 1.4; }
+        .msg-soldesp.user { background: #ff6b00; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .msg-soldesp.bot { background: #e9ecef; color: #333; align-self: flex-start; border-bottom-left-radius: 2px; }
+        #chat-soldesp-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; }
+        #chat-soldesp-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        #chat-soldesp-send { background: #ff6b00; color: white; border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -1541,17 +1587,74 @@
     renderServicios();
 </script>
 
-<!-- ================= CHATBOT ETHORA (SOLDESP) ================= -->
-<script
-  src="https://app.chat.ethora.com/widget/assistant-0ae49696.js"
-  id="chat-content-assistant"
-  data-app-id="6adf838eca753490abef37f2"
-  data-api-base="https://api.chat.ethora.com/v1"
-  data-bot-name="Asistente SOLDESP"
-  data-bot-avatar="https://raw.githubusercontent.com/Steven45609/SOLDESP-12/main/Robot%20cara%20para%20chatbot%20Soldesp.jpg"
-  data-greeting="Hola 👋 Soy el Asistente Virtual de SOLDESP. ¿En qué puedo ayudarte hoy?"
-></script>
-<!-- ================= FIN CHATBOT ETHORA ================= -->
+<!-- ================= CHATBOT SOLDESP (PROPIO) ================= -->
+<!-- 2. Modificación del Icono (Cambiado a Robot) -->
+<button id="chat-soldesp-btn"><i class="fas fa-robot"></i></button>
+<div id="chat-soldesp-window">
+    <div id="chat-soldesp-header">
+        <span>Asistente SOLDESP</span>
+        <button id="chat-soldesp-close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div id="chat-soldesp-messages">
+        <div class="msg-soldesp bot">Hola 👋 Soy el asistente virtual de SOLDESP. ¿En qué puedo ayudarte hoy?</div>
+    </div>
+    <div id="chat-soldesp-input-area">
+        <input type="text" id="chat-soldesp-input" placeholder="Escribe tu consulta..." />
+        <button id="chat-soldesp-send">Enviar</button>
+    </div>
+</div>
+
+<script>
+    // Lógica del Chatbot SOLDESP (Segura)
+    const chatWindow = document.getElementById('chat-soldesp-window');
+    const chatMessages = document.getElementById('chat-soldesp-messages');
+    const input = document.getElementById('chat-soldesp-input');
+    const sendBtn = document.getElementById('chat-soldesp-send');
+
+    // Abrir/Cerrar ventana
+    document.getElementById('chat-soldesp-btn').onclick = () => {
+        chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    };
+    document.getElementById('chat-soldesp-close').onclick = () => chatWindow.style.display = 'none';
+
+    // Función para enviar mensaje al servidor Python
+    async function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
+        
+        chatMessages.innerHTML += `<div class="msg-soldesp user">${text}</div>`;
+        input.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        const typingId = 'typing-' + Date.now();
+        chatMessages.innerHTML += `<div id="${typingId}" class="msg-soldesp bot">Escribiendo...</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+            // Petición a nuestro servidor local (NO a OpenAI directamente)
+            const response = await fetch('http://127.0.0.1:5000/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mensaje: text })
+            });
+
+            if (!response.ok) throw new Error('Error en el servidor');
+
+            const data = await response.json();
+            
+            document.getElementById(typingId).remove();
+            chatMessages.innerHTML += `<div class="msg-soldesp bot">${data.respuesta}</div>`;
+        } catch (error) {
+            document.getElementById(typingId).remove();
+            chatMessages.innerHTML += `<div class="msg-soldesp bot">Error de conexión. Revisa que el servidor Python esté encendido.</div>`;
+            console.error(error);
+        }
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    sendBtn.onclick = sendMessage;
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+</script>
 
 </body>
 </html>
