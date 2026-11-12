@@ -988,7 +988,6 @@
         }
         
         /* ================= ESTILOS DEL CHATBOT ================= */
-        /* 1. Modificación del Botón Flotante (Robot Interactivo) */
         #chat-soldesp-btn { 
             position: fixed; 
             bottom: 20px; 
@@ -1007,14 +1006,14 @@
             align-items: center; 
             justify-content: center; 
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: float-robot 3s ease-in-out infinite; /* Animación de flotación */
+            animation: float-robot 3s ease-in-out infinite;
         }
 
         #chat-soldesp-btn:hover {
-            transform: scale(1.1) rotate(10deg); /* Efecto interactivo al pasar el mouse */
-            background: #0a2540; /* Cambia a azul oscuro SOLDESP */
+            transform: scale(1.1) rotate(10deg);
+            background: #0a2540;
             box-shadow: 0 8px 25px rgba(10,37,64,0.6);
-            animation: none; /* Detiene la flotación al pasar el mouse */
+            animation: none;
         }
 
         @keyframes float-robot {
@@ -1033,6 +1032,112 @@
         #chat-soldesp-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; }
         #chat-soldesp-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
         #chat-soldesp-send { background: #ff6b00; color: white; border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+
+        /* ===== ESTILOS DEL MODAL DE POSTULACIÓN ===== */
+        #modal-postulacion {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(10, 37, 64, 0.8); 
+            z-index: 10000; 
+            justify-content: center; 
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-post-content {
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            width: 90%; 
+            max-width: 450px; 
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        #cerrar-modal {
+            position: absolute; 
+            top: 15px; 
+            right: 20px; 
+            cursor: pointer; 
+            font-size: 24px; 
+            font-weight: bold;
+            color: #666;
+            transition: color 0.2s;
+        }
+        #cerrar-modal:hover { color: #ff0000; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; color: #333; }
+        .form-group input, .form-group select {
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #ff6b00; box-shadow: 0 0 5px rgba(255,107,0,0.3); }
+        .btn-submit-post {
+            width: 100%; 
+            padding: 12px; 
+            background: #ff6b00; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit-post:hover { background: #e95f00; }
+
+        /* ===== CHATBOT RESPONSIVO (MÓVILES) ===== */
+        @media (max-width: 576px) {
+            #chat-soldesp-window { 
+                width: calc(100% - 30px);
+                height: 75vh;
+                bottom: 85px;
+                right: 15px; 
+                left: 15px;
+            }
+            
+            #chat-soldesp-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            #chat-soldesp-messages {
+                padding: 10px;
+            }
+            
+            .msg-soldesp {
+                max-width: 90%;
+                font-size: 13px;
+            }
+
+            /* === NUEVO: Ajuste para el Modal de Postulación en Celular === */
+            .modal-post-content {
+                padding: 20px; /* Un poco menos de espacio interno */
+                width: 95%; /* Ocupa casi todo el ancho */
+            }
+            
+            .modal-post-content h3 {
+                font-size: 1.3rem; /* Título un poco más pequeño */
+            }
+            
+            .form-group input, .form-group select {
+                font-size: 16px; /* Evita que el celular haga zoom al tocar el campo */
+                padding: 8px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1244,6 +1349,46 @@
         <div class="swipe-instruction">
             <i class="fas fa-chevron-left"></i> Desliza para cambiar <i class="fas fa-chevron-right"></i>
         </div>
+    </div>
+</div>
+
+<!-- ===== MODAL DE POSTULACIÓN (Oculto por defecto) ===== -->
+<div id="modal-postulacion">
+    <div class="modal-post-content">
+        <span id="cerrar-modal">&times;</span>
+        <h3 style="margin-bottom: 20px; color: #0a2540; font-weight: 800;">Enviar mi CV</h3>
+        
+        <form id="form-postulacion">
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" name="email" placeholder="correo@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" name="telefono" placeholder="Ej. 999888777" required>
+            </div>
+            <div class="form-group">
+                <label>Área de interés</label>
+                <select name="puesto" required>
+                    <option value="">Selecciona un área</option>
+                    <option value="Soldadura">Soldadura Especializada</option>
+                    <option value="Mecánica">Mecánica Industrial</option>
+                    <option value="Ingeniería">Ingeniería / Supervisión</option>
+                    <option value="Administración">Administración / RRHH</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Adjuntar CV (PDF o Word)</label>
+                <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
+            </div>
+            <button type="submit" class="btn-submit-post">Enviar Postulación</button>
+        </form>
+        <div id="mensaje-postulacion" style="margin-top: 15px; text-align: center; font-size: 14px;"></div>
     </div>
 </div>
 
@@ -1588,7 +1733,6 @@
 </script>
 
 <!-- ================= CHATBOT SOLDESP (PROPIO) ================= -->
-<!-- 2. Modificación del Icono (Cambiado a Robot) -->
 <button id="chat-soldesp-btn"><i class="fas fa-robot"></i></button>
 <div id="chat-soldesp-window">
     <div id="chat-soldesp-header">
@@ -1631,7 +1775,6 @@
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
         try {
-            // Petición a nuestro servidor local (NO a OpenAI directamente)
             const response = await fetch('http://127.0.0.1:5000/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -1641,9 +1784,22 @@
             if (!response.ok) throw new Error('Error en el servidor');
 
             const data = await response.json();
+            let respuestaBot = data.respuesta;
+
+            // 🛡️ RED DE SEGURIDAD 1: Evitar que la IA invente enlaces web (como solicitud.soldesp.com)
+            respuestaBot = respuestaBot.replace(/<a href="https?:\/\/solicitud\.soldesp\.com.*?<\/a>/gi, '');
+            
+            // 🛡️ RED DE SEGURIDAD 2: Si la IA habla de postular pero olvida el botón, lo inyectamos aquí
+            const textoMinuscula = respuestaBot.toLowerCase();
+            if ((textoMinuscula.includes('postular') || textoMinuscula.includes('vacante') || textoMinuscula.includes('trabajo') || textoMinuscula.includes('registrar')) 
+                && !respuestaBot.includes('abrirModalPostulacion')) {
+                
+                respuestaBot += `<br><br><button onclick="abrirModalPostulacion()" style="padding:12px 20px; background-color:#0a2540; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px;">Postular ahora</button>`;
+            }
             
             document.getElementById(typingId).remove();
-            chatMessages.innerHTML += `<div class="msg-soldesp bot">${data.respuesta}</div>`;
+            chatMessages.innerHTML += `<div class="msg-soldesp bot">${respuestaBot}</div>`;
+            
         } catch (error) {
             document.getElementById(typingId).remove();
             chatMessages.innerHTML += `<div class="msg-soldesp bot">Error de conexión. Revisa que el servidor Python esté encendido.</div>`;
@@ -1654,6 +1810,57 @@
 
     sendBtn.onclick = sendMessage;
     input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+</script>
+
+<script>
+    // --- Lógica del Modal de Postulación ---
+    const modalPostulacion = document.getElementById('modal-postulacion');
+    const cerrarModal = document.getElementById('cerrar-modal');
+    const formPostulacion = document.getElementById('form-postulacion');
+    const mensajePostulacion = document.getElementById('mensaje-postulacion');
+
+    // Hacemos la función global para que la IA pueda llamarla desde el chat
+    window.abrirModalPostulacion = function() {
+        modalPostulacion.style.display = 'flex';
+    }
+
+    // Cerrar modal
+    cerrarModal.onclick = () => modalPostulacion.style.display = 'none';
+    
+    // Cerrar al hacer clic fuera del contenido
+    window.onclick = function(event) {
+        if (event.target == modalPostulacion) {
+            modalPostulacion.style.display = 'none';
+        }
+    }
+
+    // Enviar formulario
+    formPostulacion.onsubmit = async (e) => {
+        e.preventDefault();
+        mensajePostulacion.innerHTML = "<span style='color: blue;'>Enviando CV, por favor espera...</span>";
+        
+        // Recopilar datos incluyendo el archivo
+        const formData = new FormData(formPostulacion);
+        
+        try {
+            const response = await fetch('http://127.0.0.1:5000/postular', {
+                method: 'POST',
+                body: formData // FormData maneja el envío de archivos automáticamente
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                mensajePostulacion.innerHTML = `<span style='color: green; font-weight: bold;'>${data.mensaje}</span>`;
+                formPostulacion.reset();
+                setTimeout(() => { modalPostulacion.style.display = 'none'; mensajePostulacion.innerHTML = ''; }, 3000);
+            } else {
+                mensajePostulacion.innerHTML = `<span style='color: red;'>${data.error}</span>`;
+            }
+        } catch (error) {
+            mensajePostulacion.innerHTML = "<span style='color: red;'>Error de conexión con el servidor.</span>";
+        }
+    };
 </script>
 
 </body>

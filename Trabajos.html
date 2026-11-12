@@ -802,11 +802,11 @@
 
                             <div class="cv-note">
                                 <i class="bi bi-info-circle me-1"></i>
-                                El archivo CV se selecciona en este formulario, pero por las limitaciones de WhatsApp Web no se adjunta automáticamente al mensaje. Después de abrir WhatsApp, adjúntalo manualmente.
+                                Tu currículum será enviado de forma segura directamente al correo de Recursos Humanos de SOLDESP.
                             </div>
 
                             <button type="submit" class="btn-submit">
-                                <i class="bi bi-whatsapp me-2"></i>Continuar por WhatsApp
+                                <i class="bi bi-send-fill me-2"></i>Enviar Postulación
                             </button>
                             <div id="mensajeEnvio" class="form-message mt-3" style="display:none;"></div>
                         </form>
@@ -1081,42 +1081,62 @@
         });
     }
 
-    // Formulario -> WhatsApp
+    // ===== Formulario -> Enviar a Python (Backend) =====
     const form = document.getElementById('jobApplicationForm');
     if (form) {
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
+        form.addEventListener('submit', async function(e){
+            e.preventDefault(); // Evita que la página se recargue
 
+            // 1. Recoger los datos del formulario
             const nombre = document.getElementById('nombre').value.trim();
             const email = document.getElementById('email').value.trim();
             const telefono = document.getElementById('telefono').value.trim();
             const puesto = document.getElementById('puestoSelect').value;
             const experiencia = document.getElementById('experiencia').value.trim();
-            const cv = document.getElementById('cv').files[0];
+            const cvFile = document.getElementById('cv').files[0];
 
+            // Validaciones básicas
             if(!nombre || !email || !telefono || !puesto || !experiencia){
                 mostrarMensaje('Completa los campos obligatorios antes de continuar.', 'danger');
                 return;
             }
+            if(!cvFile){
+                mostrarMensaje('Por favor, adjunta tu currículum vitae (CV) antes de enviar.', 'danger');
+                return;
+            }
 
-            const cvTexto = cv ? `CV seleccionado: ${cv.name}` : 'CV: pendiente de adjuntar en WhatsApp';
+            // 2. Mostrar mensaje de carga
+            mostrarMensaje('Enviando tu postulación... Por favor espera.', 'info');
 
-            const mensaje =
-                `*POSTULACIÓN - SOLDESP*%0A%0A` +
-                `*Puesto:* ${encodeURIComponent(puesto)}%0A` +
-                `*Nombre:* ${encodeURIComponent(nombre)}%0A` +
-                `*Correo:* ${encodeURIComponent(email)}%0A` +
-                `*Teléfono:* ${encodeURIComponent(telefono)}%0A` +
-                `*Experiencia:* ${encodeURIComponent(experiencia)}%0A` +
-                `*${encodeURIComponent(cvTexto)}*%0A%0A` +
-                `Enviado desde la web de SOLDESP`;
+            // 3. Preparar los datos para enviar (FormData maneja el archivo)
+            const formData = new FormData();
+            formData.append('nombre', nombre);
+            formData.append('email', email);
+            formData.append('telefono', telefono);
+            formData.append('puesto', puesto);
+            // Opcional: Si quieres que la experiencia se envíe al correo, debes agregarla en app.py
+            formData.append('experiencia', experiencia); 
+            formData.append('cv', cvFile);
 
-            window.open(`https://wa.me/51953660826?text=${mensaje}`, '_blank');
+            try {
+                // 4. Enviar al servidor de Python
+                const response = await fetch('http://127.0.0.1:5000/postular', {
+                    method: 'POST',
+                    body: formData
+                });
 
-            mostrarMensaje(
-                'WhatsApp se abrió con tu información. Recuerda adjuntar manualmente tu CV antes de enviar el mensaje.',
-                'success'
-            );
+                const data = await response.json();
+
+                if (response.ok) {
+                    mostrarMensaje(`¡Gracias ${nombre}! Tu postulación ha sido enviada exitosamente a Recursos Humanos.`, 'success');
+                    form.reset(); // Limpiar el formulario
+                } else {
+                    mostrarMensaje(`Error: ${data.error}`, 'danger');
+                }
+            } catch (error) {
+                console.error(error);
+                mostrarMensaje('Error de conexión. Asegúrate de que el servidor Python esté encendido.', 'danger');
+            }
         });
     }
 
