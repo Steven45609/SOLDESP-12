@@ -535,14 +535,151 @@
             margin-top: 20px;
         }
 
-        /* FLOAT WHATSAPP */
-        .whatsapp-float{
-            position:fixed;right:18px;bottom:18px;width:52px;height:52px;border-radius:50%;
-            display:flex;align-items:center;justify-content:center;
-            background:#25d366;color:#fff;font-size:25px;z-index:1050;
-            box-shadow:0 8px 24px rgba(0,0,0,.22);transition:.25s;
+        /* ===== ESTILOS DEL CHATBOT ===== */
+        #chat-soldesp-btn { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            width: 65px; 
+            height: 65px; 
+            border-radius: 50%; 
+            background: #ff6b00; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(255,107,0,0.4); 
+            font-size: 30px; 
+            z-index: 9999; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float-robot 3s ease-in-out infinite;
         }
-        .whatsapp-float:hover{transform:scale(1.08);color:#fff;background:#128c7e}
+
+        #chat-soldesp-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: #0a2540;
+            box-shadow: 0 8px 25px rgba(10,37,64,0.6);
+            animation: none;
+        }
+
+        @keyframes float-robot {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        #chat-soldesp-window { position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 9999; overflow: hidden; border: 1px solid #eee; }
+        #chat-soldesp-header { background: #0a2540; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        #chat-soldesp-close { background: none; border: none; color: white; cursor: pointer; font-size: 18px; }
+        #chat-soldesp-messages { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
+        .msg-soldesp { max-width: 80%; padding: 10px; border-radius: 10px; font-size: 14px; line-height: 1.4; }
+        .msg-soldesp.user { background: #ff6b00; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .msg-soldesp.bot { background: #e9ecef; color: #333; align-self: flex-start; border-bottom-left-radius: 2px; }
+        #chat-soldesp-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; }
+        #chat-soldesp-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        #chat-soldesp-send { background: #ff6b00; color: white; border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+
+        /* ===== ESTILOS DEL MODAL DE POSTULACIÓN ===== */
+        #modal-postulacion {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(10, 37, 64, 0.8); 
+            z-index: 10000; 
+            justify-content: center; 
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-post-content {
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            width: 90%; 
+            max-width: 450px; 
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        #cerrar-modal {
+            position: absolute; 
+            top: 15px; 
+            right: 20px; 
+            cursor: pointer; 
+            font-size: 24px; 
+            font-weight: bold;
+            color: #666;
+            transition: color 0.2s;
+        }
+        #cerrar-modal:hover { color: #ff0000; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; color: #333; }
+        .form-group input, .form-group select {
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #ff6b00; box-shadow: 0 0 5px rgba(255,107,0,0.3); }
+        .btn-submit-post {
+            width: 100%; 
+            padding: 12px; 
+            background: #ff6b00; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit-post:hover { background: #e95f00; }
+
+        /* ===== CHATBOT RESPONSIVO (MÓVILES) ===== */
+        @media (max-width: 576px) {
+            #chat-soldesp-window { 
+                width: calc(100% - 30px);
+                height: 75vh;
+                bottom: 85px;
+                right: 15px; 
+                left: 15px;
+            }
+            #chat-soldesp-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
+            }
+            #chat-soldesp-messages {
+                padding: 10px;
+            }
+            .msg-soldesp {
+                max-width: 90%;
+                font-size: 13px;
+            }
+            /* Ajuste para el Modal de Postulación en Celular */
+            .modal-post-content {
+                padding: 20px;
+                width: 95%;
+            }
+            .modal-post-content h3 {
+                font-size: 1.3rem;
+            }
+            .form-group input, .form-group select {
+                font-size: 16px;
+                padding: 8px 10px;
+            }
+        }
 
         /* ===== RESPONSIVE ===== */
         @media(max-width:991px){
@@ -563,7 +700,6 @@
             .jobs-toolbar{display:block}
             .jobs-count{display:block;margin-bottom:10px}
             .application-card{padding:22px}
-            .whatsapp-float{width:48px;height:48px;font-size:23px;right:16px;bottom:16px}
             
             .jobs-hero::before { background-position: center 25%; }
         }
@@ -960,9 +1096,61 @@
     </div>
 </footer>
 
-<a href="https://wa.me/053495247?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-</a>
+<!-- ================= CHATBOT SOLDESP (PROPIO) ================= -->
+<button id="chat-soldesp-btn"><i class="fas fa-robot"></i></button>
+<div id="chat-soldesp-window">
+    <div id="chat-soldesp-header">
+        <span>Asistente SOLDESP</span>
+        <button id="chat-soldesp-close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div id="chat-soldesp-messages">
+        <div class="msg-soldesp bot">Hola 👋 Soy el asistente virtual de SOLDESP. ¿En qué puedo ayudarte hoy?</div>
+    </div>
+    <div id="chat-soldesp-input-area">
+        <input type="text" id="chat-soldesp-input" placeholder="Escribe tu consulta..." />
+        <button id="chat-soldesp-send">Enviar</button>
+    </div>
+</div>
+
+<!-- ===== MODAL DE POSTULACIÓN (Oculto por defecto) ===== -->
+<div id="modal-postulacion">
+    <div class="modal-post-content">
+        <span id="cerrar-modal">&times;</span>
+        <h3 style="margin-bottom: 20px; color: #0a2540; font-weight: 800;">Enviar mi CV</h3>
+        
+        <form id="form-postulacion">
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" name="email" placeholder="correo@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" name="telefono" placeholder="Ej. 999888777" required>
+            </div>
+            <div class="form-group">
+                <label>Área de interés</label>
+                <select name="puesto" required>
+                    <option value="">Selecciona un área</option>
+                    <option value="Soldadura">Soldadura Especializada</option>
+                    <option value="Mecánica">Mecánica Industrial</option>
+                    <option value="Ingeniería">Ingeniería / Supervisión</option>
+                    <option value="Administración">Administración / RRHH</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Adjuntar CV (PDF o Word)</label>
+                <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
+            </div>
+            <button type="submit" class="btn-submit-post">Enviar Postulación</button>
+        </form>
+        <div id="mensaje-postulacion" style="margin-top: 15px; text-align: center; font-size: 14px;"></div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -1085,9 +1273,8 @@
     const form = document.getElementById('jobApplicationForm');
     if (form) {
         form.addEventListener('submit', async function(e){
-            e.preventDefault(); // Evita que la página se recargue
+            e.preventDefault();
 
-            // 1. Recoger los datos del formulario
             const nombre = document.getElementById('nombre').value.trim();
             const email = document.getElementById('email').value.trim();
             const telefono = document.getElementById('telefono').value.trim();
@@ -1095,7 +1282,6 @@
             const experiencia = document.getElementById('experiencia').value.trim();
             const cvFile = document.getElementById('cv').files[0];
 
-            // Validaciones básicas
             if(!nombre || !email || !telefono || !puesto || !experiencia){
                 mostrarMensaje('Completa los campos obligatorios antes de continuar.', 'danger');
                 return;
@@ -1105,21 +1291,17 @@
                 return;
             }
 
-            // 2. Mostrar mensaje de carga
             mostrarMensaje('Enviando tu postulación... Por favor espera.', 'info');
 
-            // 3. Preparar los datos para enviar (FormData maneja el archivo)
             const formData = new FormData();
             formData.append('nombre', nombre);
             formData.append('email', email);
             formData.append('telefono', telefono);
             formData.append('puesto', puesto);
-            // Opcional: Si quieres que la experiencia se envíe al correo, debes agregarla en app.py
             formData.append('experiencia', experiencia); 
             formData.append('cv', cvFile);
 
             try {
-                // 4. Enviar al servidor de Python
                 const response = await fetch('http://127.0.0.1:5000/postular', {
                     method: 'POST',
                     body: formData
@@ -1129,7 +1311,7 @@
 
                 if (response.ok) {
                     mostrarMensaje(`¡Gracias ${nombre}! Tu postulación ha sido enviada exitosamente a Recursos Humanos.`, 'success');
-                    form.reset(); // Limpiar el formulario
+                    form.reset();
                 } else {
                     mostrarMensaje(`Error: ${data.error}`, 'danger');
                 }
@@ -1147,6 +1329,108 @@
         box.textContent = texto;
         box.style.display = 'block';
     }
+
+    // ================= LÓGICA DEL CHATBOT =================
+    const chatWindow = document.getElementById('chat-soldesp-window');
+    const chatMessages = document.getElementById('chat-soldesp-messages');
+    const input = document.getElementById('chat-soldesp-input');
+    const sendBtn = document.getElementById('chat-soldesp-send');
+
+    document.getElementById('chat-soldesp-btn').onclick = () => {
+        chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    };
+    document.getElementById('chat-soldesp-close').onclick = () => chatWindow.style.display = 'none';
+
+    async function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
+        
+        chatMessages.innerHTML += `<div class="msg-soldesp user">${text}</div>`;
+        input.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        const typingId = 'typing-' + Date.now();
+        chatMessages.innerHTML += `<div id="${typingId}" class="msg-soldesp bot">Escribiendo...</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mensaje: text })
+            });
+
+            if (!response.ok) throw new Error('Error en el servidor');
+
+            const data = await response.json();
+            let respuestaBot = data.respuesta;
+
+            respuestaBot = respuestaBot.replace(/<a href="https?:\/\/solicitud\.soldesp\.com.*?<\/a>/gi, '');
+            
+            const textoMinuscula = respuestaBot.toLowerCase();
+            if ((textoMinuscula.includes('postular') || textoMinuscula.includes('vacante') || textoMinuscula.includes('trabajo') || textoMinuscula.includes('registrar')) 
+                && !respuestaBot.includes('abrirModalPostulacion')) {
+                
+                respuestaBot += `<br><br><button onclick="abrirModalPostulacion()" style="padding:12px 20px; background-color:#0a2540; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px;">Postular ahora</button>`;
+            }
+            
+            document.getElementById(typingId).remove();
+            chatMessages.innerHTML += `<div class="msg-soldesp bot">${respuestaBot}</div>`;
+            
+        } catch (error) {
+            document.getElementById(typingId).remove();
+            chatMessages.innerHTML += `<div class="msg-soldesp bot">Error de conexión. Revisa que el servidor Python esté encendido.</div>`;
+            console.error(error);
+        }
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    sendBtn.onclick = sendMessage;
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+    // ================= LÓGICA DEL MODAL DE POSTULACIÓN =================
+    const modalPostulacion = document.getElementById('modal-postulacion');
+    const cerrarModal = document.getElementById('cerrar-modal');
+    const formPostulacion = document.getElementById('form-postulacion');
+    const mensajePostulacion = document.getElementById('mensaje-postulacion');
+
+    window.abrirModalPostulacion = function() {
+        modalPostulacion.style.display = 'flex';
+    }
+
+    cerrarModal.onclick = () => modalPostulacion.style.display = 'none';
+    
+    window.onclick = function(event) {
+        if (event.target == modalPostulacion) {
+            modalPostulacion.style.display = 'none';
+        }
+    }
+
+    formPostulacion.onsubmit = async (e) => {
+        e.preventDefault();
+        mensajePostulacion.innerHTML = "<span style='color: blue;'>Enviando CV, por favor espera...</span>";
+        
+        const formData = new FormData(formPostulacion);
+        
+        try {
+            const response = await fetch('http://127.0.0.1:5000/postular', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                mensajePostulacion.innerHTML = `<span style='color: green; font-weight: bold;'>${data.mensaje}</span>`;
+                formPostulacion.reset();
+                setTimeout(() => { modalPostulacion.style.display = 'none'; mensajePostulacion.innerHTML = ''; }, 3000);
+            } else {
+                mensajePostulacion.innerHTML = `<span style='color: red;'>${data.error}</span>`;
+            }
+        } catch (error) {
+            mensajePostulacion.innerHTML = "<span style='color: red;'>Error de conexión con el servidor.</span>";
+        }
+    };
 </script>
 </body>
 </html>
