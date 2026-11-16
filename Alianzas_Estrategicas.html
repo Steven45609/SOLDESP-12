@@ -650,7 +650,7 @@
             .stat-number-modern { font-size: 2rem; }
         }
 
-        /* ================= ESTILOS DEL CHATBOT ================= */
+        /* ================= ESTILOS DEL CHATBOT (CORREGIDOS) ================= */
         #chat-soldesp-btn { 
             position: fixed; 
             bottom: 20px; 
@@ -692,9 +692,40 @@
         .msg-soldesp { max-width: 80%; padding: 10px; border-radius: 10px; font-size: 14px; line-height: 1.4; }
         .msg-soldesp.user { background: #ff6b00; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
         .msg-soldesp.bot { background: #e9ecef; color: #333; align-self: flex-start; border-bottom-left-radius: 2px; }
-        #chat-soldesp-input-area { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; }
-        #chat-soldesp-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
-        #chat-soldesp-send { background: #ff6b00; color: white; border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        
+        /* Área de entrada corregida para que no se desborde en móviles */
+        #chat-soldesp-input-area { 
+            padding: 10px 15px; 
+            border-top: 1px solid #eee; 
+            display: flex; 
+            gap: 8px; 
+            align-items: center; 
+            background: white; 
+        }
+        #chat-soldesp-input { 
+            flex: 1; 
+            min-width: 0; /* Evita que el input empuje al botón fuera */
+            padding: 10px 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 20px; 
+            outline: none; 
+            font-size: 16px; /* Evita el zoom automático en iOS */
+        }
+        #chat-soldesp-send { 
+            flex-shrink: 0; /* Evita que el botón se aplaste o salga del contenedor */
+            background: #ff6b00; 
+            color: white; 
+            border: none; 
+            padding: 10px 18px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            white-space: nowrap; /* Mantiene "Enviar" en una línea */
+            transition: background 0.3s;
+        }
+        #chat-soldesp-send:active {
+            background: #e95f00;
+        }
 
         /* ===== ESTILOS DEL MODAL DE POSTULACIÓN ===== */
         #modal-postulacion {
@@ -783,7 +814,7 @@
                 font-size: 13px;
             }
 
-            /* === NUEVO: Ajuste para el Modal de Postulación en Celular === */
+            /* === Ajuste para el Modal de Postulación en Celular === */
             .modal-post-content {
                 padding: 20px;
                 width: 95%;
