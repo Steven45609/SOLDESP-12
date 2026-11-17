@@ -538,7 +538,7 @@
             color: white;
         }
         
-        /* Footer */
+        /* Footer y tamaño unificado de contacto */
         .footer-premium {
             background: linear-gradient(135deg, #051a2c 0%, #030f1a 100%);
             color: #94a3b8;
@@ -618,6 +618,12 @@
             color: white;
             transform: scale(1.05);
         }
+        /* CORRECCIÓN: Tamaño de texto unificado a 0.85rem igual que los demás enlaces */
+        .contact-info-premium span {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
         .social-links-premium {
             display: flex;
             gap: 12px;
@@ -641,9 +647,7 @@
             transform: translateY(-5px);
         }
         .social-links-premium a.fb:hover { background: #1877f2; color: white; }
-        .social-links-premium a.ln:hover { background: #0077b5; color: white; }
         .social-links-premium a.wa:hover { background: #25d366; color: white; }
-        .social-links-premium a.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); color: white; }
         .copyright-premium {
             border-top: 1px solid rgba(255,255,255,0.05);
             padding-top: 25px;
@@ -1068,10 +1072,8 @@
                 </div>
                 <p class="mb-4" style="line-height: 1.6; color: #94a3b8; font-size: 0.85rem;">Empresa líder en servicios de ingeniería y soldadura industrial en el Perú, enfocada en la excelencia técnica y la seguridad operativa.</p>
                 <div class="social-links-premium">
-                    <a href="https://www.facebook.com/soldesp.ilo" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
-                    <a href="#" target="_blank" class="ln"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.facebook.com/om.gueva" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
                     <a href="https://wa.me/053495247" target="_blank" class="wa"><i class="bi bi-whatsapp"></i></a>
-                    <a href="#" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6">
@@ -1132,7 +1134,7 @@
 </footer>
 
 <!-- ================= CHATBOT SOLDESP (PROPIO) ================= -->
-<button id="chat-soldesp-btn"><i class="fas fa-robot"></i></button>
+<button id="chat-soldesp-btn" aria-label="Abrir chat de asistencia de Soldesp"><i class="fas fa-robot"></i></button>
 <div id="chat-soldesp-window">
     <div id="chat-soldesp-header">
         <span>Asistente SOLDESP</span>
